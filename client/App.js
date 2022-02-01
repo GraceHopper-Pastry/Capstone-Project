@@ -1,13 +1,14 @@
 import React from "react";
-
+import UserForm from "./components/userForm";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <Routes />
+      <UserForm />
+      {/* <Navbar />
+      <Routes /> */}
     </div>
   );
 };
