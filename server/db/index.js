@@ -6,7 +6,7 @@ const User = require('./models/User');
 const Shop = require('./models/Shop');
 
 //associations could go here!
-User.belongsToMany(User);
+User.belongsToMany(User as "Mentor");
 User.hasOne(Shop);
 
 module.exports = {

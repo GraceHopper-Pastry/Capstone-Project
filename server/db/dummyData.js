@@ -412,7 +412,7 @@ const shops = [
   },
   {
     userId: 3,
-    chat: false,
+    chat: true,
     advice: false,
     liveQandA: true,
   },
