@@ -324,7 +324,7 @@ const users = [
     lastName: 'Al-Jamil',
     password: 'tahani_pw',
     email: 'tahani@email.com',
-    isMentor: true,
+    isMentor: false,
     profilePic:
       'https://i.pinimg.com/originals/f4/7b/a4/f47ba441b4d1cb419c0359e5c5fd4570.png',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -343,7 +343,7 @@ const users = [
     lastName: 'Anagonye',
     password: 'chidi_pw',
     email: 'chidi@email.com',
-    isMentor: true,
+    isMentor: false,
     profilePic:
       'https://yankeetv.com/wiki/wp-content/uploads/2019/01/WilliamJacksonHarper.jpg',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -362,7 +362,7 @@ const users = [
     lastName: 'Mendoza',
     password: 'jason_pw',
     email: 'jason@email.com',
-    isMentor: true,
+    isMentor: false,
     profilePic:
       'https://i.pinimg.com/originals/1f/04/8f/1f048f0339092f1a8ec2b8615333405b.jpg',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -375,6 +375,25 @@ const users = [
     areaOfStudy: 'Computer Science',
     endYear: 2022,
     intakeScore: 4,
+  },
+  {
+    firstName: 'Admin',
+    lastName: 'Admin',
+    password: 'admin_pw',
+    email: 'admin@email.com',
+    isMentor: true,
+    profilePic:
+      'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png',
+    bio: 'n/a',
+    employer: 'n/a',
+    jobTitle: 'n/a',
+    location: 'n/a',
+    industry: 'n/a',
+    yearsInTech: 0,
+    school: 'n/a',
+    areaOfStudy: 'n/a',
+    endYear: 2022,
+    intakeScore: 0,
   },
 ];
 
