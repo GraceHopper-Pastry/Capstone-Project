@@ -54,15 +54,15 @@ const User = db.define('user', {
   },
   employer: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   jobTitle: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   location: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   industry: {
     type: Sequelize.STRING,
@@ -74,11 +74,11 @@ const User = db.define('user', {
   },
   school: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   areaOfStudy: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   endYear: {
     type: Sequelize.INTEGER,
