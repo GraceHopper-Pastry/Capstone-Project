@@ -13,5 +13,6 @@ module.exports = {
   db,
   models: {
     User,
+    Shop,
   },
 };
