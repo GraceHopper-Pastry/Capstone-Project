@@ -1,19 +1,22 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Shop = db.define('shop', {
+const Offerings = db.define('offerings', {
   chat: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
+    defaultValue: false,
   },
   advice: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
+    defaultValue: false,
   },
   liveQandA: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
+    defaultValue: false,
   },
 });
 
-module.exports = Shop;
+module.exports = Offerings;

@@ -376,6 +376,7 @@ const users = [
     endYear: 2022,
     intakeScore: 4,
   },
+
   {
     firstName: 'Admin',
     lastName: 'Admin',
@@ -397,7 +398,7 @@ const users = [
   },
 ];
 
-const shops = [
+const offerings = [
   {
     userId: 1,
     chat: true,
@@ -474,5 +475,5 @@ const shops = [
 
 module.exports = {
   users,
-  shops,
+  offerings,
 };
