@@ -3,24 +3,22 @@
 const db = require("./db");
 
 const User = require("./models/User");
-const Shop = require("./models/Shop");
+const Offerings = require("./models/Offerings");
 
 //associations could go here!
-//hasMany defines a one to many re
-// User.hasMany(User, { foreignKey: "mentorId" });
 User.belongsToMany(User, {
   as: "Mentees",
   foreignKey: "mentorId",
   through: "mentors_mentees",
 });
-
-//
-User.hasOne(Shop);
+User.belongsToMany(Offerings, {
+  through: "Shop",
+});
 
 module.exports = {
   db,
   models: {
     User,
-    Shop,
+    Offerings,
   },
 };
