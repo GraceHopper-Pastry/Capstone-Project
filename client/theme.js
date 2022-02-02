@@ -1,8 +1,11 @@
-import { red } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 // A custom theme for this app
 const theme = createTheme({
+  typography: {
+    useNextVariants: true,
+  },
   palette: {
     primary: {
       main: '#556cd6',
