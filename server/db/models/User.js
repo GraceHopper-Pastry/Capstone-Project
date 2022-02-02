@@ -10,18 +10,13 @@ const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING,
     unique: false,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    allowNull: true,
+
   },
   lastName: {
     type: Sequelize.STRING,
     unique: false,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    allowNull: true,
   },
   password: {
     type: Sequelize.STRING,
@@ -50,7 +45,7 @@ const User = db.define('user', {
   },
   bio: {
     type: Sequelize.TEXT,
-    allowNull: false,
+    allowNull: true,
   },
   employer: {
     type: Sequelize.STRING,
@@ -66,11 +61,11 @@ const User = db.define('user', {
   },
   industry: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   yearsInTech: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   school: {
     type: Sequelize.STRING,
@@ -86,7 +81,7 @@ const User = db.define('user', {
   },
   intakeScore: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
 });
 
