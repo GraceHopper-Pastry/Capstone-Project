@@ -20,7 +20,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <ExperienceDialog />
         <h3>Welcome, {this.props.username}</h3>
       </div>
     );
