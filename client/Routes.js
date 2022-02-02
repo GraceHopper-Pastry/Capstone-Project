@@ -4,7 +4,6 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import { me } from "./store";
-import { Formik } from "formik";
 /**
  * COMPONENT
  */

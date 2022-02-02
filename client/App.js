@@ -6,9 +6,9 @@ import Routes from "./Routes";
 const App = () => {
   return (
     <div>
-      <UserForm />
-      {/* <Navbar />
-      <Routes /> */}
+      {/* <UserForm /> */}
+      <Navbar />
+      <Routes />
     </div>
   );
 };

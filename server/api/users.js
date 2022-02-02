@@ -1,16 +1,16 @@
-const router = require('express').Router();
+const router = require("express").Router();
 const {
   models: { User },
-} = require('../db');
+} = require("../db");
 module.exports = router;
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and username fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'firstName', 'lastName'],
+      attributes: ["id", "firstName", "lastName"],
     });
     res.json(users);
   } catch (err) {
@@ -19,13 +19,13 @@ router.get('/', async (req, res, next) => {
 });
 
 //GET SINGLE USER
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const users = await User.findOne({
       where: {
         id: req.params.id,
       },
-      attributes: ['id', 'firstName', 'lastName', 'email', 'isAdmin'],
+      attributes: ["id", "firstName", "lastName", "email", "isAdmin"],
     });
     res.json(users);
   } catch (err) {
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // DELETE SINGLE USER
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const userToDelete = await User.findByPk(req.params.id);
     await userToDelete.destroy();
@@ -45,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // ADD NEW USER
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     res.json(await User.create(req.body));
   } catch (error) {
@@ -54,9 +54,11 @@ router.post('/', async (req, res, next) => {
 });
 
 // UPDATE SINGLE USER
-router.put('/:id', async (req, res, next) => {
+//need to add require token here
+router.put("/", async (req, res, next) => {
   try {
-    const userToUpdate = await User.findByPk(req.params.id);
+    const userId = req.user.id;
+    const userToUpdate = await User.findByPk(userId);
     res.json(await userToUpdate.update(req.body));
   } catch (error) {
     next(error);
