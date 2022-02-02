@@ -6,7 +6,15 @@ const User = require("./models/User");
 const Shop = require("./models/Shop");
 
 //associations could go here!
-User.hasMany(User, { foreignKey: "mentorId" });
+//hasMany defines a one to many re
+// User.hasMany(User, { foreignKey: "mentorId" });
+User.belongsToMany(User, {
+  as: "Mentees",
+  foreignKey: "mentorId",
+  through: "mentors_mentees",
+});
+
+//
 User.hasOne(Shop);
 
 module.exports = {
