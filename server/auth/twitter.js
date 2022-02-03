@@ -6,9 +6,9 @@ require('dotenv').config()
 module.exports = router
 
 const twitterConfig = {
-  consumerKey: process.env.GOOGLE_CLIENT_ID,
-  consumerSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:8080/auth/twitter/callback"
+  consumerKey: process.env.TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  callbackURL: "http://www.localhost:8080/auth/twitter/callback"
 }
 
 passport.use(new TwitterStrategy(twitterConfig, (token, refreshToken, profile, done) => {
@@ -18,7 +18,7 @@ passport.use(new TwitterStrategy(twitterConfig, (token, refreshToken, profile, d
   return User.find({where: {twitterId}})
     .then(user => user
       ? done(null, user)
-      : User.create({name, email, googleId})
+      : User.create({name, email, twitterId})
         .then(user => done(null, user))
     )
     .catch(done)

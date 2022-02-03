@@ -31,7 +31,8 @@ const AuthForm = props => {
       </form>
       <br/>
       <a href="/auth/google">Authenticate with Google</a><br/>
-      <a href="/auth/twitter">Authenticate with Twitter</a>
+      <a href="/auth/twitter">Authenticate with Twitter</a><br/>
+      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
     </div>
   )
 }
