@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import {
-  Login,
-  Signup,
-  SingleUser,
-  MentorRelationshipBar,
-} from './components/AuthForm';
+import { Login, Signup } from './components/AuthForm';
+import SingleUser from './components/SingleUser';
+import MentorRelationshipBar from './components/MentorRelationshipBar';
 import Home from './components/Home';
 import { me } from './store';
 
