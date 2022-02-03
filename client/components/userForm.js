@@ -43,6 +43,7 @@ const StyledTextField = styled(TextField)({
     // This lines up the label with the initial cursor position in the input
     // after changing its padding-left.
     transform: "translate(34px, 34px) scale(1);",
+    padding: "5px",
   },
 });
 

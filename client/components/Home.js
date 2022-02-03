@@ -20,7 +20,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h3>Welcome, {this.props.username}</h3>
+        <h3>Welcome, {this.props.email}</h3>
       </div>
     );
   }
@@ -30,7 +30,7 @@ class Home extends React.Component {
  */
 const mapState = (state) => {
   return {
-    username: state.auth.username,
+    email: state.auth.email,
   };
 };
 

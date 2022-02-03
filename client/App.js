@@ -5,15 +5,16 @@ import Routes from "./Routes";
 import IntakeForm from "./components/IntakeForm";
 import ImageUpload from "./components/ImageUpload";
 import QuizPopup from "./components/QuizPopup";
+import showUploadWidget from "./components/ImageUpload";
 const App = () => {
   return (
     <div>
-      <QuizPopup />
+      {/* <QuizPopup /> */}
       {/* <UserForm /> */}
       {/* <ImageUpload /> */}
       {/* <IntakeForm /> */}
-      {/* <Navbar />
-      <Routes /> */}
+      <Navbar />
+      <Routes />
     </div>
   );
 };
