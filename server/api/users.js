@@ -25,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
       where: {
         id: req.params.id,
       },
-      attributes: ['id', 'firstName', 'lastName', 'email', 'isAdmin'],
+      attributes: ['id', 'firstName', 'lastName', 'email'],
     });
     res.json(users);
   } catch (err) {
