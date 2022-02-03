@@ -5,7 +5,7 @@ module.exports = router
 router.post('/login', (req, res, next) => {
   try {
     const { email, password } = req.body;
-    res.send({ token: await User.authenticate(req.body) });
+    res.send({ token: await User.authenticate({ email, password }) });
   } catch (err) {
     next(err);
   }
@@ -13,8 +13,8 @@ router.post('/login', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.create({ username, password });
+    const { email, password } = req.body;
+    const user = await User.create({ email, password });
     res.send({ token: await user.generateToken() });
   } catch (err) {
     if (err.name === "SequelizeUniqueConstraintError") {
