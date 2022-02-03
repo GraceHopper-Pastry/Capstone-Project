@@ -4,12 +4,13 @@ import { fetchSingleUser } from '../store/singleUser';
 
 class SingleUser extends React.Component {
   componentDidMount() {
+    console.log('CDM', 'TESTING???');
     this.props.fetchSingleUser(this.props.match.params.id);
   }
 
   render() {
     const { user } = this.props;
-    console.log(this.props);
+    console.log('profileRender', this.props.match.params.id);
     return (
       <div>
         <h2>Profile</h2>
