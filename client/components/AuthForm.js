@@ -12,10 +12,10 @@ const AuthForm = (props) => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor='email'>
-            <small>Email</small>
+          <label htmlFor="email">
+            <small>email</small>
           </label>
-          <input name='email' type='text' />
+          <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor='password'>
@@ -28,6 +28,10 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      <br/>
+      <a href="/auth/google">Authenticate with Google</a><br/>
+      <a href="/auth/twitter">Authenticate with Twitter</a><br/>
+      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
     </div>
   );
 };
@@ -58,14 +62,14 @@ const mapSignup = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
-      evt.preventDefault();
-      const formName = evt.target.name;
-      const email = evt.target.email.value;
-      const password = evt.target.password.value;
-      dispatch(authenticate(email, password, formName));
-    },
-  };
-};
+      evt.preventDefault()
+      const formName = evt.target.name
+      const email = evt.target.email.value
+      const password = evt.target.password.value
+      dispatch(authenticate(email, password, formName))
+    }
+  }
+}
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm);

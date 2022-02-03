@@ -33,6 +33,7 @@ class Home extends React.Component {
         <Link to={`/users/${this.props.id}`}>
           <p>View Profile</p>
         </Link>
+
       </div>
     );
   }
