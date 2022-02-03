@@ -9,6 +9,7 @@ class SingleUser extends React.Component {
 
   render() {
     const { user } = this.props;
+    console.log(this.props);
     return (
       <div>
         <h2>Profile</h2>
