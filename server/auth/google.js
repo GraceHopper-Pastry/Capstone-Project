@@ -22,7 +22,7 @@ module.exports = router
 const googleConfig = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:8080/callback"
+  callbackURL: "http://localhost:8080/auth/google/callback"
 }
 
 passport.use(new GoogleStrategy(googleConfig, (token, refreshToken, profile, done) => {
@@ -38,7 +38,7 @@ passport.use(new GoogleStrategy(googleConfig, (token, refreshToken, profile, don
     .catch(done)
 }))
 router.get('/', passport.authenticate('google', {scope: 'email'}))
-router.get('/callback', passport.authenticate('google', {
+router.get('/auth/google/callback', passport.authenticate('google', {
   successRedirect: '/home',
   failureRedirect: '/login'
 }))
