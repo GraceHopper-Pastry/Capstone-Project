@@ -1,4 +1,4 @@
-import { red, orange} from '@mui/material/colors';
+import { red, pink} from '@mui/material/colors';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 // breakpoints
@@ -31,9 +31,9 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#ff8000',
-      light: '#ff944d',
-      dark: '#ff6600',
+      main: '#ff66b3',
+      light: '#ff80bf',
+      dark: '#cc0066',
       contrastText: '#000',
     },
     common: {
@@ -43,7 +43,7 @@ const theme = createTheme({
     },
 
     openTitle: '#3f4771',
-    protectedTitle: orange['400'],
+    protectedTitle: pink['400'],
     error: {
       main: red.A400,
     },

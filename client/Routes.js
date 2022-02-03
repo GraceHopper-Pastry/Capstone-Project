@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./old-components/AuthForm";
-import Home from "./old-components/Home";
+import { Login, Signup } from "./components/AuthForm";
+import Home from "./components/Home";
 import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
-
 
 /**
  * COMPONENT
@@ -28,8 +27,8 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route exact path="/" component={MainLanding} />
-            {/* <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} /> */}
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
           </Switch>
         )}
       </div>

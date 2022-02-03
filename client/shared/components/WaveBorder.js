@@ -8,7 +8,7 @@ const styles = {
   waves: {
     position: 'relative',
     width: '100%',
-    height: '7vw',
+    height: '10vw',
     minHeight: '7vw',
     marginBottom: -7,
   },

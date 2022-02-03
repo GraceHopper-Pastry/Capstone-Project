@@ -1,8 +1,9 @@
-import React, { memo } from 'react';
+import React, { memo} from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {logout} from '../../../store'
+import {Signup, Login} from '../../../components/AuthForm'
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
@@ -77,24 +78,24 @@ const NavBar = (props) => {
 
   const menuPages = [
     {
-      link: "/",
+      value: "/",
       name: "Home",
-      icon: <HomeIcon className="text-white" />
+      icon: <HomeIcon className="text-white" color="inherit"/>
     },
     {
       link: "/offerings",
       name: "Offerings",
-      icon: <LocalOfferIcon className="text-white" />
+      icon: <LocalOfferIcon className="text-white" color="inherit"/>
     },
     {
-      link: "/signup",
       name: "Apply Now",
-      icon: <HowToRegIcon className="text-white" />
+      link: "/signup",
+      icon: <HowToRegIcon className="text-white" color="inherit"/>
     },
     {
-      link: "/login",
       name: "Login",
-      icon: <LoginIcon className="text-white" />
+      link: "/login",
+      icon: <LoginIcon className="text-white" color="inherit" />
     }
 
   ];
@@ -128,42 +129,67 @@ const NavBar = (props) => {
               variant="h4"
               className={classes.brandText}
               display="inline"
-              color="primary"
+              color="inherit"
             >
             </Typography>
             <Typography
               variant="h4"
               className={classes.brandText}
               display="inline"
-              color="secondary"
+              color="inherit"
             >
           </Typography>
           </div>
-            <Hidden mdUp>
-            <IconButton
-              className={classes.menuButtonText}
-              onClick={handleOpenNavMenu}
-              color="inherit"
-              aria-label="Open Navigation"
-            >
-              <MenuIcon color="primary" />
-              <MenuIcon />
-            </IconButton>
-            </Hidden>
-            <Hidden smDown>
+            <div mdup="true">
+            <Tooltip title="Open settings">
+              <IconButton
+                className={classes.menuButtonText}
+                onClick={handleOpenNavMenu}
+                color="inherit"
+                aria-label="menu"
+                edge="start"
+                size="large"
+
+              >
+                <MenuIcon color="inherit" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>About Us</MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
+              </Menu>
+
+            </div>
+            <div smdown="true">
                {menuPages.map(page => {
                 if (page.link) {
                   return (
+
                     <Link
                       key={page.name}
                       to={page.link}
                       className={classes.noDecoration}
-                      onClick={handleCloseNavMenu}
+                      onClick={handleClick}
                     >
                       <Button
-                        color="secondary"
-                        size="large"
+                        color="inherit"
+                        size="medium"
                         classes={{ text: classes.menuButtonText }}
+                        endIcon={page.icon}
                       >
                         {page.name}
                       </Button>
@@ -172,17 +198,18 @@ const NavBar = (props) => {
                 }
                 return (
                   <Button
-                    color="secondary"
-                    size="large"
+                    color="inherit"
+                    size="medium"
                     onClick={page.onClick}
                     classes={{ text: classes.menuButtonText }}
                     key={page.name}
+                    endIcon={page.icon}
                   >
                     {page.name}
                   </Button>
                 );
               })}
-          </Hidden>
+          </div>
           {isLoggedIn ? (
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -213,7 +240,7 @@ const NavBar = (props) => {
                       key={page.name}
                       to={page.link}
                       className={classes.noDecoration}
-                      onClick={handleCloseUserMenu}
+                      onClick={handleClick}
                     >
                     </MenuItem>
                   );
@@ -233,11 +260,13 @@ const NavBar = (props) => {
           ) : (
             <div>
           {/* The navbar will show these links before you log in */}
+          <Box sx={{flexGrow: 0}}>
             <Tooltip title="Apply Now">
-              <Button to={'/signup'}>
-                <AccountCircle />
-              </Button>
+              <IconButton component={Link} to='/signup' onClick={handleClick}>
+                <AccountCircle  color="inherit"/>
+              </IconButton>
             </Tooltip>
+          </Box>
         </div>
       )}
         </Toolbar>
