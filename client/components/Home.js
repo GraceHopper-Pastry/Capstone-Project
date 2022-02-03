@@ -1,27 +1,45 @@
-import React, { Fragment} from "react";
-import { connect } from "react-redux";
-import Footer from "../logged_out/components/footer/Footer"
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-  function Home() {
-    const { email } = props;
+import reactRouterDom from 'react-router-dom';
+import ExperienceDialog from './experiencePopup';
+import Footer from '../logged_out/components/footer/Footer'
+/**
+ * COMPONENT
+ */
+// export const Home = (props) => {
+//   const { username } = props;
 
 
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log(this.props);
     return (
       <div>
-         <Fragment>
-           <h3>Welcome, {email}</h3>
-          <Footer />
-        </Fragment>
+        {/* <ExperienceDialog /> */}
+        <h3>Welcome, {this.props.firstName}</h3>
+
+        <Link to={`/users/${this.props.id}`}>
+          <p>View Profile</p>
+        </Link>
+        <Footer />
       </div>
     );
   }
+}
 
 /**
  * CONTAINER
  */
 const mapState = (state) => {
   return {
-    email: state.auth.email,
+    firstName: state.auth.firstName,
+    id: state.auth.id,
   };
 };
 

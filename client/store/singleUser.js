@@ -15,6 +15,7 @@ export const getSingleUser = (user) => ({
 export const fetchSingleUser = (id) => {
   return async (dispatch) => {
     try {
+      console.log("fetching", data);
       const { data } = await axios.get(`/api/users/${id}`);
       dispatch(getSingleUser(data));
     } catch (err) {

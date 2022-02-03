@@ -5,6 +5,9 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
+import SingleUser from './components/SingleUser';
+import MentorRelationshipBar from './components/MentorRelationshipBar';
+
 
 /**
  * COMPONENT
@@ -21,14 +24,17 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route path='/home' component={Home} />
+            <Redirect to='/home' />
           </Switch>
         ) : (
           <Switch>
             <Route exact path="/" component={MainLanding} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path='/users/:id' component={SingleUser} />
+            <Route path='/users/:id' component={MentorRelationshipBar} />
+            <Redirect to ="/" />
           </Switch>
         )}
       </div>
