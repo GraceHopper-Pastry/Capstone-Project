@@ -12,10 +12,10 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="username">
-            <small>Username</small>
+          <label htmlFor="email">
+            <small>email</small>
           </label>
-          <input name="username" type="text" />
+          <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password">
@@ -28,6 +28,10 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      <br/>
+      <a href="/auth/google">Authenticate with Google</a><br/>
+      <a href="/auth/twitter">Authenticate with Twitter</a><br/>
+      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
     </div>
   )
 }
@@ -60,9 +64,9 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
-      const username = evt.target.username.value
+      const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
+      dispatch(authenticate(email, password, formName))
     }
   }
 }

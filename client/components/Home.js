@@ -21,7 +21,7 @@ class Home extends React.Component {
     return (
       <div>
         <ExperienceDialog />
-        <h3>Welcome, {this.props.username}</h3>
+        <h3>Welcome!</h3>
       </div>
     );
   }
@@ -31,7 +31,7 @@ class Home extends React.Component {
  */
 const mapState = (state) => {
   return {
-    username: state.auth.username,
+    email: state.auth.email,
   };
 };
 
