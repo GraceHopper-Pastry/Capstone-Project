@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Input } from "@mui/material";
 
 class ImageUpload extends React.Component {
   constructor(props) {
@@ -46,18 +47,18 @@ class ImageUpload extends React.Component {
     return (
       <div className="previewComponent">
         <form onSubmit={(e) => this._handleSubmit(e)}>
-          <input
+          <Input
             className="fileInput"
             type="file"
             onChange={(e) => this._handleImageChange(e)}
           />
-          <button
+          <Button
             className="submitButton"
             type="submit"
             onClick={(e) => this._handleSubmit(e)}
           >
             Upload Image
-          </button>
+          </Button>
         </form>
         <div className="imgPreview">{$imagePreview}</div>
       </div>
