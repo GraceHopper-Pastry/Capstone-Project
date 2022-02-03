@@ -40,6 +40,8 @@ const User = db.define('user', {
   },
   profilePic: {
     type: Sequelize.STRING,
+    defaultValue:
+      'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png',
   },
   bio: {
     type: Sequelize.TEXT,
