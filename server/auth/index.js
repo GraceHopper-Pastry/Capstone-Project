@@ -25,11 +25,6 @@ router.post('/signup', async (req, res, next) => {
   }
 })
 
-// router.post('/logout', (req, res) => {
-//   req.logout()
-//   res.redirect('/')
-// })
-
 router.get('/me', async (req, res) => {
   try {
     res.send(await User.findByToken(req.headers.authorization));
