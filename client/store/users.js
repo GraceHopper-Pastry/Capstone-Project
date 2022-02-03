@@ -15,28 +15,34 @@ const _updateUser = (user) => {
 };
 
 //thunk creator
-
 export const updateUser = (user, history) => {
   return async (dispatch) => {
-    const { data: newUser } = await axios.put("/api/users", user, {
-      headers: {
-        authorization: token,
-      },
-    });
-    dispatch(_updateUser(newUser));
-    history.push("/");
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data: newUser } = await axios.put("/api/users", user, {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(_updateUser(newUser));
+        //where should this page push to?
+        history.push("/");
+      }
+    } catch (err) {
+      console.log("error, user not updated");
+    }
   };
 };
 
 //REDUCER
-const initialState = [];
+const initialState = {};
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER:
-      return state.map((user) =>
-        user.id === action.user.id ? action.user : user
-      );
+      return action.user;
+
     default:
       return state;
   }

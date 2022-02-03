@@ -3,6 +3,9 @@ import { useFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import { TextField, Button, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../store/users";
+import { useHistory } from "react-router-dom";
 // import { AddIcon } from "@mui/icons-material";
 //yup lets us easily define custom validations for different fields
 const validationSchema = yup.object({
@@ -41,16 +44,13 @@ const StyledTextField = styled(TextField)({
     // after changing its padding-left.
     transform: "translate(34px, 34px) scale(1);",
   },
-  // "&:hover .MuiOutlinedInput-notchedOutline": {
-  //   borderColor: "red",
-  // },
-  // "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-  //   borderColor: "purple",
-  // },
 });
 
 const UserForm = () => {
   //formik uses the same destructured assignment as the useState hook under the hood. We set the initial values, and we can also pass in a callback function.
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -69,7 +69,7 @@ const UserForm = () => {
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user
-      console.log(JSON.stringify(values));
+      dispatch(updateUser(JSON.stringify(values), history));
     },
     validationSchema: validationSchema,
   });
