@@ -5,9 +5,7 @@ import { authenticate } from "../store";
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props;
-
+const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -28,9 +26,11 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <br/>
-      <a href="/auth/google">Authenticate with Google</a><br/>
-      <a href="/auth/twitter">Authenticate with Twitter</a><br/>
+      <br />
+      <a href="/auth/google">Authenticate with Google</a>
+      <br />
+      <a href="/auth/twitter">Authenticate with Twitter</a>
+      <br />
       <a href="/auth/linkedin">Authenticate with LinkedIn</a>
     </div>
   );
@@ -62,14 +62,14 @@ const mapSignup = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(authenticate(email, password, formName))
-    }
-  }
-}
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      dispatch(authenticate(email, password, formName));
+    },
+  };
+};
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
