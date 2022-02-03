@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
-import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {logout} from '../store'
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
@@ -16,15 +14,15 @@ import {
   Button,
   Hidden,
   IconButton,
-  withStyles
 } from '@mui/material';
+import  {withStyles} from '@mui/styles';
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import BookIcon from "@mui/icons-material/Book";
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-
+import LoginIcon from '@mui/icons-material/Login';
 
 const styles = theme => ({
   appBar: {
@@ -35,13 +33,21 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "space-between"
   },
+  brandText: {
+    fontFamily: [
+      "NotoSans",
+      "NotoSansThai",
+      "Arial",
+      "Roboto",
+      "'Helvetica Neue'",
+      "sans-serif",
+  ].join(","),
+    fontWeight: 400
+  },
   menuButtonText: {
     fontSize: theme.typography.body1.fontSize,
     fontWeight: theme.typography.h6.fontWeight
-  },
-  brandText: {
-    fontFamily: "'Roboto'",
-    fontWeight: 400
+
   },
   noDecoration: {
     textDecoration: "none !important"
@@ -50,7 +56,8 @@ const styles = theme => ({
 
 
 const pages = ['Home', 'Offerings', 'Apply Now', 'Login'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// when i get to NavigationDrawer
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = (props) => {
   const { classes, openSignUpForm, openLoginForm, handleDrawerOpen, handleDrawerClose, DrawerOpen, selectedTab } = props;
@@ -66,15 +73,26 @@ const NavBar = (props) => {
       icon: <LocalOfferIcon className="text-white" />
     },
     {
+      link: "/signup",
       name: "Apply Now",
-      onClick: openSignUpForm,
       icon: <HowToRegIcon className="text-white" />
     },
     {
+      link: "/login",
       name: "Login",
-      onClick: openLoginForm,
-      icon: <LocalOfferIcon className="text-white" />
+      icon: <LoginIcon className="text-white" />
     }
+
+    // {
+    //   name: "Apply Now",
+    //   onClick: openSignUpForm,
+    //   icon: <HowToRegIcon className="text-white" />
+    // },
+    // {
+    //   name: "Login",
+    //   onClick: openLoginForm,
+    //   icon: <LocalOfferIcon className="text-white" />
+    // }
   ];
 
   return (
@@ -143,21 +161,21 @@ const NavBar = (props) => {
           </div>
         </Toolbar>
       </AppBar>
-      <NavigationDrawer
+      {/* <NavigationDrawer
         menuPages={menuPages}
         anchor="left"
         open={DrawerOpen}
         selectedItem={selectedTab}
         onClose={handleDrawerClose}
-      />
+      /> */}
     </div>
   );
 };
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  openSignUpForm: PropTypes.func.isRequired,
-  openLoginForm: PropTypes.func.isRequired,
+  openSignUpForm: PropTypes.func,
+  openLoginForm: PropTypes.func,
   handleDrawerOpen: PropTypes.func,
   handleDrawerClose: PropTypes.func,
   DrawerOpen: PropTypes.bool,

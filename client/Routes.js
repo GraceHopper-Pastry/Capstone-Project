@@ -4,6 +4,8 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./old-components/AuthForm";
 import Home from "./old-components/Home";
 import { me } from "./store";
+import MainLanding from "./logged_out/components/MainLanding";
+
 
 /**
  * COMPONENT
@@ -25,7 +27,7 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={MainLanding} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
           </Switch>
