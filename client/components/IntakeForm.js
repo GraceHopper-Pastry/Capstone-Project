@@ -1,43 +1,40 @@
 import React, { useState } from "react";
 
-import { useFormik, Form, Field } from "formik";
-import * as yup from "yup";
-import { TextField, Button, Stack } from "@mui/material";
+import { Button, Card } from "@mui/material";
 
 export default function IntakeForm() {
   const questions = [
     {
-      questionText: "What is the capital of France?",
+      questionText: "Your first programming language was...",
       answerOptions: [
-        { answerText: "New York", value: 0 },
-        { answerText: "London", value: 1 },
+        { answerText: "Javascript", value: 0 },
+        { answerText: "Python", value: 1 },
       ],
     },
     {
-      questionText: "Who is CEO of Tesla?",
+      questionText: "Your favorite piece of technology is ...",
       answerOptions: [
-        { answerText: "Jeff Bezos", value: 0 },
-        { answerText: "Elon Musk", value: 1 },
+        { answerText: "your smart watch", value: 0 },
+        { answerText: "TikTok", value: 1 },
       ],
     },
     {
-      questionText: "The iPhone was created by which company?",
+      questionText: "You're most like a character on...",
       answerOptions: [
-        { answerText: "Apple", value: 0 },
-        { answerText: "Intel", value: 1 },
+        { answerText: "Halt and Catch Fire", value: 0 },
+        { answerText: "The Social Network", value: 1 },
       ],
     },
     {
-      questionText: "How many Harry Potter books are there?",
+      questionText: "During an interview, you'd rather implement...",
       answerOptions: [
-        { answerText: "1", value: 0 },
-        { answerText: "4", value: 1 },
+        { answerText: " Merge Sort", value: 0 },
+        { answerText: "a quiz in React", value: 1 },
       ],
     },
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
   const handleAnswerOptionClick = (value) => {
@@ -47,32 +44,32 @@ export default function IntakeForm() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
+      console.log(score);
     }
   };
   return (
-    // <div className="app">
-    //   {showScore ? (
-    //     <div className="score-section">
-    //       You scored {score} out of {questions.length}
-    //     </div>
-    //   ) : (
     <>
-      <div className="question-section">
-        <div className="question-count">
-          <span>Question {currentQuestion + 1}</span>/{questions.length}
+      <Card variant="outlined">
+        <div className="question-section">
+          <div className="question-count">
+            <span>Question {currentQuestion + 1}</span>/{questions.length}
+          </div>
+          <div className="question-text">
+            {questions[currentQuestion].questionText}
+          </div>
         </div>
-        <div className="question-text">
-          {questions[currentQuestion].questionText}
+        <div className="answer-section">
+          {questions[currentQuestion].answerOptions.map((answerOption) => (
+            <Button
+              key={answerOption.answerText}
+              variant="contained"
+              onClick={() => handleAnswerOptionClick(answerOption.value)}
+            >
+              {answerOption.answerText}
+            </Button>
+          ))}
         </div>
-      </div>
-      <div className="answer-section">
-        {questions[currentQuestion].answerOptions.map((answerOption) => (
-          <button onClick={() => handleAnswerOptionClick(answerOption.value)}>
-            {answerOption.answerText}
-          </button>
-        ))}
-      </div>
+      </Card>
     </>
   );
 }

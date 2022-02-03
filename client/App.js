@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div>
       {/* <UserForm /> */}
-      <ImageUpload />
-      {/* <IntakeForm /> */}
+      {/* <ImageUpload /> */}
+      <IntakeForm />
       {/* <Navbar />
       <Routes /> */}
     </div>
