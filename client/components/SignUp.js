@@ -6,7 +6,7 @@ import Authenticate from './Authenticate'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+const Signup = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
@@ -28,9 +28,12 @@ const AuthForm = props => {
           <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-      <br/>
-      <a href="/auth/google">Authenticate with Google</a>
       </form>
+      <Authenticate/>
+      <h3>Authenticate with:</h3>
+      <button>Google</button>
+      <button>LinkedIn</button>
+      <button>Twitter</button>
     </div>
   )
 }
@@ -42,13 +45,6 @@ const AuthForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = state => {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.auth.error
-  }
-}
 
 const mapSignup = state => {
   return {
@@ -70,5 +66,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export default connect(mapSignup, mapDispatch)(Signup)

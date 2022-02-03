@@ -2,32 +2,35 @@ const router = require('express').Router()
 const { models: {User }} = require('../db')
 module.exports = router
 
-router.post('/login', async (req, res, next) => {
-  try {
-    res.send({ token: await User.authenticate(req.body)}); 
-  } catch (err) {
-    next(err)
-  }
+router.post('/login', (req, res, next) => {
+  return User.findOne({where: {email: req.body.email}})
+    .then(user => {
+      if (!user) {
+        res.status(401).send('User not found')
+      } else if (!user.correctPassword(req.body.password)) {
+        res.status(401).send('Incorrect password')
+      } else {
+        req.login(user, err => err ? next(err) : res.json(user))
+      }
+    })
+    .catch(next)
 })
-
-
-router.post('/signup', async (req, res, next) => {
-  try {
-    const user = await User.create(req.body)
-    res.send({token: await user.generateToken()})
-  } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(401).send('User already exists')
-    } else {
-      next(err)
-    }
-  }
+router.post('/signup', (req, res, next) => {
+  return User.create(req.body)
+    .then(user => req.login(user, err => err ? next(err) : res.json(user)))
+    .catch(err => {
+      if (err.name === 'SequelizeUniqueConstraintError')
+        res.status(401).send('User already exists')
+      else next(err)
+    })
 })
-
-router.get('/me', async (req, res, next) => {
-  try {
-    res.send(await User.findByToken(req.headers.authorization))
-  } catch (ex) {
-    next(ex)
-  }
+router.post('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
 })
+router.get('/me', (req, res) => {
+  res.json(req.user)
+})
+router.use('/google', require('./google'))
+// router.use('/twitter', require('./twitter'))
+// router.use('/facebook', require('./facebook'))
