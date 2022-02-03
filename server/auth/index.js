@@ -33,6 +33,6 @@ router.get('/me', async (req, res) => {
   }
 })
 
-router.use('/google', require('./google'))
-router.use('/twitter', require('./twitter'))
-router.use('/linkedin', require('./linkedin'))
+// router.use('/google', require('./google'))
+// router.use('/twitter', require('./twitter'))
+// router.use('/linkedin', require('./linkedin'))
