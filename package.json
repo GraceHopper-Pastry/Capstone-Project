@@ -1,5 +1,4 @@
 {
-
   "name": "capstone-project",
   "version": "2.0.0",
   "description": "Team Pastry's Capstone Project",
@@ -12,7 +11,7 @@
     "start:dev": "npm run build:dev & npm run start-server",
     "start:dev:logger": "LOGGING=true npm run start:dev",
     "start:dev:seed": "SEED=true npm run start:dev",
-    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-server": " nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV=test JWT=a_secret mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/register --require esm ",
     "test:dev": "npm run test -- --watch",
     "test:dev:models": "npm run test:dev -- --grep=model",
@@ -23,10 +22,12 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.3.1",
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
+    "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "formik": "^2.2.9",
     "formik-material-ui": "^4.0.0-alpha.2",

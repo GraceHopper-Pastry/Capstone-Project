@@ -25,7 +25,7 @@ router.get("/:id", async (req, res, next) => {
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "firstName", "lastName", "email", "isAdmin"],
+      attributes: ["id", "firstName", "lastName", "email"],
     });
     res.json(users);
   } catch (err) {
@@ -54,10 +54,10 @@ router.post("/", async (req, res, next) => {
 });
 
 // UPDATE SINGLE USER
-//need to add require token here
-router.put("/", async (req, res, next) => {
+//need to add require token here, and change req.params.id to req.user.id from REQUIRETOKEN
+router.put("/:id", async (req, res, next) => {
   try {
-    const userId = req.user.id;
+    const userId = req.params.id;
     const userToUpdate = await User.findByPk(userId);
     res.json(await userToUpdate.update(req.body));
   } catch (error) {

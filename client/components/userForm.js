@@ -1,9 +1,9 @@
 import React from "react";
-
 import { useFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import { TextField, Button, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
+// import { AddIcon } from "@mui/icons-material";
 //yup lets us easily define custom validations for different fields
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required"),
@@ -73,6 +73,7 @@ const UserForm = () => {
     },
     validationSchema: validationSchema,
   });
+
   return (
     <div className="UserForm">
       {/* we can access the onSubmit function from the object we created above */}
@@ -121,6 +122,7 @@ const UserForm = () => {
             error={formik.touched.bio && Boolean(formik.errors.bio)}
             helperText={formik.touched.bio && formik.errors.bio}
           />
+
           <StyledTextField
             id="employer"
             name="employer"
@@ -215,7 +217,6 @@ const UserForm = () => {
             error={formik.touched.endYear && Boolean(formik.errors.endYear)}
             helperText={formik.touched.endYear && formik.errors.endYear}
           />
-
           <Button type="submit" variant="outlined">
             Submit
           </Button>
@@ -224,168 +225,5 @@ const UserForm = () => {
     </div>
   );
 };
-
-// //Data
-// const initialValues = {
-//   firstName: "",
-//   lastName: "",
-//   email: "",
-//   password: "",
-//   biography: "",
-//   occupation: "",
-//   company: "",
-//   city: "",
-//   state: "",
-//   industry: "",
-//   educationOne: "",
-//   educationTwo: "",
-// };
-
-// const options = [
-//   { label: "Computer Programmer", value: "Computer_programmer" },
-//   { label: "Web Developer", value: "web_developer" },
-//   { label: "User Experience Designer", value: "user_experience_designer" },
-//   { label: "Systems Analyst", value: "systems_analyst" },
-//   { label: "Quality Assurance Tester", value: "quality_assurance_tester" },
-// ];
-
-// const UserForm = () => {
-//   const classes = useStyle();
-
-//   const onSubmit = (values) => {
-//     console.log(values);
-//   };
-
-//   return (
-//     <Grid container justify="center" spacing={1}>
-//       <Grid item md={6}>
-//         <Card className={classes.padding}>
-//           <CardHeader title="REGISTER FORM"></CardHeader>
-//           <Formik
-//             initialValues={initialValues}
-//             validationSchema={validationSchema}
-//             onSubmit={onSubmit}
-//           >
-//             {({ dirty, isValid, values, handleChange, handleBlur }) => {
-//               return (
-//                 <Form>
-//                   <CardContent>
-//                     <Grid item container spacing={1} justify="center">
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="First Name"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="firstName"
-//                           value={values.firstName}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="Last Name"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="lastName"
-//                           value={values.lastName}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="Email"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="email"
-//                           value={values.email}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="Password"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="password"
-//                           value={values.password}
-//                           type="password"
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="Biography"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="biography"
-//                           value={values.biography}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={12}>
-//                         <FormControl fullWidth variant="outlined">
-//                           <InputLabel id="demo-simple-select-outlined-label">
-//                             Occupation
-//                           </InputLabel>
-//                           <Select
-//                             labelId="demo-simple-select-outlined-label"
-//                             id="demo-simple-select-outlined"
-//                             label="Occupation"
-//                             onChange={handleChange}
-//                             onBlur={handleBlur}
-//                             value={values.occupation}
-//                             name="occupation"
-//                           >
-//                             <MenuItem>None</MenuItem>
-//                             {options.map((item) => (
-//                               <MenuItem key={item.value} value={item.value}>
-//                                 {item.label}
-//                               </MenuItem>
-//                             ))}
-//                           </Select>
-//                         </FormControl>
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="City"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="city"
-//                           value={values.city}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                       <Grid item xs={12} sm={6} md={6}>
-//                         <Field
-//                           label="Country"
-//                           variant="outlined"
-//                           fullWidth
-//                           name="country"
-//                           value={values.country}
-//                           component={TextField}
-//                         />
-//                       </Grid>
-//                     </Grid>
-//                   </CardContent>
-//                   <CardActions>
-//                     <Button
-//                       disabled={!dirty || !isValid}
-//                       variant="contained"
-//                       color="primary"
-//                       type="Submit"
-//                       className={classes.button}
-//                     >
-//                       REGISTER
-//                     </Button>
-//                   </CardActions>
-//                 </Form>
-//               );
-//             }}
-//           </Formik>
-//         </Card>
-//       </Grid>
-//     </Grid>
-//   );
-// };
 
 export default UserForm;
