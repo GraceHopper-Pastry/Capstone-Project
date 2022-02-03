@@ -30,8 +30,8 @@ class Routes extends Component {
             <Route path='/' exact component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
-            <Route path='/user/:id' component={SingleUser} />
-            <Route path='/user/:id' component={MentorRelationshipBar} />
+            <Route path='/users/:id' component={SingleUser} />
+            <Route path='/users/:id' component={MentorRelationshipBar} />
           </Switch>
         )}
       </div>
