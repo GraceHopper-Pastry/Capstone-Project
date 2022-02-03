@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { models: {User} } = require('../db')
 module.exports = router
 
-router.post('/login', (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     res.send({ token: await User.authenticate({ email, password }) });
@@ -11,7 +11,7 @@ router.post('/login', (req, res, next) => {
   }
 })
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.create({ email, password });
@@ -30,7 +30,7 @@ router.post('/signup', (req, res, next) => {
 //   res.redirect('/')
 // })
 
-router.get('/me', (req, res) => {
+router.get('/me', async (req, res) => {
   try {
     res.send(await User.findByToken(req.headers.authorization));
   } catch (ex) {
