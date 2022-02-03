@@ -2,13 +2,40 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+
+// const db = require('./db')
+const session = require('express-session')
+const passport = require('passport')
+
+// const SequelizeStore = require('connect-session-sequelize')(session.Store)
+// const sessionStore = new SequelizeStore({db})
 module.exports = app
+
+// passport registration
+passport.serializeUser((user, done) => done(null, user.id))
+passport.deserializeUser((id, done) =>
+  db.models.user.findById(id, {attributes: ['id', 'email', 'isAdmin', 'tags', 'name']})
+    .then(user => {
+      done(null, user)
+      return null
+    })
+    .catch(done))
 
 // logging middleware
 app.use(morgan('dev'))
 
 // body parsing middleware
 app.use(express.json())
+
+// session middleware with passport
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'Luna',
+  // store: sessionStore,
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 // auth and api routes
 app.use('/auth', require('./auth'))
@@ -41,3 +68,46 @@ app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
+
+// // environment variables config
+// require('dotenv').config()
+
+// // passport and express-session
+// const session = require('express-session')
+// const passport = require('passport')
+
+// // express session middleware
+// app.use(session({
+//   secret: "secret",
+//   resave: false ,
+//   saveUninitialized: true,
+// }))
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// // google authentication
+// var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+// passport.use(new GoogleStrategy({
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: '/oauth2/redirect/accounts.google.com'
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
+
+// passport.serializeUser(function(user, cb) {
+//   process.nextTick(function() {
+//     cb(null, user);
+//   });
+// });
+
+// passport.deserializeUser(function(user, cb) {
+//   process.nextTick(function() {
+//     return cb(null, user);
+//   });
+// });

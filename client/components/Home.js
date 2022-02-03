@@ -20,7 +20,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h3>Welcome, {this.props.email}</h3>
+        <ExperienceDialog />
+        <h3>Welcome!</h3>
       </div>
     );
   }
