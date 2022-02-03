@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../store/users";
 import { useHistory } from "react-router-dom";
-// import { AddIcon } from "@mui/icons-material";
+
 //yup lets us easily define custom validations for different fields
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required"),

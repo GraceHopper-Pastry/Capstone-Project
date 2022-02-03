@@ -4,13 +4,14 @@ import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 import IntakeForm from "./components/IntakeForm";
 import ImageUpload from "./components/ImageUpload";
-
+import QuizPopup from "./components/QuizPopup";
 const App = () => {
   return (
     <div>
+      <QuizPopup />
       {/* <UserForm /> */}
       {/* <ImageUpload /> */}
-      <IntakeForm />
+      {/* <IntakeForm /> */}
       {/* <Navbar />
       <Routes /> */}
     </div>

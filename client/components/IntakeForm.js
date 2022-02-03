@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
 import { Button, Card } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../store/users";
+import { useHistory } from "react-router-dom";
 
-export default function IntakeForm() {
+export default function IntakeForm({ handleClose }) {
   const questions = [
     {
       questionText: "Your first programming language was...",
@@ -33,7 +35,8 @@ export default function IntakeForm() {
       ],
     },
   ];
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
 
@@ -44,7 +47,8 @@ export default function IntakeForm() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      console.log(score);
+      dispatch(updateUser({ intakeScore: `${score}` }, history));
+      () => handleClose();
     }
   };
   return (

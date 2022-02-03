@@ -18,7 +18,24 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//need this to be a different route
+router.get("/mentors/:intakeScore", async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const mentors = await User.findAll({
+      where: {
+        intakeScore: parseInt(req.params.intakeScore),
+        isMentor: true,
+      },
+    });
+    res.json(mentors);
+  } catch (err) {
+    next(err);
+  }
+});
+
 //GET SINGLE USER
+//will this route be protected?
 router.get("/:id", async (req, res, next) => {
   try {
     const users = await User.findOne({
@@ -55,9 +72,9 @@ router.post("/", async (req, res, next) => {
 
 // UPDATE SINGLE USER
 //need to add require token here, and change req.params.id to req.user.id from REQUIRETOKEN
-router.put("/:id", async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   try {
-    const userId = req.params.id;
+    const userId = req.user.id;
     const userToUpdate = await User.findByPk(userId);
     res.json(await userToUpdate.update(req.body));
   } catch (error) {

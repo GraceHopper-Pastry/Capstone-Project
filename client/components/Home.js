@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import reactRouterDom from "react-router-dom";
-import ExperienceDialog from "./experiencePopup";
+import ExperienceDialog from "./QuizPopup";
 /**
  * COMPONENT
  */
