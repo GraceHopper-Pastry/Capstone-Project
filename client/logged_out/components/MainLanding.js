@@ -18,6 +18,21 @@ const styles = (theme) => ({
 const MainLanding = props => {
   const { classes } = props;
   const [selectedTab, setSelectedTab] = useState(null, classes);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const selectHome = useCallback(() => {
+    document.title =
+      "Mentorship Match"
+    setSelectedTab("Home");
+  }, [setSelectedTab]);
+
+  const handleDrawerOpen = useCallback(() => {
+    setIsDrawerOpen(true);
+  }, [setIsDrawerOpen]);
+
+  const handleDrawerClose = useCallback(() => {
+    setIsDrawerOpen(false);
+  }, [setIsDrawerOpen]);
 
   return (
     <div className={classes.wrapper}>
@@ -26,9 +41,9 @@ const MainLanding = props => {
         selectTab={setSelectedTab}
         // openLoginForm={openLoginForm}
         // openSignUpForm={openSignUpForm}
-        // DrawerOpen={DrawerOpen}
-        // handleDrawerOpen={handleDrawerOpen}
-        // handleDrawClose={handleDrawClose}
+        DrawerOpen={isDrawerOpen}
+        handleDrawerOpen={handleDrawerOpen}
+        handleDrawClose={handleDrawerClose}
       />
       <Footer />
     </div>

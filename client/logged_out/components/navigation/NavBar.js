@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+import {logout} from '../../../store'
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
@@ -14,6 +16,7 @@ import {
   Button,
   Hidden,
   IconButton,
+  Box
 } from '@mui/material';
 import  {withStyles} from '@mui/styles';
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,6 +26,9 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import BookIcon from "@mui/icons-material/Book";
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import LoginIcon from '@mui/icons-material/Login';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const styles = theme => ({
   appBar: {
@@ -34,14 +40,7 @@ const styles = theme => ({
     justifyContent: "space-between"
   },
   brandText: {
-    fontFamily: [
-      "NotoSans",
-      "NotoSansThai",
-      "Arial",
-      "Roboto",
-      "'Helvetica Neue'",
-      "sans-serif",
-  ].join(","),
+    fontFamily: "Roboto",
     fontWeight: 400
   },
   menuButtonText: {
@@ -55,12 +54,27 @@ const styles = theme => ({
 });
 
 
-const pages = ['Home', 'Offerings', 'Apply Now', 'Login'];
-// when i get to NavigationDrawer
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 const NavBar = (props) => {
-  const { classes, openSignUpForm, openLoginForm, handleDrawerOpen, handleDrawerClose, DrawerOpen, selectedTab } = props;
+  const {handleClick, isLoggedIn, classes} = props
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   const menuPages = [
     {
       link: "/",
@@ -83,21 +97,31 @@ const NavBar = (props) => {
       icon: <LoginIcon className="text-white" />
     }
 
-    // {
-    //   name: "Apply Now",
-    //   onClick: openSignUpForm,
-    //   icon: <HowToRegIcon className="text-white" />
-    // },
-    // {
-    //   name: "Login",
-    //   onClick: openLoginForm,
-    //   icon: <LocalOfferIcon className="text-white" />
-    // }
   ];
+
+  const settings = [
+    {
+      link: "/home",
+      name: "Profile",
+      icon: <HomeIcon className="text-white" />
+    },
+    {
+      link: "/account",
+      name: "Account Settings",
+      icon: <ManageAccountsIcon className="text-white" />
+    },
+    {
+      name: "Logout",
+      onClick: handleClick,
+      icon: <LogoutIcon className="text-white" />
+    }
+
+  ];
+
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
+    <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>
             <Typography
@@ -113,27 +137,28 @@ const NavBar = (props) => {
               display="inline"
               color="secondary"
             >
-            </Typography>
+          </Typography>
           </div>
-          <div>
             <Hidden mdUp>
-              <IconButton
-                className={classes.menuButton}
-                onClick={handleDrawerOpen}
-                aria-label="Open Site Navigation"
-              >
-                <MenuIcon color="primary" />
-              </IconButton>
+            <IconButton
+              className={classes.menuButtonText}
+              onClick={handleOpenNavMenu}
+              color="inherit"
+              aria-label="Open Navigation"
+            >
+              <MenuIcon color="primary" />
+              <MenuIcon />
+            </IconButton>
             </Hidden>
             <Hidden smDown>
-              {menuPages.map(page => {
+               {menuPages.map(page => {
                 if (page.link) {
                   return (
                     <Link
                       key={page.name}
                       to={page.link}
                       className={classes.noDecoration}
-                      onClick={handleDrawerClose}
+                      onClick={handleCloseNavMenu}
                     >
                       <Button
                         color="secondary"
@@ -157,29 +182,90 @@ const NavBar = (props) => {
                   </Button>
                 );
               })}
-            </Hidden>
-          </div>
+          </Hidden>
+          {isLoggedIn ? (
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <AccountCircle />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map(page => {
+                if (page.link) {
+                  return (
+                    <MenuItem
+                      key={page.name}
+                      to={page.link}
+                      className={classes.noDecoration}
+                      onClick={handleCloseUserMenu}
+                    >
+                    </MenuItem>
+                  );
+                }
+                return (
+                  <MenuItem
+                    onClick={page.onClick}
+                    classes={{ text: classes.menuButtonText }}
+                    key={page.name}
+                  >
+                    {page.name}
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </Box>
+          ) : (
+            <div>
+          {/* The navbar will show these links before you log in */}
+            <Tooltip title="Apply Now">
+              <Button to={'/signup'}>
+                <AccountCircle />
+              </Button>
+            </Tooltip>
+        </div>
+      )}
         </Toolbar>
-      </AppBar>
-      {/* <NavigationDrawer
-        menuPages={menuPages}
-        anchor="left"
-        open={DrawerOpen}
-        selectedItem={selectedTab}
-        onClose={handleDrawerClose}
-      /> */}
-    </div>
+    </AppBar>
+  </div>
   );
 };
 
+/**
+ * CONTAINER
+ */
+
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.auth.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
+
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  openSignUpForm: PropTypes.func,
-  openLoginForm: PropTypes.func,
-  handleDrawerOpen: PropTypes.func,
-  handleDrawerClose: PropTypes.func,
-  DrawerOpen: PropTypes.bool,
-  selectedTab: PropTypes.string
+  classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(memo(NavBar));
+export default connect(mapState, mapDispatch)(withStyles(styles, { withTheme: true })(memo(NavBar)));

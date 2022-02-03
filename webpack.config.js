@@ -7,6 +7,9 @@ module.exports = {
     filename: './public/bundle.js'
   },
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx', '.css', '.scss']
+  },
   module: {
     rules: [
       {
@@ -20,16 +23,25 @@ module.exports = {
         }
       },
       {
-        test: /\.(ttf|eot|svg|gif|jpg|png) (\?[\s\S]+)?$/,
+        test: /\.svg$|\.ttf?|\.woff$|\.woff2|\.eof|\.eot/,
         use: 'file-loader'
       },
       {
-        test: /\.css$/,
-        use: [
-            {loader: 'css-loader' },
-            {loader: 'style-loader'}
-            ]
-      }
+        test: /\.css$/i,
+        use: ['css-loader','style-loader']
+      },
+      {
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 10000,
+						},
+					},
+				],
+			},
+
     ]
   }
 }

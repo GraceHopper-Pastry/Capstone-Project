@@ -187,7 +187,6 @@ const Footer = props => {
                 />
               </Box>
               <Button
-                color={theme.palette.common.white}
                 variant="outlined"
                 type="submit"
               >
