@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import reactRouterDom from "react-router-dom";
-import ExperienceDialog from "./experiencePopup";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import reactRouterDom from 'react-router-dom';
+import ExperienceDialog from './experiencePopup';
 /**
  * COMPONENT
  */
@@ -17,11 +19,21 @@ import ExperienceDialog from "./experiencePopup";
 // };
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
-        <ExperienceDialog />
-        <h3>Welcome!</h3>
+        {/* <ExperienceDialog /> */}
+        <h3>Welcome, {this.props.firstName}</h3>
+
+        <Link to={`/users/${this.props.id}`}>
+          <p>View Profile</p>
+        </Link>
+
       </div>
     );
   }
@@ -31,7 +43,8 @@ class Home extends React.Component {
  */
 const mapState = (state) => {
   return {
-    email: state.auth.email,
+    firstName: state.auth.firstName,
+    id: state.auth.id,
   };
 };
 

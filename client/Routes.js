@@ -6,6 +6,9 @@ import Home from "./components/Home";
 import { me } from "./store";
 // import Login from "./components/Login";
 // import SignUp from "./components/SignUp";
+import SingleUser from './components/SingleUser';
+import MentorRelationshipBar from './components/MentorRelationshipBar';
+
 
 /**
  * COMPONENT
@@ -22,14 +25,16 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route path='/home' component={Home} />
+            <Redirect to='/home' />
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <Route path='/' exact component={Login} />
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/users/:id' component={SingleUser} />
+            <Route path='/users/:id' component={MentorRelationshipBar} />
           </Switch>
         )}
       </div>
