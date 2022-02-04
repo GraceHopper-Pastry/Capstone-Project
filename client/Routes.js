@@ -7,7 +7,6 @@ import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
 import SingleUser from "./components/SingleUser";
 import MentorRelationshipBar from "./components/MentorRelationshipBar";
-import UserForm from "./components/userForm";
 
 /**
  * COMPONENT
@@ -25,9 +24,8 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/userform" component={UserForm} />
             <Route path="/users" component={SingleUser} />
-            <Route path="/users/:id" component={MentorRelationshipBar} />
+            {/* <Route path='/users' component={MentorRelationshipBar} /> */}
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -35,7 +33,6 @@ class Routes extends Component {
             <Route exact path="/" component={MainLanding} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-
             <Redirect to="/" />
           </Switch>
         )}
