@@ -23,6 +23,13 @@ class Home extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    let token = this.props.match.params.token_id;
+    if (token){
+      window.localStorage.setItem(TOKEN, token);
+    }
+  }
+
   render() {
     console.log(this.props);
     return (

@@ -31,6 +31,7 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route path='/' exact component={Login} />
+            <Route path='/:token_id' component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/users/:id' component={SingleUser} />
