@@ -42,9 +42,9 @@ const Home = ({ firstName, intakeScore }) => {
  */
 const mapState = (state) => {
   return {
-    firstName: state.userReducer.firstName,
-    id: state.userReducer.id,
-    intakeScore: state.userReducer.intakeScore,
+    firstName: state.userReducer.firstName || state.auth.firstName,
+    id: state.userReducer.id || state.auth.id,
+    intakeScore: state.userReducer.intakeScore || state.auth.intakeScore,
   };
 };
 
