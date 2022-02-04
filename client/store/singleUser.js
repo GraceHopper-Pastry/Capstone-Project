@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const TOKEN = 'token';
 const initialState = {};
 
 // Single users action type
@@ -12,12 +12,18 @@ export const getSingleUser = (user) => ({
 });
 
 // fetchSingleUser Thunk to get all the Users
-export const fetchSingleUser = (id) => {
+export const fetchSingleUser = () => {
   return async (dispatch) => {
     try {
-      console.log("fetching", data);
-      const { data } = await axios.get(`/api/users/${id}`);
-      dispatch(getSingleUser(data));
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.get(`/api/users`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(getSingleUser(data));
+      }
     } catch (err) {
       console.log('fetchSingleUser thunk error!!', err);
     }

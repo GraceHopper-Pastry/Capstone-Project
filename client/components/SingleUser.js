@@ -4,20 +4,21 @@ import { fetchSingleUser } from '../store/singleUser';
 
 class SingleUser extends React.Component {
   componentDidMount() {
-    console.log('CDM', 'TESTING???');
-    this.props.fetchSingleUser(this.props.match.params.id);
+    this.props.fetchSingleUser();
   }
 
   render() {
-    const { user } = this.props;
-    console.log('profileRender', this.props.match.params.id);
+    const user = this.props.user || {};
+    console.log(this.props);
+    const { firstName, lastName } = user || '';
+
     return (
       <div>
         <h2>Profile</h2>
         <div className='single-user'>
           <img src={user.profilePic} />
-          <p>First name: {user.firstName}</p>
-          <p>Last name: {user.lastName}</p>
+          <p>First name: {firstName}</p>
+          <p>Last name: {lastName}</p>
           <p>Email: {user.email}</p>
           <p>Employer: {user.bio}</p>
           <p>Job Title: {user.jobTitle}</p>
@@ -31,7 +32,7 @@ class SingleUser extends React.Component {
         <div>
           <div className='column right'>
             <h2>Start a Conversation</h2>
-            <MentorRelationshipBar />
+            {/* <MentorRelationshipBar /> */}
           </div>
         </div>
       </div>
@@ -39,12 +40,12 @@ class SingleUser extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  user: state.user,
-});
+const mapState = (state) => {
+  return { user: state.singleUserReducer };
+};
 
 const mapDispatch = (dispatch) => ({
-  fetchSingleUser: (id) => dispatch(fetchSingleUser(id)),
+  fetchSingleUser: () => dispatch(fetchSingleUser()),
 });
 
 export default connect(mapState, mapDispatch)(SingleUser);
