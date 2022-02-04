@@ -25,9 +25,9 @@ export const updateUser = (user, history) => {
             authorization: token,
           },
         });
-        dispatch(_updateUser(newUser));
+        await dispatch(_updateUser(newUser));
         //where should this page push to?
-        history.push("/");
+        history.push("/home");
       }
     } catch (err) {
       console.log("error, user not updated");

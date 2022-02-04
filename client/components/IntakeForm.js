@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../store/users";
 import { useHistory } from "react-router-dom";
 
-function IntakeForm({ handleClose }) {
+export default function IntakeForm({ handleClose }) {
   const questions = [
     {
       questionText: "Your first programming language was...",
@@ -47,8 +47,9 @@ function IntakeForm({ handleClose }) {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
+      console.log({ score });
       dispatch(updateUser({ intakeScore: `${score}` }, history));
-      () => handleClose();
+      handleClose();
     }
   };
   return (
@@ -77,5 +78,3 @@ function IntakeForm({ handleClose }) {
     </>
   );
 }
-
-export default IntakeForm;

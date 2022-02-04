@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import IntakeForm from "./IntakeForm";
 //QuizPopup should only appear on page load if the user does not have an intake score
-export default function QuizPopup() {
-  const [open, setOpen] = useState(true);
+export default function QuizPopup({ intakeScore }) {
+  const [open, setOpen] = useState(!intakeScore);
 
   const handleClose = () => {
     setOpen(false);

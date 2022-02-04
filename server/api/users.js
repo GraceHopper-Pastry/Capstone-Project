@@ -78,6 +78,7 @@ router.post("/", async (req, res, next) => {
 router.put("/", requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
+    console.log(`user:`, req.user, `update`, req.body);
     const userToUpdate = await User.findByPk(userId);
     res.json(await userToUpdate.update(req.body));
   } catch (error) {

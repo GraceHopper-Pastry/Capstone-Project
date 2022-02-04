@@ -1,35 +1,59 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import UserForm from "./userForm";
+import { Link, useHistory } from "react-router-dom";
+import QuizPopup from "./QuizPopup";
 
 import Footer from "../logged_out/components/footer/Footer";
+import { dividerClasses, Button } from "@mui/material";
 /**
  * COMPONENT
  */
 // export const Home = (props) => {
 //   const { username } = props;
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Home = ({ firstName, id, intakeScore }) => {
+  let history = useHistory();
 
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        <UserForm />
-        {/* <ExperienceDialog /> */}
-        <h3>Welcome, {this.props.firstName}</h3>
+  const handleClick = () => {
+    history.push("/userform");
+  };
 
-        <Link to={`/users/${this.props.id}`}>
-          <p>View Profile</p>
-        </Link>
-        <Footer />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {!firstName ? (
+        <Button type="button" variant="outlined" onClick={handleClick}>
+          Find your mentor!
+        </Button>
+      ) : (
+        <div>
+          <h3> Welcome, {firstName} </h3>
+          <Link to={`/users/${id}`}>
+            <p>View Profile</p>
+          </Link>
+
+          <QuizPopup intakeScore={intakeScore} />
+        </div>
+      )}
+
+      {/* {firstName && intakeScore ? (
+        <div>
+          <h3> Welcome, {firstName} </h3>
+          <Link to={`/users/${id}`}>
+            <p>View Profile</p>
+          </Link>
+        </div>
+      ) : firstName && !intakeScore ? (
+        <QuizPopup />
+      ) : (
+        <Button type="button" variant="outlined" onClick={handleClick}>
+          Find your mentor!
+        </Button>
+      )} */}
+
+      <Footer />
+    </div>
+  );
+};
 
 /**
  * CONTAINER
