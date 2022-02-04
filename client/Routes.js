@@ -28,7 +28,7 @@ class Routes extends Component {
             <Route path='/userform' component={UserForm} />
             <Route path='/users' component={SingleUser} />
             {/* <Route path='/users' component={MentorRelationshipBar} /> */}
-            {/* <Redirect to='/home' /> */}
+            <Redirect to='/home' />
           </Switch>
         ) : (
           <Switch>
