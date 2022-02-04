@@ -26,6 +26,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/userform" component={UserForm} />
+            <Route path="/users" component={SingleUser} />
+            <Route path="/users/:id" component={MentorRelationshipBar} />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -33,8 +35,7 @@ class Routes extends Component {
             <Route exact path="/" component={MainLanding} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/users" component={SingleUser} />
-            <Route path="/users/:id" component={MentorRelationshipBar} />
+
             <Redirect to="/" />
           </Switch>
         )}
