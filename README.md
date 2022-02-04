@@ -4,90 +4,6 @@
 
 *As of: 2/1/2022*
 
-Capstone-Project
-├─ .babelrc
-├─ .vscode
-│  └─ settings.json
-├─ CHANGELOG.md
-├─ LICENSE
-├─ README.md
-├─ client
-│  ├─ App.js
-│  ├─ Routes.js
-│  ├─ history.js
-│  ├─ index.js
-│  ├─ logged_in
-│  │  ├─ components
-│  │  │  ├─ Button.js
-│  │  │  └─ ProfilePicture.js
-│  │  ├─ containers
-│  │  │  ├─ AcountInfoPage.js
-│  │  │  ├─ NavBar.js
-│  │  │  └─ SideBarMenu.js
-│  │  └─ dummy_data
-│  │     └─ mentors.js
-│  ├─ logged_out
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ old-components
-│  │  ├─ AuthForm.js
-│  │  ├─ Home.js
-│  │  ├─ Home.spec.js
-│  │  ├─ LandingPage
-│  │  │  ├─ Asyncronous.js
-│  │  │  ├─ AutoCompletePlayground.js
-│  │  │  ├─ MaterialIcons.js
-│  │  │  ├─ Types.js
-│  │  │  └─ index.js
-│  │  ├─ Navbar.js
-│  │  ├─ experiencePopup.js
-│  │  └─ intakeForm.js
-│  ├─ shared
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ store
-│  │  ├─ auth.js
-│  │  ├─ auth.spec.js
-│  │  └─ index.js
-│  └─ theme.js
-├─ package.json
-├─ public
-│  ├─ bundle.js
-│  ├─ bundle.js.map
-│  ├─ favicon.ico
-│  ├─ images
-│  │  ├─ logged_in
-│  │  │  └─ personPlaceholder1.jpg
-│  │  └─ logged_out
-│  │     ├─ headerPlaceholder.jpg
-│  │     ├─ mentorship1.jpg
-│  │     ├─ mentorship2.jpg
-│  │     ├─ mentorship3.jpg
-│  │     ├─ mentorship4.jpg
-│  │     ├─ mentorship5.jpg
-│  │     └─ mentorship6.jpg
-│  ├─ index.html
-│  ├─ manifest.json
-│  ├─ robots.txt
-│  └─ style.css
-├─ script
-│  └─ seed.js
-├─ server
-│  ├─ api
-│  │  ├─ index.js
-│  │  ├─ users.js
-│  │  └─ users.spec.js
-│  ├─ app.js
-│  ├─ auth
-│  │  └─ index.js
-│  ├─ db
-│  │  ├─ db.js
-│  │  ├─ index.js
-│  │  └─ models
-│  │     ├─ User.js
-│  │     └─ User.spec.js
-│  └─ index.js
-└─ webpack.config.js
 
 ## Setup
 
@@ -166,5 +82,10 @@ Database Setup
 Now, you should be deployed!
 
 ```
+
+
+
+
+
 
 
