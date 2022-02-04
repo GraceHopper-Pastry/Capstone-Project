@@ -13,10 +13,7 @@ import { dividerClasses, Button } from "@mui/material";
 
 const Home = ({ firstName, id, intakeScore }) => {
   let history = useHistory();
-  const [update, setUpdate] = useState(false);
-  useEffect(() => {
-    setUpdate(!update);
-  }, [firstName]);
+
   return (
     <div>
       {!firstName ? (
