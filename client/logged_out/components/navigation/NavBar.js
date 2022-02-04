@@ -1,7 +1,7 @@
 import React, { memo} from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import {connect} from 'react-redux'
+import {connect, useDispatch } from 'react-redux'
 import {logout} from '../../../store'
 import {Signup, Login} from '../../../components/AuthForm'
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
@@ -58,6 +58,7 @@ const styles = theme => ({
 const NavBar = (props) => {
   const {handleClick, isLoggedIn, classes} = props
 
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -76,9 +77,16 @@ const NavBar = (props) => {
     setAnchorElUser(null);
   };
 
+
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+
+
   const menuPages = [
     {
-      value: "/",
+      link: "/",
       name: "Home",
       icon: <HomeIcon className="text-white" color="inherit"/>
     },
@@ -88,8 +96,8 @@ const NavBar = (props) => {
       icon: <LocalOfferIcon className="text-white" color="inherit"/>
     },
     {
-      name: "Apply Now",
       link: "/signup",
+      name: "Apply Now",
       icon: <HowToRegIcon className="text-white" color="inherit"/>
     },
     {
@@ -141,7 +149,7 @@ const NavBar = (props) => {
           </Typography>
           </div>
             <div mdup="true">
-            <Tooltip title="Open settings">
+            <Tooltip title="Open Navigation Menu">
               <IconButton
                 className={classes.menuButtonText}
                 onClick={handleOpenNavMenu}
@@ -179,13 +187,17 @@ const NavBar = (props) => {
                 if (page.link) {
                   return (
 
-                    <Link
-                      key={page.name}
-                      to={page.link}
-                      className={classes.noDecoration}
-                      onClick={handleClick}
-                    >
+                    // <Link
+                    //   key={page.name}
+                    //   component={Link}
+                    //   to={page.link}
+                    //   className={classes.noDecoration}
+                    // >
                       <Button
+                        key={page.name}
+                        component={Link}
+                        to={page.link}
+                        className={classes.noDecoration}
                         color="inherit"
                         size="medium"
                         classes={{ text: classes.menuButtonText }}
@@ -193,7 +205,7 @@ const NavBar = (props) => {
                       >
                         {page.name}
                       </Button>
-                    </Link>
+
                   );
                 }
                 return (
@@ -233,25 +245,27 @@ const NavBar = (props) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map(page => {
-                if (page.link) {
+              {settings.map(setting => {
+                if (setting.link) {
                   return (
                     <MenuItem
-                      key={page.name}
-                      to={page.link}
+                      key={setting.name}
+                      to={setting.link}
+                      component={Link}
                       className={classes.noDecoration}
-                      onClick={handleClick}
+                      onClick={handleCloseUserMenu}
                     >
+                    <Typography textAlign="center">{setting.name}</Typography>
                     </MenuItem>
                   );
                 }
                 return (
                   <MenuItem
-                    onClick={page.onClick}
+                    onClick={setting.onClick}
                     classes={{ text: classes.menuButtonText }}
-                    key={page.name}
+                    key={setting.name}
                   >
-                    {page.name}
+                    <Typography textAlign="center">{setting.name}</Typography>
                   </MenuItem>
                 );
               })}
@@ -262,7 +276,7 @@ const NavBar = (props) => {
           {/* The navbar will show these links before you log in */}
           <Box sx={{flexGrow: 0}}>
             <Tooltip title="Apply Now">
-              <IconButton component={Link} to='/signup' onClick={handleClick}>
+              <IconButton component={Link} to="signup" >
                 <AccountCircle  color="inherit"/>
               </IconButton>
             </Tooltip>
