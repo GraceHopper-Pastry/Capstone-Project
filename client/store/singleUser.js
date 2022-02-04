@@ -12,11 +12,11 @@ export const getSingleUser = (user) => ({
 });
 
 // fetchSingleUser Thunk to get all the Users
-export const fetchSingleUser = (id) => {
+export const fetchSingleUser = () => {
   return async (dispatch) => {
     try {
-      console.log("fetching", data);
-      const { data } = await axios.get(`/api/users/${id}`);
+      const { data } = await axios.get(`/api/users`);
+      console.log('fetching', data);
       dispatch(getSingleUser(data));
     } catch (err) {
       console.log('fetchSingleUser thunk error!!', err);
