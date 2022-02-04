@@ -1,45 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import reactRouterDom from 'react-router-dom';
-import ExperienceDialog from './experiencePopup';
-import Footer from '../logged_out/components/footer/Footer'
+import { Link, useHistory } from 'react-router-dom';
+import QuizPopup from './QuizPopup';
+import UserForm from './userForm';
+import Footer from '../logged_out/components/footer/Footer';
+import { dividerClasses, Button } from '@mui/material';
 /**
  * COMPONENT
  */
 // export const Home = (props) => {
 //   const { username } = props;
 
+const Home = ({ firstName, intakeScore }) => {
+  let history = useHistory();
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <div>
+      {!firstName ? (
+        <UserForm />
+      ) : (
+        <div>
+          <h3> Welcome, {firstName} </h3>
+          <Link to={`/users`}>
+            <p>View Profile</p>
+          </Link>
+          {/* passing in props for intake score to determine if the quiz popup should render. Since 0 is falsy, using a not null check */}
+          <QuizPopup intakeScore={intakeScore !== null ? true : false} />
+        </div>
+      )}
 
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        {/* <ExperienceDialog /> */}
-        <h3>Welcome, {this.props.firstName}</h3>
-
-        <Link to={`/users/${this.props.id}`}>
-          <p>View Profile</p>
-        </Link>
-        <Footer />
-      </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
 
 /**
  * CONTAINER
  */
 const mapState = (state) => {
   return {
-    firstName: state.auth.firstName,
-    id: state.auth.id,
+    firstName: state.userReducer.firstName || state.auth.firstName,
+    id: state.userReducer.id || state.auth.id,
+    intakeScore: state.userReducer.intakeScore || state.auth.intakeScore,
   };
 };
 

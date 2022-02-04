@@ -19,3 +19,10 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  /* margin: 5rem auto; */
+}
