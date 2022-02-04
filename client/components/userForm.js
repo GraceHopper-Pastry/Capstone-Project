@@ -70,7 +70,9 @@ const UserForm = () => {
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user
-      dispatch(updateUser(JSON.stringify(values), history));
+      let newUserValues = JSON.stringify(values);
+      console.log(newUserValues);
+      dispatch(updateUser(newUserValues, history));
     },
     validationSchema: validationSchema,
   });

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import reactRouterDom from "react-router-dom";
-import ExperienceDialog from "./QuizPopup";
+import UserForm from "./userForm";
 /**
  * COMPONENT
  */
@@ -20,8 +20,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <ExperienceDialog />
-        <h3>Welcome!</h3>
+        <UserForm />
       </div>
     );
   }

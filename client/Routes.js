@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import { me } from "./store";
+import { QuizPopup } from "./components/QuizPopup";
 // import Login from "./components/Login";
 // import SignUp from "./components/SignUp";
 
@@ -23,6 +24,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path="/" component={QuizPopup} />
             <Redirect to="/home" />
           </Switch>
         ) : (

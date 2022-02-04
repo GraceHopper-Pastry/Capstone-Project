@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../store/users";
 import { useHistory } from "react-router-dom";
 
-export default function IntakeForm({ handleClose }) {
+function IntakeForm({ handleClose }) {
   const questions = [
     {
       questionText: "Your first programming language was...",
@@ -77,3 +77,5 @@ export default function IntakeForm({ handleClose }) {
     </>
   );
 }
+
+export default IntakeForm;
