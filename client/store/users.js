@@ -15,6 +15,8 @@ const _updateUser = (user) => {
 };
 
 //thunk creator
+//trying without history since teh url is no longer changing
+
 export const updateUser = (user, history) => {
   return async (dispatch) => {
     try {
@@ -34,7 +36,6 @@ export const updateUser = (user, history) => {
     }
   };
 };
-
 //REDUCER
 const initialState = {};
 

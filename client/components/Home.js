@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import QuizPopup from "./QuizPopup";
-
+import UserForm from "./userForm";
 import Footer from "../logged_out/components/footer/Footer";
 import { dividerClasses, Button } from "@mui/material";
 /**
@@ -13,42 +13,21 @@ import { dividerClasses, Button } from "@mui/material";
 
 const Home = ({ firstName, id, intakeScore }) => {
   let history = useHistory();
-
-  const handleClick = () => {
-    history.push("/userform");
-  };
-
+  useEffect(() => {}, [firstName, intakeScore]);
   return (
     <div>
       {!firstName ? (
-        <Button type="button" variant="outlined" onClick={handleClick}>
-          Find your mentor!
-        </Button>
+        <UserForm />
       ) : (
         <div>
           <h3> Welcome, {firstName} </h3>
           <Link to={`/users/${id}`}>
             <p>View Profile</p>
           </Link>
-
-          <QuizPopup intakeScore={intakeScore} />
+          {/* passing in props for intake score to determine if the quiz popup should render. Since 0 is falsy, using a not null check */}
+          <QuizPopup intakeScore={intakeScore !== null ? true : false} />
         </div>
       )}
-
-      {/* {firstName && intakeScore ? (
-        <div>
-          <h3> Welcome, {firstName} </h3>
-          <Link to={`/users/${id}`}>
-            <p>View Profile</p>
-          </Link>
-        </div>
-      ) : firstName && !intakeScore ? (
-        <QuizPopup />
-      ) : (
-        <Button type="button" variant="outlined" onClick={handleClick}>
-          Find your mentor!
-        </Button>
-      )} */}
 
       <Footer />
     </div>
@@ -62,6 +41,7 @@ const mapState = (state) => {
   return {
     firstName: state.auth.firstName,
     id: state.auth.id,
+    intakeScore: state.auth.intakeScore,
   };
 };
 
