@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import QuizPopup from "./QuizPopup";
@@ -13,7 +13,10 @@ import { dividerClasses, Button } from "@mui/material";
 
 const Home = ({ firstName, id, intakeScore }) => {
   let history = useHistory();
-  useEffect(() => {}, [firstName, intakeScore]);
+  const [update, setUpdate] = useState(false);
+  useEffect(() => {
+    setUpdate(!update);
+  }, [firstName]);
   return (
     <div>
       {!firstName ? (
@@ -39,9 +42,9 @@ const Home = ({ firstName, id, intakeScore }) => {
  */
 const mapState = (state) => {
   return {
-    firstName: state.auth.firstName,
-    id: state.auth.id,
-    intakeScore: state.auth.intakeScore,
+    firstName: state.userReducer.firstName,
+    id: state.userReducer.id,
+    intakeScore: state.userReducer.intakeScore,
   };
 };
 

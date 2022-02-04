@@ -47,7 +47,6 @@ export default function IntakeForm({ handleClose }) {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      console.log({ score });
       dispatch(updateUser({ intakeScore: `${score}` }, history));
       handleClose();
     }

@@ -24,7 +24,6 @@ router.get("/", async (req, res, next) => {
 //need this to be a different route
 router.get("/mentors/:intakeScore", async (req, res, next) => {
   try {
-    console.log(req.params);
     const mentors = await User.findAll({
       where: {
         intakeScore: parseInt(req.params.intakeScore),
