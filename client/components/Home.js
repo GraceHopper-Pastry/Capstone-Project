@@ -4,19 +4,13 @@ import { Link } from 'react-router-dom';
 
 import reactRouterDom from 'react-router-dom';
 import ExperienceDialog from './experiencePopup';
+import Footer from '../logged_out/components/footer/Footer'
 /**
  * COMPONENT
  */
 // export const Home = (props) => {
 //   const { username } = props;
 
-//   return (
-//     <div>
-//       <ExperienceDialog />
-//       <h3>Welcome, {username}</h3>
-//     </div>
-//   );
-// };
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,11 +27,12 @@ class Home extends React.Component {
         <Link to={`/users/${this.props.id}`}>
           <p>View Profile</p>
         </Link>
-
+        <Footer />
       </div>
     );
   }
 }
+
 /**
  * CONTAINER
  */
