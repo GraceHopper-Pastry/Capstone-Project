@@ -1,9 +1,9 @@
 //this is the access point for all things database related!
 
-const db = require('./db');
+const db = require("./db");
 
-const User = require('./models/User');
-const Offerings = require('./models/Offerings');
+const User = require("./models/User");
+const Offerings = require("./models/Offerings");
 
 //associations could go here!
 User.belongsToMany(User, {
@@ -12,10 +12,8 @@ User.belongsToMany(User, {
   through: "mentors_mentees",
 });
 User.belongsToMany(Offerings, {
-  through: "Shop"
+  through: "Shop",
 });
-
-
 
 module.exports = {
   db,
