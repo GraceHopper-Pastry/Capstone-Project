@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleUser } from "../store/singleUser";
+import ImageUpload from "./ImageUpload";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -13,7 +14,16 @@ class SingleUser extends React.Component {
       <div>
         <h2>Profile</h2>
         <div className="single-user">
-          <img src={user.profilePic} />
+          {user.profilePic ===
+          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
+            <div>
+              <img width={"20vw"} src={user.profilePic} />
+              <p>Upload a profile pic!</p>
+              <ImageUpload />
+            </div>
+          ) : (
+            <img width="100px" src={user.profilePic} />
+          )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
           <p>Email: {user.email}</p>

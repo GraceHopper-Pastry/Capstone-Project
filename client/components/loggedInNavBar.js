@@ -1,8 +1,9 @@
 import React, { useState, memo } from "react";
 import PropTypes from "prop-types";
 import { Link, useHistory } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
-import { onClear } from "../store/rootReducer";
+import { useDispatch } from "react-redux";
+import { onClear } from "../store/singleUser";
+import { logout } from "../store/auth";
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
@@ -47,19 +48,18 @@ const styles = (theme) => ({
   },
 });
 
-const LoggedInNavBar = ({ onClear }) => {
+const LoggedInNavBar = (props) => {
   const { classes } = props;
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    window.localStorage.removeItem(TOKEN);
-
-    props.onClear();
-    history.push("/");
+    dispatch(onClear());
+    dispatch(logout());
   };
 
   const handleOpenNavMenu = (event) => {
@@ -234,11 +234,4 @@ LoggedInNavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = {
-  onClear,
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(withStyles(styles, { withTheme: true })(memo(LoggedInNavBar)));
+export default withStyles(styles, { withTheme: true })(memo(LoggedInNavBar));
