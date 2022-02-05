@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchSingleUser } from '../store/singleUser';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchSingleUser } from "../store/singleUser";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -9,16 +9,13 @@ class SingleUser extends React.Component {
 
   render() {
     const user = this.props.user || {};
-    console.log(this.props);
-    const { firstName, lastName } = user || '';
-
     return (
       <div>
         <h2>Profile</h2>
-        <div className='single-user'>
+        <div className="single-user">
           <img src={user.profilePic} />
-          <p>First name: {firstName}</p>
-          <p>Last name: {lastName}</p>
+          <p>First name: {user.firstName}</p>
+          <p>Last name: {user.lastName}</p>
           <p>Email: {user.email}</p>
           <p>Employer: {user.bio}</p>
           <p>Job Title: {user.jobTitle}</p>
@@ -30,7 +27,7 @@ class SingleUser extends React.Component {
           <p>End Year: {user.endYear}</p>
         </div>
         <div>
-          <div className='column right'>
+          <div className="column right">
             <h2>Start a Conversation</h2>
             {/* <MentorRelationshipBar /> */}
           </div>

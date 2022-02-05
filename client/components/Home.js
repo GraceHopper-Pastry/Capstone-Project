@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import QuizPopup from './QuizPopup';
-import UserForm from './userForm';
-import Footer from '../logged_out/components/footer/Footer';
-import { dividerClasses, Button } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import QuizPopup from "./QuizPopup";
+import UserInfoForm from "./UserInfoForm";
+import Footer from "../logged_out/components/footer/Footer";
+import { dividerClasses, Button } from "@mui/material";
 /**
  * COMPONENT
  */
@@ -17,7 +17,7 @@ const Home = ({ firstName, intakeScore }) => {
   return (
     <div>
       {!firstName ? (
-        <UserForm />
+        <UserInfoForm />
       ) : (
         <div>
           <h3> Welcome, {firstName} </h3>

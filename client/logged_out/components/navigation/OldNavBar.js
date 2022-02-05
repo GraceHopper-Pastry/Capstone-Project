@@ -1,7 +1,10 @@
 import React, { useState, memo } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
+import { logout } from "../../../store";
+import { Signup, Login } from "../../../components/AuthForm";
+// import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
   Toolbar,
@@ -50,17 +53,25 @@ const styles = (theme) => ({
   },
 });
 
-const LoggedOutNavBar = (props) => {
-  const { classes } = props;
+const NavBar = (props) => {
+  const { handleClick, isLoggedIn, classes } = props;
 
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const menuPages = [
@@ -83,6 +94,24 @@ const LoggedOutNavBar = (props) => {
       name: "Login",
       link: "/login",
       icon: <LoginIcon className="text-white" color="inherit" />,
+    },
+  ];
+
+  const settings = [
+    {
+      link: "/home",
+      name: "Profile",
+      icon: <HomeIcon className="text-white" />,
+    },
+    {
+      link: "/account",
+      name: "Account Settings",
+      icon: <ManageAccountsIcon className="text-white" />,
+    },
+    {
+      name: "Logout",
+      onClick: handleClick,
+      icon: <LogoutIcon className="text-white" />,
     },
   ];
 
@@ -140,6 +169,12 @@ const LoggedOutNavBar = (props) => {
             {menuPages.map((page) => {
               if (page.link) {
                 return (
+                  // <Link
+                  //   key={page.name}
+                  //   component={Link}
+                  //   to={page.link}
+                  //   className={classes.noDecoration}
+                  // >
                   <Button
                     key={page.name}
                     component={Link}
@@ -153,22 +188,84 @@ const LoggedOutNavBar = (props) => {
                     {page.name}
                   </Button>
                 );
-              } else {
-                return (
-                  <Button
-                    color="inherit"
-                    size="medium"
-                    onClick={page.onClick}
-                    classes={{ text: classes.menuButtonText }}
-                    key={page.name}
-                    endIcon={page.icon}
-                  >
-                    {page.name}
-                  </Button>
-                );
               }
+              return (
+                <Button
+                  color="inherit"
+                  size="medium"
+                  onClick={page.onClick}
+                  classes={{ text: classes.menuButtonText }}
+                  key={page.name}
+                  endIcon={page.icon}
+                >
+                  {page.name}
+                </Button>
+              );
             })}
           </div>
+          {isLoggedIn ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <AccountCircle />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => {
+                  if (setting.link) {
+                    return (
+                      <MenuItem
+                        key={setting.name}
+                        to={setting.link}
+                        component={Link}
+                        className={classes.noDecoration}
+                        onClick={handleCloseUserMenu}
+                      >
+                        <Typography textAlign="center">
+                          {setting.name}
+                        </Typography>
+                      </MenuItem>
+                    );
+                  }
+                  return (
+                    <MenuItem
+                      onClick={setting.onClick}
+                      classes={{ text: classes.menuButtonText }}
+                      key={setting.name}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  );
+                })}
+              </Menu>
+            </Box>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Apply Now">
+                  <IconButton component={Link} to="signup">
+                    <AccountCircle color="inherit" />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
@@ -179,8 +276,25 @@ const LoggedOutNavBar = (props) => {
  * CONTAINER
  */
 
-LoggedOutNavBar.propTypes = {
+const mapState = (state) => {
+  return {
+    isLoggedIn: !!state.auth.id,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleClick() {
+      dispatch(logout());
+    },
+  };
+};
+
+NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(memo(LoggedOutNavBar));
+export default connect(
+  mapState,
+  mapDispatch
+)(withStyles(styles, { withTheme: true })(memo(NavBar)));
