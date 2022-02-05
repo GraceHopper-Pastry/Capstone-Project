@@ -9,7 +9,7 @@ class SingleUser extends React.Component {
 
   render() {
     const user = this.props.user || {};
-    console.log('USER.MENTORS', user.Mentors);
+    console.log('USER.MENTEES', user.Mentees);
     return (
       <div>
         <h2>Profile</h2>

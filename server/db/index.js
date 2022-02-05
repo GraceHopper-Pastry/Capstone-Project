@@ -29,6 +29,7 @@ User.belongsToMany(User, {
   foreignKey: 'mentorId',
   through: 'mentors_mentees',
 });
+
 User.belongsToMany(User, {
   as: 'Mentors',
   foreignKey: 'menteeId',
