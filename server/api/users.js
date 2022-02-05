@@ -10,7 +10,9 @@ module.exports = router;
 router.get('/', requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId, {
+      include: 'Mentees',
+    });
     res.json(user);
   } catch (err) {
     next(err);
