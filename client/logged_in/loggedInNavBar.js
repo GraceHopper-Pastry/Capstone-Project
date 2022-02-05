@@ -47,18 +47,18 @@ const styles = (theme) => ({
   },
 });
 
-const LoggedInNavBar = (props) => {
+const LoggedInNavBar = ({ onClear }) => {
   const { classes } = props;
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const handleClick = () => {
     window.localStorage.removeItem(TOKEN);
-    dispatch(onClear());
+
+    props.onClear();
     history.push("/");
   };
 
@@ -234,6 +234,11 @@ LoggedInNavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(null, { onClear })(
-  withStyles(styles, { withTheme: true })(memo(LoggedInNavBar))
-);
+const mapDispatchToProps = {
+  onClear,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(styles, { withTheme: true })(memo(LoggedInNavBar)));
