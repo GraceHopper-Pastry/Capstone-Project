@@ -44,8 +44,10 @@ class SingleUser extends React.Component {
                         <h2>
                           {user.Mentees.map((person) => (
                             <p>
+                              <li key={person.id}>
+                                {person.firstName} {person.lastName}
+                              </li>
                               <img src={person.profilePic} />
-                              {person.firstName} {person.lastName}
                             </p>
                           ))}
                         </h2>
@@ -64,9 +66,9 @@ class SingleUser extends React.Component {
                   <h1>Your Mentor:</h1>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                    {user.Mentors ? (
+                    {user.Mentees ? (
                       <div>
-                        <p>{user.Mentors}</p>
+                        <p>{user.Mentees}</p>
                       </div>
                     ) : (
                       <div>

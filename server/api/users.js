@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// eslint-disable-next-line no-unused-vars
 const passport = require('passport');
 const {
   models: { User },
