@@ -11,9 +11,14 @@ User.belongsToMany(User, {
   foreignKey: "mentorId",
   through: "mentors_mentees",
 });
-User.belongsToMany(Offerings, {
+
+Offerings.belongsToMany(User, {
+  foreignKey: "s",
+
   through: "Shop",
 });
+
+
 
 module.exports = {
   db,
