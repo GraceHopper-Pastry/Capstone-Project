@@ -12,7 +12,7 @@ router.get('/', requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
     const user = await User.findByPk(userId, {
-      include: 'Mentees',
+      include: ['Mentees', 'Mentors'],
     });
     res.json(user);
   } catch (err) {
