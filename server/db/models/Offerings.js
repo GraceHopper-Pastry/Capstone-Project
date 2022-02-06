@@ -11,11 +11,6 @@ const Offering = db.define("offering", {
     type: Sequelize.TEXT,
     allowNull: true,
   },
-  calendarBookingDate: {
-    type: Sequelize.DATE,
-    allowNull: true,
-    defaultValue: Date.now
-  }
 });
 
 module.exports = Offering;

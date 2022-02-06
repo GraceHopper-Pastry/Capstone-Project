@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
-const  User = require("./User");
+const mentors_mentees = require("../index");
 
 const Shop = db.define("shop", {
   name: {
@@ -10,9 +10,26 @@ const Shop = db.define("shop", {
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: true,
+    allowNull: false,
+  },
+  imageLogo: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "/images/mentor-shop/defaultShopLogo.png"
+  },
+  owner: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    references: {
+      model: mentors_mentees,
+      key: "mentorId"
+    }
   }
+
 });
 
-module.exports = Offering;
+module.exports = Shop;
+
+// Get mentorId based on shopId for owner attribute
+
 
