@@ -1,4 +1,4 @@
-onst Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const db = require("../db");
 const Review = db.define("review", {
   reviewMessage: {
