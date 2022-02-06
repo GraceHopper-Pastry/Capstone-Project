@@ -9,7 +9,7 @@ class SingleUser extends React.Component {
 
   render() {
     const user = this.props.user || {};
-    console.log('USER.MENTEES', user.Mentees);
+    console.log('USER.MENTORS', user.Mentors);
     return (
       <div>
         <h2>Profile</h2>
@@ -66,9 +66,18 @@ class SingleUser extends React.Component {
                   <h1>Your Mentor:</h1>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                    {user.Mentees ? (
+                    {user.Mentors ? (
                       <div>
-                        <p>{user.Mentees}</p>
+                        <h2>
+                          {user.Mentors.map((person) => (
+                            <p>
+                              <li key={person.id}>
+                                {person.firstName} {person.lastName}
+                              </li>
+                              <img src={person.profilePic} />
+                            </p>
+                          ))}
+                        </h2>
                       </div>
                     ) : (
                       <div>
