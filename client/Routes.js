@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -6,7 +7,6 @@ import Home from './components/Home';
 import { me } from './store';
 import MainLanding from './logged_out/components/MainLanding';
 import SingleUser from './components/SingleUser';
-import MentorRelationshipBar from './components/MentorRelationshipBar';
 import UserForm from './components/userForm';
 
 /**
@@ -27,7 +27,6 @@ class Routes extends Component {
             <Route path='/home' component={Home} />
             <Route path='/userform' component={UserForm} />
             <Route path='/users' component={SingleUser} />
-            {/* <Route path='/users' component={MentorRelationshipBar} /> */}
             <Redirect to='/home' />
           </Switch>
         ) : (
