@@ -3,7 +3,7 @@
 import {expect} from 'chai'
 import React from 'react'
 import enzyme, {shallow} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import { Home } from './Home'
 
 const adapter = new Adapter()
