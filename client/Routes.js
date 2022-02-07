@@ -7,7 +7,8 @@ import Home from "./components/Home";
 import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
 import SingleUser from "./components/SingleUser";
-
+import AccountSettings from "./components/AccountSettings";
+import UserForm from "./components/UserForm";
 /**
  * COMPONENT
  */
@@ -24,8 +25,10 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/users" component={SingleUser} />
-            {/* <Route path='/users' component={MentorRelationshipBar} /> */}
+            <Route exact path="/users" component={SingleUser} />
+            <Route path="/account" component={AccountSettings} />
+            <Route path="/users/edit" component={UserForm} />
+
             <Redirect to="/home" />
           </Switch>
         ) : (
