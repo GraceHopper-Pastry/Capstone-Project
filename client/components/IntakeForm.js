@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../store/users";
+import { updateUser } from "../store/singleUser";
 import { useHistory } from "react-router-dom";
 
 export default function IntakeForm({ handleClose }) {

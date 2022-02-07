@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { TextField, Button, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../store/users";
+import { updateUser } from "../store/singleUser";
 import { useHistory } from "react-router-dom";
 
 //yup lets us easily define custom validations for different fields
@@ -70,7 +70,6 @@ const UserForm = () => {
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user
-
       dispatch(updateUser(values, history));
     },
     validationSchema: validationSchema,
