@@ -31,9 +31,9 @@ const validationSchema = yup.object({
     .required("Please enter your most relevent school or specify self-taught"),
   areaOfStudy: yup.string().required("Please enter an area of study"),
   endYear: yup
-    .string()
+    .number()
     .required(
-      "Please enter the year you finished or the current year for self-taught"
+      "Please enter the year you finished, expect to finish, or the current year for self-taught"
     ),
 });
 
@@ -51,22 +51,21 @@ const UserForm = () => {
   //formik uses the same destructured assignment as the useState hook under the hood. We set the initial values, and we can also pass in a callback function.
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.singleUserReducer);
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      // email: "",
-      // password: "",
-      bio: "",
-      employer: "",
-      jobTitle: "",
-      location: "",
-      industry: "",
-      yearsInTech: 0,
-      school: "",
-      areaOfStudy: "",
-      endYear: "",
+      firstName: "" || user.firstName,
+      lastName: "" || user.lastName,
+      bio: "" || user.bio,
+      employer: "" || user.employer,
+      jobTitle: "" || user.jobTitle,
+      location: "" || user.location,
+      industry: "" || user.industry,
+      yearsInTech: 0 || user.yearsInTech,
+      school: "" || user.school,
+      areaOfStudy: "" || user.areaOfStudy,
+      endYear: 2010 || user.endYear,
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user
@@ -211,6 +210,8 @@ const UserForm = () => {
             id="endYear"
             name="endYear"
             label="Year of completion"
+            type="number"
+            InputProps={{ inputProps: { min: 1950 } }}
             value={formik.values.endYear}
             margin="normal"
             variant="filled"
