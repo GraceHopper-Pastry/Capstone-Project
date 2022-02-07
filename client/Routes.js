@@ -8,7 +8,7 @@ import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
 import SingleUser from "./components/SingleUser";
 import AccountSettings from "./components/AccountSettings";
-import UserForm from "./components/UserForm";
+import EditUser from "./components/EditUser";
 /**
  * COMPONENT
  */
@@ -27,7 +27,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route exact path="/users" component={SingleUser} />
             <Route path="/account" component={AccountSettings} />
-            <Route path="/users/edit" component={UserForm} />
+            <Route path="/users/edit" component={EditUser} />
 
             <Redirect to="/home" />
           </Switch>

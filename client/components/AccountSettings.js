@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import ImageUpload from "./ImageUpload";
 
 import { Button, Stack } from "@mui/material";
 
