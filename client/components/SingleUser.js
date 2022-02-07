@@ -1,6 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchSingleUser } from '../store/singleUser';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchSingleUser } from "../store/singleUser";
+import ImageUpload from "./ImageUpload";
+import QuizPopup from "./QuizPopup";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -9,16 +11,23 @@ class SingleUser extends React.Component {
 
   render() {
     const user = this.props.user || {};
-    console.log('USER.MENTORS', user.Mentors);
     return (
       <div>
+        <QuizPopup intakeScore={user.intakeScore !== null ? true : false} />
         <h2>Profile</h2>
-        {/* DISPLAY PROFILE DATA */}
-        <div className='single-user'>
-          <img src={user.profilePic} />
-          <p>
-            Name: {user.firstName} {user.lastName}
-          </p>
+        <div className="single-user">
+          {user.profilePic ===
+          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
+            <div>
+              <img width={"20vw"} src={user.profilePic} />
+              <p>Upload a profile pic!</p>
+              <ImageUpload />
+            </div>
+          ) : (
+            <img width="100px" src={user.profilePic} />
+          )}
+          <p>First name: {user.firstName}</p>
+          <p>Last name: {user.lastName}</p>
           <p>Email: {user.email}</p>
           <p>Employer: {user.bio}</p>
           <p>Job Title: {user.jobTitle}</p>
@@ -30,7 +39,7 @@ class SingleUser extends React.Component {
           <p>End Year: {user.endYear}</p>
         </div>
         <div>
-          <div className='column right'>
+          <div className="column right">
             <h2>Start a Conversation</h2>
             <div>
               {/* IF USER IS A MENTOR */}
