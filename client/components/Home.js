@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Footer from "../logged_out/components/footer/Footer";
 import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
-import UserForm from "./userForm";
+import UserForm from "./UserForm";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
