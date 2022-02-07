@@ -1,5 +1,15 @@
-const loremIpsum = require('lorem-ipsum');
+const loremIpsum = require("lorem-ipsum").loremIpsum;
 
+const [logo1, logo2, logo3, logo4] = [
+    "/images/mentor_shop/shopLogoBlue.png",
+    "/images/mentor_shop/shopLogoBW.png",
+    "/images/mentor_shop/shopLogoDark.png",
+    "/images/mentor_shop/shopLogoWhite.png"
+];
+const shopLogos = [logo1, logo2, logo3, logo4];
+const generateRandomLogo = () => {
+    return shopLogos[Math.floor(Math.random() * shopLogos.length)];
+};
 
 const users = [
     {
@@ -516,27 +526,62 @@ const offerings = [
     }
 ];
 
-const shops = [];
+// Add M:M associatied join table row - users_offerings
+
+const generateRandomUserOfferings = () => {
+    let userOfferings = [];
+    const map = new Map();
+    let num = Math.floor(Math.random() * offerings.length + 1);
+    while (num > userOfferings.length) {
+        let idx = Math.floor(Math.random() * offerings.length);
+        let userOffering = offerings[idx];
+        for (userOffering of offerings) {
+            if (!map.has(userOffering.name)) {
+                map.set(userOffering.name, true);
+                userOfferings.push(userOffering);
+            } else {
+                continue;
+            }
+        }
+    }
+    return userOfferings;
+};
+
+let mentorShops = [];
 for (let i = 0; i < users.length; i++) {
     let user = users[i];
+    // each mentor should have a single mentorShop
     if (user.isMentor) {
         let mentorShop = {
             name: `${user.firstName} ${user.lastName}'s Shop`,
-            description:
+            description: loremIpsum({ count: 1, units: "sentences" }),
+            shopLogo: generateRandomLogo()
         };
+        // magic methods 1:1
+        mentorShop.ownerId = user.id;
+        user.shopId = mentorShop.id;
+        mentorShops.push(mentorShop);
+    } else continue;
+}
+
+const review = {
+    reviewMessage: loremIpsum({ count: 50, suffix: "\n", units: "words" })
+};
+
+let menteeReviews = [];
+for (let i = 0; i < users.length; i++) {
+    let user = users[i];
+    if (!user.isMentor) {
+        menteeReviews.push(review);
     }
 }
+
+// Append Randomized assortment of offerings to MentorShop
 
 module.exports = {
     users,
     offerings,
-    bookings,
-    reviews,
-    shops
+    menteeReviews,
+    generateRandomUserOfferings,
+    mentorShops
 };
-
-const bookings = [];
-
-const reviews = [];
-
-const shops = [];
