@@ -13,7 +13,9 @@ const AccountSettings = () => {
       <Button component={Link} to={"/users/edit"} color="inherit" size="medium">
         Edit Info
       </Button>
-      <Button>View Mentor Options</Button>
+      <Button color="inherit" size="medium">
+        View Mentor Options
+      </Button>
     </Stack>
   );
 };

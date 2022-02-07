@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSingleUser } from "../store/singleUser";
 import ImageUpload from "./ImageUpload";
 import QuizPopup from "./QuizPopup";
+import { Button } from "@mui/material";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -13,7 +15,7 @@ class SingleUser extends React.Component {
     const user = this.props.user || {};
     return (
       <div>
-        <QuizPopup intakeScore={user.intakeScore !== null ? true : false} />
+        <QuizPopup isOpen={user.intakeScore === null} />
         <h2>Profile</h2>
         <div className="single-user">
           {user.profilePic ===
@@ -75,7 +77,7 @@ class SingleUser extends React.Component {
                   <h1>Your Mentor:</h1>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                    {user.Mentors ? (
+                    {user.Mentors.length > 0 ? (
                       <div>
                         <h2>
                           {user.Mentors.map((person) => (
@@ -91,7 +93,9 @@ class SingleUser extends React.Component {
                     ) : (
                       <div>
                         {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
-                        <h1>Check back soon to meet your new mentor!</h1>
+                        <Button color="inherit" size="medium">
+                          Take our assessment to be assigned a mentor!
+                        </Button>
                       </div>
                     )}
                   </div>

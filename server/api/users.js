@@ -35,22 +35,6 @@ router.get("/mentors/:intakeScore", async (req, res, next) => {
   }
 });
 
-// //GET SINGLE USER
-// //will this route be protected?
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const users = await User.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//       attributes: ['id', 'firstName', 'lastName', 'email'],
-//     });
-//     res.json(users);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 // DELETE SINGLE USER
 router.get("/:id", async (req, res, next) => {
   try {
@@ -76,8 +60,9 @@ router.post("/", async (req, res, next) => {
 router.put("/", requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    console.log(`user:`, req.user, `update`, req.body);
-    const userToUpdate = await User.findByPk(userId);
+    const userToUpdate = await User.findByPk(userId, {
+      include: ["Mentees", "Mentors"],
+    });
     res.json(await userToUpdate.update(req.body));
   } catch (error) {
     next(error);

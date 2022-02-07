@@ -9,6 +9,7 @@ import MainLanding from "./logged_out/components/MainLanding";
 import SingleUser from "./components/SingleUser";
 import AccountSettings from "./components/AccountSettings";
 import EditUser from "./components/EditUser";
+import QuizPopup from "./components/QuizPopup";
 /**
  * COMPONENT
  */
@@ -28,6 +29,7 @@ class Routes extends Component {
             <Route exact path="/users" component={SingleUser} />
             <Route path="/account" component={AccountSettings} />
             <Route path="/users/edit" component={EditUser} />
+            <Route path="users/quiz" component={QuizPopup} />
 
             <Redirect to="/home" />
           </Switch>
