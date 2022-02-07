@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// eslint-disable-next-line no-unused-vars
 const passport = require('passport');
 const {
   models: { User },
@@ -10,7 +11,9 @@ module.exports = router;
 router.get('/', requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId, {
+      include: ['Mentees', 'Mentors'],
+    });
     res.json(user);
   } catch (err) {
     next(err);
