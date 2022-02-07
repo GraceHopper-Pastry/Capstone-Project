@@ -11,6 +11,11 @@ const Offering = db.define("offering", {
     type: Sequelize.TEXT,
     allowNull: true,
   },
+  sessionLength: {
+    type: Sequelize.TIME,
+    defaultValue: '00:00:00',
+    field: 'hour'
+  }
 });
 
 module.exports = Offering;

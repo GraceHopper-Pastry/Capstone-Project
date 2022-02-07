@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Offerings },
+  models: { User, Offerings, Shop, Review, Booking },
 } = require("../server/db");
 const { users, offerings } = require("../server/db/dummyData");
 

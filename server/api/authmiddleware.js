@@ -26,7 +26,7 @@ const isMentor = async (req, res, next) => {
   res.redirect(`/users/${req.user.id}`);
 }
 
-const isSelfOfMentor = async (req, res, next) => {
+const isSelfOrMentor = async (req, res, next) => {
   if (req.params.id === req.user.id || req.user.isMentor) next()
   res.redirect('/') // check against Jills routes
 }
