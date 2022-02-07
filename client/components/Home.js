@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import QuizPopup from "./QuizPopup";
-import UserInfoForm from "./UserInfoForm";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "../logged_out/components/footer/Footer";
 import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
+import UserForm from "./UserForm";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -28,15 +27,13 @@ const Home = () => {
   return (
     <div>
       {!firstName ? (
-        <UserInfoForm />
+        <UserForm />
       ) : (
         <div>
           <h3> Welcome, {firstName} </h3>
           <Link to={`/users`}>
             <p>View Profile</p>
           </Link>
-          {/* passing in props for intake score to determine if the quiz popup should render. Since 0 is falsy, using a not null check */}
-          <QuizPopup intakeScore={intakeScore !== null ? true : false} />
         </div>
       )}
 

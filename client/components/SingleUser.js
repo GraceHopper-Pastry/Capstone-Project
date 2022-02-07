@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleUser } from "../store/singleUser";
 import ImageUpload from "./ImageUpload";
+import QuizPopup from "./QuizPopup";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -12,6 +13,7 @@ class SingleUser extends React.Component {
     const user = this.props.user || {};
     return (
       <div>
+        <QuizPopup intakeScore={user.intakeScore !== null ? true : false} />
         <h2>Profile</h2>
         <div className="single-user">
           {user.profilePic ===
