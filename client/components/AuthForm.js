@@ -2,10 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
 
+
+window.addEventListener('load', (event) => {
+  if(document.cookie.includes('token')){
+    console.log("setting token");
+    window.localStorage.setItem('token', document.cookie.split('=')[1]);
+  }
+})
+
 /**
  * COMPONENT
  */
+
+
 const AuthForm = (props) => {
+  
+
   const { name, displayName, handleSubmit, error } = props;
 
   return (
@@ -35,6 +47,7 @@ const AuthForm = (props) => {
     </div>
   );
 };
+
 
 /**
  * CONTAINER
