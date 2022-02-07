@@ -4,7 +4,7 @@ const db = require("./db");
 const Sequelize = require("sequelize");
 
 const User = require("./models/User");
-const Offerings = require("./models/Offering");
+const Offering = require("./models/Offering");
 const Shop = require("./models/Shop");
 // const Booking = require("./models/Booking");
 const Review = require("./models/Review");
@@ -38,7 +38,7 @@ const users_offerings = db.define("users_offerings", {
     offeringsId: {
         type: Sequelize.INTEGER,
         references: {
-            model: Offerings,
+            model: Offering,
             key: "id"
         }
     }
@@ -66,12 +66,12 @@ User.belongsToMany(User, {
 
 // })
 
-User.belongsToMany(Offerings, {
+User.belongsToMany(Offering, {
     foreignKey: "offeringsId",
     through: "users_offerings"
 });
 
-Offerings.belongsToMany(User, {
+Offering.belongsToMany(User, {
     foreignKey: "userId",
     through: "users_offerings"
 });
@@ -81,14 +81,9 @@ Offerings.belongsToMany(User, {
 // })
 
 User.hasOne(Shop, {
-    as: "mentorShop",
-    foreignKey: "shopId"
-});
-
-Shop.belongsTo(User, {
-    as: "owner",
     foreignKey: "ownerId"
 });
+Shop.belongsTo(User)
 
 User.belongsToMany(Review, {
     through: "users_reviews"
@@ -105,9 +100,8 @@ module.exports = {
     db,
     models: {
         User,
-        Offerings,
+        Offering,
         mentors_mentees,
-        users_offerings,
         Shop,
         Review
     }

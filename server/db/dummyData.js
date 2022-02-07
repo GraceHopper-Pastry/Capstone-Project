@@ -158,7 +158,7 @@ const users = [
         lastName: "Wojcicki",
         password: "susan_pw",
         email: "susan@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://jpreis.com/wp/wp-content/uploads/2018/03/susan-wojcicki-youtube-ceo.jpg",
         bio:
@@ -178,7 +178,7 @@ const users = [
         lastName: "Pao",
         password: "ellen_pw",
         email: "ellen@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic: "https://static2.stuff.co.nz/1365983592/874/8551874.jpg",
         bio:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -197,7 +197,7 @@ const users = [
         lastName: "Boyd",
         password: "danah_pw",
         email: "danah@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://leblog.wcie.fr/bw-content/uploads/2010/11/danah-boyd.jpg",
         bio:
@@ -217,7 +217,7 @@ const users = [
         lastName: "Bryant",
         password: "kimberly_pw",
         email: "kimberly@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://www.entrenuity.com/hubfs/Entrenuity_March2020/Image/Kimberly_Bryant_Profile.jpg",
         bio:
@@ -237,7 +237,7 @@ const users = [
         lastName: "Zuckerberg",
         password: "mark_pw",
         email: "mark@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "http://images.tmz.com/2014/10/26/mark-zuckerberg-200x250.jpg",
         bio:
@@ -257,7 +257,7 @@ const users = [
         lastName: "Gates",
         password: "bill_pw",
         email: "bill@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://livebiography.com/wp-content/uploads/2018/08/bill-gates-Profile.jpg",
         bio:
@@ -277,7 +277,7 @@ const users = [
         lastName: "Musk",
         password: "elon_pw",
         email: "elon@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://static.dezeen.com/uploads/2015/03/Elon-Musk-portrait-dezeen_sq01.jpg",
         bio:
@@ -297,7 +297,7 @@ const users = [
         lastName: "Cook",
         password: "tim_pw",
         email: "tim@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic: "https://articlebio.com/uploads/2014/T/Tim_Cook.jpg",
         bio:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -316,7 +316,7 @@ const users = [
         lastName: "Dorsey",
         password: "jack_pw",
         email: "jack@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "http://tmcf.org/wp-content/uploads/2016/06/jack-dorsey-239.jpg",
         bio:
@@ -417,7 +417,7 @@ const users = [
         lastName: "Admin",
         password: "admin_pw",
         email: "admin@email.com",
-        isMentor: true,
+        isMentor: false,
         profilePic:
             "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png",
         bio: "n/a",
@@ -528,7 +528,7 @@ const offerings = [
 
 // Add M:M associatied join table row - users_offerings
 
-const generateRandomUserOfferings = () => {
+const generateRandomUserOfferings = (offerings) => {
     let userOfferings = [];
     const map = new Map();
     let num = Math.floor(Math.random() * offerings.length + 1);
@@ -536,9 +536,12 @@ const generateRandomUserOfferings = () => {
         let idx = Math.floor(Math.random() * offerings.length);
         let userOffering = offerings[idx];
         for (userOffering of offerings) {
-            if (!map.has(userOffering.name)) {
-                map.set(userOffering.name, true);
-                userOfferings.push(userOffering);
+            if (!map.has(userOffering.title)) {
+                map.set(userOffering.title, true);
+                userOfferings.push({
+                    name: userOffering.title,
+                    description: userOffering.description,
+                });
             } else {
                 continue;
             }
@@ -546,6 +549,7 @@ const generateRandomUserOfferings = () => {
     }
     return userOfferings;
 };
+
 
 let mentorShops = [];
 for (let i = 0; i < users.length; i++) {
@@ -558,8 +562,7 @@ for (let i = 0; i < users.length; i++) {
             shopLogo: generateRandomLogo()
         };
         // magic methods 1:1
-        mentorShop.ownerId = user.id;
-        user.shopId = mentorShop.id;
+        // mentorShop.ownerId = user.id;
         mentorShops.push(mentorShop);
     } else continue;
 }
@@ -581,7 +584,7 @@ for (let i = 0; i < users.length; i++) {
 module.exports = {
     users,
     offerings,
-    menteeReviews,
     generateRandomUserOfferings,
+    menteeReviews,
     mentorShops
 };
