@@ -16,7 +16,18 @@ class SingleUser extends React.Component {
     return (
       <div>
         <QuizPopup isOpen={user.intakeScore === null} />
-        <h2>Profile</h2>
+        <div>
+          <h2>Profile</h2>
+          <Button
+            color="inherit"
+            size="medium"
+            onClick={() => this.props.history.push("/users/chat")}
+          >
+            {user.isMentor
+              ? "Chat with your Mentees!"
+              : "Chat with your Mentor"}
+          </Button>
+        </div>
         <div className="single-user">
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (

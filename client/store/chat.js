@@ -20,7 +20,7 @@ export const gotMessagesFromServer = (messages) => {
   };
 };
 
-export const gotRelationships = () => ({
+export const gotRelationships = (relationships) => ({
   type: GOT_RELATIONSHIPS,
   relationships,
 });
@@ -43,7 +43,7 @@ export const clearMessages = () => {
 export const fetchMessages = (channel) => {
   return async (dispatch) => {
     try {
-      const { data } = await Axios.get("/api/chat/${channel}/messages");
+      const { data } = await Axios.get(`/api/chat/${channel}/messages`);
       dispatch(gotMessagesFromServer(data));
     } catch (err) {
       console.log(err);
@@ -68,7 +68,23 @@ export const gotNewMessageFromServer = ({ user, channelId, content }) => {
   };
 };
 
-export const fetchRelationships = (id) => {};
+export const fetchRelationships = (id) => {
+  return async (dispatch) => {
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await Axios.get("/api/chat/channels", {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(gotRelationships(data));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 const initialState = {
   messages: [],
@@ -85,6 +101,8 @@ const messageReducer = (state = initialState, action) => {
       return { ...state, newMessageEntry: action.newMessageEntry };
     case GOT_NEW_MESSAGE_FROM_SERVER:
       return { ...state, messages: [...state.messages, action.message] };
+    case GOT_RELATIONSHIPS:
+      return { ...state, relationships: action.relationships };
     case RESET_MESSAGES:
       return initialState;
     default:

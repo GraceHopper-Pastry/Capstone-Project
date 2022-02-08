@@ -32,6 +32,7 @@ router.get("/channels", requireToken, async (req, res, next) => {
           mentorId: id,
         },
       });
+      res.json(channels);
     } else {
       const channels = await Relationship.findAll({
         where: {

@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
-import Conversation from "./Conversation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRelationships } from "../../store/chat";
 
-const Sidebar = () => {
+const Sidebar = ({ id, isMentor }) => {
+  const conversations = useSelector(
+    (state) => state.messageReducer.relationships
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch();
-  });
+    dispatch(fetchRelationships(id));
+  }, []);
 
   return (
     <section className="sidebar">
@@ -18,8 +21,13 @@ const Sidebar = () => {
         </h3>
       </div>
       <h5>Conversations</h5>
-
-      <Conversation />
+      {conversations.map((conversation) => {
+        return (
+          <div>
+            <h2>{isMentor ? conversation.menteeId : conversation.mentorId}</h2>
+          </div>
+        );
+      })}
     </section>
   );
 };

@@ -1,18 +1,14 @@
 import React from "react";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
-import Navbar from "./Navbar";
-import Messages from "./MessagesList";
 
-export default class Main extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <Conversations />
-        <MessageList />
-      </div>
-    );
-  }
-}
+const MainChat = () => {
+  const user = useSelector((state) => state.singleUserReducer);
+  return (
+    <div>
+      <Sidebar id={user.id} isMentor={user.isMentor} />
+    </div>
+  );
+};
+
+export default MainChat;
