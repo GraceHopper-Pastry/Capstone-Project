@@ -1,17 +1,16 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const axios = require('axios');
+const Sequelize = require("sequelize");
+const db = require("../db");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+// const axios = require("axios");
 
 const SALT_ROUNDS = 5;
 
-const User = db.define('user', {
+const User = db.define("user", {
   firstName: {
     type: Sequelize.STRING,
     unique: false,
     allowNull: true,
-
   },
   lastName: {
     type: Sequelize.STRING,
@@ -36,12 +35,12 @@ const User = db.define('user', {
   },
   isMentor: {
     type: Sequelize.BOOLEAN,
-    defaultValue: 'false',
+    defaultValue: "false",
   },
   profilePic: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png',
+      "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png",
   },
   bio: {
     type: Sequelize.TEXT,
@@ -49,15 +48,12 @@ const User = db.define('user', {
   },
   employer: {
     type: Sequelize.STRING,
-    allowNull: true,
   },
   jobTitle: {
     type: Sequelize.STRING,
-    allowNull: true,
   },
   location: {
     type: Sequelize.STRING,
-    allowNull: true,
   },
   industry: {
     type: Sequelize.STRING,
@@ -69,15 +65,12 @@ const User = db.define('user', {
   },
   school: {
     type: Sequelize.STRING,
-    allowNull: true,
   },
   areaOfStudy: {
     type: Sequelize.STRING,
-    allowNull: true,
   },
   endYear: {
     type: Sequelize.INTEGER,
-    allowNull: true,
   },
   intakeScore: {
     type: Sequelize.INTEGER,
@@ -105,7 +98,7 @@ User.prototype.generateToken = function () {
 User.authenticate = async function ({ email, password }) {
   const user = await this.findOne({ where: { email } });
   if (!user || !(await user.correctPassword(password))) {
-    const error = Error('Incorrect email/password');
+    const error = Error("Incorrect email/password");
     error.status = 401;
     throw error;
   }
@@ -117,11 +110,11 @@ User.findByToken = async function (token) {
     const { id } = await jwt.verify(token, process.env.JWT);
     const user = User.findByPk(id);
     if (!user) {
-      throw 'nooo';
+      throw "nooo";
     }
     return user;
   } catch (ex) {
-    const error = Error('bad token');
+    const error = Error("bad token");
     error.status = 401;
     throw error;
   }
@@ -132,7 +125,7 @@ User.findByToken = async function (token) {
  */
 const hashPassword = async (user) => {
   //in case the password has been changed, we want to encrypt it with bcrypt
-  if (user.changed('password')) {
+  if (user.changed("password")) {
     user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
   }
 };

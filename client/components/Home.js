@@ -1,58 +1,58 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import reactRouterDom from 'react-router-dom';
-import ExperienceDialog from './experiencePopup';
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Footer from "../logged_out/components/footer/Footer";
+import { fetchSingleUser } from "../store/singleUser";
+import { dividerClasses, Button } from "@mui/material";
+import UserForm from "./UserForm";
+// import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
  */
 // export const Home = (props) => {
 //   const { username } = props;
 
-//   return (
-//     <div>
-//       <ExperienceDialog />
-//       <h3>Welcome, {username}</h3>
-//     </div>
-//   );
-// };
+const Home = () => {
+  const { firstName, intakeScore } = useSelector(
+    (state) => state.singleUserReducer
+  );
+  console.log({ firstName });
+  console.log({ intakeScore });
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  const dispatch = useDispatch();
 
-  componentDidMount(){
-    let token = this.props.match.params.token_id;
-    if (token){
-      window.localStorage.setItem(TOKEN, token);
-    }
-  }
+  useEffect(() => {
+    dispatch(fetchSingleUser());
+  }, []);
+  return (
+    <div>
+      {!firstName ? (
+        <UserForm />
+      ) : (
+        <div>
+          <h3> Welcome, {firstName} </h3>
+          <Link to={`/users`}>
+            <p>View Profile</p>
+          </Link>
+        </div>
+      )}
 
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        {/* <ExperienceDialog /> */}
-        <h3>Welcome, {this.props.firstName}</h3>
+      <Footer />
+    </div>
+  );
+};
 
-        <Link to={`/users/${this.props.id}`}>
-          <p>View Profile</p>
-        </Link>
-
-      </div>
-    );
-  }
-}
 /**
  * CONTAINER
  */
-const mapState = (state) => {
-  return {
-    firstName: state.auth.firstName,
-    id: state.auth.id,
-  };
-};
+// const mapState = (state) => {
+//   return {
+//     firstName: state.singleUserReducer.firstName || state.auth.firstName,
+//     id: state.singleUserReducer.id || state.auth.id,
+//     intakeScore: state.singleUserReducer.intakeScore || state.auth.intakeScore,
+//   };
+// };
 
-export default connect(mapState)(Home);
+// export default connect(mapState)(Home);
+
+export default Home;

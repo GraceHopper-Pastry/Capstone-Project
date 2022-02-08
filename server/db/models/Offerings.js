@@ -1,22 +1,16 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require("sequelize");
+const db = require("../db");
 
-const Offerings = db.define('offerings', {
-  chat: {
-    type: Sequelize.BOOLEAN,
+const Offering = db.define("offering", {
+  title: {
+    type: Sequelize.STRING,
     allowNull: false,
-    defaultValue: false,
+    unique: true,
   },
-  advice: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  },
-  liveQandA: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: true,
   },
 });
 
-module.exports = Offerings;
+module.exports = Offering;

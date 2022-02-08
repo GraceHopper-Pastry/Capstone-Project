@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 const {
   db,
   models: { User, Offerings },
-} = require('../server/db');
-const { users, offerings } = require('../server/db/dummyData');
+} = require("../server/db");
+const { users, offerings } = require("../server/db/dummyData");
 
 const seed = async () => {
   try {
@@ -31,11 +31,11 @@ module.exports = seed;
 if (module === require.main) {
   seed()
     .then(() => {
-      console.log('Seeding success!');
+      console.log("Seeding success!");
       db.close();
     })
     .catch((err) => {
-      console.error('Oh noes! Something went wrong!');
+      console.error("Oh noes! Something went wrong!");
       console.error(err);
       db.close();
     });

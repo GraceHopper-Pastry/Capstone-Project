@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authenticate } from '../store';
+import React from "react";
+import { connect } from "react-redux";
+import { authenticate } from "../store";
 
 
 window.addEventListener('load', (event) => {
@@ -13,12 +13,7 @@ window.addEventListener('load', (event) => {
 /**
  * COMPONENT
  */
-
-
-const AuthForm = (props) => {
-
-  const { name, displayName, handleSubmit, error } = props;
-
+const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -29,19 +24,21 @@ const AuthForm = (props) => {
           <input name="email" type="text" />
         </div>
         <div>
-          <label htmlFor='password'>
+          <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name='password' type='password' />
+          <input name="password" type="password" />
         </div>
         <div>
-          <button type='submit'>{displayName}</button>
+          <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <br/>
-      <a href="/auth/google">Authenticate with Google</a><br/>
-      <a href="/auth/twitter">Authenticate with Twitter</a><br/>
+      <br />
+      <a href="/auth/google">Authenticate with Google</a>
+      <br />
+      <a href="/auth/twitter">Authenticate with Twitter</a>
+      <br />
       <a href="/auth/linkedin">Authenticate with LinkedIn</a>
     </div>
   );
@@ -57,16 +54,16 @@ const AuthForm = (props) => {
  */
 const mapLogin = (state) => {
   return {
-    name: 'login',
-    displayName: 'Login',
+    name: "login",
+    displayName: "Login",
     error: state.auth.error,
   };
 };
 
 const mapSignup = (state) => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
+    name: "signup",
+    displayName: "Sign Up",
     error: state.auth.error,
   };
 };
@@ -74,14 +71,14 @@ const mapSignup = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(authenticate(email, password, formName))
-    }
-  }
-}
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      dispatch(authenticate(email, password, formName));
+    },
+  };
+};
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm);

@@ -1,21 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchSingleUser } from '../store/singleUser';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchSingleUser } from "../store/singleUser";
+import ImageUpload from "./ImageUpload";
+import QuizPopup from "./QuizPopup";
 
 class SingleUser extends React.Component {
   componentDidMount() {
-    console.log('CDM', 'TESTING???');
-    this.props.fetchSingleUser(this.props.match.params.id);
+    this.props.fetchSingleUser();
   }
 
   render() {
-    const { user } = this.props;
-    console.log('profileRender', this.props.match.params.id);
+    const user = this.props.user || {};
     return (
       <div>
+        <QuizPopup intakeScore={user.intakeScore !== null ? true : false} />
         <h2>Profile</h2>
-        <div className='single-user'>
-          <img src={user.profilePic} />
+        <div className="single-user">
+          {user.profilePic ===
+          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
+            <div>
+              <img width={"20vw"} src={user.profilePic} />
+              <p>Upload a profile pic!</p>
+              <ImageUpload />
+            </div>
+          ) : (
+            <img width="100px" src={user.profilePic} />
+          )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
           <p>Email: {user.email}</p>
@@ -29,9 +39,65 @@ class SingleUser extends React.Component {
           <p>End Year: {user.endYear}</p>
         </div>
         <div>
-          <div className='column right'>
+          <div className="column right">
             <h2>Start a Conversation</h2>
-            <MentorRelationshipBar />
+            <div>
+              {/* IF USER IS A MENTOR */}
+              {user.isMentor ? (
+                <div>
+                  <h2>Your Mentees:</h2>
+                  <div>
+                    {user.Mentees.length ? (
+                      <div>
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                        <h2>
+                          {user.Mentees.map((person) => (
+                            <p>
+                              <li key={person.id}>
+                                {person.firstName} {person.lastName}
+                              </li>
+                              <img src={person.profilePic} />
+                            </p>
+                          ))}
+                        </h2>
+                      </div>
+                    ) : (
+                      <div>
+                        {/* IF MENTOR HAS NOT YET BEEN ASSIGNED MENTEES */}
+                        <h1>Check back soon to meet your new mentees!</h1>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  {/* IF USER IS A MENTEE */}
+                  <h1>Your Mentor:</h1>
+                  <div>
+                    {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
+                    {user.Mentors ? (
+                      <div>
+                        <h2>
+                          {user.Mentors.map((person) => (
+                            <p>
+                              <li key={person.id}>
+                                {person.firstName} {person.lastName}
+                              </li>
+                              <img src={person.profilePic} />
+                            </p>
+                          ))}
+                        </h2>
+                      </div>
+                    ) : (
+                      <div>
+                        {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
+                        <h1>Check back soon to meet your new mentor!</h1>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -39,12 +105,12 @@ class SingleUser extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  user: state.user,
-});
+const mapState = (state) => {
+  return { user: state.singleUserReducer };
+};
 
 const mapDispatch = (dispatch) => ({
-  fetchSingleUser: (id) => dispatch(fetchSingleUser(id)),
+  fetchSingleUser: () => dispatch(fetchSingleUser()),
 });
 
 export default connect(mapState, mapDispatch)(SingleUser);
