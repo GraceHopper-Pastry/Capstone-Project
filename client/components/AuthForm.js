@@ -16,7 +16,6 @@ window.addEventListener('load', (event) => {
 
 
 const AuthForm = (props) => {
-  
 
   const { name, displayName, handleSubmit, error } = props;
 
