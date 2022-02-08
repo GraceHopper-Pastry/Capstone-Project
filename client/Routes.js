@@ -9,6 +9,8 @@ import MainLanding from "./logged_out/components/MainLanding";
 import SingleUser from "./components/SingleUser";
 import AccountSettings from "./components/AccountSettings";
 import EditUser from "./components/EditUser";
+import Matches from "./components/Matches";
+
 /**
  * COMPONENT
  */
@@ -28,7 +30,7 @@ class Routes extends Component {
             <Route exact path="/users" component={SingleUser} />
             <Route path="/account" component={AccountSettings} />
             <Route path="/users/edit" component={EditUser} />
-
+            <Route exact path='/matches' component={Matches} />
             <Redirect to="/home" />
           </Switch>
         ) : (
