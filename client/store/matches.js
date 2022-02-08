@@ -10,11 +10,13 @@ export const getMatches = (matches) => ({
 });
 
 // fetchMatches Thunk to get matches
-export const fetchMatches = () => {
+export const fetchMatches = (intakeScore) => {
   return async (dispatch) => {
     try {
       // aliasing data as the variable name 'matches'
-      const { data: matches } = await axios.get('/api/users');
+      const { data: matches } = await axios.get(
+        `/api/users/mentors/${intakeScore}`
+      );
       dispatch(getMatches(matches));
     } catch (err) {
       console.log('fetchMatches thunk error!!', err);
