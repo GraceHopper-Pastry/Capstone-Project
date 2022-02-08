@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
+const Shop = require("./Shop");
 
 const Offering = db.define("offering", {
     title: {
@@ -9,12 +10,29 @@ const Offering = db.define("offering", {
     description: {
         type: Sequelize.TEXT,
         allowNull: true
+    },
+    owner: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        validate: {
+            notEmpty: true
+        },
+        references: {
+            model: Shop,
+            key: "ownerId"
+        }
+    },
+    shop: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+        validate: {},
+        references: {
+            model: Shop,
+            key: "id"
+        }
     }
-    // sessionLength: {
-    //   type: Sequelize.TIME,
-    //   defaultValue: '00:00:00',
-    //   field: 'hour'
-    // }
 });
 
 module.exports = Offering;

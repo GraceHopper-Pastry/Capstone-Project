@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const User = require("./User");
+const Offering = require("./Offering");
 
 const Shop = db.define("shop", {
     name: {
@@ -16,20 +17,20 @@ const Shop = db.define("shop", {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: "/images/mentor_shop/defaultShopLogo.png"
+    },
+    offerings: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        },
+        references: {
+            model: Offering,
+            key: "id"
+        }
+
     }
-    // ownerId: {
-    //   type: Sequelize.INTEGER,
-    //   allowNull: false,
-    //   unique: true,
-    //   references: {
-    //     model: User,
-    //     key: id,
-    //     where: {
-    //       id: shop.id,
-    //       isMentor: true,
-    //     }
-    //   }
-    // },
+
 });
 
 module.exports = Shop;

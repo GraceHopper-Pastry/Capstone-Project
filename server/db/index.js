@@ -8,10 +8,12 @@ const Offering = require("./models/Offering");
 const Shop = require("./models/Shop");
 // const Booking = require("./models/Booking");
 const Review = require("./models/Review");
+const users_offerings = require("./models/UserOfferings");
 
 const mentors_mentees = db.define("mentors_mentees", {
     mentorId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
             model: User,
             key: "id"
@@ -19,6 +21,7 @@ const mentors_mentees = db.define("mentors_mentees", {
     },
     menteeId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
             model: User,
             key: "id"
@@ -26,26 +29,7 @@ const mentors_mentees = db.define("mentors_mentees", {
     }
 });
 
-const users_offerings = db.define("users_offerings", {
-    userId: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: User,
-            key: "id"
-        }
-    },
-
-    offeringsId: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: Offering,
-            key: "id"
-        }
-    }
-
-    // this join table will allow us to create associations between all users and offerings,
-    // and also filter for those offerings provided by mentors vs booked by customer with ISMENTOR ?
-});
+;
 
 //associations could go here!
 User.belongsToMany(User, {
@@ -67,13 +51,15 @@ User.belongsToMany(User, {
 // })
 
 User.belongsToMany(Offering, {
+    as: "offerings",
     foreignKey: "offeringsId",
-    through: "users_offerings"
+    through: "Shop"
 });
 
 Offering.belongsToMany(User, {
-    foreignKey: "userId",
-    through: "users_offerings"
+    as: "offerings",
+    foreignKey: "offeringsId",
+    through: "Shop"
 });
 
 // Offerings.belongsToMany(Users, {
@@ -81,9 +67,23 @@ Offering.belongsToMany(User, {
 // })
 
 User.hasOne(Shop, {
-    foreignKey: "ownerId"
+    as: "owner",
+    foreignKey: "ownerId",
 });
 Shop.belongsTo(User)
+
+Shop.belongsToMany(Offering, {
+    as: "shop",
+    foreignKey: "offerings",
+    through: "shop_offerings"
+});
+
+Offering.belongsToMany(Shop, {
+    as: "offerings",
+    foreignKey: "shop",
+    through: "shop_offerings"
+})
+
 
 User.belongsToMany(Review, {
     through: "users_reviews"
@@ -102,6 +102,7 @@ module.exports = {
         User,
         Offering,
         mentors_mentees,
+        UserOfferings,
         Shop,
         Review
     }

@@ -35,7 +35,7 @@ const User = db.define("user", {
   },
   isMentor: {
     type: Sequelize.BOOLEAN,
-    defaultValue: "false",
+    defaultValue: false,
   },
   profilePic: {
     type: Sequelize.STRING,
