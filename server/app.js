@@ -2,24 +2,24 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-
-// const db = require('./db')
 const session = require('express-session')
 const passport = require('passport')
-
-// const SequelizeStore = require('connect-session-sequelize')(session.Store)
-// const sessionStore = new SequelizeStore({db})
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const {db, models} = require('./db')
+const sessionStore = new SequelizeStore({db})
 module.exports = app
 
 // passport registration
-passport.serializeUser((user, done) => done(null, user.id))
-passport.deserializeUser((id, done) =>
-  db.models.user.findById(id, {attributes: ['id', 'email', 'isAdmin', 'tags', 'name']})
-    .then(user => {
-      done(null, user)
-      return null
-    })
-    .catch(done))
+passport.serializeUser((user, done) => done(null, user))
+
+passport.deserializeUser(async (muser, done) => {
+  try {
+    const user = await models.User.findByPk(muser.id)
+    done(null, user)
+  } catch (err) {
+    done(err)
+  }
+})
 
 // logging middleware
 app.use(morgan('dev'))
@@ -30,7 +30,7 @@ app.use(express.json())
 // session middleware with passport
 app.use(session({
   secret: process.env.SESSION_SECRET || 'Luna',
-  // store: sessionStore,
+  store: sessionStore,
   resave: false,
   saveUninitialized: false
 }))
@@ -69,6 +69,15 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
 
+async function bootApp() {
+  try {
+    await sessionStore.sync()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+bootApp();
 // // environment variables config
 // require('dotenv').config()
 
