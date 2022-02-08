@@ -10,6 +10,7 @@ const GOT_MESSAGES_FROM_SERVER = "GOT_MESSAGES_FROM_SERVER";
 const WRITE_MESSAGE = "WRITE_MESSAGE";
 const GOT_NEW_MESSAGE_FROM_SERVER = "GOT_NEW_MESSAGE_FROM_SERVER";
 const RESET_MESSAGES = "RESET_MESSAGES";
+const GOT_RELATIONSHIPS = "GOT_RELATIONSHIPS";
 
 //action creators
 
@@ -19,6 +20,11 @@ export const gotMessagesFromServer = (messages) => {
     messages,
   };
 };
+
+export const gotRelationships = () => ({
+  type: GOT_RELATIONSHIPS,
+  relationships,
+});
 
 export const writeMessage = (inputContent) => ({
   type: WRITE_MESSAGE,
@@ -63,10 +69,13 @@ export const gotNewMessageFromServer = ({ user, channelId, content }) => {
   };
 };
 
+export const fetchRelationships = (id) => {};
+
 const initialState = {
   messages: [],
   //what is the purpose of this???
   newMessageEntry: "",
+  relationships: [],
 };
 
 const messageReducer = (state = initialState, action) => {

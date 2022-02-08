@@ -9,11 +9,9 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-        <Sidebar />
         <Navbar />
-        <main>
-          <Link path="/channels/:channelId" component={Messages} />
-        </main>
+        <Conversations />
+        <MessageList />
       </div>
     );
   }
