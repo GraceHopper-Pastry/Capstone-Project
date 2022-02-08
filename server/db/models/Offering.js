@@ -10,28 +10,6 @@ const Offering = db.define("offering", {
     description: {
         type: Sequelize.TEXT,
         allowNull: true
-    },
-    owner: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
-        validate: {
-            notEmpty: true
-        },
-        references: {
-            model: Shop,
-            key: "ownerId"
-        }
-    },
-    shop: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true,
-        validate: {},
-        references: {
-            model: Shop,
-            key: "id"
-        }
     }
 });
 

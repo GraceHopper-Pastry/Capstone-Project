@@ -6,9 +6,8 @@ const Sequelize = require("sequelize");
 const User = require("./models/User");
 const Offering = require("./models/Offering");
 const Shop = require("./models/Shop");
-// const Booking = require("./models/Booking");
+const Booking = require("./models/Booking");
 const Review = require("./models/Review");
-const users_offerings = require("./models/UserOfferings");
 
 const mentors_mentees = db.define("mentors_mentees", {
     mentorId: {
@@ -44,45 +43,39 @@ User.belongsToMany(User, {
     through: "mentors_mentees"
 });
 
-// Confused about this association - changed temporarily
-// User.belongsToMany(Offerings, {
-//   through: 'Shop',
-
-// })
 
 User.belongsToMany(Offering, {
-    as: "offerings",
-    foreignKey: "offeringsId",
-    through: "Shop"
+    through: Booking,
+    as: "mentee",
+    foreignKey: "offeringId",
+    scope: {
+        isMentor: false
+
+    }
 });
+
+User.belongsToMany(Offering, {
+    through: Booking,
+    as: "mentor",
+    foreignKey: "offeringId",
+    scope: {
+        isMentor: true
+
+    }
+})
 
 Offering.belongsToMany(User, {
-    as: "offerings",
-    foreignKey: "offeringsId",
-    through: "Shop"
+    through: Booking,
 });
 
-// Offerings.belongsToMany(Users, {
-//   as: "services"
-// })
 
-User.hasOne(Shop, {
-    as: "owner",
-    foreignKey: "ownerId",
-});
-Shop.belongsTo(User)
+User.hasOne(Shop)
 
-Shop.belongsToMany(Offering, {
-    as: "shop",
-    foreignKey: "offerings",
-    through: "shop_offerings"
-});
+Shop.belongsTo(User);
 
-Offering.belongsToMany(Shop, {
-    as: "offerings",
-    foreignKey: "shop",
-    through: "shop_offerings"
-})
+Shop.hasMany(Offering, {as: 'offerings'});
+Offering.belongsTo(Shop, {as: 'offerings'});
+
 
 
 User.belongsToMany(Review, {
@@ -92,9 +85,10 @@ Review.belongsToMany(User, {
     through: "users_reviews"
 });
 
-// User.belongsToMany(Booking, {
-//   through: 'Booking'
-// })
+Review.belongsTo(Shop)
+Shop.hasMany(Review)
+
+
 
 module.exports = {
     db,
@@ -102,8 +96,9 @@ module.exports = {
         User,
         Offering,
         mentors_mentees,
-        UserOfferings,
+        // users_offerings,
         Shop,
-        Review
+        Review,
+        Booking
     }
 };

@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const moment = require("moment");
 const db = require("../db");
-const { User, Offerings, Shop, mentors_mentees } = require("../index");
+const User = require("./User");
+const Offering = require("./Offering");
 
 // Join Table -> Will persist user's "mentor offerings" once clicked book && association between mentor, mentee and offerings
 const Booking = db.define("booking", {
@@ -35,54 +36,35 @@ const Booking = db.define("booking", {
             );
         }
     },
-//     menteeId: {
-//         type: Sequelize.INTEGER,
-//         references: {
-//             model: mentors_mentees,
-//             key: "menteeId"
-//         }
-//     },
+    menteeId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: User,
+            key: "id",
+            where: {
+                isMentor: false
+            }
+        },
+    },
 
-//     menteeEmail: {
-//         type: Sequelize.STRING,
-//         allowNull: true,
-//         references: {
-//             model: User,
-//             key: "email",
-//             where: {
-//                 isMentor: false
-//             }
-//         }
-//     },
+    mentorId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+            model: User,
+            key: "id",
+            where: {
+                isMentor: true
+            }
+        },
+    },
+    offeringsId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: Offering,
+            key: "id"
+        }
+    }
+});
 
-//     mentorId: {
-//         type: Sequelize.INTEGER,
-//         allowNull: true,
-//         references: {
-//             model: mentors_mentees,
-//             key: "mentorId"
-//         }
-//     },
-
-//     mentorEmail: {
-//         type: Sequelize.STRING,
-//         allowNull: true,
-//         references: {
-//             model: User,
-//             key: "email",
-//             where: {
-//                 isMentor: true
-//             }
-//         }
-//     },
-
-//     offeringsId: {
-//         type: Sequelize.INTEGER,
-//         references: {
-//             model: Offerings,
-//             key: "id"
-//         }
-//     }
-// });
-
-// module.exports = Booking;
+module.exports = Booking;

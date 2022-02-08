@@ -5,11 +5,11 @@ const {
     models: { User, Offering, Shop, Review }
 } = require("../server/db");
 const {
-    users,
-    offerings,
-    generateRandomUserOfferings,
-    menteeReviews,
-    mentorShops
+    dataUsers,
+    dataOfferings,
+    shopReviews,
+    mentorShops,
+    generateRandomShopOfferings
 } = require("../server/db/dummyData");
 
 const seed = async () => {
@@ -17,73 +17,33 @@ const seed = async () => {
         await db.sync({ force: true });
 
         // USERS
-        await Promise.all(
-            users.map(user => {
-                return User.create(user);
-            })
-        );
+        const users = await User.bulkCreate(dataUsers);
+
         console.log(`seeded ${users.length} users`);
 
         // OFFERINGS
-        await Promise.all(
-            offerings.map(offering => {
-                return Offering.create(offering);
-            })
-        );
+        const offerings = await Offering.bulkCreate(dataOfferings);
+
         console.log(`seeded ${offerings.length} offerings`);
 
         // REVIEWS
-        const reviews = await Promise.all(
-            menteeReviews.map(review => {
-                return Review.create(review);
-            })
-        );
+        const reviews = await Review.bulkCreate(shopReviews);
+        console.log(`seeded ${reviews.length} reviews`);
 
         // SHOPS
         const shops = await Shop.bulkCreate(mentorShops);
+        console.log(`seeded ${shops.length} shops`);
 
         /**
          * Association Handling
          */
 
-        // USERS and shops
+        // // MENTOR SHOPS  and REVIEWS - TEMP
         for (let i = 0; i < shops.length; i++) {
-            shops[i].createUser(users[i].id);
-        }
-        console.log(`seeded ${shops.length} shops`);
-
-        // // USERS (MENTORS) and OFFERINGS
-        // let dataOfferings = [];
-        // for (let i = 0; i < users.length; i++) {
-        //     const user = users[i];
-        //     if (user.isMentor) {
-        //         let userOfferings = generateRandomUserOfferings();
-        //         user.addOfferings(userOfferings);
-
-        //     } else {
-        //         //         // mentees receive an offerings array that is empty as a holding shell
-        //         //         // when they book a service with their mentor, we will push the offerings object into this array
-        //         await user.addOffering({ name: null, description: null });
-        //     }
-        //     dataOfferings.push(userOfferings);
-        // }
-        // console.log(`seeded ${dataOfferings.length} unique offerings`);
-
-        // USERS (MENTEES) and REVIEWS - TEMP
-
-        for (let i = 0; i < reviews.length; i++) {
-            const mentees = users.filter(user => !user.isMentor);
-            reviews[i].addUser(mentees[i]);
-        }
-        console.log(`seeded ${reviews.length} mentee reviews`);
-
-        // MENTOR SHOPS (Users) and REVIEWS - TEMP
-        for (let i = 0; i < reviews.length; i++) {
-            const mentors = users.filter(user => !!user.isMentor);
-            reviews[i].addUser(mentors[i]);
+            shops[i].setReview(reviews[i]);
         }
 
-        console.log(`seeded ${reviews.length} mentee reviews on shops`);
+        // console.log(`seeded reviews for ${shops.length} reviews on shops`);
     } catch (err) {
         console.log(err);
     }

@@ -11,7 +11,7 @@ const generateRandomLogo = () => {
     return shopLogos[Math.floor(Math.random() * shopLogos.length)];
 };
 
-const users = [
+const dataUsers = [
     {
         firstName: "Steve",
         lastName: "Jobs",
@@ -508,7 +508,7 @@ const users = [
 //   },
 // ];
 
-const offerings = [
+const dataOfferings = [
     {
         title: "Chat",
         description:
@@ -526,43 +526,44 @@ const offerings = [
     }
 ];
 
-// Add M:M associatied join table row - users_offerings
+// Add M:M associatied join table row - dataUsers_offerings
 
-const generateRandomUserOfferings = (offerings) => {
-    let userOfferings = [];
+const generateRandomShopOfferings = () => {
+    let shopOfferings = [];
     const map = new Map();
     let num = Math.floor(Math.random() * offerings.length + 1);
-    while (num > userOfferings.length) {
+    while (num > shopOfferings.length) {
         let idx = Math.floor(Math.random() * offerings.length);
-        let userOffering = offerings[idx];
-        for (userOffering of offerings) {
-            if (!map.has(userOffering.title)) {
-                map.set(userOffering.title, true);
-                userOfferings.push({
-                    name: userOffering.title,
-                    description: userOffering.description,
+        let offering = offerings[idx];
+        for (offering of offerings) {
+            if (!map.has(offering.title)) {
+                map.set(offering.title, true);
+                shopOfferings.push({
+                    name: offering.title,
+                    description: offering.description,
+
                 });
             } else {
                 continue;
             }
         }
     }
-    return userOfferings;
+    return shopOfferings;
 };
 
 
 let mentorShops = [];
-for (let i = 0; i < users.length; i++) {
-    let user = users[i];
+for (let i = 0; i < dataUsers.length; i++) {
+    let user = dataUsers[i];
     // each mentor should have a single mentorShop
     if (user.isMentor) {
         let mentorShop = {
             name: `${user.firstName} ${user.lastName}'s Shop`,
             description: loremIpsum({ count: 1, units: "sentences" }),
-            shopLogo: generateRandomLogo()
+            shopLogo: generateRandomLogo(),
         };
         // magic methods 1:1
-        // mentorShop.ownerId = user.id;
+        mentorShop.userId = user.id;
         mentorShops.push(mentorShop);
     } else continue;
 }
@@ -571,20 +572,20 @@ const review = {
     reviewMessage: loremIpsum({ count: 50, suffix: "\n", units: "words" })
 };
 
-let menteeReviews = [];
-for (let i = 0; i < users.length; i++) {
-    let user = users[i];
-    if (!user.isMentor) {
-        menteeReviews.push(review);
+let shopReviews = [];
+for (let i = 0; i < mentorShops.length; i++) {
+    let shop = mentorShops[i];
+    while (shopReviews.length <=3 ) {
+        shopReviews.push(review);
     }
 }
 
 // Append Randomized assortment of offerings to MentorShop
 
 module.exports = {
-    users,
-    offerings,
-    generateRandomUserOfferings,
-    menteeReviews,
-    mentorShops
+    dataUsers,
+    dataOfferings,
+    shopReviews,
+    mentorShops,
+    generateRandomShopOfferings
 };

@@ -35,5 +35,5 @@ module.exports = {
   requireToken,
   isLoggedIn,
   isMentor,
-  isSelfOfMentor
+  isSelfOrMentor
 }
