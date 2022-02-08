@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { init } from "../../server/app";
 import socket from "../socket";
 
 const TOKEN = "token";

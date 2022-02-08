@@ -2,7 +2,7 @@ const router = require("express").Router();
 // eslint-disable-next-line no-unused-vars
 const requireToken = require("./authmiddleware");
 const {
-  models: { User, Message },
+  models: { User, Message, Relationship },
 } = require("../db");
 module.exports = router;
 
@@ -21,10 +21,34 @@ router.get("/:channelId/messages", async (req, res, next) => {
   }
 });
 
-// POST /api/chat/messages
-router.post("/messages", async (req, res, next) => {
+//GET all the conversations the user is involved in
+
+router.get("/channels", requireToken, async (req, res, next) => {
   try {
-    const id = req.body.user;
+    const id = req.user.id;
+    if (req.user.isMentor === true) {
+      const channels = await Relationship.findAll({
+        where: {
+          mentorId: id,
+        },
+      });
+    } else {
+      const channels = await Relationship.findAll({
+        where: {
+          menteeId: id,
+        },
+      });
+      res.json(channels);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// POST /api/chat/messages
+router.post("/messages", requireToken, async (req, res, next) => {
+  try {
+    const id = req.user.id;
     const channel = req.body.channelId;
 
     const message = await Message.create({
