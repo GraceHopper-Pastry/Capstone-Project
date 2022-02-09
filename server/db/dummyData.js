@@ -16,7 +16,7 @@ const users = [
     school: "Reed College",
     areaOfStudy: "Computer Science",
     endYear: 1972,
-    intakeScore: 1,
+    intakeScore: 0,
   },
   {
     firstName: "Grace",
@@ -109,7 +109,7 @@ const users = [
     school: "Harvard University",
     areaOfStudy: "Public Policy",
     endYear: 1999,
-    intakeScore: 2,
+    intakeScore: 0,
   },
 
   {
@@ -205,7 +205,7 @@ const users = [
     school: "Vanderbilt University",
     areaOfStudy: "Electrical Engineering",
     endYear: 1985,
-    intakeScore: 3,
+    intakeScore: 0,
   },
   {
     firstName: "Mark",
@@ -298,7 +298,7 @@ const users = [
     school: "New York University",
     areaOfStudy: "Computer Science",
     endYear: 1997,
-    intakeScore: 4,
+    intakeScore: 0,
   },
   {
     firstName: "Eleanor",

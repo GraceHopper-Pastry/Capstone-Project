@@ -4,6 +4,11 @@ import { fetchMatches } from '../store/matches';
 import { updateUser } from '../store/singleUser';
 
 class Matches extends React.Component {
+  constructor() {
+    super();
+    this.selectMentor = this.selectMentor.bind(this);
+  }
+
   componentDidMount() {
     try {
       const intakeScore = this.props.auth.intakeScore;
@@ -13,9 +18,11 @@ class Matches extends React.Component {
     }
   }
 
-  selectMentor(event, id) {
-    const user = this.props.auth.id;
-    id;
+  selectMentor(event, mentor) {
+    event.preventDefault();
+    //const user = this.props.auth;
+    // user.MentorId = id;
+    this.props.singleUserReducer.Mentors.push(mentor);
   }
 
   render() {
@@ -34,7 +41,7 @@ class Matches extends React.Component {
               <img src={mentor.profilePic} />
               <button
                 type='submit'
-                onClick={(event) => this.selectMentor(event, mentor.id)}
+                onClick={(event) => this.selectMentor(event, mentor)}
               >
                 Select Mentor
               </button>
