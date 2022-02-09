@@ -118,7 +118,7 @@ const HeaderSection = props => {
                         <Typography
                           variant="h4"
                         >
-                          The Largest Community of Mentorship
+                          Stack Support: It's On Us
                         </Typography>
                       </Box>
                       <div>
@@ -127,8 +127,7 @@ const HeaderSection = props => {
                             variant="h6"
                             color="textSecondary"
                           >
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
+                           The Largest Community of Mentors is Coming in Hot!
                           </Typography>
                         </Box>
                         <Button
@@ -139,6 +138,14 @@ const HeaderSection = props => {
                           href="https://github.com/GraceHopper-Pastry/Capstone-Project"
                         >
                           Check us out on GitHub!
+                      </Button>
+                      <Button
+                          variant="contained"
+                          color="secondary"
+                          fullWidth
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSfFAIo5CIe6KQVHzcQtHRStowX4wl4YIlTOV5mlBk9vlCpORQ/viewform?usp=sf_link"
+                        >
+                          Provide us with Feedback!
                       </Button>
                     </div>
                   </Box>

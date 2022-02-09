@@ -1,8 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchSingleUser } from "../store/singleUser";
-import ImageUpload from "./ImageUpload";
-import QuizPopup from "./QuizPopup";
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchSingleUser } from '../store/singleUser';
+import ImageUpload from './ImageUpload';
+import QuizPopup from './QuizPopup';
+import { Link } from 'react-router-dom';
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -15,16 +16,16 @@ class SingleUser extends React.Component {
       <div>
         <QuizPopup intakeScore={user.intakeScore !== null ? true : false} />
         <h2>Profile</h2>
-        <div className="single-user">
+        <div className='single-user'>
           {user.profilePic ===
-          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
+          'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png' ? (
             <div>
-              <img width={"20vw"} src={user.profilePic} />
+              <img width={'200vw'} src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
           ) : (
-            <img width="100px" src={user.profilePic} />
+            <img width='100px' src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -39,7 +40,7 @@ class SingleUser extends React.Component {
           <p>End Year: {user.endYear}</p>
         </div>
         <div>
-          <div className="column right">
+          <div className='column right'>
             <h2>Start a Conversation</h2>
             <div>
               {/* IF USER IS A MENTOR */}
@@ -73,6 +74,9 @@ class SingleUser extends React.Component {
                 <div>
                   {/* IF USER IS A MENTEE */}
                   <h1>Your Mentor:</h1>
+                  <Link to={`/users/mentors/${user.intakeScore}`}>
+                    CLICK ME!
+                  </Link>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
                     {user.Mentors ? (
