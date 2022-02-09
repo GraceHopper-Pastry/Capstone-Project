@@ -1,4 +1,5 @@
 import axios from 'axios';
+const TOKEN = 'token';
 
 // matches action type
 const GET_MATCHES = 'GET_MATCHES';
@@ -13,11 +14,14 @@ export const getMatches = (matches) => ({
 export const fetchMatches = (intakeScore) => {
   return async (dispatch) => {
     try {
-      // aliasing data as the variable name 'matches'
-      const { data: matches } = await axios.get(
-        `/api/users/mentors/${intakeScore}`
-      );
-      dispatch(getMatches(matches));
+     // const token = window.localStorage.getItem(TOKEN);
+     // if (token) {
+        const { data: matches } = await axios.get(
+          `/api/users/mentors/${intakeScore}`,
+          //{ headers: { authorization: token } }
+        );
+        dispatch(getMatches(matches));
+     // }
     } catch (err) {
       console.log('fetchMatches thunk error!!', err);
     }
