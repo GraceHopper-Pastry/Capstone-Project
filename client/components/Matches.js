@@ -9,13 +9,13 @@ class Matches extends React.Component {
       const intakeScore = this.props.auth.intakeScore;
       return this.props.fetchMatches(intakeScore);
     } catch (error) {
-      console.log('THIS ROBOT WILL NOT MOUNT', error);
+      console.log('MATCHES COMPONENT WILL NOT MOUNT', error);
     }
   }
 
-  selectMentor(event) {
-    const user = this.props.auth.id
-    mentor.id
+  selectMentor(event, id) {
+    const user = this.props.auth.id;
+    id;
   }
 
   render() {
@@ -34,7 +34,7 @@ class Matches extends React.Component {
               <img src={mentor.profilePic} />
               <button
                 type='submit'
-                onClick={(event) => this.selectMentor(event)}
+                onClick={(event) => this.selectMentor(event, mentor.id)}
               >
                 Select Mentor
               </button>
@@ -54,7 +54,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   fetchMatches: (intakeScore) => dispatch(fetchMatches(intakeScore)),
-  updateUser: () => dispatch(updateUser()),
+  updateUser: (user) => dispatch(updateUser(user, history)),
 });
 
 export default connect(mapState, mapDispatch)(Matches);
