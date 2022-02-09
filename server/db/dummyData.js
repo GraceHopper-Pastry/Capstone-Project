@@ -13,7 +13,6 @@ const generateRandomLogo = () => {
 
 const dataUsers = [
     {
-        id: 1,
         firstName: "Steve",
         lastName: "Jobs",
         password: "steve_pw",
@@ -34,7 +33,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
-        id: 2,
+
         firstName: "Grace",
         lastName: "Hopper",
         password: "grace_pw",
@@ -55,7 +54,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
-        id: 3,
+
         firstName: "Ada",
         lastName: "Lovelace",
         password: "ada_pw",
@@ -76,7 +75,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
-        id: 4,
+
         firstName: "Katherine",
         lastName: "Johnson",
         password: "katherine_pw",
@@ -96,7 +95,7 @@ const dataUsers = [
         intakeScore: 4
     },
     {
-        id: 5,
+
         firstName: "Margaret",
         lastName: "Hamilton",
         password: "margaret_pw",
@@ -117,7 +116,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
-        id: 6,
+
         firstName: "Reshma",
         lastName: "Saujani",
         password: "reshma_pw",
@@ -139,7 +138,7 @@ const dataUsers = [
     },
 
     {
-        id: 7,
+
         firstName: "Sheryl",
         lastName: "Sandbert",
         password: "sheryl_pw",
@@ -161,7 +160,6 @@ const dataUsers = [
     },
 
     {
-        id: 8,
         firstName: "Susan",
         lastName: "Wojcicki",
         password: "susan_pw",
@@ -182,7 +180,7 @@ const dataUsers = [
         intakeScore: 4
     },
     {
-        id: 9,
+
         firstName: "Ellen",
         lastName: "Pao",
         password: "ellen_pw",
@@ -202,7 +200,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
-        id: 10,
+
         firstName: "Danah",
         lastName: "Boyd",
         password: "danah_pw",
@@ -223,7 +221,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
-        id: 11,
+
         firstName: "Kimberly",
         lastName: "Bryant",
         password: "kimberly_pw",
@@ -244,7 +242,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
-        id: 12,
+
         firstName: "Mark",
         lastName: "Zuckerberg",
         password: "mark_pw",
@@ -265,7 +263,7 @@ const dataUsers = [
         intakeScore: 4
     },
     {
-        id: 13,
+
         firstName: "Bill",
         lastName: "Gates",
         password: "bill_pw",
@@ -286,7 +284,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
-        id: 14,
+
         firstName: "Elon",
         lastName: "Musk",
         password: "elon_pw",
@@ -307,7 +305,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
-        id: 15,
+
         firstName: "Tim",
         lastName: "Cook",
         password: "tim_pw",
@@ -327,7 +325,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
-        id: 16,
+
         firstName: "Jack",
         lastName: "Dorsey",
         password: "jack_pw",
@@ -348,7 +346,6 @@ const dataUsers = [
         intakeScore: 4
     },
     {
-        id: 17,
         firstName: "Eleanor",
         lastName: "Shelstrop",
         password: "eleanor_pw",
@@ -369,7 +366,6 @@ const dataUsers = [
         intakeScore: 1
     },
     {
-        id: 18,
         firstName: "Tahani",
         lastName: "Al-Jamil",
         password: "tahani_pw",
@@ -390,7 +386,6 @@ const dataUsers = [
         intakeScore: 2
     },
     {
-        id: 19,
         firstName: "Chidi",
         lastName: "Anagonye",
         password: "chidi_pw",
@@ -411,7 +406,6 @@ const dataUsers = [
         intakeScore: 3
     },
     {
-        id: 20,
         firstName: "Jason",
         lastName: "Mendoza",
         password: "jason_pw",
@@ -433,7 +427,6 @@ const dataUsers = [
     },
 
     {
-        id: 21,
         firstName: "Admin",
         lastName: "Admin",
         password: "admin_pw",
@@ -459,34 +452,48 @@ const dataOfferings = [
     {
         title: "Chat",
         description:
-            "Modernipsum dolor sit amet caravaggisti jugendstil action painting new media art divisionism, naturalism barbizon school ego-futurism dadaism neo-classicism russian futurism."
+        loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
     },
     {
         title: "liveQandA",
         description:
-            "Lyrical abstraction luminism action painting performance art neoclassicism pre-raphaelites stuckism, installation art nouveau realisme metaphysical art structuralism pointilism mannerism, postminimalism mannerism conceptual art baroque impressionism. "
+        loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
     },
     {
-        title: "advice",
+        title: "Career Advice",
         description:
-            "Formalism cubo-futurism neo-impressionism luminism deformalism cubism neo-dada hudson river school, russian symbolism geometric abstraction art nouveau post-structuralism color field painting. "
+        loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
     },
     {
+        title: "Pitch Practice",
+        description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
 
+    },
+    {
+        title: "Networking Development",
+        description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
+
+    },
+    {
+        title: "Goal Setting 101",
+        description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
+
+    },
+    {
+        title: "Resume Review",
+        description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
+
+    },
+    {
+        title: "Leadership Coaching",
+        description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20})
     }
+
 ];
 
-// const dataBookings = [
-//     {
-//         id: 1,
-//         startTime: "03/01/2022 12:00:00",
-//         endTime: "03/01/2022 13:00:00"
-
-//     }
-// ]
 
 
-// Add M:M associatied join table row - dataUsers_offerings
+
 
 const generateRandomShopOfferings = () => {
     let shopOfferings = [];
@@ -520,7 +527,7 @@ for (let i = 0; i < dataUsers.length; i++) {
     if (user.isMentor) {
         let mentorShop = {
             name: `${user.firstName} ${user.lastName}'s Shop`,
-            description: loremIpsum({ count: 1, units: "sentences" }),
+            description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20}),
             shopLogo: generateRandomLogo(),
         };
         // magic methods 1:1

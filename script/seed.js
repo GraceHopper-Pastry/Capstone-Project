@@ -7,10 +7,13 @@ const {
 const {
     dataUsers,
     dataOfferings,
-    shopReviews,
-    mentorShops,
-    generateRandomShopOfferings
+    mentorShops
 } = require("../server/db/dummyData");
+const {
+    generateShops,
+    generateShopReviews,
+    generateOfferings
+} = require("./generateShopAssociations");
 
 const seed = async () => {
     try {
@@ -18,20 +21,26 @@ const seed = async () => {
 
         // USERS
         const users = await User.bulkCreate(dataUsers);
+        console.log(users[0].__proto__);
 
         console.log(`seeded ${users.length} users`);
 
         // OFFERINGS
         const offerings = await Offering.bulkCreate(dataOfferings);
+        console.log(offerings[0].__proto__);
 
         console.log(`seeded ${offerings.length} offerings`);
 
         // REVIEWS
-        const reviews = await Review.bulkCreate(shopReviews);
+        const dataReviews = generateShopReviews();
+        const reviews = await Review.bulkCreate(dataReviews);
+        console.log(reviews[0].__proto__);
         console.log(`seeded ${reviews.length} reviews`);
 
         // SHOPS
+
         const shops = await Shop.bulkCreate(mentorShops);
+        console.log(shops[0].__proto__);
         console.log(`seeded ${shops.length} shops`);
 
         /**
@@ -47,20 +56,22 @@ const seed = async () => {
 
         console.log(`seeded reviews for ${shops.length} reviews on shops`);
 
-        // MENTOR SHOPS && ADD OFFERINGS
+        // // MENTOR SHOPS && ADD OFFERINGS
+        let mentors = users.filter(user => user.isMentor);
+        for (let i = 0; i < mentors.length; i++) {
+            let shopOfferings = new Set();
+            let num = Math.floor(Math.random() * (offerings.length + 1));
+            let oIndex = Math.floor(Math.random() * offerings.length);
+            while (num < shopOfferings.length) {
+                let offering = offerings[oIndex];
+                shopOfferings.add(offering);
+            }
+            await mentors[i].setOfferings(shopOfferings);
+        }
 
         for (let i = 0; i < shops.length; i++) {
-            let offeringsArr = [];
-            let shop = shops[i];
-            let num = Math.floor(Math.random() * (offerings.length + 1));
-            let oIdx = Math.floor(Math.random() * offerings.length);
-
-            while (num <= offerings.length) {
-                let shopOffering = offerings[oIdx];
-                offeringsArr.push(shopOffering);
-                num += 1;
-            }
-            await shop.addOfferings(offeringsArr);
+            let mentors = users.filter(user => user.isMentor);
+            await shops[i].addOwner(mentors[i]);
         }
     } catch (err) {
         console.log(err);

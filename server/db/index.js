@@ -28,7 +28,6 @@ const mentors_mentees = db.define("mentors_mentees", {
     }
 });
 
-;
 
 //associations could go here!
 User.belongsToMany(User, {
@@ -44,44 +43,35 @@ User.belongsToMany(User, {
 });
 
 
+
 User.belongsToMany(Offering, {
-    through: Booking,
-    as: "mentee",
-    foreignKey: "offeringId",
+    as: "Offerings",
+    through: Shop
+});
+
+Offering.belongsToMany(User,{
+    as: "Customers",
+    through: Shop,
     scope: {
         isMentor: false
-
-    }
-});
-
-User.belongsToMany(Offering, {
-    through: Booking,
-    as: "mentor",
-    foreignKey: "offeringId",
-    scope: {
-        isMentor: true
-
     }
 })
 
-Offering.belongsToMany(User, {
-    through: Booking,
-});
-
-
-
-User.hasOne(Shop, {
+Offering.belongsToMany(User,{
+    as: "Providers",
+    through: Shop,
     scope: {
         isMentor: true
     }
 })
 
-Shop.belongsTo(User);
 
-Shop.hasMany(Offering, {as: 'offerings'});
-Offering.belongsTo(Shop, {as: 'offerings'});
+Shop.hasOne(User, {
+    as: "Owner",
+    foreignKey: "shopId"
+})
 
-
+User.belongsTo(Shop);
 
 User.belongsToMany(Review, {
     through: "users_reviews"
@@ -104,6 +94,5 @@ module.exports = {
         // users_offerings,
         Shop,
         Review,
-        Booking
     }
 };

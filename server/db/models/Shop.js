@@ -4,6 +4,13 @@ const User = require("./User");
 const Offering = require("./Offering");
 
 const Shop = db.define("shop", {
+
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
     name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -18,26 +25,26 @@ const Shop = db.define("shop", {
         allowNull: false,
         defaultValue: "/images/mentor_shop/defaultShopLogo.png"
     },
-    offerings:{
-        type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: false,
-        references: {
-            model: Offering,
-            key: 'id'
-        }
-    },
-    mentees: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: true,
-        defaultValue: [],
-        references: {
-            model: User,
-            key: 'id',
-            where: {
-                isMentor: false
-            }
-        }
-    }
+    // offerings:{
+    //     type: Sequelize.ARRAY(Sequelize.STRING),
+    //     allowNull: false,
+    //     references: {
+    //         model: Offering,
+    //         key: 'id'
+    //     },
+    //     defaultValue: [],
+    // },
+    // mentees: {
+    //     type: Sequelize.ARRAY(Sequelize.STRING),
+    //     allowNull: true,
+    //     references: {
+    //         model: User,
+    //         key: 'id',
+    //         where: {
+    //             isMentor: false
+    //         }
+    //     }
+    // }
 
 });
 
