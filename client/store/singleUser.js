@@ -1,10 +1,10 @@
-import axios from 'axios';
-const TOKEN = 'token';
+import axios from "axios";
+const TOKEN = "token";
 
 // Single users action type
-const GET_SINGLE_USER = 'GET_SINGLE_USER';
-const UPDATE_USER = 'UPDATE_USER';
-const RESET_USER = 'RESET_USER';
+const GET_SINGLE_USER = "GET_SINGLE_USER";
+const UPDATE_USER = "UPDATE_USER";
+const RESET_USER = "RESET_USER";
 
 // Single users action creator
 export const getSingleUser = (user) => ({
@@ -36,7 +36,7 @@ export const fetchSingleUser = () => {
         dispatch(getSingleUser(data));
       }
     } catch (err) {
-      console.log('fetchSingleUser thunk error!!', err);
+      console.log("fetchSingleUser thunk error!!", err);
     }
   };
 };
@@ -46,19 +46,19 @@ export const updateUser = (user, history) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        console.log('INSIDE THUNK');
-        const { data: newUser } = await axios.put('/api/users', user, {
+        console.log("INSIDE THUNK");
+        const { data: newUser } = await axios.put("/api/users", user, {
           headers: {
             authorization: token,
           },
         });
-        console.log('USER IN THUNK', newUser);
-        await dispatch(_updateUser(newUser));
+        console.log("USER IN THUNK", newUser);
+        dispatch(_updateUser(newUser));
         //where should this page push to?
-        history.push('/users');
+        history.push("/users");
       }
     } catch (err) {
-      console.log('error, user not updated');
+      console.log("error, user not updated");
     }
   };
 };

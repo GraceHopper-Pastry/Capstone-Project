@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSingleUser } from "../store/singleUser";
 import ImageUpload from "./ImageUpload";
 import QuizPopup from "./QuizPopup";
