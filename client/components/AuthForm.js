@@ -20,13 +20,13 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
           <label htmlFor='email'>
             <small>email</small>
           </label>
-          <input name='email' type='text' value='bob@email.com' />
+          <input name='email' type='text' />
         </div>
         <div>
           <label htmlFor='password'>
             <small>Password</small>
           </label>
-          <input name='password' type='password' value='bob' />
+          <input name='password' type='password' />
         </div>
         <div>
           <button type='submit'>{displayName}</button>
