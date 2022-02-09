@@ -1,5 +1,6 @@
 import axios from "axios";
 import history from "../history";
+import { deleteAllCookies, getTokenFromCookies } from "../Cookies";
 
 const TOKEN = "token";
 
@@ -18,8 +19,10 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
  */
 
 export const me = () => async dispatch => {
-  const token = window.localStorage.getItem(TOKEN);
-  // const token = null;
+  let token = window.localStorage.getItem(TOKEN);
+  if (!token || token == "undefined"){
+    token = getTokenFromCookies();
+  }
   if (token && token != "undefined") {
     const res = await axios.get('/auth/me', {
       headers: {
@@ -43,6 +46,7 @@ export const authenticate = (email, password, method) => async (dispatch) => {
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
+  deleteAllCookies();
   history.push("/");
   return {
     type: SET_AUTH,
