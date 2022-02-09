@@ -9,7 +9,7 @@ const GOT_MESSAGES_FROM_SERVER = "GOT_MESSAGES_FROM_SERVER";
 const WRITE_MESSAGE = "WRITE_MESSAGE";
 const GOT_NEW_MESSAGE_FROM_SERVER = "GOT_NEW_MESSAGE_FROM_SERVER";
 const RESET_MESSAGES = "RESET_MESSAGES";
-const GOT_RELATIONSHIPS = "GOT_RELATIONSHIPS";
+const GOT_RELATIONSHIP = "GOT_RELATIONSHIP";
 
 //action creators
 
@@ -20,9 +20,9 @@ export const gotMessagesFromServer = (messages) => {
   };
 };
 
-export const gotRelationships = (relationships) => ({
-  type: GOT_RELATIONSHIPS,
-  relationships,
+export const gotRelationship = (relationship) => ({
+  type: GOT_RELATIONSHIP,
+  relationship,
 });
 
 export const writeMessage = (inputContent) => ({
@@ -68,7 +68,7 @@ export const gotNewMessageFromServer = ({ user, channelId, content }) => {
   };
 };
 
-export const fetchRelationships = (id) => {
+export const fetchRelationship = (id) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
@@ -78,7 +78,7 @@ export const fetchRelationships = (id) => {
             authorization: token,
           },
         });
-        dispatch(gotRelationships(data));
+        dispatch(gotRelationship(data));
       }
     } catch (err) {
       console.log(err);
@@ -90,7 +90,7 @@ const initialState = {
   messages: [],
   //what is the purpose of this???
   newMessageEntry: "",
-  relationships: [],
+  currentRelationship: {},
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -101,8 +101,8 @@ const messageReducer = (state = initialState, action) => {
       return { ...state, newMessageEntry: action.newMessageEntry };
     case GOT_NEW_MESSAGE_FROM_SERVER:
       return { ...state, messages: [...state.messages, action.message] };
-    case GOT_RELATIONSHIPS:
-      return { ...state, relationships: action.relationships };
+    case GOT_RELATIONSHIP:
+      return { ...state, currentRelationship: action.relationship };
     case RESET_MESSAGES:
       return initialState;
     default:

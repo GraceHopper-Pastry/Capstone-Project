@@ -1,7 +1,15 @@
 import React from "react";
+import { Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { fetchRelationship } from "../../store/chat";
+//add onclick that changes the prop of the messageList?
 
-const Sidebar = ({ id, isMentor, recipients }) => {
-  console.log(recipients);
+const Sidebar = ({ id, isMentor, recipients, setChannel }) => {
+  const dispatch = useDispatch;
+  const clickHandler = (id) => {
+    setChannel(dispatch(fetchRelationship(id)));
+  };
+
   return (
     <section className="sidebar">
       <div className="sidebar-header">
@@ -14,7 +22,9 @@ const Sidebar = ({ id, isMentor, recipients }) => {
       {recipients.map((recipient) => {
         return (
           <div key={recipient.id}>
-            <h2>{recipient.firstName + " " + recipient.lastName}</h2>
+            <Button onClick={() => clickHandler(recipient.id)}>
+              {recipient.firstName + " " + recipient.lastName}
+            </Button>
           </div>
         );
       })}

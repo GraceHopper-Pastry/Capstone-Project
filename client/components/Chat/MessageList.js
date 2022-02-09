@@ -4,28 +4,23 @@ import Message from "./Message";
 import NewMessageEntry from "./NewMessageEntry";
 import { fetchMessages } from "../../store/chat";
 
-const MessageList = () => {
+const MessageList = ({ channel }) => {
+  const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchMessages(channel));
+  });
 
   //this is where we need the relationsihp id!
-  useEffect(() => {
-    dispatch(fetchMessages(id));
-  }, []);
-
-  const channelId = Number(this.props.match.params.channelId); // because it's a string "1", not a number!
-  const messages = this.props.messages || [];
-  const filteredMessages = messages.filter(
-    (message) => message.channelId === channelId
-  );
 
   return (
     <div>
-      {/* <ul className="media-list">
-        {filteredMessages.map((message) => (
-          <Message message={message} key={message.id} />
+      <ul className="media-list">
+        {messages.map((message) => (
+          <p>message.content</p>
         ))}
       </ul>
-      <NewMessageEntry channelId={Number(this.props.match.params.channelId)} /> */}
+      <NewMessageEntry channelId={Number(this.props.match.params.channelId)} />
     </div>
   );
 };

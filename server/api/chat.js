@@ -21,25 +21,25 @@ router.get("/:channelId/messages", async (req, res, next) => {
   }
 });
 
-//GET all the conversations the user is involved in
+//GET conversation based on message recipient of logged-in user
 
 router.get("/channels", requireToken, async (req, res, next) => {
   try {
-    const id = req.user.id;
+    const id = req.params.id;
     if (req.user.isMentor === true) {
-      const channels = await Relationship.findAll({
-        where: {
-          mentorId: id,
-        },
-      });
-      res.json(channels);
-    } else {
-      const channels = await Relationship.findAll({
+      const channel = await Relationship.findOne({
         where: {
           menteeId: id,
         },
       });
-      res.json(channels);
+      res.json(channel);
+    } else {
+      const channel = await Relationship.findOne({
+        where: {
+          mentorId: id,
+        },
+      });
+      res.json(channel);
     }
   } catch (err) {
     next(err);
