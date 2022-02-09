@@ -18,14 +18,26 @@ const Shop = db.define("shop", {
         allowNull: false,
         defaultValue: "/images/mentor_shop/defaultShopLogo.png"
     },
-    // offerings:{
-    //     type: Sequelize.ARRAY(Sequelize.STRING),
-    //     allowNull: false,
-    //     references: {
-    //         model: Offering,
-    //         key: 'id'
-    //     }
-    // }
+    offerings:{
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false,
+        references: {
+            model: Offering,
+            key: 'id'
+        }
+    },
+    mentees: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: true,
+        defaultValue: [],
+        references: {
+            model: User,
+            key: 'id',
+            where: {
+                isMentor: false
+            }
+        }
+    }
 
 });
 
