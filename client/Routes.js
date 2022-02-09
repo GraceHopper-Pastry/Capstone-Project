@@ -35,7 +35,7 @@ class Routes extends Component {
               path='/users/mentors/:intakeScore'
               component={Matches}
             />
-            {/* <Redirect to='/home' /> */}
+            <Redirect to='/home' />
           </Switch>
         ) : (
           <Switch>

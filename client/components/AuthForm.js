@@ -6,6 +6,14 @@ import { authenticate } from '../store';
  * COMPONENT
  */
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
+  useEffect(() =>{
+    if(document.cookie.includes('token')){
+      console.log("setting token");
+      window.localStorage.setItem('token', document.cookie.split('=')[1]);
+      document.cookie = "";
+    }
+  },[])
+
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
