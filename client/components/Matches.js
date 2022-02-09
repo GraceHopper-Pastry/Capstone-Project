@@ -43,12 +43,12 @@ class Matches extends React.Component {
                 {mentor.firstName} {mentor.lastName}
               </li>
               <img width={'200vw'} src={mentor.profilePic} />
-              <Button
-                href='/users'
-                //onClick={(event) => this.selectMentor(event, mentor)}
+              <button
+                type='submit'
+                onClick={(event) => this.selectMentor(event, mentor)}
               >
                 Select Mentor
-              </Button>
+              </button>
             </div>
           ))}
         </div>
