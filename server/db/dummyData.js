@@ -476,13 +476,14 @@ const dataOfferings = [
     }
 ];
 
-const dataBookings = [
-    {
-        id: 1,
-        startTime: new Date
+// const dataBookings = [
+//     {
+//         id: 1,
+//         startTime: "03/01/2022 12:00:00",
+//         endTime: "03/01/2022 13:00:00"
 
-    }
-]
+//     }
+// ]
 
 
 // Add M:M associatied join table row - dataUsers_offerings
