@@ -13,8 +13,8 @@ const Sidebar = ({ recipients, onChange }) => {
   //   };
   // });
 
-  async const clickHandler =  (recipientId) => {
-    let relationship = await dispatch(fetchRelationship(recipientId))
+  const clickHandler = (recipientId) => {
+    let relationship = dispatch(fetchRelationship(recipientId));
     onChange(relationship.id);
   };
 
