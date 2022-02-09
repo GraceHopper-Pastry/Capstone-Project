@@ -87,7 +87,7 @@ router.put('/', requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
     const userToUpdate = await User.findByPk(userId);
-    if (req.body.Mentors[0]) {
+    if (req.body.Mentors[0].id) {
       const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
       res.json(newUser);
     } else {
