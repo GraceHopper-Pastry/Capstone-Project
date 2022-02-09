@@ -4,9 +4,22 @@ import Sidebar from "./Sidebar";
 
 const MainChat = () => {
   const user = useSelector((state) => state.singleUserReducer);
-  return (
+
+  return user.isMentor ? (
     <div>
-      <Sidebar id={user.id} isMentor={user.isMentor} />
+      <Sidebar
+        id={user.id}
+        recipients={user.mentees}
+        isMentor={user.isMentor}
+      />
+    </div>
+  ) : (
+    <div>
+      <Sidebar
+        id={user.id}
+        recipients={user.mentors}
+        isMentor={user.isMentor}
+      />
     </div>
   );
 };

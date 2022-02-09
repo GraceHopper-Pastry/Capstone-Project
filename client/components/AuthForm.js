@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
-
-
-window.addEventListener('load', (event) => {
-  if(document.cookie.includes('token')){
-    console.log("setting token");
-    window.localStorage.setItem('token', document.cookie.split('=')[1]);
-  }
-})
 
 /**
  * COMPONENT
  */
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
+  useEffect(() => {
+    if (document.cookie.includes("token")) {
+      console.log("setting token");
+      window.localStorage.setItem("token", document.cookie.split("=")[1]);
+      document.cookie = "";
+    }
+  }, []);
+
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -43,7 +43,6 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
     </div>
   );
 };
-
 
 /**
  * CONTAINER
