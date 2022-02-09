@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
-import { me } from "./store";
-import MainLanding from "./logged_out/components/MainLanding";
-import SingleUser from "./components/SingleUser";
-import AccountSettings from "./components/AccountSettings";
-import EditUser from "./components/EditUser";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Login, Signup } from './components/AuthForm';
+import Home from './components/Home';
+import { me } from './store';
+import MainLanding from './logged_out/components/MainLanding';
+import SingleUser from './components/SingleUser';
+import AccountSettings from './components/AccountSettings';
+import EditUser from './components/EditUser';
+import Matches from './components/Matches';
+
 /**
  * COMPONENT
  */
@@ -19,24 +21,28 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-
+    console.log('AM I LOGGED IN???', isLoggedIn);
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Route exact path="/users" component={SingleUser} />
-            <Route path="/account" component={AccountSettings} />
-            <Route path="/users/edit" component={EditUser} />
-
-            <Redirect to="/home" />
+            <Route path='/home' component={Home} />
+            <Route exact path='/users' component={SingleUser} />
+            <Route path='/account' component={AccountSettings} />
+            <Route exact path='/users/edit' component={EditUser} />
+            <Route
+              exact
+              path='/users/mentors/:intakeScore'
+              component={Matches}
+            />
+            {/* <Redirect to='/home' /> */}
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/" component={MainLanding} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Redirect to="/" />
+            <Route exact path='/' component={MainLanding} />
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup} />
+            <Redirect to='/' />
           </Switch>
         )}
       </div>
