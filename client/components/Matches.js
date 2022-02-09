@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchMatches } from '../store/matches';
 import { updateUser } from '../store/singleUser';
+import { Link } from 'react-router-dom';
 
 class Matches extends React.Component {
   constructor() {
@@ -20,9 +21,10 @@ class Matches extends React.Component {
 
   selectMentor(event, mentor) {
     event.preventDefault();
-    //const user = this.props.auth;
-    // user.MentorId = id;
-    this.props.singleUserReducer.Mentors.push(mentor);
+    console.log('IN SELECT MENTOR');
+    const user = this.props.user;
+    user.Mentors = [mentor];
+    this.props.updateUser(user);
   }
 
   render() {
@@ -33,18 +35,21 @@ class Matches extends React.Component {
       <div>
         <h1>Your Top Mentor Matches</h1>
         <div>
+          <Link to={`/users`}>RETURN TO PROFILE </Link>
           {matches.map((mentor) => (
             <div>
               <li key={mentor.id}>
                 {mentor.firstName} {mentor.lastName}
               </li>
-              <img src={mentor.profilePic} />
+              <img width={'200vw'} src={mentor.profilePic} />
+              {/* <Link to='/users'> */}
               <button
                 type='submit'
                 onClick={(event) => this.selectMentor(event, mentor)}
               >
                 Select Mentor
               </button>
+              {/* </Link> */}
             </div>
           ))}
         </div>

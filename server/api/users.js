@@ -1,16 +1,16 @@
-const router = require("express").Router();
+const router = require('express').Router();
 // eslint-disable-next-line no-unused-vars
-const passport = require("passport");
+const passport = require('passport');
 const {
   models: { User },
-} = require("../db");
-const requireToken = require("./authmiddleware");
+} = require('../db');
+const requireToken = require('./authmiddleware');
 
 module.exports = router;
 
-router.get("/", requireToken, async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
-    console.log("requireToken")
+    console.log('requireToken');
     // const users = await User.findAll({
     //   // explicitly select only the id and username fields - even though
     //   // users' passwords are encrypted, it won't help if we just
@@ -20,7 +20,7 @@ router.get("/", requireToken, async (req, res, next) => {
     // res.json(users)
     const userId = req.user.id;
     const user = await User.findByPk(userId, {
-      include: ["Mentees", "Mentors"],
+      include: ['Mentees', 'Mentors'],
     });
     res.json(user);
   } catch (err) {
@@ -28,8 +28,8 @@ router.get("/", requireToken, async (req, res, next) => {
   }
 });
 
-//need this to be a different route
-router.get("/mentors/:intakeScore", async (req, res, next) => {
+//GET MENTOR MATCHES
+router.get('/mentors/:intakeScore', async (req, res, next) => {
   try {
     const mentors = await User.findAll({
       where: {
@@ -60,7 +60,7 @@ router.get("/mentors/:intakeScore", async (req, res, next) => {
 // });
 
 // DELETE SINGLE USER
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const userToDelete = await User.findByPk(req.params.id);
     await userToDelete.destroy();
@@ -71,7 +71,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // ADD NEW USER
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     res.json(await User.create(req.body));
   } catch (error) {
@@ -81,13 +81,27 @@ router.post("/", async (req, res, next) => {
 
 // UPDATE SINGLE USER
 //need to add require token here, and change req.params.id to req.user.id from REQUIRETOKEN
-router.put("/", requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    console.log(`user:`, req.user, `update`, req.body);
     const userToUpdate = await User.findByPk(userId);
-    res.json(await userToUpdate.update(req.body));
+    const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
+    console.log('UPDATE SING USR', newUser);
+    res.json(newUser);
   } catch (error) {
     next(error);
   }
 });
+
+//BEING USED FOR OTHER STUFF!!
+// router.put('/', requireToken, async (req, res, next) => {
+//   try {
+//     const userId = req.user.id;
+//     const userToUpdate = await User.findByPk(userId);
+//     const newUser = await userToUpdate.update(req.body);
+//     console.log('UPDATE SING USR', newUser);
+//     res.json(newUser);
+//   } catch (error) {
+//     next(error);
+//   }
+// });

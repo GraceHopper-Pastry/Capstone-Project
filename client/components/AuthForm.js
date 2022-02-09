@@ -1,14 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import { authenticate } from "../store";
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { authenticate } from '../store';
 
 window.addEventListener('load', (event) => {
-  if(document.cookie.includes('token')){
-    console.log("setting token");
+  if (document.cookie.includes('token')) {
+    console.log('setting token');
     window.localStorage.setItem('token', document.cookie.split('=')[1]);
   }
-})
+});
 
 /**
  * COMPONENT
@@ -18,32 +17,31 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email">
+          <label htmlFor='email'>
             <small>email</small>
           </label>
-          <input name="email" type="text" />
+          <input name='email' type='text' value='bob@email.com' />
         </div>
         <div>
-          <label htmlFor="password">
+          <label htmlFor='password'>
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input name='password' type='password' value='bob' />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button type='submit'>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <br />
-      <a href="/auth/google">Authenticate with Google</a>
+      <a href='/auth/google'>Authenticate with Google</a>
       <br />
-      <a href="/auth/twitter">Authenticate with Twitter</a>
+      <a href='/auth/twitter'>Authenticate with Twitter</a>
       <br />
-      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
+      <a href='/auth/linkedin'>Authenticate with LinkedIn</a>
     </div>
   );
 };
-
 
 /**
  * CONTAINER
@@ -54,16 +52,16 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
  */
 const mapLogin = (state) => {
   return {
-    name: "login",
-    displayName: "Login",
+    name: 'login',
+    displayName: 'Login',
     error: state.auth.error,
   };
 };
 
 const mapSignup = (state) => {
   return {
-    name: "signup",
-    displayName: "Sign Up",
+    name: 'signup',
+    displayName: 'Sign Up',
     error: state.auth.error,
   };
 };
