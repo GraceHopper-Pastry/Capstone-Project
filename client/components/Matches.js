@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchMatches } from '../store/matches';
 import { updateUser } from '../store/singleUser';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 class Matches extends React.Component {
   constructor() {
@@ -12,7 +13,7 @@ class Matches extends React.Component {
 
   componentDidMount() {
     try {
-      const intakeScore = this.props.auth.intakeScore;
+      const intakeScore = this.props.user.intakeScore;
       return this.props.fetchMatches(intakeScore);
     } catch (error) {
       console.log('MATCHES COMPONENT WILL NOT MOUNT', error);
@@ -42,14 +43,12 @@ class Matches extends React.Component {
                 {mentor.firstName} {mentor.lastName}
               </li>
               <img width={'200vw'} src={mentor.profilePic} />
-              {/* <Link to='/users'> */}
-              <button
-                type='submit'
-                onClick={(event) => this.selectMentor(event, mentor)}
+              <Button
+                href='/users'
+                //onClick={(event) => this.selectMentor(event, mentor)}
               >
                 Select Mentor
-              </button>
-              {/* </Link> */}
+              </Button>
             </div>
           ))}
         </div>
