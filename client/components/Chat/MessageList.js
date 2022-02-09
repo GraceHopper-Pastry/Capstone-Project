@@ -1,17 +1,16 @@
-import React, {useEffect} from "react";
-import { useSelector } from "react-redux";
-import { useDispatch,  } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Message from "./Message";
 import NewMessageEntry from "./NewMessageEntry";
 import { fetchMessages } from "../../store/chat";
 
-const MessagesList = () => {
-
+const MessageList = () => {
   const dispatch = useDispatch();
-  const {}
+
+  //this is where we need the relationsihp id!
   useEffect(() => {
-    dispatch(fetchMessages);
-  });
+    dispatch(fetchMessages(id));
+  }, []);
 
   const channelId = Number(this.props.match.params.channelId); // because it's a string "1", not a number!
   const messages = this.props.messages || [];
@@ -21,22 +20,14 @@ const MessagesList = () => {
 
   return (
     <div>
-      <ul className="media-list">
+      {/* <ul className="media-list">
         {filteredMessages.map((message) => (
           <Message message={message} key={message.id} />
         ))}
       </ul>
-      <NewMessageEntry channelId={Number(this.props.match.params.channelId)} />
+      <NewMessageEntry channelId={Number(this.props.match.params.channelId)} /> */}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  messages: state.messages,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchInitialMessages: () => dispatch(fetchMessages()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessagesList);
+export default MessageList;

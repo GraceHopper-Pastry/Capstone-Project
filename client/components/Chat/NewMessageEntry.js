@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { gotNewMessageFromServer, writeMessage } from "../store";
+import { gotNewMessageFromServer, writeMessage } from "../../store/chat";
 //need to get channelId from somewhere . . .
 
 const NewMessageEntry = () => {

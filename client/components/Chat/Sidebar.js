@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRelationships } from "../../store/chat";
+import React from "react";
 
 const Sidebar = ({ id, isMentor, recipients }) => {
   console.log(recipients);
@@ -13,13 +11,13 @@ const Sidebar = ({ id, isMentor, recipients }) => {
         </h3>
       </div>
       <h5>Conversations</h5>
-      {/* {recipients.map((recipient) => {
+      {recipients.map((recipient) => {
         return (
-          <div>
+          <div key={recipient.id}>
             <h2>{recipient.firstName + " " + recipient.lastName}</h2>
           </div>
         );
-      })} */}
+      })}
     </section>
   );
 };

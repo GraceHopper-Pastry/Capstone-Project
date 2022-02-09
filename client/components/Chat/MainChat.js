@@ -1,25 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
+import MessageList from "./MessageList";
 
 const MainChat = () => {
   const user = useSelector((state) => state.singleUserReducer);
 
-  return user.isMentor ? (
+  return (
     <div>
-      <Sidebar
-        id={user.id}
-        recipients={user.mentees}
-        isMentor={user.isMentor}
-      />
-    </div>
-  ) : (
-    <div>
-      <Sidebar
-        id={user.id}
-        recipients={user.mentors}
-        isMentor={user.isMentor}
-      />
+      {user.isMentor ? (
+        <Sidebar
+          id={user.id}
+          recipients={user.Mentees}
+          isMentor={user.isMentor}
+        />
+      ) : (
+        <Sidebar
+          id={user.id}
+          recipients={user.Mentors}
+          isMentor={user.isMentor}
+        />
+      )}
+      <MessageList />
     </div>
   );
 };
