@@ -31,7 +31,7 @@ class SingleUser extends React.Component {
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
-              <img width={"20vw"} src={user.profilePic} />
+              <img width={"200vw"} src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
@@ -85,6 +85,9 @@ class SingleUser extends React.Component {
                 <div>
                   {/* IF USER IS A MENTEE */}
                   <h1>Your Mentor:</h1>
+                  <Link to={`/users/mentors/${user.intakeScore}`}>
+                    CLICK ME!
+                  </Link>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
                     {user.Mentors.length > 0 ? (

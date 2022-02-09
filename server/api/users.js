@@ -10,7 +10,6 @@ module.exports = router;
 
 router.get("/", requireToken, async (req, res, next) => {
   try {
-    console.log("requireToken");
     // const users = await User.findAll({
     //   // explicitly select only the id and username fields - even though
     //   // users' passwords are encrypted, it won't help if we just
@@ -28,7 +27,7 @@ router.get("/", requireToken, async (req, res, next) => {
   }
 });
 
-//need this to be a different route
+//GET MENTOR MATCHES
 router.get("/mentors/:intakeScore", async (req, res, next) => {
   try {
     const mentors = await User.findAll({
@@ -65,16 +64,47 @@ router.post("/", async (req, res, next) => {
 
 // UPDATE SINGLE USER
 //need to add require token here, and change req.params.id to req.user.id from REQUIRETOKEN
+
+/////////THIS WORKS FOR MENTOR ASSIGNMENT
+// router.put('/', requireToken, async (req, res, next) => {
+//   try {
+//     const userId = req.user.id;
+//     const userToUpdate = await User.findByPk(userId);
+//     const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
+//     console.log('UPDATE SING USR', newUser);
+//     res.json(newUser);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 router.put("/", requireToken, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const userToUpdate = await User.findByPk(userId, {
-      include: ["Mentees", "Mentors"],
-    });
-
-    console.log(req.body);
-    res.json(await userToUpdate.update(req.body));
+    const userToUpdate = await User.findByPk(userId);
+    console.log("PUT REQ", userToUpdate);
+    if (req.body.Mentors) {
+      const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
+      res.json(newUser);
+    } else {
+      const newUser = await userToUpdate.update(req.body);
+      res.json(newUser);
+    }
   } catch (error) {
     next(error);
   }
 });
+
+///////////////////ORIGINAL PUT ROUTE///////////////////
+
+// router.put('/', requireToken, async (req, res, next) => {
+//   try {
+//     const userId = req.user.id;
+//     const userToUpdate = await User.findByPk(userId);
+//     const newUser = await userToUpdate.update(req.body);
+//     console.log('UPDATE SING USR', newUser);
+//     res.json(newUser);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
