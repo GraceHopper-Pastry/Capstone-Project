@@ -73,7 +73,7 @@ export const fetchRelationship = (id) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        const { data } = await Axios.get("/api/chat/channels", {
+        const { data } = await Axios.get(`/api/chat/${id}`, {
           headers: {
             authorization: token,
           },

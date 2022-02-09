@@ -12,7 +12,11 @@ const MainChat = () => {
     };
   });
 
-  const [channel, setChannel] = useState();
+  const [channel, setChannel] = useState(null);
+
+  function handleChange(newVal) {
+    setChannel(Number(newVal));
+  }
 
   //state of main chat determines what channel we are on - when teh channel changes the props passed to messageList and sideBar change - we pass setChannel to sidebar.
 
@@ -25,14 +29,14 @@ const MainChat = () => {
           id={user.id}
           recipients={user.Mentees}
           isMentor={user.isMentor}
-          setChannel={setChannel}
+          onChange={handleChange}
         />
       ) : (
         <Sidebar
           id={user.id}
           recipients={user.Mentors}
           isMentor={user.isMentor}
-          setChannel={setChannel}
+          onChange={handleChange}
         />
       )}
       <MessageList channel={channel} />

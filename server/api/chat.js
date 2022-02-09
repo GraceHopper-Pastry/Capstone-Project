@@ -9,10 +9,10 @@ module.exports = router;
 // GET all the messages from a specific channel
 router.get("/:channelId/messages", async (req, res, next) => {
   try {
-    const channelId = req.params.channelId;
+    const channelId = parseInt(req.params.channelId);
     const messages = await Message.findAll({
       where: {
-        relationshipId: parseInt(req.params.channelId),
+        relationshipId: channelId,
       },
     });
     res.json(messages);
@@ -23,9 +23,10 @@ router.get("/:channelId/messages", async (req, res, next) => {
 
 //GET conversation based on message recipient of logged-in user
 
-router.get("/channels", requireToken, async (req, res, next) => {
+router.get("/:id", requireToken, async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = Number(req.params.id);
+    console.log({ id });
     if (req.user.isMentor === true) {
       const channel = await Relationship.findOne({
         where: {

@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { fetchRelationship } from "../../store/chat";
+import { useDispatch, useSelector } from "react-redux";
+import messageReducer, { fetchRelationship } from "../../store/chat";
 //add onclick that changes the prop of the messageList?
 
-const Sidebar = ({ id, isMentor, recipients, setChannel }) => {
-  const dispatch = useDispatch;
-  const clickHandler = (id) => {
-    setChannel(dispatch(fetchRelationship(id)));
+const Sidebar = ({ recipients, onChange }) => {
+  const dispatch = useDispatch();
+
+  // const { relationship } = useSelector((state) => {
+  //   return {
+  //     relationship: state.messageReducer.currentRelationship,
+  //   };
+  // });
+
+  async const clickHandler =  (recipientId) => {
+    let relationship = await dispatch(fetchRelationship(recipientId))
+    onChange(relationship.id);
   };
 
   return (
