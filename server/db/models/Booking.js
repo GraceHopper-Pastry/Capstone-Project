@@ -7,7 +7,7 @@ const Offering = require("./Offering");
 // Join Table -> Will persist user's "mentor offerings" once clicked book && association between mentor, mentee and offerings
 const Booking = db.define("booking", {
     startTime: {
-        type: Sequelize.DATE(6),
+        type: Sequelize.DATE,
         allowNull: true,
         defaultValue: null,
         get() {
@@ -17,7 +17,7 @@ const Booking = db.define("booking", {
         }
     },
     endTime: {
-        type: Sequelize.DATE(6),
+        type: Sequelize.DATE,
         allowNull: true,
         defaultValue: null,
         get() {

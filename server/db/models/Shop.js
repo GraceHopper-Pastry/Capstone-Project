@@ -21,6 +21,10 @@ const Shop = db.define("shop", {
     // offerings:{
     //     type: Sequelize.ARRAY(Sequelize.STRING),
     //     allowNull: false,
+    //     references: {
+    //         model: Offering,
+    //         key: 'id'
+    //     }
     // }
 
 });

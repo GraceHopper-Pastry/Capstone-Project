@@ -11,7 +11,9 @@ module.exports = router;
 // GET /api/shops/
 router.get('/', requireToken, isLoggedIn, isSelfOrMentor, async (req, res, next) => {
   try {
-    const shops = await Shop.findAll({})
+    const shops = await Shop.findAll({
+      attributes: ['title', 'description', '']
+    })
     res.json(shops);
   } catch (err) {
     next(err);

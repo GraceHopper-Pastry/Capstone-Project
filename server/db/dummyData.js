@@ -13,6 +13,7 @@ const generateRandomLogo = () => {
 
 const dataUsers = [
     {
+        id: 1,
         firstName: "Steve",
         lastName: "Jobs",
         password: "steve_pw",
@@ -33,6 +34,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
+        id: 2,
         firstName: "Grace",
         lastName: "Hopper",
         password: "grace_pw",
@@ -53,6 +55,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
+        id: 3,
         firstName: "Ada",
         lastName: "Lovelace",
         password: "ada_pw",
@@ -73,6 +76,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
+        id: 4,
         firstName: "Katherine",
         lastName: "Johnson",
         password: "katherine_pw",
@@ -92,6 +96,7 @@ const dataUsers = [
         intakeScore: 4
     },
     {
+        id: 5,
         firstName: "Margaret",
         lastName: "Hamilton",
         password: "margaret_pw",
@@ -112,6 +117,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
+        id: 6,
         firstName: "Reshma",
         lastName: "Saujani",
         password: "reshma_pw",
@@ -133,6 +139,7 @@ const dataUsers = [
     },
 
     {
+        id: 7,
         firstName: "Sheryl",
         lastName: "Sandbert",
         password: "sheryl_pw",
@@ -154,11 +161,12 @@ const dataUsers = [
     },
 
     {
+        id: 8,
         firstName: "Susan",
         lastName: "Wojcicki",
         password: "susan_pw",
         email: "susan@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "https://jpreis.com/wp/wp-content/uploads/2018/03/susan-wojcicki-youtube-ceo.jpg",
         bio:
@@ -174,11 +182,12 @@ const dataUsers = [
         intakeScore: 4
     },
     {
+        id: 9,
         firstName: "Ellen",
         lastName: "Pao",
         password: "ellen_pw",
         email: "ellen@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic: "https://static2.stuff.co.nz/1365983592/874/8551874.jpg",
         bio:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -193,11 +202,12 @@ const dataUsers = [
         intakeScore: 1
     },
     {
+        id: 10,
         firstName: "Danah",
         lastName: "Boyd",
         password: "danah_pw",
         email: "danah@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "https://leblog.wcie.fr/bw-content/uploads/2010/11/danah-boyd.jpg",
         bio:
@@ -213,11 +223,12 @@ const dataUsers = [
         intakeScore: 2
     },
     {
+        id: 11,
         firstName: "Kimberly",
         lastName: "Bryant",
         password: "kimberly_pw",
         email: "kimberly@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "https://www.entrenuity.com/hubfs/Entrenuity_March2020/Image/Kimberly_Bryant_Profile.jpg",
         bio:
@@ -233,11 +244,12 @@ const dataUsers = [
         intakeScore: 3
     },
     {
+        id: 12,
         firstName: "Mark",
         lastName: "Zuckerberg",
         password: "mark_pw",
         email: "mark@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "http://images.tmz.com/2014/10/26/mark-zuckerberg-200x250.jpg",
         bio:
@@ -253,11 +265,12 @@ const dataUsers = [
         intakeScore: 4
     },
     {
+        id: 13,
         firstName: "Bill",
         lastName: "Gates",
         password: "bill_pw",
         email: "bill@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "https://livebiography.com/wp-content/uploads/2018/08/bill-gates-Profile.jpg",
         bio:
@@ -273,11 +286,12 @@ const dataUsers = [
         intakeScore: 1
     },
     {
+        id: 14,
         firstName: "Elon",
         lastName: "Musk",
         password: "elon_pw",
         email: "elon@email.com",
-        isMentor: false,
+        isMentor: true,
         profilePic:
             "https://static.dezeen.com/uploads/2015/03/Elon-Musk-portrait-dezeen_sq01.jpg",
         bio:
@@ -293,6 +307,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
+        id: 15,
         firstName: "Tim",
         lastName: "Cook",
         password: "tim_pw",
@@ -312,6 +327,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
+        id: 16,
         firstName: "Jack",
         lastName: "Dorsey",
         password: "jack_pw",
@@ -332,6 +348,7 @@ const dataUsers = [
         intakeScore: 4
     },
     {
+        id: 17,
         firstName: "Eleanor",
         lastName: "Shelstrop",
         password: "eleanor_pw",
@@ -352,6 +369,7 @@ const dataUsers = [
         intakeScore: 1
     },
     {
+        id: 18,
         firstName: "Tahani",
         lastName: "Al-Jamil",
         password: "tahani_pw",
@@ -372,6 +390,7 @@ const dataUsers = [
         intakeScore: 2
     },
     {
+        id: 19,
         firstName: "Chidi",
         lastName: "Anagonye",
         password: "chidi_pw",
@@ -392,6 +411,7 @@ const dataUsers = [
         intakeScore: 3
     },
     {
+        id: 20,
         firstName: "Jason",
         lastName: "Mendoza",
         password: "jason_pw",
@@ -413,6 +433,7 @@ const dataUsers = [
     },
 
     {
+        id: 21,
         firstName: "Admin",
         lastName: "Admin",
         password: "admin_pw",
@@ -433,80 +454,6 @@ const dataUsers = [
     }
 ];
 
-// const offerings = [
-//   {
-//     userId: 1,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 2,
-//     chat: true,
-//     advice: true,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 3,
-//     chat: true,
-//     advice: false,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 4,
-//     chat: true,
-//     advice: false,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 5,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 6,
-//     chat: true,
-//     advice: true,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 7,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 8,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 9,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 10,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 11,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 12,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-// ];
 
 const dataOfferings = [
     {
@@ -523,23 +470,36 @@ const dataOfferings = [
         title: "advice",
         description:
             "Formalism cubo-futurism neo-impressionism luminism deformalism cubism neo-dada hudson river school, russian symbolism geometric abstraction art nouveau post-structuralism color field painting. "
+    },
+    {
+
     }
 ];
+
+const dataBookings = [
+    {
+        id: 1,
+        startTime: new Date
+
+    }
+]
+
 
 // Add M:M associatied join table row - dataUsers_offerings
 
 const generateRandomShopOfferings = () => {
     let shopOfferings = [];
     const map = new Map();
-    let num = Math.floor(Math.random() * offerings.length + 1);
+    let num = Math.floor(Math.random() * dataOfferings.length + 1);
     while (num > shopOfferings.length) {
-        let idx = Math.floor(Math.random() * offerings.length);
-        let offering = offerings[idx];
-        for (offering of offerings) {
+        let idx = Math.floor(Math.random() * dataOfferings.length);
+        let offering = dataOfferings[idx];
+        for (offering of dataOfferings) {
             if (!map.has(offering.title)) {
                 map.set(offering.title, true);
                 shopOfferings.push({
-                    name: offering.title,
+                    id: offering.id,
+                    title: offering.title,
                     description: offering.description,
 
                 });
@@ -574,8 +534,7 @@ const review = {
 
 let shopReviews = [];
 for (let i = 0; i < mentorShops.length; i++) {
-    let shop = mentorShops[i];
-    while (shopReviews.length <=3 ) {
+    while (shopReviews.length <= dataUsers.length ) {
         shopReviews.push(review);
     }
 }

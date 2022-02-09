@@ -69,7 +69,12 @@ Offering.belongsToMany(User, {
 });
 
 
-User.hasOne(Shop)
+
+User.hasOne(Shop, {
+    scope: {
+        isMentor: true
+    }
+})
 
 Shop.belongsTo(User);
 

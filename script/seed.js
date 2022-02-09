@@ -38,12 +38,30 @@ const seed = async () => {
          * Association Handling
          */
 
-        // // MENTOR SHOPS  and REVIEWS - TEMP
+        // // // MENTOR SHOPS  and REVIEWS - TEMP
         for (let i = 0; i < shops.length; i++) {
-            shops[i].setReview(reviews[i]);
+            await shops[i].addReview(reviews[i]);
+            await shops[i].addReview(reviews[i + 1]);
+            await shops[i].addReview(reviews[i + 2]);
         }
 
-        // console.log(`seeded reviews for ${shops.length} reviews on shops`);
+        console.log(`seeded reviews for ${shops.length} reviews on shops`);
+
+        // MENTOR SHOPS && ADD OFFERINGS
+
+        for (let i = 0; i < shops.length; i++) {
+            let offeringsArr = [];
+            let shop = shops[i];
+            let num = Math.floor(Math.random() * (offerings.length + 1));
+            let oIdx = Math.floor(Math.random() * offerings.length);
+
+            while (num <= offerings.length) {
+                let shopOffering = offerings[oIdx];
+                offeringsArr.push(shopOffering);
+                num += 1;
+            }
+            await shop.addOfferings(offeringsArr);
+        }
     } catch (err) {
         console.log(err);
     }
