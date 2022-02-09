@@ -140,6 +140,15 @@ const HeaderSection = props => {
                         >
                           Check us out on GitHub!
                       </Button>
+                      <Button
+                          variant="contained"
+                          color="primary"
+                          fullWidth
+                          className={classes.extraLargeButton}
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSfFAIo5CIe6KQVHzcQtHRStowX4wl4YIlTOV5mlBk9vlCpORQ/viewform?usp=sf_link"
+                        >
+                          Give us Your Feedback!
+                      </Button>
                     </div>
                   </Box>
                 </Grid>
