@@ -1,5 +1,5 @@
 import React from "react";
-import { useFormik, Form, Field } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 import { TextField, Button, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -11,11 +11,6 @@ import { useHistory } from "react-router-dom";
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Last name is required"),
-  // email: yup
-  //   .string()
-  //   .email("Enter a valid email")
-  //   .required("Email is required"),
-  // password: yup.string().required("Password is required"),
   bio: yup.string().required("Tell us about yourself!"),
   location: yup
     .string()
@@ -55,17 +50,17 @@ const UserForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "" || user.firstName,
-      lastName: "" || user.lastName,
-      bio: "" || user.bio,
-      employer: "" || user.employer,
-      jobTitle: "" || user.jobTitle,
-      location: "" || user.location,
-      industry: "" || user.industry,
-      yearsInTech: 0 || user.yearsInTech,
-      school: "" || user.school,
-      areaOfStudy: "" || user.areaOfStudy,
-      endYear: 2010 || user.endYear,
+      firstName: user.firstName || "",
+      lastName: user.lastName || "",
+      bio: user.bio || "",
+      employer: user.employer || "",
+      jobTitle: user.jobTitle || "",
+      location: user.location || "",
+      industry: user.industry || "",
+      yearsInTech: user.yearsInTech || 0,
+      school: user.school || "",
+      areaOfStudy: user.areaOfStudy || "",
+      endYear: user.endYear || 2010,
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user

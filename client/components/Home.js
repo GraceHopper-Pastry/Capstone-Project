@@ -16,8 +16,6 @@ const Home = () => {
   const { firstName, intakeScore } = useSelector(
     (state) => state.singleUserReducer
   );
-  console.log({ firstName });
-  console.log({ intakeScore });
 
   const dispatch = useDispatch();
 
