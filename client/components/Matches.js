@@ -31,22 +31,30 @@ class Matches extends React.Component {
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
-          <div>
+          <div className='mentors'>
             <ul>
               {matches.map((mentor) => (
                 <li key={mentor.id}>
-                  <h2>{mentor.firstName + ' ' + mentor.lastName}</h2>
-                  <p>{mentor.jobTitle + ' at ' + mentor.employer}</p>
-                  <img width={'200px'} src={mentor.profilePic} />
-                  <button type='button' onClick={'/mentor/:mentorid'}>
-                    Learn More
-                  </button>
-                  <button
-                    type='submit'
-                    onClick={(event) => this.selectMentor(event, mentor)}
-                  >
-                    Select Mentor
-                  </button>
+                  <div className='card'>
+                    <div className='flex-container'></div>
+                    <h2>{mentor.firstName + ' ' + mentor.lastName}</h2>
+                    <p>{mentor.jobTitle + ' at ' + mentor.employer}</p>
+                    <img src={mentor.profilePic} />
+                    <button
+                      class='button'
+                      type='button'
+                      onClick={'/mentor/:mentorid'}
+                    >
+                      Learn More
+                    </button>
+                    <button
+                      class='button'
+                      type='submit'
+                      onClick={(event) => this.selectMentor(event, mentor)}
+                    >
+                      Select Mentor
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
