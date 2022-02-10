@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchMatches } from '../store/matches';
-import { updateUser } from '../store/singleUser';
-import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchMatches } from "../store/matches";
+import { updateUser } from "../store/singleUser";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 class Matches extends React.Component {
   constructor() {
@@ -12,24 +12,18 @@ class Matches extends React.Component {
   }
 
   componentDidMount() {
-    try {
-      const intakeScore = this.props.user.intakeScore;
-      return this.props.fetchMatches(intakeScore);
-    } catch (error) {
-      console.log('MATCHES COMPONENT WILL NOT MOUNT', error);
-    }
+    const intakeScore = this.props.user.intakeScore;
+    this.props.fetchMatches(intakeScore);
   }
 
   selectMentor(event, mentor) {
-    event.preventDefault();
-    console.log('IN SELECT MENTOR');
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
+    this.props.history.push("/users");
   }
 
   render() {
-    console.log('Matches render', this.props);
     const matches = this.props.matches;
 
     return (
@@ -37,20 +31,22 @@ class Matches extends React.Component {
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
-          {matches.map((mentor) => (
-            <div>
-              <li key={mentor.id}>
-                {mentor.firstName} {mentor.lastName}
-              </li>
-              <img width={'200vw'} src={mentor.profilePic} />
-              <button
-                type='submit'
-                onClick={(event) => this.selectMentor(event, mentor)}
-              >
-                Select Mentor
-              </button>
-            </div>
-          ))}
+          <div>
+            <ul>
+              {matches.map((mentor) => (
+                <li key={mentor.id}>
+                  <h2>{mentor.firstName + " " + mentor.lastName}</h2>
+                  <img width={"200px"} src={mentor.profilePic} />
+                  <button
+                    type="submit"
+                    onClick={(event) => this.selectMentor(event, mentor)}
+                  >
+                    Select Mentor
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     );

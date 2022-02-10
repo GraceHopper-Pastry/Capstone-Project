@@ -444,63 +444,6 @@ const dataOfferings = [
 ];
 
 
-
-
-
-// const generateRandomShopOfferings = () => {
-//     let shopOfferings = [];
-//     const map = new Map();
-//     let num = Math.floor(Math.random() * dataOfferings.length + 1);
-//     while (num > shopOfferings.length) {
-//         let idx = Math.floor(Math.random() * dataOfferings.length);
-//         let offering = dataOfferings[idx];
-//         for (offering of dataOfferings) {
-//             if (!map.has(offering.title)) {
-//                 map.set(offering.title, true);
-//                 shopOfferings.push({
-//                     id: offering.id,
-//                     title: offering.title,
-//                     description: offering.description,
-
-//                 });
-//             } else {
-//                 continue;
-//             }
-//         }
-//     }
-//     return shopOfferings;
-// };
-
-
-// let mentorShops = [];
-// for (let i = 0; i < dataUsers.length; i++) {
-//     let user = dataUsers[i];
-//     // each mentor should have a single mentorShop
-//     if (user.isMentor) {
-//         let mentorShop = {
-//             name: `${user.firstName} ${user.lastName}'s Shop`,
-//             description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20}),
-//             shopLogo: generateRandomLogo(),
-//         };
-//         // magic methods 1:1
-//         mentorShop.userId = user.id;
-//         mentorShops.push(mentorShop);
-//     } else continue;
-// }
-
-// const review = {
-//     reviewMessage: loremIpsum({ count: 50, suffix: "\n", units: "words" })
-// };
-
-// let shopReviews = [];
-// for (let i = 0; i < mentorShops.length; i++) {
-//     while (shopReviews.length <= dataUsers.length ) {
-//         shopReviews.push(review);
-//     }
-// }
-
-// Append Randomized assortment of offerings to MentorShop
-
 module.exports = {
     dataUsers,
     dataOfferings,

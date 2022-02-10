@@ -8,38 +8,67 @@ const Offering = require("./models/Offering");
 const Shop = require("./models/Shop");
 const Booking = require("./models/Booking");
 const Review = require("./models/Review");
+const Message = require("./models/Message");
 
-const mentors_mentees = db.define("mentors_mentees", {
-    mentorId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: User,
-            key: "id"
-        }
+// const mentors_mentees = db.define("mentors_mentees", {
+//     mentorId: {
+//         type: Sequelize.INTEGER,
+//         allowNull: false,
+//         references: {
+//             model: User,
+//             key: "id"
+//         }
+//     },
+//     menteeId: {
+//       type: Sequelize.INTEGER,
+//       allowNull: false,
+//       references: {
+//           model: User,
+//           key: "id"
+//       }
+//     }
+//   }
+// );
+
+
+
+const Relationship = db.define("relationship", {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  mentorId: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: User,
+      key: "id",
     },
-    menteeId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: User,
-            key: "id"
-        }
-    }
+  },
+  menteeId: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: User,
+      key: "id",
+    },
+
+  }
 });
 
 
 //associations could go here!
 User.belongsToMany(User, {
-    as: "Mentees",
-    foreignKey: "mentorId",
-    through: "mentors_mentees"
-});
-
-User.belongsToMany(User, {
     as: "Mentors",
     foreignKey: "menteeId",
-    through: "mentors_mentees"
+    through: "relationship",
+});
+
+
+User.belongsToMany(User, {
+    as: "Mentees",
+    foreignKey: "mentorId",
+    through: "relationship"
 });
 
 
@@ -92,6 +121,11 @@ Review.belongsToMany(User, {
 Review.belongsTo(Shop)
 Shop.hasMany(Review)
 
+Message.belongsTo(Relationship);
+Relationship.hasMany(Message);
+
+User.hasMany(Message);
+Message.belongsTo(User);
 
 
 module.exports = {
@@ -99,8 +133,8 @@ module.exports = {
     models: {
         User,
         Offering,
-        mentors_mentees,
-        // users_offerings,
+        Message,
+        Relationship,
         Shop,
         Review,
     }
