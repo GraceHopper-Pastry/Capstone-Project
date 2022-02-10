@@ -27,11 +27,11 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <br />
-      <a href='/auth/google'>Authenticate with Google</a>
+      {/* <a href='/auth/google'>Authenticate with Google</a>
       <br />
       <a href='/auth/twitter'>Authenticate with Twitter</a>
       <br />
-      <a href='/auth/linkedin'>Authenticate with LinkedIn</a>
+      <a href='/auth/linkedin'>Authenticate with LinkedIn</a> */}
     </div>
   );
 };
