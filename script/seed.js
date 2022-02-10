@@ -7,7 +7,6 @@ const {
 const {
     dataUsers,
     dataOfferings,
-    mentorShops
 } = require("../server/db/dummyData");
 const {
     generateShops,
@@ -38,8 +37,8 @@ const seed = async () => {
         console.log(`seeded ${reviews.length} reviews`);
 
         // SHOPS
-
-        const shops = await Shop.bulkCreate(mentorShops);
+        const dataShops = generateShops();
+        const shops = await Shop.bulkCreate(dataShops);
         console.log(shops[0].__proto__);
         console.log(`seeded ${shops.length} shops`);
 
@@ -49,30 +48,29 @@ const seed = async () => {
 
         // // // MENTOR SHOPS  and REVIEWS - TEMP
         for (let i = 0; i < shops.length; i++) {
-            await shops[i].addReview(reviews[i]);
-            await shops[i].addReview(reviews[i + 1]);
-            await shops[i].addReview(reviews[i + 2]);
+            const shuffled = reviews.sort(() => 0.5 - Math.random());
+            let selectedReviews = shuffled.slice(0, 5);
+            await shops[i].addReviews(selectedReviews);
         }
 
-        console.log(`seeded reviews for ${shops.length} reviews on shops`);
+        console.log(`seeded 5 reviews for ${shops.length} shops`);
 
         // // MENTOR SHOPS && ADD OFFERINGS
         let mentors = users.filter(user => user.isMentor);
+
         for (let i = 0; i < mentors.length; i++) {
-            let shopOfferings = new Set();
-            let num = Math.floor(Math.random() * (offerings.length + 1));
-            let oIndex = Math.floor(Math.random() * offerings.length);
-            while (num < shopOfferings.length) {
-                let offering = offerings[oIndex];
-                shopOfferings.add(offering);
-            }
-            await mentors[i].setOfferings(shopOfferings);
+            await mentors[i].setOwner(shops[i])
+
         }
 
-        for (let i = 0; i < shops.length; i++) {
-            let mentors = users.filter(user => user.isMentor);
-            await shops[i].addOwner(mentors[i]);
+        for (let i = 0; i < mentors.length; i++) {
+            const shuffled = offerings.sort(() => 0.5 - Math.random());
+            await mentors[i].setOfferings(shuffled.slice(0, 3));
+
         }
+
+
+
     } catch (err) {
         console.log(err);
     }

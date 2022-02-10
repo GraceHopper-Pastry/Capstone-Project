@@ -25,7 +25,7 @@ function generateOfferings() {
     let offering = dataOfferings[oIndex];
     shopOfferings.add(offering);
   }
-  return shopOfferings;
+  return Array.from(shopOfferings);
 
 }
 
@@ -47,7 +47,7 @@ function generateShopReviews() {
 
 function generateShops() {
   const fakeUsers = generateUsers();
-  let fakeshops = [];
+  let fakeShops = [];
   for (let i = 0; i < dataUsers.length; i++) {
     if (dataUsers[i].isMentor) {
       let shop = {

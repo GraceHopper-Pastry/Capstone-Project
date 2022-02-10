@@ -46,32 +46,41 @@ User.belongsToMany(User, {
 
 User.belongsToMany(Offering, {
     as: "Offerings",
-    through: Shop
+    through: Shop,
+    constraints: false
+
 });
 
 Offering.belongsToMany(User,{
     as: "Customers",
     through: Shop,
+    constraints: false,
     scope: {
         isMentor: false
-    }
+    },
+    foreignKey: "customerId"
+
 })
 
-Offering.belongsToMany(User,{
-    as: "Providers",
-    through: Shop,
-    scope: {
-        isMentor: true
-    }
-})
+// Offering.belongsToMany(User,{
+//     as: "Providers",
+//     through: Shop,
+//     constraints: false,
+//     scope: {
+//         isMentor: true
+//     }
+// })
 
 
-Shop.hasOne(User, {
+User.hasOne(Shop, {
     as: "Owner",
-    foreignKey: "shopId"
+    foreignKey: "ownerId",
+
 })
 
-User.belongsTo(Shop);
+Shop.belongsTo(User, {
+    as: "Owner",
+});
 
 User.belongsToMany(Review, {
     through: "users_reviews"

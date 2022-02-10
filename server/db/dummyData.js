@@ -1,4 +1,5 @@
-const users = [
+const loremIpsum = require('lorem-ipsum').loremIpsum;
+const dataUsers = [
   {
     firstName: 'Steve',
     lastName: 'Jobs',
@@ -397,180 +398,7 @@ const users = [
     intakeScore: 0,
   },
 ];
-const shopLogos = [logo1, logo2, logo3, logo4];
-const generateRandomLogo = () => {
-    return shopLogos[Math.floor(Math.random() * shopLogos.length)];
-};
 
-const dataUsers = [
-    {
-        firstName: "Steve",
-        lastName: "Jobs",
-        password: "steve_pw",
-        email: "steve@email.com",
-        isMentor: true,
-        profilePic:
-            "https://stackingthebricks.com/assets/images/steve-jobs-headshot.png",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "Apple Computers",
-        jobTitle: "Founder and CEO",
-        location: "Cupertino, California",
-        industry: "Computer Technology",
-        yearsInTech: 30,
-        school: "Reed College",
-        areaOfStudy: "Computer Science",
-        endYear: 1972,
-        intakeScore: 1
-    },
-    {
-
-        firstName: "Grace",
-        lastName: "Hopper",
-        password: "grace_pw",
-        email: "grace@email.com",
-        isMentor: true,
-        profilePic:
-            "https://www.onthisday.com/images/people/grace-hopper-medium.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "US Navy",
-        jobTitle: "Rear Admiral",
-        location: "Arlington, Virginia",
-        industry: "Computer Technology",
-        yearsInTech: 36,
-        school: "Smith College",
-        areaOfStudy: "Mathematics",
-        endYear: 1944,
-        intakeScore: 2
-    },
-    {
-
-        firstName: "Ada",
-        lastName: "Lovelace",
-        password: "ada_pw",
-        email: "ada@email.com",
-        isMentor: true,
-        profilePic:
-            "https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "Analytical Engine",
-        jobTitle: "Programmer",
-        location: "England",
-        industry: "Computer Technology",
-        yearsInTech: 14,
-        school: "Tottenham Hale",
-        areaOfStudy: "Mathematics",
-        endYear: 1852,
-        intakeScore: 3
-    },
-    {
-
-        firstName: "Katherine",
-        lastName: "Johnson",
-        password: "katherine_pw",
-        email: "katherine@email.com",
-        isMentor: true,
-        profilePic: "https://regmedia.co.uk/2020/02/24/katherine_johnson.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "NASA",
-        jobTitle: "Programmer",
-        location: "Cape Canaveral, Florida",
-        industry: "Aerospace",
-        yearsInTech: 30,
-        school: "West Virginia State College",
-        areaOfStudy: "Mathematics",
-        endYear: 1937,
-        intakeScore: 4
-    },
-    {
-
-        firstName: "Margaret",
-        lastName: "Hamilton",
-        password: "margaret_pw",
-        email: "margaret@email.com",
-        isMentor: true,
-        profilePic:
-            "https://www.vintageisthenewold.com/wp-content/uploads/2016/07/margaret_hamilton1.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "MIT Instrumentation Laboratory",
-        jobTitle: "Software Engineer",
-        location: "Cambridge, Massachusetts",
-        industry: "Abstract Mathematics",
-        yearsInTech: 35,
-        school: "Earlham College",
-        areaOfStudy: "Mathematics",
-        endYear: 1958,
-        intakeScore: 1
-    },
-    {
-
-        firstName: "Reshma",
-        lastName: "Saujani",
-        password: "reshma_pw",
-        email: "reshma_pw@email.com",
-        isMentor: true,
-        profilePic:
-            "https://globalny.biz/usr/person/big-person-15905325181.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "Girls Who Code",
-        jobTitle: "Founder",
-        location: "New York, New York",
-        industry: "Computer Programming",
-        yearsInTech: 14,
-        school: "Harvard University",
-        areaOfStudy: "Public Policy",
-        endYear: 1999,
-        intakeScore: 2
-    },
-
-    {
-
-        firstName: "Sheryl",
-        lastName: "Sandbert",
-        password: "sheryl_pw",
-        email: "sheryl@email.com",
-        isMentor: true,
-        profilePic:
-            "https://i2.wp.com/www.dailycal.org/assets/uploads/2016/03/Sheryl-Sandberg.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "Facebook",
-        jobTitle: "COO",
-        location: "Menlo Park, California",
-        industry: "Social Media",
-        yearsInTech: 32,
-        school: "Harvard College",
-        areaOfStudy: "Economics",
-        endYear: 1999,
-        intakeScore: 3
-    },
-
-    {
-        firstName: "Susan",
-        lastName: "Wojcicki",
-        password: "susan_pw",
-        email: "susan@email.com",
-        isMentor: true,
-        profilePic:
-            "https://jpreis.com/wp/wp-content/uploads/2018/03/susan-wojcicki-youtube-ceo.jpg",
-        bio:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        employer: "YouTube",
-        jobTitle: "CEO",
-        location: "San Bruno, California",
-        industry: "Social Media",
-        yearsInTech: 33,
-        school: "Harvard University",
-        areaOfStudy: "Humanities",
-        endYear: 1990,
-        intakeScore: 4
-    },
-];
 
 const dataOfferings = [
     {
@@ -619,64 +447,62 @@ const dataOfferings = [
 
 
 
-const generateRandomShopOfferings = () => {
-    let shopOfferings = [];
-    const map = new Map();
-    let num = Math.floor(Math.random() * dataOfferings.length + 1);
-    while (num > shopOfferings.length) {
-        let idx = Math.floor(Math.random() * dataOfferings.length);
-        let offering = dataOfferings[idx];
-        for (offering of dataOfferings) {
-            if (!map.has(offering.title)) {
-                map.set(offering.title, true);
-                shopOfferings.push({
-                    id: offering.id,
-                    title: offering.title,
-                    description: offering.description,
+// const generateRandomShopOfferings = () => {
+//     let shopOfferings = [];
+//     const map = new Map();
+//     let num = Math.floor(Math.random() * dataOfferings.length + 1);
+//     while (num > shopOfferings.length) {
+//         let idx = Math.floor(Math.random() * dataOfferings.length);
+//         let offering = dataOfferings[idx];
+//         for (offering of dataOfferings) {
+//             if (!map.has(offering.title)) {
+//                 map.set(offering.title, true);
+//                 shopOfferings.push({
+//                     id: offering.id,
+//                     title: offering.title,
+//                     description: offering.description,
 
-                });
-            } else {
-                continue;
-            }
-        }
-    }
-    return shopOfferings;
-};
+//                 });
+//             } else {
+//                 continue;
+//             }
+//         }
+//     }
+//     return shopOfferings;
+// };
 
 
-let mentorShops = [];
-for (let i = 0; i < dataUsers.length; i++) {
-    let user = dataUsers[i];
-    // each mentor should have a single mentorShop
-    if (user.isMentor) {
-        let mentorShop = {
-            name: `${user.firstName} ${user.lastName}'s Shop`,
-            description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20}),
-            shopLogo: generateRandomLogo(),
-        };
-        // magic methods 1:1
-        mentorShop.userId = user.id;
-        mentorShops.push(mentorShop);
-    } else continue;
-}
+// let mentorShops = [];
+// for (let i = 0; i < dataUsers.length; i++) {
+//     let user = dataUsers[i];
+//     // each mentor should have a single mentorShop
+//     if (user.isMentor) {
+//         let mentorShop = {
+//             name: `${user.firstName} ${user.lastName}'s Shop`,
+//             description: loremIpsum({ count: 1, units: "sentences", wordsPerUnit: 20}),
+//             shopLogo: generateRandomLogo(),
+//         };
+//         // magic methods 1:1
+//         mentorShop.userId = user.id;
+//         mentorShops.push(mentorShop);
+//     } else continue;
+// }
 
-const review = {
-    reviewMessage: loremIpsum({ count: 50, suffix: "\n", units: "words" })
-};
+// const review = {
+//     reviewMessage: loremIpsum({ count: 50, suffix: "\n", units: "words" })
+// };
 
-let shopReviews = [];
-for (let i = 0; i < mentorShops.length; i++) {
-    while (shopReviews.length <= dataUsers.length ) {
-        shopReviews.push(review);
-    }
-}
+// let shopReviews = [];
+// for (let i = 0; i < mentorShops.length; i++) {
+//     while (shopReviews.length <= dataUsers.length ) {
+//         shopReviews.push(review);
+//     }
+// }
 
 // Append Randomized assortment of offerings to MentorShop
 
 module.exports = {
     dataUsers,
     dataOfferings,
-    shopReviews,
-    mentorShops,
-    generateRandomShopOfferings
+
 };

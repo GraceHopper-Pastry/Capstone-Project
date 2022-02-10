@@ -13,12 +13,10 @@ const Shop = db.define("shop", {
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false,
         unique: true
     },
     description: {
         type: Sequelize.TEXT,
-        allowNull: false
     },
     shopLogo: {
         type: Sequelize.STRING,
