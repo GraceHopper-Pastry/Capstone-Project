@@ -26,7 +26,6 @@ router.get("/:channelId/messages", async (req, res, next) => {
 router.get("/:id", requireToken, async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    console.log({ id });
     if (req.user.isMentor === true) {
       const channel = await Relationship.findOne({
         where: {

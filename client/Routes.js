@@ -23,7 +23,6 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-    console.log("AM I LOGGED IN???", isLoggedIn);
     return (
       <div>
         {isLoggedIn ? (

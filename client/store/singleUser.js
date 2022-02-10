@@ -46,13 +46,11 @@ export const updateUser = (user, history) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        console.log("INSIDE THUNK");
         const { data: newUser } = await axios.put("/api/users", user, {
           headers: {
             authorization: token,
           },
         });
-        console.log("USER IN THUNK", newUser);
         dispatch(_updateUser(newUser));
         //where should this page push to?
         history.push("/users");

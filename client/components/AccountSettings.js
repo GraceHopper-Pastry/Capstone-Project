@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import ImageUpload from "./ImageUpload";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Button, Stack } from "@mui/material";
 
 const AccountSettings = () => {
+  const { intakeScore } = useSelector((state) => state.singleUserReducer);
   return (
     <Stack>
       <Button color="inherit" size="medium">
@@ -13,7 +14,12 @@ const AccountSettings = () => {
       <Button component={Link} to={"/users/edit"} color="inherit" size="medium">
         Edit Info
       </Button>
-      <Button color="inherit" size="medium">
+      <Button
+        component={Link}
+        to={`/users/mentors/${intakeScore}`}
+        color="inherit"
+        size="medium"
+      >
         View Mentor Options
       </Button>
     </Stack>

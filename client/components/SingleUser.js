@@ -63,13 +63,15 @@ class SingleUser extends React.Component {
                     {user.Mentees.length ? (
                       <div>
                         {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                        <ul>
+                          {user.Mentees.map((person) => (
+                            <li key={person.id}>
+                              {person.firstName + " " + person.lastName}
 
-                        {user.Mentees.map((person) => (
-                          <div key={person.id}>
-                            <h2>person.firstName + " " + person.lastName</h2>
-                            <img src={person.profilePic} />
-                          </div>
-                        ))}
+                              <img src={person.profilePic} />
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ) : (
                       <div>
@@ -83,24 +85,28 @@ class SingleUser extends React.Component {
                 <div>
                   {/* IF USER IS A MENTEE */}
                   <h1>Your Mentor:</h1>
-                  <Link to={`/users/mentors/${user.intakeScore}`}>
-                    CLICK ME!
-                  </Link>
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                    {user.Mentors.length > 0 ? (
-                      user.Mentors.map((person) => {
-                        <div>
-                          <h2>{person.firstName + " " + person.lastName}</h2>
-                          <img width="200px" src={person.profilePic} />
-                        </div>;
-                      })
+                    {user.Mentors.length ? (
+                      <div>
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                        <ul>
+                          {user.Mentors.map((person) => (
+                            <li key={person.id}>
+                              <h2>
+                                {person.firstName + " " + person.lastName}
+                              </h2>
+                              <img width="200px" src={person.profilePic} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ) : (
                       <div>
                         {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
-                        <Button color="inherit" size="medium">
-                          Take our assessment to be assigned a mentor!
-                        </Button>
+                        <Link to={`/users/mentors/${user.intakeScore}`}>
+                          CLICK ME!
+                        </Link>
                       </div>
                     )}
                   </div>

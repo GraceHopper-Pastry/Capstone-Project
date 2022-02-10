@@ -18,10 +18,10 @@ class Matches extends React.Component {
 
   selectMentor(event, mentor) {
     event.preventDefault();
-    console.log("IN SELECT MENTOR");
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
+    this.props.history.push("/users");
   }
 
   render() {
@@ -32,21 +32,22 @@ class Matches extends React.Component {
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
-          {matches.map((mentor) => (
+          <div>
             <ul>
-              <li key={mentor.id}>
-                <h2>{mentor.firstName + " " + mentor.lastName}</h2>
-
-                <img width={"200vw"} src={mentor.profilePic} />
-                <button
-                  type="submit"
-                  onClick={(event) => this.selectMentor(event, mentor)}
-                >
-                  Select Mentor
-                </button>
-              </li>
+              {matches.map((mentor) => (
+                <li key={mentor.id}>
+                  <h2>{mentor.firstName + " " + mentor.lastName}</h2>
+                  <img width={"200px"} src={mentor.profilePic} />
+                  <button
+                    type="submit"
+                    onClick={(event) => this.selectMentor(event, mentor)}
+                  >
+                    Select Mentor
+                  </button>
+                </li>
+              ))}
             </ul>
-          ))}
+          </div>
         </div>
       </div>
     );
