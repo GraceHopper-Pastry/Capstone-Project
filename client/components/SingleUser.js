@@ -52,68 +52,61 @@ class SingleUser extends React.Component {
           <p>End Year: {user.endYear}</p>
         </div>
         <div>
-          <div className="column right">
-            <h2>Start a Conversation</h2>
+          {/* IF USER IS A MENTOR */}
+          {user.isMentor ? (
             <div>
-              {/* IF USER IS A MENTOR */}
-              {user.isMentor ? (
-                <div>
-                  <h2>Your Mentees:</h2>
+              <h2>Your Mentees:</h2>
+              <div>
+                {user.Mentees.length ? (
                   <div>
-                    {user.Mentees.length ? (
-                      <div>
-                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
-                        <ul>
-                          {user.Mentees.map((person) => (
-                            <li key={person.id}>
-                              {person.firstName + " " + person.lastName}
+                    {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                    <ul>
+                      {user.Mentees.map((person) => (
+                        <li key={person.id}>
+                          {person.firstName + " " + person.lastName}
 
-                              <img src={person.profilePic} />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <div>
-                        {/* IF MENTOR HAS NOT YET BEEN ASSIGNED MENTEES */}
-                        <h1>Check back soon to meet your new mentees!</h1>
-                      </div>
-                    )}
+                          <img src={person.profilePic} />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
-              ) : (
-                <div>
-                  {/* IF USER IS A MENTEE */}
-                  <h1>Your Mentor:</h1>
+                ) : (
                   <div>
-                    {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                    {user.Mentors.length ? (
-                      <div>
-                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
-                        <ul>
-                          {user.Mentors.map((person) => (
-                            <li key={person.id}>
-                              <h2>
-                                {person.firstName + " " + person.lastName}
-                              </h2>
-                              <img width="200px" src={person.profilePic} />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <div>
-                        {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
-                        <Link to={`/users/mentors/${user.intakeScore}`}>
-                          CLICK ME!
-                        </Link>
-                      </div>
-                    )}
+                    {/* IF MENTOR HAS NOT YET BEEN ASSIGNED MENTEES */}
+                    <h1>Check back soon to meet your new mentees!</h1>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div>
+              {/* IF USER IS A MENTEE */}
+              <h1>Your Mentor:</h1>
+              <div>
+                {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
+                {user.Mentors.length ? (
+                  <div>
+                    {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                    <ul>
+                      {user.Mentors.map((person) => (
+                        <li key={person.id}>
+                          <h2>{person.firstName + " " + person.lastName}</h2>
+                          <img width="200px" src={person.profilePic} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div>
+                    {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
+                    <Link to={`/users/mentors/${user.intakeScore}`}>
+                      CLICK ME!
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
