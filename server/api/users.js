@@ -10,13 +10,6 @@ module.exports = router;
 
 router.get("/", requireToken, async (req, res, next) => {
   try {
-    // const users = await User.findAll({
-    //   // explicitly select only the id and username fields - even though
-    //   // users' passwords are encrypted, it won't help if we just
-    //   // send everything to anyone who asks!
-    //   attributes: ['id', 'email']
-    // })
-    // res.json(users)
     const userId = req.user.id;
     const user = await User.findByPk(userId, {
       include: ["Mentees", "Mentors"],
@@ -80,6 +73,7 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", requireToken, async (req, res, next) => {
   try {
+    console.log("hitting route");
     const userId = req.user.id;
     const userToUpdate = await User.findByPk(userId);
     if (req.body.Mentors) {

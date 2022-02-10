@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewMessageEntry from "./NewMessageEntry";
-import { fetchMessages } from "../../store/chat";
+import { fetchMessages } from "../../store/allMessages";
 
 const MessageList = ({ channel }) => {
   const messages = useSelector((state) => state.messageReducer.messages);

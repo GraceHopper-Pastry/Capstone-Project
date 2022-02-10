@@ -5,7 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import singleUserReducer from "./singleUser";
 import matchesReducer from "./matches";
-import messageReducer from "./chat";
+import messageReducer from "./allMessages";
 
 const reducer = combineReducers({
   auth,

@@ -32,12 +32,12 @@ class SingleUser extends React.Component {
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
-              <img width={"200vw"} src={user.profilePic} />
+              <img width={"400px"} src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
           ) : (
-            <img width="100px" src={user.profilePic} />
+            <img width="200px" src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -63,16 +63,13 @@ class SingleUser extends React.Component {
                     {user.Mentees.length ? (
                       <div>
                         {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
-                        <h2>
-                          {user.Mentees.map((person) => (
-                            <p>
-                              <li key={person.id}>
-                                {person.firstName} {person.lastName}
-                              </li>
-                              <img src={person.profilePic} />
-                            </p>
-                          ))}
-                        </h2>
+
+                        {user.Mentees.map((person) => (
+                          <div key={person.id}>
+                            <h2>person.firstName + " " + person.lastName</h2>
+                            <img src={person.profilePic} />
+                          </div>
+                        ))}
                       </div>
                     ) : (
                       <div>
@@ -92,18 +89,12 @@ class SingleUser extends React.Component {
                   <div>
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
                     {user.Mentors.length > 0 ? (
-                      <div>
-                        <h2>
-                          {user.Mentors.map((person) => (
-                            <p>
-                              <li key={person.id}>
-                                {person.firstName} {person.lastName}
-                              </li>
-                              <img src={person.profilePic} />
-                            </p>
-                          ))}
-                        </h2>
-                      </div>
+                      user.Mentors.map((person) => {
+                        <div>
+                          <h2>{person.firstName + " " + person.lastName}</h2>
+                          <img width="200px" src={person.profilePic} />
+                        </div>;
+                      })
                     ) : (
                       <div>
                         {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}

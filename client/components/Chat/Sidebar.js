@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import messageReducer, { fetchRelationship } from "../../store/chat";
+import messageReducer, { fetchRelationship } from "../../store/allMessages";
 //add onclick that changes the prop of the messageList?
 
 const Sidebar = ({ recipients, onChange }) => {

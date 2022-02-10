@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
 import MessageList from "./MessageList";
-import { fetchRelationships } from "../../store/chat";
+import { fetchRelationships } from "../../store/allMessages";
 
 const MainChat = () => {
   const { user, channels } = useSelector((state) => {

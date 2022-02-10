@@ -11,7 +11,7 @@ const Relationship = db.define("relationship", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoInvrement: true,
+    autoIncrement: true,
     allowNull: false,
   },
   mentorId: {
@@ -44,7 +44,7 @@ User.belongsToMany(User, {
 });
 
 User.belongsToMany(Offerings, {
-  through: "Shop",
+  through: "shop",
 });
 
 Message.belongsTo(Relationship);

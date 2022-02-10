@@ -33,18 +33,19 @@ class Matches extends React.Component {
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
           {matches.map((mentor) => (
-            <div>
+            <ul>
               <li key={mentor.id}>
-                {mentor.firstName} {mentor.lastName}
+                <h2>{mentor.firstName + " " + mentor.lastName}</h2>
+
+                <img width={"200vw"} src={mentor.profilePic} />
+                <button
+                  type="submit"
+                  onClick={(event) => this.selectMentor(event, mentor)}
+                >
+                  Select Mentor
+                </button>
               </li>
-              <img width={"200vw"} src={mentor.profilePic} />
-              <button
-                type="submit"
-                onClick={(event) => this.selectMentor(event, mentor)}
-              >
-                Select Mentor
-              </button>
-            </div>
+            </ul>
           ))}
         </div>
       </div>
