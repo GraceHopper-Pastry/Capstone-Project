@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import LoggedOutNavBar from "./loggedOutNavBar";
+import LoggedOutNavBar from "./LoggedOutNavBar";
 import LoggedInNavBar from "./loggedInNavBar";
 
 const Navigation = (props) => {
