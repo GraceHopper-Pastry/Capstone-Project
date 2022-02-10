@@ -6,12 +6,9 @@ import { fetchMessages } from "../../store/allMessages";
 const MessageList = ({ channel }) => {
   const messages = useSelector((state) => state.messageReducer.messages);
   const dispatch = useDispatch();
-  useEffect(
-    (channel) => {
-      dispatch(fetchMessages(channel));
-    },
-    [channel]
-  );
+  useEffect(() => {
+    dispatch(fetchMessages(channel));
+  }, [channel]);
 
   //this is where we need the relationsihp id!
 

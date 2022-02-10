@@ -5,16 +5,16 @@ import MessageList from "./MessageList";
 import { fetchRelationships } from "../../store/allMessages";
 
 const MainChat = () => {
-  const { user, channels } = useSelector((state) => {
+  const { user } = useSelector((state) => {
     return {
       user: state.singleUserReducer,
-      channels: state.messageReducer,
     };
   });
 
   const [channel, setChannel] = useState(null);
 
   function handleChange(newVal) {
+    console.log(newVal);
     setChannel(Number(newVal));
   }
 

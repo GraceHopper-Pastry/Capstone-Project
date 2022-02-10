@@ -15,6 +15,7 @@ const Sidebar = ({ recipients, onChange }) => {
 
   const clickHandler = (recipientId) => {
     let relationship = dispatch(fetchRelationship(recipientId));
+    console.log({ relationship });
     onChange(relationship.id);
   };
 
