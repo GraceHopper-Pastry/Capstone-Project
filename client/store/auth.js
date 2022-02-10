@@ -22,6 +22,7 @@ export const me = () => async (dispatch) => {
   let token = window.localStorage.getItem(TOKEN);
   if (!token || token == "undefined") {
     token = getTokenFromCookies();
+    window.localStorage.setItem(TOKEN, token);
   }
   if (token && token != "undefined") {
     const res = await axios.get("/auth/me", {
@@ -36,7 +37,9 @@ export const me = () => async (dispatch) => {
 export const authenticate = (email, password, method) => async (dispatch) => {
   try {
     const res = await axios.post(`/auth/${method}`, { email, password });
+    console.log(res);
     window.localStorage.setItem(TOKEN, res.data.token);
+    window.localStorage.setItem("jtest", "value");
     dispatch(me());
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
