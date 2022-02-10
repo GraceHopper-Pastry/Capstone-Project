@@ -32,12 +32,12 @@ class SingleUser extends React.Component {
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
-              <img width={"400px"} src={user.profilePic} />
+              <img style={{ width: "200px" }} src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
           ) : (
-            <img width="200px" src={user.profilePic} />
+            <img style={{ width: "200px" }} src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -65,7 +65,10 @@ class SingleUser extends React.Component {
                         <li key={person.id}>
                           {person.firstName + " " + person.lastName}
 
-                          <img src={person.profilePic} />
+                          <img
+                            style={{ width: "200px" }}
+                            src={person.profilePic}
+                          />
                         </li>
                       ))}
                     </ul>
@@ -91,7 +94,10 @@ class SingleUser extends React.Component {
                       {user.Mentors.map((person) => (
                         <li key={person.id}>
                           <h2>{person.firstName + " " + person.lastName}</h2>
-                          <img width="200px" src={person.profilePic} />
+                          <img
+                            style={{ width: "200px" }}
+                            src={person.profilePic}
+                          />
                         </li>
                       ))}
                     </ul>

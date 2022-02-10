@@ -40,11 +40,18 @@ export const clearMessages = () => {
 };
 
 //thunk creator
-export const fetchMessages = (channel) => {
+export const fetchMessages = (recipientId) => {
   return async (dispatch) => {
     try {
-      const { data } = await Axios.get(`/api/chat/${channel}/messages`);
-      dispatch(gotMessagesFromServer(data));
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await Axios.get(`/api/chat/messages/${recipientId}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(gotMessagesFromServer(data));
+      }
     } catch (err) {
       console.log(err);
     }
@@ -96,11 +103,13 @@ const initialState = {
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_MESSAGES_FROM_SERVER:
-      return { ...state, messages: action.messages };
+      console.log(`action`, action.messages);
+      return { ...state, messages: [...state.messages, ...action.messages] };
+
     case WRITE_MESSAGE:
       return { ...state, newMessageEntry: action.newMessageEntry };
     case GOT_NEW_MESSAGE_FROM_SERVER:
-      return { ...state, messages: [...state.messages, action.message] };
+      return { ...state, messages: [...state.messages, ...action.messages] };
     case GOT_RELATIONSHIP:
       return { ...state, currentRelationship: action.relationship };
     case RESET_MESSAGES:

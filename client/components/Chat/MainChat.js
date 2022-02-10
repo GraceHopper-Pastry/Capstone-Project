@@ -2,20 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
 import MessageList from "./MessageList";
-import { fetchRelationships } from "../../store/allMessages";
+import { fetchMessages } from "../../store/allMessages";
 
 const MainChat = () => {
-  const { user } = useSelector((state) => {
+  const dispatch = useDispatch();
+
+  const { user, messages } = useSelector((state) => {
     return {
       user: state.singleUserReducer,
+      messages: state.messageReducer.messages,
     };
   });
 
-  const [channel, setChannel] = useState(null);
+  const mainRelationship = user.Mentors[0]?.id || user.Mentees[0]?.id;
+
+  const [recipient, setRecipient] = useState(mainRelationship);
+
+  useEffect(() => {
+    dispatch(fetchMessages(recipient));
+  }, [recipient]);
 
   function handleChange(newVal) {
-    console.log(newVal);
-    setChannel(Number(newVal));
+    setRecipient(newVal);
   }
 
   //state of main chat determines what channel we are on - when teh channel changes the props passed to messageList and sideBar change - we pass setChannel to sidebar.
@@ -39,7 +47,7 @@ const MainChat = () => {
           onChange={handleChange}
         />
       )}
-      <MessageList channel={channel} />
+      <MessageList messages={messages} />
     </div>
   );
 };

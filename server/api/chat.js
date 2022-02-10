@@ -7,15 +7,43 @@ const {
 module.exports = router;
 
 // GET all the messages from a specific channel
-router.get("/:channelId/messages", async (req, res, next) => {
+router.get("/messages/:recipientId", requireToken, async (req, res, next) => {
   try {
-    const channelId = parseInt(req.params.channelId);
-    const messages = await Message.findAll({
-      where: {
-        relationshipId: channelId,
-      },
-    });
-    res.json(messages);
+    let user = req.user;
+    let userId = parseInt(user.id);
+    if (user.isMentor) {
+      const recipient = parseInt(req.params.recipientId);
+      const channel = await Relationship.findOne({
+        where: {
+          menteeId: recipient,
+          mentorId: userId,
+        },
+      });
+
+      const messages = await Message.findAll({
+        where: {
+          relationshipId: channel.id,
+        },
+      });
+      console.log({ messages });
+      res.send(messages);
+    } else {
+      const recipient = parseInt(req.params.recipientId);
+      const channel = await Relationship.findOne({
+        where: {
+          mentorId: recipient,
+          menteeId: userId,
+        },
+      });
+      console.log({ channel });
+      const messages = await Message.findAll({
+        where: {
+          relationshipId: channel.id,
+        },
+      });
+      console.log({ messages });
+      res.send(messages);
+    }
   } catch (err) {
     next(err);
   }

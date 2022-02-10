@@ -5,20 +5,6 @@ import messageReducer, { fetchRelationship } from "../../store/allMessages";
 //add onclick that changes the prop of the messageList?
 
 const Sidebar = ({ recipients, onChange }) => {
-  const dispatch = useDispatch();
-
-  // const { relationship } = useSelector((state) => {
-  //   return {
-  //     relationship: state.messageReducer.currentRelationship,
-  //   };
-  // });
-
-  const clickHandler = (recipientId) => {
-    let relationship = dispatch(fetchRelationship(recipientId));
-    console.log({ relationship });
-    onChange(relationship.id);
-  };
-
   return (
     <section className="sidebar">
       <div className="sidebar-header">
@@ -31,7 +17,7 @@ const Sidebar = ({ recipients, onChange }) => {
       {recipients.map((recipient) => {
         return (
           <div key={recipient.id}>
-            <Button onClick={() => clickHandler(recipient.id)}>
+            <Button onClick={() => onChange(recipient.id)}>
               {recipient.firstName + " " + recipient.lastName}
             </Button>
           </div>

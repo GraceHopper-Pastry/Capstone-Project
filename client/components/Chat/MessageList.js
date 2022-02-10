@@ -1,28 +1,30 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewMessageEntry from "./NewMessageEntry";
-import { fetchMessages } from "../../store/allMessages";
 
-const MessageList = ({ channel }) => {
-  const messages = useSelector((state) => state.messageReducer.messages);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchMessages(channel));
-  }, [channel]);
+const MessageList = ({ messages }) => {
+  // const { messages } = useSelector((state) => state.messageReducer);
 
-  //this is where we need the relationsihp id!
+  // const dispatch = useDispatch();
 
-  return (
+  // useEffect(() => {
+  //   dispatch(fetchMessages(recipient));
+  // }, [recipient]);
+
+  return messages ? (
     <div>
       <div>
-        {messages
-          .sort(function (x, y) {
-            return x.createdAt - y.createdAt;
-          })
-          .map((message) => (
-            <p>message.content</p>
+        <ul>
+          {messages.map((message) => (
+            <li key={message.id}>{message.content}</li>
           ))}
+        </ul>
       </div>
+      <NewMessageEntry />
+    </div>
+  ) : (
+    <div>
+      <div>{"No messages yet!"}</div>
       <NewMessageEntry />
     </div>
   );
