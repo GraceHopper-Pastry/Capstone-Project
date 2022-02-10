@@ -7,7 +7,7 @@ const {
 module.exports = router;
 
 // GET all the messages from a specific channel
-router.get("/messages/:recipientId", requireToken, async (req, res, next) => {
+router.get("/:recipientId/messages", requireToken, async (req, res, next) => {
   try {
     let user = req.user;
     let userId = parseInt(user.id);
@@ -24,8 +24,14 @@ router.get("/messages/:recipientId", requireToken, async (req, res, next) => {
         where: {
           relationshipId: channel.id,
         },
+        // include: [
+        //   {
+        //     model: Relationship,
+        //     attributes: ["id"],
+        //     attributes: ["relationshipId"],
+        //   },
+        // ],
       });
-      console.log({ messages });
       res.send(messages);
     } else {
       const recipient = parseInt(req.params.recipientId);
@@ -40,6 +46,14 @@ router.get("/messages/:recipientId", requireToken, async (req, res, next) => {
         where: {
           relationshipId: channel.id,
         },
+        // include: [
+        //   {
+        //     model: Relationship,
+        //     attributes: ["id"],
+        //     through: { attributes: ["relationshipId"] },
+        //     required: true,
+        //   },
+        // ],
       });
       console.log({ messages });
       res.send(messages);

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewMessageEntry from "./NewMessageEntry";
 
-const MessageList = ({ messages }) => {
+const MessageList = ({ msgByChannel }) => {
   // const { messages } = useSelector((state) => state.messageReducer);
 
   // const dispatch = useDispatch();
@@ -11,20 +11,15 @@ const MessageList = ({ messages }) => {
   //   dispatch(fetchMessages(recipient));
   // }, [recipient]);
 
-  return messages ? (
+  return (
     <div>
       <div>
         <ul>
-          {messages.map((message) => (
+          {msgByChannel.map((message) => (
             <li key={message.id}>{message.content}</li>
           ))}
         </ul>
       </div>
-      <NewMessageEntry />
-    </div>
-  ) : (
-    <div>
-      <div>{"No messages yet!"}</div>
       <NewMessageEntry />
     </div>
   );

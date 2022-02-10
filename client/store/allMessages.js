@@ -45,7 +45,7 @@ export const fetchMessages = (recipientId) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        const { data } = await Axios.get(`/api/chat/messages/${recipientId}`, {
+        const { data } = await Axios.get(`/api/chat/${recipientId}/messages`, {
           headers: {
             authorization: token,
           },
@@ -104,7 +104,7 @@ const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_MESSAGES_FROM_SERVER:
       console.log(`action`, action.messages);
-      return { ...state, messages: [...state.messages, ...action.messages] };
+      return { ...state, messages: [...action.messages] };
 
     case WRITE_MESSAGE:
       return { ...state, newMessageEntry: action.newMessageEntry };

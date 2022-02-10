@@ -26,28 +26,32 @@ const MainChat = () => {
     setRecipient(newVal);
   }
 
-  //state of main chat determines what channel we are on - when teh channel changes the props passed to messageList and sideBar change - we pass setChannel to sidebar.
-
-  //this is where we fetch channels
-
   return (
     <div>
-      {user.isMentor ? (
-        <Sidebar
-          id={user.id}
-          recipients={user.Mentees}
-          isMentor={user.isMentor}
-          onChange={handleChange}
-        />
-      ) : (
-        <Sidebar
-          id={user.id}
-          recipients={user.Mentors}
-          isMentor={user.isMentor}
-          onChange={handleChange}
-        />
-      )}
-      <MessageList messages={messages} />
+      <h1>Stack Support Chat</h1>
+
+      <div className="chat">
+        <div>
+          {user.isMentor ? (
+            <Sidebar
+              id={user.id}
+              recipients={user.Mentees}
+              isMentor={user.isMentor}
+              onChange={handleChange}
+            />
+          ) : (
+            <Sidebar
+              id={user.id}
+              recipients={user.Mentors}
+              isMentor={user.isMentor}
+              onChange={handleChange}
+            />
+          )}
+        </div>
+        <div>
+          <MessageList msgByChannel={messages} recipientId={recipient.id} />
+        </div>
+      </div>
     </div>
   );
 };
