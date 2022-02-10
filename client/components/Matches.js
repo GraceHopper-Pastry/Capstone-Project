@@ -17,7 +17,6 @@ class Matches extends React.Component {
   }
 
   selectMentor(event, mentor) {
-    event.preventDefault();
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
