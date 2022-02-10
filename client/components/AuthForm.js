@@ -39,7 +39,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
       <br />
       <a href="/auth/twitter">Authenticate with Twitter</a>
       <br />
-      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
+      {/* <a href="/auth/linkedin">Authenticate with LinkedIn</a> */}
     </div>
   );
 };
