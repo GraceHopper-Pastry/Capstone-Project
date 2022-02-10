@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchMatches } from "../store/matches";
-import { updateUser } from "../store/singleUser";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchMatches } from '../store/matches';
+import { updateUser } from '../store/singleUser';
+import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 class Matches extends React.Component {
   constructor() {
@@ -20,7 +20,7 @@ class Matches extends React.Component {
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
-    this.props.history.push("/users");
+    this.props.history.push('/users');
   }
 
   render() {
@@ -35,10 +35,14 @@ class Matches extends React.Component {
             <ul>
               {matches.map((mentor) => (
                 <li key={mentor.id}>
-                  <h2>{mentor.firstName + " " + mentor.lastName}</h2>
-                  <img width={"200px"} src={mentor.profilePic} />
+                  <h2>{mentor.firstName + ' ' + mentor.lastName}</h2>
+                  <p>{mentor.jobTitle + ' at ' + mentor.employer}</p>
+                  <img width={'200px'} src={mentor.profilePic} />
+                  <button type='button' onClick={'/mentor/:mentorid'}>
+                    Learn More
+                  </button>
                   <button
-                    type="submit"
+                    type='submit'
                     onClick={(event) => this.selectMentor(event, mentor)}
                   >
                     Select Mentor
