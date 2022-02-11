@@ -114,6 +114,10 @@ img {
   margin-bottom: 10px;
 }
 
+.socialBtn:hover {
+  color: white;
+}
+
 .authBtn {
   width: 190px;
   margin-left: 15px;
