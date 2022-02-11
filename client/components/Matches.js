@@ -12,24 +12,18 @@ class Matches extends React.Component {
   }
 
   componentDidMount() {
-    try {
-      const intakeScore = this.props.user.intakeScore;
-      return this.props.fetchMatches(intakeScore);
-    } catch (error) {
-      console.log('MATCHES COMPONENT WILL NOT MOUNT', error);
-    }
+    const intakeScore = this.props.user.intakeScore;
+    this.props.fetchMatches(intakeScore);
   }
 
   selectMentor(event, mentor) {
-    event.preventDefault();
-    console.log('IN SELECT MENTOR');
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
+    this.props.history.push('/users');
   }
 
   render() {
-    console.log('Matches render', this.props);
     const matches = this.props.matches;
 
     return (
@@ -37,20 +31,34 @@ class Matches extends React.Component {
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
-          {matches.map((mentor) => (
-            <div>
-              <li key={mentor.id}>
-                {mentor.firstName} {mentor.lastName}
-              </li>
-              <img width={'200vw'} src={mentor.profilePic} />
-              <button
-                type='submit'
-                onClick={(event) => this.selectMentor(event, mentor)}
-              >
-                Select Mentor
-              </button>
-            </div>
-          ))}
+          <div className='mentors'>
+            <ul>
+              {matches.map((mentor) => (
+                <li key={mentor.id}>
+                  <div className='card'>
+                    <div className='flex-container'></div>
+                    <h2>{mentor.firstName + ' ' + mentor.lastName}</h2>
+                    <p>{mentor.jobTitle + ' at ' + mentor.employer}</p>
+                    <img src={mentor.profilePic} />
+                    <button
+                      class='button'
+                      type='button'
+                      onClick={'/mentor/:mentorid'}
+                    >
+                      Learn More
+                    </button>
+                    <button
+                      class='button'
+                      type='submit'
+                      onClick={(event) => this.selectMentor(event, mentor)}
+                    >
+                      Select Mentor
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     );

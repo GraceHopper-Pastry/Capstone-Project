@@ -1,26 +1,19 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // eslint-disable-next-line no-unused-vars
-const passport = require('passport');
+const passport = require("passport");
+const { Route } = require("react-router");
 const {
   models: { User },
-} = require('../db');
-const requireToken = require('./authmiddleware');
+} = require("../db");
+const requireToken = require("./authmiddleware");
 
 module.exports = router;
 
-router.get('/', requireToken, async (req, res, next) => {
+router.get("/", requireToken, async (req, res, next) => {
   try {
-    console.log('requireToken');
-    // const users = await User.findAll({
-    //   // explicitly select only the id and username fields - even though
-    //   // users' passwords are encrypted, it won't help if we just
-    //   // send everything to anyone who asks!
-    //   attributes: ['id', 'email']
-    // })
-    // res.json(users)
     const userId = req.user.id;
     const user = await User.findByPk(userId, {
-      include: ['Mentees', 'Mentors'],
+      include: ["Mentees", "Mentors"],
     });
     res.json(user);
   } catch (err) {
@@ -29,7 +22,7 @@ router.get('/', requireToken, async (req, res, next) => {
 });
 
 //GET MENTOR MATCHES
-router.get('/mentors/:intakeScore', async (req, res, next) => {
+router.get("/mentors/:intakeScore", async (req, res, next) => {
   try {
     const mentors = await User.findAll({
       where: {
@@ -43,24 +36,8 @@ router.get('/mentors/:intakeScore', async (req, res, next) => {
   }
 });
 
-// //GET SINGLE USER
-// //will this route be protected?
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const users = await User.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//       attributes: ['id', 'firstName', 'lastName', 'email'],
-//     });
-//     res.json(users);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 // DELETE SINGLE USER
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const userToDelete = await User.findByPk(req.params.id);
     await userToDelete.destroy();
@@ -71,7 +48,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // ADD NEW USER
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     res.json(await User.create(req.body));
   } catch (error) {
@@ -79,49 +56,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// UPDATE SINGLE USER
-//need to add require token here, and change req.params.id to req.user.id from REQUIRETOKEN
-
-/////////THIS WORKS FOR MENTOR ASSIGNMENT
-// router.put('/', requireToken, async (req, res, next) => {
-//   try {
-//     const userId = req.user.id;
-//     const userToUpdate = await User.findByPk(userId);
-//     const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
-//     console.log('UPDATE SING USR', newUser);
-//     res.json(newUser);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-router.put('/', requireToken, async (req, res, next) => {
+router.put("/", requireToken, async (req, res, next) => {
   try {
+    console.log("hitting route");
     const userId = req.user.id;
-    const userToUpdate = await User.findByPk(userId);
-    console.log('PUT REQ', userToUpdate);
+    const userToUpdate = await User.findByPk(userId, {
+      include: ["Mentees", "Mentors"],
+    });
     if (req.body.Mentors) {
-      const newUser = await userToUpdate.setMentors(req.body.Mentors[0].id);
-      res.json(newUser);
+      await userToUpdate.setMentors(req.body.Mentors[0].id);
+      userToUpdate.save();
+      res.json(userToUpdate);
     } else {
       const newUser = await userToUpdate.update(req.body);
+
       res.json(newUser);
     }
   } catch (error) {
     next(error);
   }
 });
-
-///////////////////ORIGINAL PUT ROUTE///////////////////
-
-// router.put('/', requireToken, async (req, res, next) => {
-//   try {
-//     const userId = req.user.id;
-//     const userToUpdate = await User.findByPk(userId);
-//     const newUser = await userToUpdate.update(req.body);
-//     console.log('UPDATE SING USR', newUser);
-//     res.json(newUser);
-//   } catch (error) {
-//     next(error);
-//   }
-// });

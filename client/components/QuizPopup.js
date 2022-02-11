@@ -4,8 +4,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import IntakeForm from "./IntakeForm";
 //QuizPopup should only appear on page load if the user does not have an intake score
-export default function QuizPopup({ intakeScore }) {
-  const [open, setOpen] = useState(!intakeScore);
+export default function QuizPopup({ isOpen }) {
+  const [open, setOpen] = useState(isOpen);
 
   const handleClose = () => {
     setOpen(false);

@@ -394,84 +394,9 @@ const users = [
     school: 'n/a',
     areaOfStudy: 'n/a',
     endYear: 2022,
-    intakeScore: 0,
+    intakeScore: 100,
   },
 ];
-
-// const offerings = [
-//   {
-//     userId: 1,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 2,
-//     chat: true,
-//     advice: true,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 3,
-//     chat: true,
-//     advice: false,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 4,
-//     chat: true,
-//     advice: false,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 5,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 6,
-//     chat: true,
-//     advice: true,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 7,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 8,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 9,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 10,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-//   {
-//     userId: 11,
-//     chat: true,
-//     advice: true,
-//     liveQandA: true,
-//   },
-//   {
-//     userId: 12,
-//     chat: true,
-//     advice: false,
-//     liveQandA: false,
-//   },
-// ];
 
 const offerings = [
   {
@@ -490,6 +415,7 @@ const offerings = [
       'Formalism cubo-futurism neo-impressionism luminism deformalism cubism neo-dada hudson river school, russian symbolism geometric abstraction art nouveau post-structuralism color field painting. ',
   },
 ];
+
 module.exports = {
   users,
   offerings,
