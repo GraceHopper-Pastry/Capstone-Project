@@ -31,6 +31,10 @@ ul {
   list-style-type: none;
 }
 
+.chat {
+  display: flex;
+}
+
 img {
   width: 300px;
   height: 300px;
@@ -39,30 +43,106 @@ img {
 
 /* MENTOR MATCHES PAGE*/
 .mentors {
-  float: right;
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 60px;
   padding-bottom: 60px;
-}
-
-.flex-container {
-  position: relative;
-  background-color: #f1f1f1;
-  width: 200px;
-  margin: 10px;
-  text-align: center;
-  line-height: 25px;
-  font-size: 15px;
+  width: 100%;
 }
 
 .card {
-  /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.mentorbutton {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* SING IN and SIGN UP' */
+.authForm {
+  display: flex;
+  width: 520px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: white;
+  opacity: 85%;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.authContainer {
+  background-image: url('./images/logged_out/mentorship1.jpg');
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  /* width: 100vw;
+  height: 100vh;
+  background-image: url('./images/logged_out/mentorship1.jpg'); */
+}
+
+.auth {
+  padding-top: 20%;
+}
+
+.authForm form div {
+  margin-top: 0;
+}
+
+.authForm form a {
+  padding-top: 15px;
+  padding-left: 50px;
+  font-size: 10px;
+}
+
+.authSocialLinks {
+  padding-top: 30px;
+  margin-left: 10px;
+  padding-left: 17px;
+  border-left: 2px solid gray;
+}
+
+.socialBtn {
+  color: white;
+  min-width: 220px;
+  height: 38px;
+  margin-bottom: 10px;
+}
+
+.socialBtn:hover {
+  color: white;
+}
+
+.authBtn {
+  width: 190px;
+  margin-left: 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
 }

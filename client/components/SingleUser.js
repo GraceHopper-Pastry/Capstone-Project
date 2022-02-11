@@ -18,16 +18,6 @@ class SingleUser extends React.Component {
         <QuizPopup isOpen={user.intakeScore === null} />
         <div>
           <h2>Profile</h2>
-          <Button
-            class='button'
-            color='inherit'
-            size='medium'
-            onClick={() => this.props.history.push('/users/chat')}
-          >
-            {user.isMentor
-              ? 'Chat with your Mentees!'
-              : 'Chat with your Mentor'}
-          </Button>
         </div>
         <div className='single-user'>
           {user.profilePic ===
@@ -38,7 +28,7 @@ class SingleUser extends React.Component {
               <ImageUpload />
             </div>
           ) : (
-            <img width='200px' src={user.profilePic} />
+            <img style={{ width: '200' }} src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -66,7 +56,30 @@ class SingleUser extends React.Component {
                         <li key={person.id}>
                           {person.firstName + ' ' + person.lastName}
 
-                          <img src={person.profilePic} />
+                          <img
+                            style={{ width: '200px' }}
+                            src={person.profilePic}
+                          />
+                          <Button
+                            className='button'
+                            color='inherit'
+                            size='medium'
+                            onClick={() =>
+                              this.props.history.push('/users/chat')
+                            }
+                          >
+                            {user.isMentor
+                              ? 'Chat with your Mentees!'
+                              : 'Chat with your Mentor'}
+                          </Button>
+                          {/* <Button
+                            className='button'
+                            component={Link}
+                            type='button'
+                            to={'XXX'}
+                          >
+                            See Mentee Profile
+                          </Button> */}
                         </li>
                       ))}
                     </ul>
@@ -94,13 +107,26 @@ class SingleUser extends React.Component {
                           <h2>{person.firstName + ' ' + person.lastName}</h2>
                           <p>{person.jobTitle + ' at ' + person.employer}</p>
                           <img src={person.profilePic} />
-                          <button
-                            class='button'
+                          <Button
+                            className='button'
+                            color='inherit'
+                            size='medium'
+                            onClick={() =>
+                              this.props.history.push('/users/chat')
+                            }
+                          >
+                            {user.isMentor
+                              ? 'Chat with your Mentees!'
+                              : 'Chat with your Mentor'}
+                          </Button>
+                          {/* <Button
+                            className='button'
+                            component={Link}
                             type='button'
-                            onClick={'/mentor/:mentorid'}
+                            to={'/mentor/:mentorid'}
                           >
                             See Mentor Profile
-                          </button>
+                          </Button> */}
                         </li>
                       ))}
                     </ul>
