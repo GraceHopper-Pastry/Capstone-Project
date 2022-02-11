@@ -11,7 +11,7 @@ import AccountSettings from "./components/AccountSettings";
 import EditUser from "./components/EditUser";
 import Matches from "./components/Matches";
 import QuizPopup from "./components/QuizPopup";
-import MainChat from "./components/chat/MainChat";
+import MainChat from "./components/Chat/MainChat";
 
 /**
  * COMPONENT
