@@ -19,7 +19,7 @@ class SingleUser extends React.Component {
         <div>
           <h2>Profile</h2>
           <Button
-            class="button"
+            className="button"
             color="inherit"
             size="medium"
             onClick={() => this.props.history.push("/users/chat")}
@@ -38,7 +38,7 @@ class SingleUser extends React.Component {
               <ImageUpload />
             </div>
           ) : (
-            <img style={{ width: "200px" }} src={user.profilePic} />
+            <img style={{ width: "200" }} src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -98,9 +98,10 @@ class SingleUser extends React.Component {
                           <p>{person.jobTitle + " at " + person.employer}</p>
                           <img src={person.profilePic} />
                           <button
-                            class="button"
+                            className="button"
+                            component={Link}
                             type="button"
-                            onClick={"/mentor/:mentorid"}
+                            to={"/mentor/:mentorid"}
                           >
                             See Mentor Profile
                           </button>
