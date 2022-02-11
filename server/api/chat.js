@@ -19,20 +19,14 @@ router.get("/:recipientId/messages", requireToken, async (req, res, next) => {
           mentorId: userId,
         },
       });
+      const channelId = channel.id;
 
       const messages = await Message.findAll({
         where: {
-          relationshipId: channel.id,
+          relationshipId: channelId,
         },
-        // include: [
-        //   {
-        //     model: Relationship,
-        //     attributes: ["id"],
-        //     attributes: ["relationshipId"],
-        //   },
-        // ],
       });
-      res.send(messages);
+      res.json({ messages: messages, channel: channelId });
     } else {
       const recipient = parseInt(req.params.recipientId);
       const channel = await Relationship.findOne({
@@ -41,22 +35,15 @@ router.get("/:recipientId/messages", requireToken, async (req, res, next) => {
           menteeId: userId,
         },
       });
+      const channelId = channel.id;
       console.log({ channel });
       const messages = await Message.findAll({
         where: {
-          relationshipId: channel.id,
+          relationshipId: channelId,
         },
-        // include: [
-        //   {
-        //     model: Relationship,
-        //     attributes: ["id"],
-        //     through: { attributes: ["relationshipId"] },
-        //     required: true,
-        //   },
-        // ],
       });
       console.log({ messages });
-      res.send(messages);
+      res.json({ messages: messages, channel: channelId });
     }
   } catch (err) {
     next(err);
@@ -91,14 +78,21 @@ router.get("/:id", requireToken, async (req, res, next) => {
 // POST /api/chat/messages
 router.post("/messages", requireToken, async (req, res, next) => {
   try {
-    const id = req.user.id;
-    const channel = req.body.channelId;
+    console.log(`request.body`, req.body);
+    console.log(req.body.relationshipId, typeof req.body.relationshipId);
+    const id = Number(req.user.id);
+    const channel = Number(req.body.relationshipId);
+
+    console.log({ channel });
 
     const message = await Message.create({
       content: req.body.content,
       userId: id,
       relationshipId: channel,
     });
+
+    // let relationship = await Relationship.findByPk(channel);
+    // await relationship.setMessages(message.id);
     //check if you need to change this to an integer
     res.send(message);
   } catch (err) {

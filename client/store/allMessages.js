@@ -6,29 +6,18 @@ const TOKEN = "token";
 //action types
 
 const GOT_MESSAGES_FROM_SERVER = "GOT_MESSAGES_FROM_SERVER";
-const WRITE_MESSAGE = "WRITE_MESSAGE";
 const GOT_NEW_MESSAGE_FROM_SERVER = "GOT_NEW_MESSAGE_FROM_SERVER";
 const RESET_MESSAGES = "RESET_MESSAGES";
-const GOT_RELATIONSHIP = "GOT_RELATIONSHIP";
 
 //action creators
 
-export const gotMessagesFromServer = (messages) => {
+export const gotMessagesFromServer = ({ messages, channel }) => {
   return {
     type: GOT_MESSAGES_FROM_SERVER,
     messages,
+    channel,
   };
 };
-
-export const gotRelationship = (relationship) => ({
-  type: GOT_RELATIONSHIP,
-  relationship,
-});
-
-export const writeMessage = (inputContent) => ({
-  type: WRITE_MESSAGE,
-  newMessageEntry: inputContent,
-});
 
 export const _gotNewMessageFromServer = (message) => ({
   type: GOT_NEW_MESSAGE_FROM_SERVER,
@@ -58,34 +47,20 @@ export const fetchMessages = (recipientId) => {
   };
 };
 
-export const gotNewMessageFromServer = ({ user, channelId, content }) => {
-  return async (dispatch) => {
-    try {
-      const { data: created } = await Axios.post("/api/chat/messages", {
-        user,
-        channelId,
-        content,
-      });
-      const newMessage = created;
-      dispatch(_gotNewMessageFromServer(newMessage));
-      socket.emit("new-message", newMessage);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const fetchRelationship = (id) => {
+export const gotNewMessageFromServer = (body) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        const { data } = await Axios.get(`/api/chat/${id}`, {
+        console.log({ body });
+        const { data: created } = await Axios.post("/api/chat/messages", body, {
           headers: {
             authorization: token,
           },
         });
-        dispatch(gotRelationship(data));
+        const newMessage = created;
+        dispatch(_gotNewMessageFromServer(newMessage));
+        socket.emit("new-message", newMessage);
       }
     } catch (err) {
       console.log(err);
@@ -95,23 +70,20 @@ export const fetchRelationship = (id) => {
 
 const initialState = {
   messages: [],
-  //what is the purpose of this???
-  newMessageEntry: "",
-  currentRelationship: {},
+  currentChannel: null,
 };
 
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_MESSAGES_FROM_SERVER:
-      console.log(`action`, action.messages);
-      return { ...state, messages: [...action.messages] };
+      return {
+        ...state,
+        messages: [...action.messages],
+        currentChannel: action.channel,
+      };
 
-    case WRITE_MESSAGE:
-      return { ...state, newMessageEntry: action.newMessageEntry };
     case GOT_NEW_MESSAGE_FROM_SERVER:
-      return { ...state, messages: [...state.messages, ...action.messages] };
-    case GOT_RELATIONSHIP:
-      return { ...state, currentRelationship: action.relationship };
+      return { ...state, messages: [...state.messages, action.message] };
     case RESET_MESSAGES:
       return initialState;
     default:

@@ -4,22 +4,24 @@ import { gotNewMessageFromServer, writeMessage } from "../../store/allMessages";
 import { Button, TextField } from "@mui/material";
 const NewMessageEntry = () => {
   const [message, setMessage] = useState("");
-  const newMessageEntry = useSelector((state) => {
+
+  const { newMessageEntry, currentChannel } = useSelector((state) => {
     return {
       newMessageEntry: state.messageReducer.newMessageEntry,
+      currentChannel: state.messageReducer.currentChannel,
     };
   });
-  const name = useSelector((state) => state.author);
   const dispatch = useDispatch();
-  // const location = useLocation();
-  useEffect(() => {
-    if (message) {
-      dispatch(writeMessage(message));
-    }
-  }, [message]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(gotNewMessageFromServer({ message, channelId, name }));
+    console.log({ currentChannel });
+    dispatch(
+      gotNewMessageFromServer({
+        relationshipId: currentChannel,
+        content: message,
+      })
+    );
     setMessage("");
   };
   return (

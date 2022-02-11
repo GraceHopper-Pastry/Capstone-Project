@@ -3,14 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import NewMessageEntry from "./NewMessageEntry";
 
 const MessageList = ({ msgByChannel }) => {
-  // const { messages } = useSelector((state) => state.messageReducer);
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchMessages(recipient));
-  // }, [recipient]);
-
   return (
     <div>
       <div>

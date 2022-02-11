@@ -22,6 +22,10 @@ const MainChat = () => {
     dispatch(fetchMessages(recipient));
   }, [recipient]);
 
+  // useEffect(() => {
+  //   dispatch(fetchCurrentRelationship(recipient))
+  // }, )
+
   function handleChange(newVal) {
     setRecipient(newVal);
   }
