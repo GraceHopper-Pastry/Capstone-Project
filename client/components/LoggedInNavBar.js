@@ -97,11 +97,11 @@ const LoggedInNavBar = (props) => {
       name: "Chat",
       icon: <ChatBubbleIcon className="text-white" color="inherit" />,
     },
-    {
-      link: "/offerings",
-      name: "Offerings",
-      icon: <LocalOfferIcon className="text-white" color="inherit" />,
-    },
+    // {
+    //   link: '/offerings',
+    //   name: 'Offerings',
+    //   icon: <LocalOfferIcon className='text-white' color='inherit' />,
+    // },
   ];
   //use this for a user who has taken their intake quiz
   const settings = [

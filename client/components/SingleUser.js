@@ -5,7 +5,6 @@ import { fetchSingleUser } from "../store/singleUser";
 import ImageUpload from "./ImageUpload";
 import QuizPopup from "./QuizPopup";
 import { Button } from "@mui/material";
-import { useResolvedPath } from "react-router";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -19,16 +18,6 @@ class SingleUser extends React.Component {
         <QuizPopup isOpen={user.intakeScore === null} />
         <div>
           <h2>Profile</h2>
-          {(user.Mentors.length > 0 || user.Mentees.length > 0) && (
-            <Button
-              className="button"
-              color="inherit"
-              size="medium"
-              onClick={() => this.props.history.push("/users/chat")}
-            >
-              {"Start a conversation!"}
-            </Button>
-          )}
         </div>
         <div className="single-user">
           {user.profilePic ===
@@ -71,6 +60,26 @@ class SingleUser extends React.Component {
                             style={{ width: "200px" }}
                             src={person.profilePic}
                           />
+                          <Button
+                            className="button"
+                            color="inherit"
+                            size="medium"
+                            onClick={() =>
+                              this.props.history.push("/users/chat")
+                            }
+                          >
+                            {user.isMentor
+                              ? "Chat with your Mentees!"
+                              : "Chat with your Mentor"}
+                          </Button>
+                          {/* <Button
+                            className='button'
+                            component={Link}
+                            type='button'
+                            to={'XXX'}
+                          >
+                            See Mentee Profile
+                          </Button> */}
                         </li>
                       ))}
                     </ul>
@@ -98,14 +107,26 @@ class SingleUser extends React.Component {
                           <h2>{person.firstName + " " + person.lastName}</h2>
                           <p>{person.jobTitle + " at " + person.employer}</p>
                           <img src={person.profilePic} />
-                          <button
+                          <Button
                             className="button"
+                            color="inherit"
+                            size="medium"
+                            onClick={() =>
+                              this.props.history.push("/users/chat")
+                            }
+                          >
+                            {user.isMentor
+                              ? "Chat with your Mentees!"
+                              : "Chat with your Mentor"}
+                          </Button>
+                          {/* <Button
+                            className='button'
                             component={Link}
-                            type="button"
-                            to={"/mentor/:mentorid"}
+                            type='button'
+                            to={'/mentor/:mentorid'}
                           >
                             See Mentor Profile
-                          </button>
+                          </Button> */}
                         </li>
                       ))}
                     </ul>
