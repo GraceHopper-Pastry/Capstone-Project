@@ -50,32 +50,27 @@ class Matches extends React.Component {
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
           <div className="mentors">
-            <ul>
-              {matches.map((mentor) => (
-                <li key={mentor.id}>
-                  <div className="card">
-                    <div className="flex-container"></div>
-                    <h2>{mentor.firstName + " " + mentor.lastName}</h2>
-                    <p>{mentor.jobTitle + " at " + mentor.employer}</p>
-                    <img src={mentor.profilePic} />
-                    <button
-                      className="button"
-                      type="button"
-                      onClick={"/mentor/:mentorid"}
-                    >
-                      Learn More
-                    </button>
-                    <button
-                      className="button"
-                      type="submit"
-                      onClick={() => this.clickHandler(mentor)}
-                    >
-                      Select Mentor
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            {matches.map((mentor) => (
+              <div key={mentor.id} className="card">
+                <img src={mentor.profilePic} />
+                <h2>{mentor.firstName + " " + mentor.lastName}</h2>
+                <p>{mentor.jobTitle + " at " + mentor.employer}</p>
+                <button
+                  className="mentorbutton"
+                  type="button"
+                  onClick={"/mentor/:mentorid"}
+                >
+                  Learn More
+                </button>
+                <button
+                  className="mentorbutton"
+                  type="submit"
+                  onClick={() => this.clickHandler(mentor)}
+                >
+                  Select Mentor
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
