@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
+import GoogleButton from 'react-google-button';
+import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
 
 /**
  * COMPONENT
@@ -15,31 +17,54 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
+    <div className="authContainer">
+      <div className="auth">
+      <div className="authForm">
+      <Form onSubmit={handleSubmit} name={name}>
+        <FormGroup>
+          <Label htmlFor="email">
+            <small>Email</small>
+          </Label>
+          <Input name="email" type="text" />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="password">
             <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+          </Label>
+          <Input name="password" type="password" />
+        </FormGroup>
+          <Button  className="authBtn" type="submit">{displayName}</Button>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <br />
-      <a href="/auth/google">Authenticate with Google</a>
-      <br />
-      <a href="/auth/twitter">Authenticate with Twitter</a>
-      <br />
-      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
+        <a href="">click here to reset password</a>
+      </Form>
+      <div className="authSocialLinks">
+        {/* <GoogleButton type="dark"/> */}
+        <a href="/auth/google">
+          <Button className="socialBtn"
+            color="warning"
+          >
+            Authenticate with Google  
+          </Button>
+        </a> 
+        <br />
+        <a href="/auth/linkedin">
+          <Button className="socialBtn"
+            color="primary"
+          >
+            Authenticate with LinkedIn
+          </Button>
+        </a>
+        <br />
+        <a href="/auth/twitter">
+          <Button className="socialBtn"
+            color="success"
+          >
+            Authenticate with Twitter
+          </Button>
+        </a>
+      </div>
+    </div>
+      </div>
     </div>
   );
 };
@@ -54,7 +79,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
 const mapLogin = (state) => {
   return {
     name: "login",
-    displayName: "Login",
+    displayName: "LOGIN",
     error: state.auth.error,
   };
 };
@@ -62,7 +87,7 @@ const mapLogin = (state) => {
 const mapSignup = (state) => {
   return {
     name: "signup",
-    displayName: "Sign Up",
+    displayName: "SIGNUP",
     error: state.auth.error,
   };
 };
