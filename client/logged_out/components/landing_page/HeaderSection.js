@@ -143,12 +143,12 @@ const HeaderSection = (props) => {
           </Box>
         </div>
       </div>
-      <WaveBorder
+      {/* <WaveBorder
         topColor={theme.palette.common.white}
         bottomColor={theme.palette.common.grey}
         className={classes.waveBorder}
         animationNegativeDelay={2}
-      />
+      /> */}
     </Fragment>
   );
 };

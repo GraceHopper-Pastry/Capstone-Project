@@ -69,18 +69,18 @@ const LoggedOutNavBar = (props) => {
       name: 'Home',
       icon: <HomeIcon className='text-white' color='inherit' />,
     },
-    {
-      link: '/offerings',
-      name: 'Offerings',
-      icon: <LocalOfferIcon className='text-white' color='inherit' />,
-    },
+    // {
+    //   link: '/offerings',
+    //   name: 'Offerings',
+    //   icon: <LocalOfferIcon className='text-white' color='inherit' />,
+    // },
     {
       link: '/signup',
-      name: 'Apply Now',
+      name: 'Sign Up',
       icon: <HowToRegIcon className='text-white' color='inherit' />,
     },
     {
-      name: 'Login',
+      name: 'Sign In',
       link: '/login',
       icon: <LoginIcon className='text-white' color='inherit' />,
     },
