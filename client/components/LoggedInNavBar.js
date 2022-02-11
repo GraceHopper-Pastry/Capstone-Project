@@ -19,6 +19,7 @@ import {
 import { withStyles } from '@mui/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import LoginIcon from '@mui/icons-material/Login';
@@ -82,6 +83,11 @@ const LoggedInNavBar = (props) => {
       link: '/home',
       name: 'Home',
       icon: <HomeIcon className='text-white' color='inherit' />,
+    },
+    {
+      link: '/chat',
+      name: 'Chat',
+      icon: <ChatBubbleIcon className='text-white' color='inherit' />,
     },
     {
       link: '/offerings',

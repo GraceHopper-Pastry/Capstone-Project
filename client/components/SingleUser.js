@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchSingleUser } from "../store/singleUser";
-import ImageUpload from "./ImageUpload";
-import QuizPopup from "./QuizPopup";
-import { Button } from "@mui/material";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchSingleUser } from '../store/singleUser';
+import ImageUpload from './ImageUpload';
+import QuizPopup from './QuizPopup';
+import { Button } from '@mui/material';
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -19,25 +19,26 @@ class SingleUser extends React.Component {
         <div>
           <h2>Profile</h2>
           <Button
-            color="inherit"
-            size="medium"
-            onClick={() => this.props.history.push("/users/chat")}
+            class='button'
+            color='inherit'
+            size='medium'
+            onClick={() => this.props.history.push('/users/chat')}
           >
             {user.isMentor
-              ? "Chat with your Mentees!"
-              : "Chat with your Mentor"}
+              ? 'Chat with your Mentees!'
+              : 'Chat with your Mentor'}
           </Button>
         </div>
-        <div className="single-user">
+        <div className='single-user'>
           {user.profilePic ===
-          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
+          'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png' ? (
             <div>
-              <img width={"400px"} src={user.profilePic} />
+              <img src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
           ) : (
-            <img width="200px" src={user.profilePic} />
+            <img width='200px' src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -63,7 +64,7 @@ class SingleUser extends React.Component {
                     <ul>
                       {user.Mentees.map((person) => (
                         <li key={person.id}>
-                          {person.firstName + " " + person.lastName}
+                          {person.firstName + ' ' + person.lastName}
 
                           <img src={person.profilePic} />
                         </li>
@@ -90,8 +91,16 @@ class SingleUser extends React.Component {
                     <ul>
                       {user.Mentors.map((person) => (
                         <li key={person.id}>
-                          <h2>{person.firstName + " " + person.lastName}</h2>
-                          <img width="200px" src={person.profilePic} />
+                          <h2>{person.firstName + ' ' + person.lastName}</h2>
+                          <p>{person.jobTitle + ' at ' + person.employer}</p>
+                          <img src={person.profilePic} />
+                          <button
+                            class='button'
+                            type='button'
+                            onClick={'/mentor/:mentorid'}
+                          >
+                            See Mentor Profile
+                          </button>
                         </li>
                       ))}
                     </ul>

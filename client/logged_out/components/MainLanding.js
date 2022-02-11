@@ -20,7 +20,7 @@ const MainLanding = props => {
     <div className={classes.wrapper}>
       <Fragment>
         <HeaderSection />
-        <OfferSection />
+        {/* <OfferSection /> */}
         <Footer />
       </Fragment>
     </div>

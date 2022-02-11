@@ -394,7 +394,7 @@ const users = [
     school: 'n/a',
     areaOfStudy: 'n/a',
     endYear: 2022,
-    intakeScore: 0,
+    intakeScore: 100,
   },
 ];
 
