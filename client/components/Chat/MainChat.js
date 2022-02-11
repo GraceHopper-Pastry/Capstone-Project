@@ -2,44 +2,60 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
 import MessageList from "./MessageList";
-import { fetchRelationships } from "../../store/allMessages";
+import { fetchMessages } from "../../store/allMessages";
 
 const MainChat = () => {
-  const { user, channels } = useSelector((state) => {
+  const dispatch = useDispatch();
+
+  const { user, messages } = useSelector((state) => {
     return {
       user: state.singleUserReducer,
-      channels: state.messageReducer,
+      messages: state.messageReducer.messages,
     };
   });
 
-  const [channel, setChannel] = useState(null);
+  const mainRelationship = user.Mentors[0]?.id || user.Mentees[0]?.id;
+
+  const [recipient, setRecipient] = useState(mainRelationship);
+
+  useEffect(() => {
+    dispatch(fetchMessages(recipient));
+  }, [recipient]);
+
+  // useEffect(() => {
+  //   dispatch(fetchCurrentRelationship(recipient))
+  // }, )
 
   function handleChange(newVal) {
-    setChannel(Number(newVal));
+    setRecipient(newVal);
   }
-
-  //state of main chat determines what channel we are on - when teh channel changes the props passed to messageList and sideBar change - we pass setChannel to sidebar.
-
-  //this is where we fetch channels
 
   return (
     <div>
-      {user.isMentor ? (
-        <Sidebar
-          id={user.id}
-          recipients={user.Mentees}
-          isMentor={user.isMentor}
-          onChange={handleChange}
-        />
-      ) : (
-        <Sidebar
-          id={user.id}
-          recipients={user.Mentors}
-          isMentor={user.isMentor}
-          onChange={handleChange}
-        />
-      )}
-      <MessageList channel={channel} />
+      <h1>Stack Support Chat</h1>
+
+      <div className="chat">
+        <div>
+          {user.isMentor ? (
+            <Sidebar
+              id={user.id}
+              recipients={user.Mentees}
+              isMentor={user.isMentor}
+              onChange={handleChange}
+            />
+          ) : (
+            <Sidebar
+              id={user.id}
+              recipients={user.Mentors}
+              isMentor={user.isMentor}
+              onChange={handleChange}
+            />
+          )}
+        </div>
+        <div>
+          <MessageList msgByChannel={messages} recipientId={recipient.id} />
+        </div>
+      </div>
     </div>
   );
 };
