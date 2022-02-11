@@ -7,10 +7,13 @@ const UPDATE_USER = "UPDATE_USER";
 const RESET_USER = "RESET_USER";
 
 // Single users action creator
-export const getSingleUser = (user) => ({
-  type: GET_SINGLE_USER,
-  user,
-});
+export const getSingleUser = (user) => {
+  return {
+    type: GET_SINGLE_USER,
+    user,
+  };
+};
+
 const _updateUser = (user) => {
   return {
     type: UPDATE_USER,
@@ -40,6 +43,7 @@ export const fetchSingleUser = () => {
     }
   };
 };
+
 //update the user when new info is entered
 export const updateUser = (user, history) => {
   return async (dispatch) => {

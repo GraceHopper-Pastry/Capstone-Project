@@ -1,6 +1,6 @@
-import React, { useState, memo } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { useState, memo } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import {
   AppBar,
@@ -15,18 +15,18 @@ import {
   Hidden,
   IconButton,
   Box,
-} from '@mui/material';
-import { withStyles } from '@mui/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import BookIcon from '@mui/icons-material/Book';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import LoginIcon from '@mui/icons-material/Login';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+} from "@mui/material";
+import { withStyles } from "@mui/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import BookIcon from "@mui/icons-material/Book";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import LoginIcon from "@mui/icons-material/Login";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 const styles = (theme) => ({
   appBar: {
@@ -34,11 +34,11 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.common.white,
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   brandText: {
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
     fontWeight: 400,
   },
   menuButtonText: {
@@ -46,7 +46,7 @@ const styles = (theme) => ({
     fontWeight: theme.typography.h6.fontWeight,
   },
   noDecoration: {
-    textDecoration: 'none !important',
+    textDecoration: "none !important",
   },
 });
 
@@ -65,69 +65,69 @@ const LoggedOutNavBar = (props) => {
 
   const menuPages = [
     {
-      link: '/',
-      name: 'Home',
-      icon: <HomeIcon className='text-white' color='inherit' />,
+      link: "/",
+      name: "Home",
+      icon: <HomeIcon className="text-white" color="inherit" />,
     },
     {
-      link: '/offerings',
-      name: 'Offerings',
-      icon: <LocalOfferIcon className='text-white' color='inherit' />,
+      link: "/offerings",
+      name: "Offerings",
+      icon: <LocalOfferIcon className="text-white" color="inherit" />,
     },
     {
-      link: '/signup',
-      name: 'Apply Now',
-      icon: <HowToRegIcon className='text-white' color='inherit' />,
+      link: "/signup",
+      name: "Sign Up",
+      icon: <HowToRegIcon className="text-white" color="inherit" />,
     },
     {
-      name: 'Login',
-      link: '/login',
-      icon: <LoginIcon className='text-white' color='inherit' />,
+      name: "Login",
+      link: "/login",
+      icon: <LoginIcon className="text-white" color="inherit" />,
     },
   ];
 
   return (
     <div className={classes.root}>
-      <AppBar position='static' className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>
             <Typography
-              variant='h4'
+              variant="h4"
               className={classes.brandText}
-              display='inline'
-              color='inherit'
+              display="inline"
+              color="inherit"
             ></Typography>
             <Typography
-              variant='h4'
+              variant="h4"
               className={classes.brandText}
-              display='inline'
-              color='inherit'
+              display="inline"
+              color="inherit"
             ></Typography>
           </div>
-          <div mdup='true'>
-            <Tooltip title='Open Navigation Menu'>
+          <div mdup="true">
+            <Tooltip title="Open Navigation Menu">
               <IconButton
                 className={classes.menuButtonText}
                 onClick={handleOpenNavMenu}
-                color='inherit'
-                aria-label='menu'
-                edge='start'
-                size='large'
+                color="inherit"
+                aria-label="menu"
+                edge="start"
+                size="large"
               >
-                <MenuIcon color='inherit' />
+                <MenuIcon color="inherit" />
               </IconButton>
             </Tooltip>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -136,7 +136,7 @@ const LoggedOutNavBar = (props) => {
               <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
             </Menu>
           </div>
-          <div smdown='true'>
+          <div smdown="true">
             {menuPages.map((page) => {
               if (page.link) {
                 return (
@@ -145,8 +145,8 @@ const LoggedOutNavBar = (props) => {
                     component={Link}
                     to={page.link}
                     className={classes.noDecoration}
-                    color='inherit'
-                    size='medium'
+                    color="inherit"
+                    size="medium"
                     classes={{ text: classes.menuButtonText }}
                     endIcon={page.icon}
                   >
@@ -156,8 +156,8 @@ const LoggedOutNavBar = (props) => {
               } else {
                 return (
                   <Button
-                    color='inherit'
-                    size='medium'
+                    color="inherit"
+                    size="medium"
                     onClick={page.onClick}
                     classes={{ text: classes.menuButtonText }}
                     key={page.name}

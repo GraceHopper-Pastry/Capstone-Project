@@ -1,9 +1,9 @@
-import React, { useState, memo } from 'react';
-import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { onClear } from '../store/singleUser';
-import { logout } from '../store/auth';
+import React, { useState, memo, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { onClear } from "../store/singleUser";
+import { logout } from "../store/auth";
 // import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import {
   AppBar,
@@ -15,29 +15,29 @@ import {
   Button,
   IconButton,
   Box,
-} from '@mui/material';
-import { withStyles } from '@mui/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import LoginIcon from '@mui/icons-material/Login';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-
+} from "@mui/material";
+import { withStyles } from "@mui/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import LoginIcon from "@mui/icons-material/Login";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import { fetchSingleUser } from "../store/singleUser";
 const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.common.white,
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   brandText: {
-    fontFamily: 'Roboto',
+    fontFamily: "Roboto",
     fontWeight: 400,
   },
   menuButtonText: {
@@ -45,7 +45,7 @@ const styles = (theme) => ({
     fontWeight: theme.typography.h6.fontWeight,
   },
   noDecoration: {
-    textDecoration: 'none !important',
+    textDecoration: "none !important",
   },
 });
 
@@ -57,6 +57,14 @@ const LoggedInNavBar = (props) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const intakeScore = useSelector(
+    (state) => state.singleUserReducer.intakeScore
+  );
+
+  useEffect(() => {
+    dispatch(fetchSingleUser());
+  }, [intakeScore]);
 
   const handleClick = () => {
     dispatch(onClear());
@@ -80,77 +88,96 @@ const LoggedInNavBar = (props) => {
 
   const menuPages = [
     {
-      link: '/home',
-      name: 'Home',
-      icon: <HomeIcon className='text-white' color='inherit' />,
+      link: "/home",
+      name: "Home",
+      icon: <HomeIcon className="text-white" color="inherit" />,
     },
     {
-      link: '/chat',
-      name: 'Chat',
-      icon: <ChatBubbleIcon className='text-white' color='inherit' />,
+      link: "/chat",
+      name: "Chat",
+      icon: <ChatBubbleIcon className="text-white" color="inherit" />,
     },
     {
-      link: '/offerings',
-      name: 'Offerings',
-      icon: <LocalOfferIcon className='text-white' color='inherit' />,
+      link: "/offerings",
+      name: "Offerings",
+      icon: <LocalOfferIcon className="text-white" color="inherit" />,
+    },
+  ];
+  //use this for a user who has taken their intake quiz
+  const settings = [
+    {
+      link: "/users",
+      name: "Profile",
+      icon: <HomeIcon className="text-white" />,
+    },
+    {
+      link: "/account",
+      name: "Account Settings",
+      icon: <ManageAccountsIcon className="text-white" />,
     },
   ];
 
-  const settings = [
+  //use this for a user who has not taken their intake quiz so they can get back to the quiz view easily
+  const settingsNoQuiz = [
     {
-      link: '/users',
-      name: 'Profile',
-      icon: <HomeIcon className='text-white' />,
+      link: "/users",
+      name: "Profile",
+      icon: <HomeIcon className="text-white" />,
     },
     {
-      link: '/account',
-      name: 'Account Settings',
-      icon: <ManageAccountsIcon className='text-white' />,
+      link: "/account",
+      name: "Account Settings",
+      icon: <ManageAccountsIcon className="text-white" />,
+    },
+    {
+      link: "/quiz",
+      name: "Mentor Match Quiz",
+      icon: <HomeIcon className="text-white" />,
     },
   ];
 
   return (
     <div className={classes.root}>
-      <AppBar position='static' className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>
             <Typography
-              variant='h4'
+              variant="h4"
               className={classes.brandText}
-              display='inline'
-              color='inherit'
+              display="inline"
+              color="inherit"
             ></Typography>
             <Typography
-              variant='h4'
+              variant="h4"
               className={classes.brandText}
-              display='inline'
-              color='inherit'
+              display="inline"
+              color="inherit"
             ></Typography>
           </div>
-          <div mdup='true'>
-            <Tooltip title='Open Navigation Menu'>
+          <div mdup="true">
+            <Tooltip title="Open Navigation Menu">
               <IconButton
                 className={classes.menuButtonText}
                 onClick={handleOpenNavMenu}
-                color='inherit'
-                aria-label='menu'
-                edge='start'
-                size='large'
+                color="inherit"
+                aria-label="menu"
+                edge="start"
+                size="large"
               >
-                <MenuIcon color='inherit' />
+                <MenuIcon color="inherit" />
               </IconButton>
             </Tooltip>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -159,7 +186,7 @@ const LoggedInNavBar = (props) => {
               <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
             </Menu>
           </div>
-          <div smdown='true'>
+          <div smdown="true">
             {menuPages.map((page) => {
               return (
                 <Button
@@ -167,8 +194,8 @@ const LoggedInNavBar = (props) => {
                   component={Link}
                   to={page.link}
                   className={classes.noDecoration}
-                  color='inherit'
-                  size='medium'
+                  color="inherit"
+                  size="medium"
                   classes={{ text: classes.menuButtonText }}
                   endIcon={page.icon}
                 >
@@ -178,52 +205,70 @@ const LoggedInNavBar = (props) => {
             })}
             <Button
               component={Link}
-              to='/home'
+              to="/home"
               className={classes.noDecoration}
-              color='inherit'
-              size='medium'
+              color="inherit"
+              size="medium"
               classes={{ text: classes.menuButtonText }}
               onClick={handleClick}
-              endIcon={<LogoutIcon className='text-white' color='inherit' />}
+              endIcon={<LogoutIcon className="text-white" color="inherit" />}
             >
               Logout
             </Button>
           </div>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='Open settings'>
+            <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <AccountCircle />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
-              id='menu-appbar'
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => {
-                return (
-                  <MenuItem
-                    key={setting.name}
-                    to={setting.link}
-                    component={Link}
-                    className={classes.noDecoration}
-                    onClick={handleCloseUserMenu}
-                  >
-                    <Typography textAlign='center'>{setting.name}</Typography>
-                  </MenuItem>
-                );
-              })}
+              {intakeScore !== null
+                ? settings.map((setting) => {
+                    return (
+                      <MenuItem
+                        key={setting.name}
+                        to={setting.link}
+                        component={Link}
+                        className={classes.noDecoration}
+                        onClick={handleCloseUserMenu}
+                      >
+                        <Typography textAlign="center">
+                          {setting.name}
+                        </Typography>
+                      </MenuItem>
+                    );
+                  })
+                : settingsNoQuiz.map((setting) => {
+                    return (
+                      <MenuItem
+                        key={setting.name}
+                        to={setting.link}
+                        component={Link}
+                        className={classes.noDecoration}
+                        onClick={handleCloseUserMenu}
+                      >
+                        <Typography textAlign="center">
+                          {setting.name}
+                        </Typography>
+                      </MenuItem>
+                    );
+                  })}
             </Menu>
           </Box>
         </Toolbar>
