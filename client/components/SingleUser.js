@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchSingleUser } from '../store/singleUser';
-import ImageUpload from './ImageUpload';
-import QuizPopup from './QuizPopup';
-import { Button } from '@mui/material';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchSingleUser } from "../store/singleUser";
+import ImageUpload from "./ImageUpload";
+import QuizPopup from "./QuizPopup";
+import { Button } from "@mui/material";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -19,16 +19,16 @@ class SingleUser extends React.Component {
         <div>
           <h2>Profile</h2>
         </div>
-        <div className='single-user'>
+        <div className="single-user">
           {user.profilePic ===
-          'https://zultimate.com/wp-content/uploads/2019/12/default-profile.png' ? (
+          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
               <img src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
           ) : (
-            <img style={{ width: '200' }} src={user.profilePic} />
+            <img style={{ width: "200" }} src={user.profilePic} />
           )}
           <p>First name: {user.firstName}</p>
           <p>Last name: {user.lastName}</p>
@@ -54,23 +54,23 @@ class SingleUser extends React.Component {
                     <ul>
                       {user.Mentees.map((person) => (
                         <li key={person.id}>
-                          {person.firstName + ' ' + person.lastName}
+                          {person.firstName + " " + person.lastName}
 
                           <img
-                            style={{ width: '200px' }}
+                            style={{ width: "200px" }}
                             src={person.profilePic}
                           />
                           <Button
-                            className='button'
-                            color='inherit'
-                            size='medium'
+                            className="button"
+                            color="inherit"
+                            size="medium"
                             onClick={() =>
-                              this.props.history.push('/users/chat')
+                              this.props.history.push("/users/chat")
                             }
                           >
                             {user.isMentor
-                              ? 'Chat with your Mentees!'
-                              : 'Chat with your Mentor'}
+                              ? "Chat with your Mentees!"
+                              : "Chat with your Mentor"}
                           </Button>
                           {/* <Button
                             className='button'
@@ -104,20 +104,20 @@ class SingleUser extends React.Component {
                     <ul>
                       {user.Mentors.map((person) => (
                         <li key={person.id}>
-                          <h2>{person.firstName + ' ' + person.lastName}</h2>
-                          <p>{person.jobTitle + ' at ' + person.employer}</p>
+                          <h2>{person.firstName + " " + person.lastName}</h2>
+                          <p>{person.jobTitle + " at " + person.employer}</p>
                           <img src={person.profilePic} />
                           <Button
-                            className='button'
-                            color='inherit'
-                            size='medium'
+                            className="button"
+                            color="inherit"
+                            size="medium"
                             onClick={() =>
-                              this.props.history.push('/users/chat')
+                              this.props.history.push("/users/chat")
                             }
                           >
                             {user.isMentor
-                              ? 'Chat with your Mentees!'
-                              : 'Chat with your Mentor'}
+                              ? "Chat with your Mentees!"
+                              : "Chat with your Mentor"}
                           </Button>
                           {/* <Button
                             className='button'
