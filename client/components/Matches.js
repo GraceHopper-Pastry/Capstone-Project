@@ -1,14 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchMatches } from '../store/matches';
-import { updateUser } from '../store/singleUser';
-import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchMatches } from "../store/matches";
+import { updateUser } from "../store/singleUser";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 class Matches extends React.Component {
   constructor() {
     super();
     this.selectMentor = this.selectMentor.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -16,11 +17,28 @@ class Matches extends React.Component {
     this.props.fetchMatches(intakeScore);
   }
 
-  selectMentor(event, mentor) {
+  selectMentor(mentor) {
     const user = this.props.user;
     user.Mentors = [mentor];
     this.props.updateUser(user);
-    this.props.history.push('/users');
+    this.props.history.push("/users");
+  }
+
+  clickHandler(mentor) {
+    if (this.props.user.Mentors[0]) {
+      if (
+        confirm(
+          "Are you sure? Once you select a new mentor, you will lose your conversation history with your current mentor."
+        )
+      ) {
+        console.log("hello");
+        this.selectMentor(mentor);
+      } else {
+        return;
+      }
+    } else {
+      this.selectMentor(mentor);
+    }
   }
 
   render() {
@@ -31,26 +49,26 @@ class Matches extends React.Component {
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
-          <div className='mentors'>
+          <div className="mentors">
             <ul>
               {matches.map((mentor) => (
                 <li key={mentor.id}>
-                  <div className='card'>
-                    <div className='flex-container'></div>
-                    <h2>{mentor.firstName + ' ' + mentor.lastName}</h2>
-                    <p>{mentor.jobTitle + ' at ' + mentor.employer}</p>
+                  <div className="card">
+                    <div className="flex-container"></div>
+                    <h2>{mentor.firstName + " " + mentor.lastName}</h2>
+                    <p>{mentor.jobTitle + " at " + mentor.employer}</p>
                     <img src={mentor.profilePic} />
                     <button
-                      class='button'
-                      type='button'
-                      onClick={'/mentor/:mentorid'}
+                      className="button"
+                      type="button"
+                      onClick={"/mentor/:mentorid"}
                     >
                       Learn More
                     </button>
                     <button
-                      class='button'
-                      type='submit'
-                      onClick={(event) => this.selectMentor(event, mentor)}
+                      className="button"
+                      type="submit"
+                      onClick={() => this.clickHandler(mentor)}
                     >
                       Select Mentor
                     </button>

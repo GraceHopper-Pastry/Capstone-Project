@@ -5,6 +5,7 @@ import { fetchSingleUser } from "../store/singleUser";
 import ImageUpload from "./ImageUpload";
 import QuizPopup from "./QuizPopup";
 import { Button } from "@mui/material";
+import { useResolvedPath } from "react-router";
 
 class SingleUser extends React.Component {
   componentDidMount() {
@@ -18,16 +19,16 @@ class SingleUser extends React.Component {
         <QuizPopup isOpen={user.intakeScore === null} />
         <div>
           <h2>Profile</h2>
-          <Button
-            className="button"
-            color="inherit"
-            size="medium"
-            onClick={() => this.props.history.push("/users/chat")}
-          >
-            {user.isMentor
-              ? "Chat with your Mentees!"
-              : "Chat with your Mentor"}
-          </Button>
+          {(user.Mentors.length > 0 || user.Mentees.length > 0) && (
+            <Button
+              className="button"
+              color="inherit"
+              size="medium"
+              onClick={() => this.props.history.push("/users/chat")}
+            >
+              {"Start a conversation!"}
+            </Button>
+          )}
         </div>
         <div className="single-user">
           {user.profilePic ===
