@@ -1,4 +1,4 @@
-import { red, pink} from '@mui/material/colors';
+import { red, pink } from '@mui/material/colors';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 // breakpoints
@@ -9,14 +9,14 @@ const sm = 600;
 const xs = 0;
 
 // background
-const background = "#f5f5f5";
+const background = '#f5f5f5';
 
 // spacing
 const spacing = 8;
 
 // border
 const borderWidth = 2;
-const borderColor = "rgba(0,0,0,0.2)"
+const borderColor = 'rgba(0,0,0,0.2)';
 
 // A custom theme for this app
 const theme = createTheme({
@@ -37,7 +37,7 @@ const theme = createTheme({
       contrastText: '#000',
     },
     common: {
-      black:'rgb(36, 40, 44)',
+      black: 'rgb(36, 40, 44)',
       grey: '#343a40',
       white: '#ffffff',
     },
@@ -48,9 +48,9 @@ const theme = createTheme({
       main: red.A400,
     },
     background: {
-      default: background
+      default: background,
     },
-    spacing
+    spacing,
   },
   breakpoints: {
     // Define custom breakpoint values.
@@ -63,8 +63,8 @@ const theme = createTheme({
       lg,
       md,
       sm,
-      xs
-    }
+      xs,
+    },
   },
   border: {
     borderColor: borderColor,
@@ -73,8 +73,8 @@ const theme = createTheme({
   overrides: {
     MuiExpansionPanel: {
       root: {
-        position: "static"
-      }
+        position: 'static',
+      },
     },
     MuiTableCell: {
       root: {
@@ -83,47 +83,47 @@ const theme = createTheme({
         borderBottom: `${borderWidth}px solid ${borderColor}`,
         [`@media (max-width:  ${sm}px)`]: {
           paddingLeft: spacing,
-          paddingRight: spacing
-        }
-      }
+          paddingRight: spacing,
+        },
+      },
     },
     MuiDivider: {
       root: {
         backgroundColor: borderColor,
-        height: borderWidth
-      }
+        height: borderWidth,
+      },
     },
     MuiPrivateNotchedOutline: {
       root: {
-        borderWidth: borderWidth
-      }
+        borderWidth: borderWidth,
+      },
     },
     MuiListItem: {
       divider: {
-        borderBottom: `${borderWidth}px solid ${borderColor}`
-      }
+        borderBottom: `${borderWidth}px solid ${borderColor}`,
+      },
     },
     MuiDialog: {
       paper: {
-        width: "100%",
+        width: '100%',
         maxWidth: 430,
         marginLeft: spacing,
-        marginRight: spacing
-      }
+        marginRight: spacing,
+      },
     },
     MuiTooltip: {
       tooltip: {
-        backgroundColor: '#343a40'
-      }
+        backgroundColor: '#343a40',
+      },
     },
     MuiExpansionPanelDetails: {
       root: {
         [`@media (max-width:  ${sm}px)`]: {
           paddingLeft: spacing,
-          paddingRight: spacing
-        }
-      }
-    }
+          paddingRight: spacing,
+        },
+      },
+    },
   },
 });
 

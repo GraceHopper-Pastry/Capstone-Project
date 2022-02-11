@@ -19,6 +19,7 @@ class SingleUser extends React.Component {
         <div>
           <h2>Profile</h2>
           <Button
+            class="button"
             color="inherit"
             size="medium"
             onClick={() => this.props.history.push("/users/chat")}
@@ -32,7 +33,7 @@ class SingleUser extends React.Component {
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
-              <img style={{ width: "200px" }} src={user.profilePic} />
+              <img src={user.profilePic} />
               <p>Upload a profile pic!</p>
               <ImageUpload />
             </div>
@@ -94,10 +95,15 @@ class SingleUser extends React.Component {
                       {user.Mentors.map((person) => (
                         <li key={person.id}>
                           <h2>{person.firstName + " " + person.lastName}</h2>
-                          <img
-                            style={{ width: "200px" }}
-                            src={person.profilePic}
-                          />
+                          <p>{person.jobTitle + " at " + person.employer}</p>
+                          <img src={person.profilePic} />
+                          <button
+                            class="button"
+                            type="button"
+                            onClick={"/mentor/:mentorid"}
+                          >
+                            See Mentor Profile
+                          </button>
                         </li>
                       ))}
                     </ul>
