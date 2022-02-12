@@ -63,9 +63,9 @@ img {
 
 .question-count {
   text-align: left;
-  color: rgb(78, 78, 78);
+  color: 414a4c;
   font-size: small;
-  background-color: aqua;
+  background-color: #45b1e8;
   padding: 5px;
 }
 
@@ -112,7 +112,7 @@ img {
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: #000;
+  background-color: #414a4c;
   text-align: center;
   cursor: pointer;
   width: 100%;
