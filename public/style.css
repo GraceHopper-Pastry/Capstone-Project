@@ -161,3 +161,7 @@ img {
   font-size: 14px;
   font-weight: bold;
 }
+
+.authBtn:hover {
+  color: white;
+}
