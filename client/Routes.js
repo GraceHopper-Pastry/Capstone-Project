@@ -38,7 +38,7 @@ class Routes extends Component {
               path="/users/mentors/:intakeScore"
               component={Matches}
             />
-
+            <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Redirect to="/home" />
           </Switch>
