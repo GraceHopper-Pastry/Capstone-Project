@@ -28,14 +28,13 @@ const WaveBorder = (props) => {
   const id = String(Math.random());
   const {
     className,
-    topColor,
     bottomColor,
     classes,
     animationNegativeDelay,
     ...rest
   } = props;
   return (
-    <div className={className} style={{ background: topColor }} {...rest}>
+    <div className={className} style={{ background: "none" }} {...rest}>
       <svg
         className={classes.waves}
         xmlns="http://www.w3.org/2000/svg"

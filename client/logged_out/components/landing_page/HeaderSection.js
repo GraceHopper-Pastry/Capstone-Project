@@ -55,7 +55,7 @@ const styles = (theme) => ({
     paddingTop: theme.spacing(2),
   },
   image: {
-    maxWidth: '100%',
+    position: 'relative',
     verticalAlign: 'middle',
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[4],
@@ -132,7 +132,7 @@ const HeaderSection = (props) => {
                   </Grid>
                   <Grid item md={8}>
                     <img
-                      src='/images/logged_out/headerPlaceholder.jpg'
+                      src='/images/brand_logo/social_kit/linkedin3.png'
                       className={classes.image}
                       alt='header placeholder'
                     />
