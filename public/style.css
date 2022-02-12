@@ -15,6 +15,21 @@ nav a {
   margin: 1em;
 }
 
+h1 {
+  text-align: center;
+  margin: 1em;
+  text-decoration-line: overline;
+}
+
+h3 {
+  padding: 10px;
+}
+
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
