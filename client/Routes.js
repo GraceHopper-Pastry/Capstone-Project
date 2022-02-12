@@ -12,6 +12,7 @@ import EditUser from "./components/EditUser";
 import Matches from "./components/Matches";
 import QuizPopup from "./components/QuizPopup";
 import MainChat from "./components/Chat/MainChat";
+import QuizPage from "./components/StaticQuizPage";
 
 /**
  * COMPONENT
@@ -28,6 +29,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route exact path="/quiz" component={QuizPage} />
             <Route exact path="/users" component={SingleUser} />
             <Route path="/account" component={AccountSettings} />
             <Route exact path="/users/edit" component={EditUser} />
@@ -36,13 +38,9 @@ class Routes extends Component {
               path="/users/mentors/:intakeScore"
               component={Matches}
             />
-<<<<<<< HEAD
-            <Redirect to='/home' />
-=======
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Redirect to="/home" />
->>>>>>> main
           </Switch>
         ) : (
           <Switch>

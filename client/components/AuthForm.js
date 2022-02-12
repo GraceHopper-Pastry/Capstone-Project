@@ -9,15 +9,6 @@ import Footer from '../logged_out/components/footer/Footer';
  * COMPONENT
  */
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
-<<<<<<< HEAD
-  useEffect(() =>{
-    if(document.cookie.includes('token')){
-      console.log("setting token");
-      window.localStorage.setItem('token', document.cookie.split('=')[1]);
-      document.cookie = "";
-    }
-  },[])
-=======
   useEffect(() => {
     if (document.cookie.includes('token')) {
       console.log('setting token');
@@ -25,7 +16,6 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
       document.cookie = '';
     }
   }, []);
->>>>>>> main
 
   return (
     <div className='authContainer'>
