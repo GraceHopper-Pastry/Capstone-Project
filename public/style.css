@@ -56,6 +56,37 @@ img {
   object-fit: cover;
 }
 
+/* QUIZ  */
+/* .MUIDialogContent-root {
+  padding: 0;
+} */
+
+.question-count {
+  text-align: left;
+  color: rgb(78, 78, 78);
+  font-size: small;
+  background-color: aqua;
+  padding: 5px;
+}
+
+.question-text {
+  display: flex;
+  flex-direction: row;
+  font-size: larger;
+  font-weight: bolder;
+  justify-content: center;
+  padding: 50px;
+}
+
+.answer-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 15px;
+}
+
 /* MENTOR MATCHES PAGE*/
 .mentors {
   align-items: center;
@@ -86,6 +117,10 @@ img {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+}
+
+.mentorbutton:hover {
+  color: white;
 }
 
 .card:hover {
