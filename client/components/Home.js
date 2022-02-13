@@ -15,7 +15,7 @@ import Onboarding from "./Onboarding";
 //   const { username } = props;
 
 const Home = () => {
-  const { firstName, intakeScore, profilePic } = useSelector(
+  const { firstName, profilePic } = useSelector(
     (state) => state.singleUserReducer
   );
 
@@ -26,17 +26,36 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {!firstName ? (
-        <Onboarding profilePic={profilePic} />
-      ) : (
-        <div>
-          <h3> Welcome, {firstName} </h3>
-          <Link to={`/users`}>
-            <p>View Profile</p>
-          </Link>
+      <div id="home-container">
+        <img
+          className="home-image"
+          src="images/logged_out/mentorship6.jpg"
+        ></img>
+        <div class="shape"></div>
+        <div className="text-block">
+          <div>
+            {!firstName ? (
+              <Onboarding profilePic={profilePic} />
+            ) : (
+              <div>
+                <div className="welcome">
+                  WELCOME {firstName.toUpperCase()}!
+                </div>
+                <h2>
+                  CONTINUE TO ACHIEVE YOUR CAREER GOALS WITH THE HELP OF STACK
+                  SUPPORT
+                </h2>
+                <Button component={Link} to={"/users"} variant="contained">
+                  GET STARTED
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
-      )}
-
+        <Link to={`/users`}>
+          <p>View Profile</p>
+        </Link>
+      </div>
       <Footer />
     </div>
   );

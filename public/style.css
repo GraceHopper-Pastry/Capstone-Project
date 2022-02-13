@@ -15,6 +15,27 @@ nav a {
   margin: 1em;
 }
 
+h1 {
+  text-align: center;
+  margin: 1em;
+  text-decoration-line: overline;
+}
+
+h2 {
+  line-height: 1.7em;
+  color: #45b1e8;
+  font-weight: bold;
+}
+
+h3 {
+  padding: 10px;
+}
+
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -42,6 +63,90 @@ img {
   object-fit: cover;
 }
 
+/* HOME PAGE */
+
+#welcome-block {
+  display: flex;
+  justify-content: left;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+#home-container {
+  position: relative;
+  display: block;
+  align-items: center;
+  height: 700px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.home-image {
+  height: 600px;
+  width: 450px;
+  position: absolute;
+  z-index: 2; /* Place this image in front of the shape */
+  top: 0;
+  left: 0;
+}
+
+.shape {
+  position: absolute;
+  z-index: 1;
+  top: 70px;
+  left: 70px;
+  width: 450px;
+  height: 600px;
+  background-image: linear-gradient(45deg, #45b1e8, #feb552);
+}
+
+.text-block {
+  position: absolute;
+  padding-top: 100px;
+  top: 0;
+  left: 700px;
+  width: 350px;
+  height: 600px;
+}
+
+.welcome {
+  line-height: 1.7em;
+  color: #feb552;
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* QUIZ  */
+.question-count {
+  text-align: left;
+  color: 414a4c;
+  font-size: medium;
+  background-color: #45b1e8;
+  padding: 15px;
+}
+
+.question-text {
+  display: flex;
+  flex-direction: row;
+  font-size: larger;
+  font-weight: bolder;
+  justify-content: center;
+  padding: 50px;
+}
+
+.answer-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 15px;
+}
+
 /* MENTOR MATCHES PAGE*/
 .mentors {
   align-items: center;
@@ -67,11 +172,15 @@ img {
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: #000;
+  background-color: #414a4c;
   text-align: center;
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+}
+
+.mentorbutton:hover {
+  color: white;
 }
 
 .card:hover {
@@ -100,10 +209,6 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
-  /* width: 100vw;
-  height: 100vh;
-  background-image: url('./images/logged_out/mentorship1.jpg'); */
 }
 
 .auth {
@@ -146,6 +251,10 @@ img {
   border: none;
   font-size: 14px;
   font-weight: bold;
+}
+
+.authBtn:hover {
+  color: white;
 }
 
 /* CHAT */
