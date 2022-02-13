@@ -56,17 +56,61 @@ img {
   object-fit: cover;
 }
 
-/* QUIZ  */
-/* .MUIDialogContent-root {
-  padding: 0;
-} */
+/* HOME PAGE */
 
+#welcome-block {
+  display: flex;
+  justify-content: left;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+#home-container {
+  position: relative;
+  display: block;
+  align-items: center;
+  height: 700px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+
+.home-image {
+  height: 600px;
+  width: 450px;
+  position: absolute;
+  z-index: 2; /* Place this image in front of the shape */
+  top: 0;
+  left: 0;
+}
+
+.shape {
+  position: absolute;
+  z-index: 1;
+  top: 70px;
+  left: 70px;
+  width: 450px;
+  height: 600px;
+  background-image: linear-gradient(45deg, #45b1e8, #7ac5b4);
+}
+
+.text-block {
+  position: absolute;
+  top: 0;
+  left: 700px;
+  width: 300px;
+  height: 600px;
+}
+
+/* QUIZ  */
 .question-count {
   text-align: left;
   color: 414a4c;
-  font-size: small;
+  font-size: medium;
   background-color: #45b1e8;
-  padding: 5px;
+  padding: 15px;
 }
 
 .question-text {
@@ -149,10 +193,6 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
-  /* width: 100vw;
-  height: 100vh;
-  background-image: url('./images/logged_out/mentorship1.jpg'); */
 }
 
 .auth {

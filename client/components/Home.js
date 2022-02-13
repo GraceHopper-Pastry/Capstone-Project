@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import Footer from "../logged_out/components/footer/Footer";
-import { fetchSingleUser } from "../store/singleUser";
-import { dividerClasses, Button } from "@mui/material";
-import UserForm from "./UserForm";
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import Footer from '../logged_out/components/footer/Footer';
+import { fetchSingleUser } from '../store/singleUser';
+import { dividerClasses, Button } from '@mui/material';
+import UserForm from './UserForm';
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -24,17 +24,28 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {!firstName ? (
-        <UserForm />
-      ) : (
-        <div>
-          <h3> Welcome, {firstName} </h3>
-          <Link to={`/users`}>
-            <p>View Profile</p>
-          </Link>
+      <div id='welcome-block'>
+        {!firstName ? (
+          <UserForm />
+        ) : (
+          <div>
+            <h3>Welcome {firstName}</h3>
+          </div>
+        )}
+      </div>
+      <div id='home-container'>
+        <img
+          className='home-image'
+          src='images/logged_out/mentorship6.jpg'
+        ></img>
+        <div class='shape'></div>
+        <div className='text-block'>
+          <h3>THIS IS THE TEXT</h3>
         </div>
-      )}
-
+        <Link to={`/users`}>
+          <p>View Profile</p>
+        </Link>
+      </div>
       <Footer />
     </div>
   );
