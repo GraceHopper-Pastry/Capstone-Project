@@ -1,94 +1,135 @@
-# FS-App-Template
+# Stack Support: 2111-GHP-Capstone-Project
 
 ## Directory Structure
 
-*As of: 2/1/2022*
+```
+  Capstone-Project
+  ├─ .babelrc
+  ├─ CHANGELOG.md
+  ├─ LICENSE
+  ├─ README.md
+  ├─ client
+  │  ├─ App.js
+  │  ├─ Cookies.js
+  │  ├─ Routes.js
+  │  ├─ components
+  │  │  ├─ AccountSettings.js
+  │  │  ├─ AuthForm.js
+  │  │  ├─ Chat
+  │  │  │  ├─ MainChat.js
+  │  │  │  ├─ MessageList.js
+  │  │  │  ├─ NewMessageEntry.js
+  │  │  │  └─ Sidebar.js
+  │  │  ├─ EditUser.js
+  │  │  ├─ Home.js
+  │  │  ├─ Home.spec.js
+  │  │  ├─ ImageUpload.js
+  │  │  ├─ IntakeForm.js
+  │  │  ├─ LoggedInNavBar.js
+  │  │  ├─ LoggedOutNavBar.js
+  │  │  ├─ Match.js
+  │  │  ├─ Matches.js
+  │  │  ├─ Navigation.js
+  │  │  ├─ QuizPopup.js
+  │  │  ├─ SingleUser.js
+  │  │  ├─ StaticQuizPage.js
+  │  │  └─ UserForm.js
+  │  ├─ history.js
+  │  ├─ index.js
+  │  ├─ logged_in
+  │  │  ├─ components
+  │  │  │  └─ userProfile
+  │  │  └─ dummy_data
+  │  │     └─ mentors.js
+  │  ├─ logged_out
+  │  │  └─ components
+  │  │     ├─ MainLanding.js
+  │  │     ├─ footer
+  │  │     │  └─ Footer.js
+  │  │     ├─ landing_page
+  │  │     │  ├─ HeaderSection.js
+  │  │     │  ├─ OfferCard.js
+  │  │     │  └─ OfferSection.js
+  │  │     └─ navigation
+  │  │        └─ OldNavBar.js
+  │  ├─ shared
+  │  │  └─ components
+  │  │     ├─ AccessibilitySwitch.js
+  │  │     ├─ Breadcrumb.js
+  │  │     ├─ CircularProgress.js
+  │  │     ├─ ComplexCard.js
+  │  │     ├─ CustomSlider.js
+  │  │     ├─ DelayingApearance.js
+  │  │     ├─ HelpIcon.js
+  │  │     ├─ HoverPopover.js
+  │  │     ├─ ImgMediaCard.js
+  │  │     ├─ Picker.js
+  │  │     ├─ SimpleGrow.js
+  │  │     ├─ SimplePortal.js
+  │  │     ├─ TabPanel.js
+  │  │     ├─ TemporaryDrawer.js
+  │  │     ├─ VerticalLinearSteper.js
+  │  │     ├─ Video.js
+  │  │     └─ WaveBorder.js
+  │  ├─ socket.js
+  │  ├─ store
+  │  │  ├─ allMessages.js
+  │  │  ├─ auth.js
+  │  │  ├─ auth.spec.js
+  │  │  ├─ index.js
+  │  │  ├─ matches.js
+  │  │  └─ singleUser.js
+  │  └─ theme.js
+  ├─ package.json
+  ├─ public
+  │  ├─ bundle.js
+  │  ├─ bundle.js.LICENSE.txt
+  │  ├─ bundle.js.map
+  │  ├─ favicon.ico
+  │  ├─ images
+  │  │  ├─ brand_logo
+  │  │  │  ├─ med_assets
+  │  │  │  ├─ misc
+  │  │  │  └─ social_kit
+  │  │  ├─ logged_in
+  │  │  └─ logged_out
+  │  ├─ index.html
+  │  ├─ style.css
+  │  └─ svg_assets
+  │     ├─ branding
+  │     └─ misc
+  ├─ script
+  │  └─ seed.js
+  └─ server
+    ├─ api
+    │  ├─ authmiddleware.js
+    │  ├─ chat.js
+    │  ├─ index.js
+    │  ├─ users.js
+    │  └─ users.spec.js
+    ├─ app.js
+    ├─ auth
+    │  ├─ AuthService.js
+    │  ├─ github.js
+    │  ├─ google.js
+    │  ├─ index.js
+    │  ├─ linkedIn.js
+    │  └─ twitter.js
+    ├─ db
+    │  ├─ db.js
+    │  ├─ dummyData.js
+    │  ├─ index.js
+    │  └─ models
+    │     ├─ Message.js
+    │     ├─ Offerings.js
+    │     ├─ Sessions.js
+    │     ├─ User.js
+    │     └─ User.spec.js
+    ├─ index.js
+    └─ socket
+        └─ index.js
 
-Capstone-Project
-├─ .babelrc
-├─ .vscode
-│  └─ settings.json
-├─ CHANGELOG.md
-├─ LICENSE
-├─ README.md
-├─ client
-│  ├─ App.js
-│  ├─ Routes.js
-│  ├─ history.js
-│  ├─ index.js
-│  ├─ logged_in
-│  │  ├─ components
-│  │  │  ├─ Button.js
-│  │  │  └─ ProfilePicture.js
-│  │  ├─ containers
-│  │  │  ├─ AcountInfoPage.js
-│  │  │  ├─ NavBar.js
-│  │  │  └─ SideBarMenu.js
-│  │  └─ dummy_data
-│  │     └─ mentors.js
-│  ├─ logged_out
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ old-components
-│  │  ├─ AuthForm.js
-│  │  ├─ Home.js
-│  │  ├─ Home.spec.js
-│  │  ├─ LandingPage
-│  │  │  ├─ Asyncronous.js
-│  │  │  ├─ AutoCompletePlayground.js
-│  │  │  ├─ MaterialIcons.js
-│  │  │  ├─ Types.js
-│  │  │  └─ index.js
-│  │  ├─ Navbar.js
-│  │  ├─ experiencePopup.js
-│  │  └─ intakeForm.js
-│  ├─ shared
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ store
-│  │  ├─ auth.js
-│  │  ├─ auth.spec.js
-│  │  └─ index.js
-│  └─ theme.js
-├─ package.json
-├─ public
-│  ├─ bundle.js
-│  ├─ bundle.js.map
-│  ├─ favicon.ico
-│  ├─ images
-│  │  ├─ logged_in
-│  │  │  └─ personPlaceholder1.jpg
-│  │  └─ logged_out
-│  │     ├─ headerPlaceholder.jpg
-│  │     ├─ mentorship1.jpg
-│  │     ├─ mentorship2.jpg
-│  │     ├─ mentorship3.jpg
-│  │     ├─ mentorship4.jpg
-│  │     ├─ mentorship5.jpg
-│  │     └─ mentorship6.jpg
-│  ├─ index.html
-│  ├─ manifest.json
-│  ├─ robots.txt
-│  └─ style.css
-├─ script
-│  └─ seed.js
-├─ server
-│  ├─ api
-│  │  ├─ index.js
-│  │  ├─ users.js
-│  │  └─ users.spec.js
-│  ├─ app.js
-│  ├─ auth
-│  │  └─ index.js
-│  ├─ db
-│  │  ├─ db.js
-│  │  ├─ index.js
-│  │  └─ models
-│  │     ├─ User.js
-│  │     └─ User.spec.js
-│  └─ index.js
-└─ webpack.config.js
-
+```
 ## Setup
 
 To use this as boilerplate, you'll need to take the following steps:
@@ -164,7 +205,4 @@ Database Setup
 
 
 Now, you should be deployed!
-
-```
-
 
