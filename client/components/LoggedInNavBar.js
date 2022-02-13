@@ -93,7 +93,7 @@ const LoggedInNavBar = (props) => {
       icon: <HomeIcon className="text-white" color="inherit" />,
     },
     {
-      link: "/chat",
+      link: "/users/chat",
       name: "Chat",
       icon: <ChatBubbleIcon className="text-white" color="inherit" />,
     },

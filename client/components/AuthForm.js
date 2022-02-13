@@ -21,7 +21,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
     <div className='authContainer'>
       <div className='auth'>
         <div className='authForm'>
-          <Form onSubmit={handleSubmit} name={name}>
+          <Form className="authFormEmail" onSubmit={handleSubmit} name={name}>
             <FormGroup>
               <Label htmlFor='email'>
                 <small>Email</small>

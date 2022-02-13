@@ -33,6 +33,7 @@ ul {
 
 .chat {
   display: flex;
+  height: 89vh;
 }
 
 img {
@@ -145,4 +146,198 @@ img {
   border: none;
   font-size: 14px;
   font-weight: bold;
+}
+
+
+/* CHAT */
+
+.messageBubble {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  max-width: fit-content;
+}
+
+.message {
+  background-color: rgb(85 108 214);
+  float: right;
+  font-size: 14px;
+}
+
+.incoming {
+  background-color: #198754;
+  float: left;
+  font-size: 14px;
+}
+
+
+.sendEmailIcon {
+  height: 30px;
+  width: 30px;
+}
+
+.messageList {
+  width: 78vw;
+  height: 81vh;
+  padding: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y:auto
+}
+
+.sidebarContainer {
+  /* width: 20%; */
+  border-right: 2px solid #dee2e6;
+}
+
+input.composeMessage {
+  font-size: 14px;
+  padding: 0 20px;
+  width: 80%;
+}
+
+h6 {
+  text-align: center;
+  background: #e9ecef;
+}
+
+.sidebar {
+  padding: 2px;
+  width: 20vw;
+}
+
+.recipientPic {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+  /* background: yellow; */
+  width: 19vw;
+  display: flex;
+  justify-content: flex-start;
+  /* padding: 10px; */
+  /* border-radius: 10px; */
+  margin-top: 10px;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.messageTime {
+  font-size: 10px;
+  font-style: italic;
+  padding-top: 3px;
+}
+
+.singleMessageContainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.conversations {
+  /* border-bottom: 2px solid gray; */
+  border-bottom: 2px solid #dee2e6;
+  margin-bottom: 15px;
+  font-size: 21pt;
+  padding-bottom: 10px;
+  padding-left: 10px
+}
+
+input.form-control.composeMessage {
+  font-size: 16px;
+}
+
+.incomingMsg {
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+@media (max-width: 970px) {
+  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+    width: 25vw;
+  }
+
+  .messageList {
+    width: 73vw;
+  }
+}
+
+@media (max-width: 730px) {
+  .recipientName {
+    font-size: 14px;
+  }
+
+  .conversations {
+    padding-left: 5px;
+    font-size: 16pt;
+  }
+
+  .recipientPic {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .messageList {
+    width: 72vw;
+    padding-right: 0;
+  }
+
+  .sidebar {
+    padding: 0;
+  }
+}
+
+@media (max-width: 651px) {
+  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+    width: 30vw;
+  }
+
+  .messageList {
+    width: 65vw;
+  }
+
+  .authForm {
+    flex-direction: column;
+    width: 300px;
+    height: 450px;
+  }
+
+  .authSocialLinks {
+    border-left: none;
+    border-top: 2px solid gray;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .authFormEmail {
+    margin-left: 10px;
+    padding-left: 17px;
+  }
+}
+
+@media (max-width: 550px) {
+  .conversations {
+    font-size: 4vw;
+  }
+
+  .recipientPic {
+    display: none;
+  }
+
+  .recipientName {
+    font-size: 3vw;
+  }
+
+  .message, .incoming {
+    font-size: 2.8vw;
+  }
+
+  .messageList {
+    height: 78vh;
+  }
 }
