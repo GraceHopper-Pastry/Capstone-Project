@@ -32,10 +32,10 @@ const MainChat = () => {
 
   return (
     <div>
-      <h1>Stack Support Chat</h1>
+      <h6>Stack Support Chat</h6>
 
       <div className="chat">
-        <div>
+        <div className="sidebarContainer">
           {user.isMentor ? (
             <Sidebar
               id={user.id}
@@ -53,7 +53,7 @@ const MainChat = () => {
           )}
         </div>
         <div>
-          <MessageList msgByChannel={messages} recipientId={recipient.id} />
+          <MessageList msgByChannel={messages} userId={user.id} />
         </div>
       </div>
     </div>
