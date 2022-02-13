@@ -163,7 +163,7 @@ const Footer = (props) => {
                   <TextField
                     variant='outlined'
                     multiline
-                    placeholder='Contact us for support'
+                    placeholder='Get in Touch with Us!'
                     inputProps={{ 'aria-label': 'Contact us for Support' }}
                     InputProps={{
                       className: classes.whiteBg,

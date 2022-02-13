@@ -1,9 +1,10 @@
 import React, { memo, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from '@mui/styles';
-import HeaderSection from './landing_page/HeaderSection'
-import OfferSection from './landing_page/OfferSection'
+import HeaderSection from './landing_page/HeaderSection';
+import OfferSection from './landing_page/OfferSection';
 import Footer from './footer/Footer';
+
 
 
 const styles = (theme) => ({
