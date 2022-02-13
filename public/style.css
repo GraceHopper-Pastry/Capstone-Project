@@ -93,7 +93,7 @@ img {
 }
 
 .authContainer {
-  background-image: url('./images/logged_out/mentorship1.jpg');
+  background-image: url("./images/logged_out/mentorship1.jpg");
   background-color: #cccccc;
   height: 100vh;
   background-position: center;
@@ -148,7 +148,6 @@ img {
   font-weight: bold;
 }
 
-
 /* CHAT */
 
 .messageBubble {
@@ -170,7 +169,6 @@ img {
   font-size: 14px;
 }
 
-
 .sendEmailIcon {
   height: 30px;
   width: 30px;
@@ -183,7 +181,7 @@ img {
   padding-right: 10px;
   display: flex;
   flex-direction: column;
-  overflow-y:auto
+  overflow-y: auto;
 }
 
 .sidebarContainer {
@@ -244,7 +242,7 @@ button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.
   margin-bottom: 15px;
   font-size: 21pt;
   padding-bottom: 10px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 input.form-control.composeMessage {
@@ -257,7 +255,8 @@ input.form-control.composeMessage {
 }
 
 @media (max-width: 970px) {
-  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+  .sidebar,
+  button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
     width: 25vw;
   }
 
@@ -293,7 +292,8 @@ input.form-control.composeMessage {
 }
 
 @media (max-width: 651px) {
-  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+  .sidebar,
+  button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
     width: 30vw;
   }
 
@@ -333,11 +333,16 @@ input.form-control.composeMessage {
     font-size: 3vw;
   }
 
-  .message, .incoming {
+  .message,
+  .incoming {
     font-size: 2.8vw;
   }
 
   .messageList {
     height: 78vh;
   }
+}
+
+.onboarding {
+  margin: 10%;
 }

@@ -15,7 +15,7 @@ import Onboarding from "./Onboarding";
 //   const { username } = props;
 
 const Home = () => {
-  const { firstName, intakeScore } = useSelector(
+  const { firstName, intakeScore, profilePic } = useSelector(
     (state) => state.singleUserReducer
   );
 
@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <div>
       {!firstName ? (
-        <Onboarding />
+        <Onboarding profilePic={profilePic} />
       ) : (
         <div>
           <h3> Welcome, {firstName} </h3>
