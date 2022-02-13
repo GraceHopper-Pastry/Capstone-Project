@@ -19,12 +19,6 @@ const Sidebar = ({ recipients, onChange }) => {
           </Button>
         );
       })}
-      <Button className="recipientBtn" onClick={() => onChange(recipient.id)}>
-          <div>
-            <img className="recipientPic" src="https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg" />
-            <span className="recipientName">Ada Lovelace</span>
-          </div>
-      </Button>
     </section>
   );
 };
