@@ -33,10 +33,14 @@ const styles = (theme) => ({
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.common.white,
   },
-  toolbar: {
+  Button: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
   },
+  // toolbar: {
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  // },
   brandText: {
     fontFamily: "Roboto",
     fontWeight: 400,
@@ -104,8 +108,8 @@ const LoggedOutNavBar = (props) => {
               color="inherit"
             ></Typography>
           </div>
-          <div mdup="true">
-            <Tooltip title="Open Navigation Menu">
+          {/* <div mdup="true"> */}
+          {/* <Tooltip title="Open Navigation Menu">
               <IconButton
                 className={classes.menuButtonText}
                 onClick={handleOpenNavMenu}
@@ -116,8 +120,8 @@ const LoggedOutNavBar = (props) => {
               >
                 <MenuIcon color="inherit" />
               </IconButton>
-            </Tooltip>
-            <Menu
+            </Tooltip> */}
+          {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -135,7 +139,7 @@ const LoggedOutNavBar = (props) => {
               <MenuItem onClick={handleCloseNavMenu}>About Us</MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
             </Menu>
-          </div>
+          </div> */}
           <div smdown="true">
             {menuPages.map((page) => {
               if (page.link) {

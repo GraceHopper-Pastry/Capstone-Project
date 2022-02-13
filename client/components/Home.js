@@ -30,17 +30,17 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div id="home-container">
-        <img
-          className="home-image"
-          src="images/logged_out/mentorship6.jpg"
-        ></img>
-        <div class="shape"></div>
-        <div className="text-block">
-          <div>
-            {!firstName ? (
-              <Onboarding profilePic={profilePic} />
-            ) : (
+      {!firstName ? (
+        <Onboarding profilePic={profilePic} />
+      ) : (
+        <div id="home-container">
+          <img
+            className="home-image"
+            src="images/logged_out/mentorship6.jpg"
+          ></img>
+          <div className="shape"></div>
+          <div className="text-block">
+            <div>
               <div>
                 <div className="welcome">
                   WELCOME {firstName.toUpperCase()}!
@@ -53,13 +53,13 @@ const Home = () => {
                   GET STARTED
                 </Button>
               </div>
-            )}
+            </div>
           </div>
+          <Link to={`/users`}>
+            <p>View Profile</p>
+          </Link>
         </div>
-        <Link to={`/users`}>
-          <p>View Profile</p>
-        </Link>
-      </div>
+      )}
       <Footer />
     </div>
   );

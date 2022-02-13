@@ -1,11 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { TextField, Button, Container } from "@mui/material";
+import { TextField, Button, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../store/singleUser";
 import { useHistory } from "react-router-dom";
+import { withStyles } from "@mui/styles";
+import PropTypes from "prop-types";
 
 //yup lets us easily define custom validations for different fields
 const validationSchema = yup.object({
@@ -42,7 +44,9 @@ const StyledTextField = styled(TextField)({
   },
 });
 
-const UserForm = () => {
+const styles = (theme) => ({});
+
+const UserForm = ({ classes }) => {
   //formik uses the same destructured assignment as the useState hook under the hood. We set the initial values, and we can also pass in a callback function.
   const history = useHistory();
   const dispatch = useDispatch();
@@ -75,160 +79,201 @@ const UserForm = () => {
         {/* we can access the onSubmit function from the object we created above */}
 
         <form onSubmit={formik.handleSubmit}>
-          <Container id="info" maxwidth="md">
-            <StyledTextField
-              id="firstName"
-              name="firstName"
-              label="First Name*"
-              value={formik.values.firstName}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              //touched value makes sure the user has actually started working with the form. This checks whether there are errors
-              error={
-                formik.touched.firstName && Boolean(formik.errors.firstName)
-              }
-              //this line actually shows the error string
-              helperText={formik.touched.firstName && formik.errors.firstName}
-            />
-            <StyledTextField
-              id="lastName"
-              name="lastName"
-              label="Last Name*"
-              value={formik.values.lastName}
-              margin="normal"
-              variant="filled"
-              //this onChange method comes for free with useFormik
-              onChange={formik.handleChange}
-              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-              helperText={formik.touched.lastName && formik.errors.lastName}
-            />
-
-            <StyledTextField
-              id="bio"
-              name="bio"
-              label="Bio*"
-              value={formik.values.bio}
-              margin="normal"
-              variant="filled"
-              multiline
-              maxRows={4}
-              onChange={formik.handleChange}
-              error={formik.touched.bio && Boolean(formik.errors.bio)}
-              helperText={formik.touched.bio && formik.errors.bio}
-            />
-          </Container>
-          <div id="employment">
-            <StyledTextField
-              id="employer"
-              name="employer"
-              label="Current Employer"
-              value={formik.values.employer}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.employer && Boolean(formik.errors.employer)}
-              helperText={formik.touched.employer && formik.errors.employer}
-            />
-            <StyledTextField
-              id="jobTitle"
-              name="jobTitle"
-              label="Current Job Title"
-              value={formik.values.jobTitle}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.jobTitle && Boolean(formik.errors.jobTitle)}
-              helperText={formik.touched.jobTitle && formik.errors.jobTitle}
-            />
-            <StyledTextField
-              id="location"
-              name="location"
-              label="Zip Code*"
-              value={formik.values.location}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.location && Boolean(formik.errors.location)}
-              helperText={formik.touched.location && formik.errors.location}
-            />
-            <StyledTextField
-              id="industry"
-              name="industry"
-              label="Industry"
-              value={formik.values.industry}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.industry && Boolean(formik.errors.industry)}
-              helperText={formik.touched.industry && formik.errors.industry}
-            />
-            <StyledTextField
-              id="yearsInTech"
-              name="yearsInTech"
-              label="Years in Tech*"
-              type="number"
-              InputProps={{ inputProps: { min: 0 } }}
-              value={formik.values.yearsInTech}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={
-                formik.touched.yearsInTech && Boolean(formik.errors.yearsInTech)
-              }
-              helperText={
-                formik.touched.yearsInTech && formik.errors.yearsInTech
-              }
-            />
-          </div>
-          <div id="education">
-            <StyledTextField
-              id="school"
-              name="school"
-              label="School (most recent or relevant)*"
-              value={formik.values.school}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.school && Boolean(formik.errors.school)}
-              helperText={formik.touched.school && formik.errors.school}
-            />
-            <StyledTextField
-              id="areaOfStudy"
-              name="areaOfStudy"
-              label="Area of Study*"
-              value={formik.values.areaOfStudy}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={
-                formik.touched.areaOfStudy && Boolean(formik.errors.areaOfStudy)
-              }
-              helperText={
-                formik.touched.areaOfStudy && formik.errors.areaOfStudy
-              }
-            />
-            <StyledTextField
-              id="endYear"
-              name="endYear"
-              label="Year of completion*"
-              type="number"
-              InputProps={{ inputProps: { min: 1950 } }}
-              value={formik.values.endYear}
-              margin="normal"
-              variant="filled"
-              onChange={formik.handleChange}
-              error={formik.touched.endYear && Boolean(formik.errors.endYear)}
-              helperText={formik.touched.endYear && formik.errors.endYear}
-            />
-          </div>
-          <Button type="submit" variant="outlined">
-            Submit
-          </Button>
+          <Grid container>
+            <Grid item>
+              <StyledTextField
+                id="firstName"
+                name="firstName"
+                label="First Name*"
+                value={formik.values.firstName}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                //touched value makes sure the user has actually started working with the form. This checks whether there are errors
+                error={
+                  formik.touched.firstName && Boolean(formik.errors.firstName)
+                }
+                //this line actually shows the error string
+                helperText={formik.touched.firstName && formik.errors.firstName}
+              />
+            </Grid>
+            <Grid item>
+              <StyledTextField
+                id="lastName"
+                name="lastName"
+                label="Last Name*"
+                value={formik.values.lastName}
+                margin="normal"
+                variant="filled"
+                //this onChange method comes for free with useFormik
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.lastName && Boolean(formik.errors.lastName)
+                }
+                helperText={formik.touched.lastName && formik.errors.lastName}
+              />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <StyledTextField
+                id="bio"
+                name="bio"
+                label="Bio*"
+                value={formik.values.bio}
+                margin="normal"
+                variant="filled"
+                multiline
+                maxRows={4}
+                onChange={formik.handleChange}
+                error={formik.touched.bio && Boolean(formik.errors.bio)}
+                helperText={formik.touched.bio && formik.errors.bio}
+              />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <StyledTextField
+                id="employer"
+                name="employer"
+                label="Current Employer"
+                value={formik.values.employer}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.employer && Boolean(formik.errors.employer)
+                }
+                helperText={formik.touched.employer && formik.errors.employer}
+              />
+            </Grid>
+            <Grid item>
+              <StyledTextField
+                id="jobTitle"
+                name="jobTitle"
+                label="Current Job Title"
+                value={formik.values.jobTitle}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.jobTitle && Boolean(formik.errors.jobTitle)
+                }
+                helperText={formik.touched.jobTitle && formik.errors.jobTitle}
+              />
+            </Grid>
+            <Grid item>
+              <StyledTextField
+                id="location"
+                name="location"
+                label="Zip Code*"
+                value={formik.values.location}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.location && Boolean(formik.errors.location)
+                }
+                helperText={formik.touched.location && formik.errors.location}
+              />
+            </Grid>
+            <Grid Item>
+              <StyledTextField
+                id="industry"
+                name="industry"
+                label="Industry"
+                value={formik.values.industry}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.industry && Boolean(formik.errors.industry)
+                }
+                helperText={formik.touched.industry && formik.errors.industry}
+              />
+            </Grid>
+            <Grid item>
+              <StyledTextField
+                id="yearsInTech"
+                name="yearsInTech"
+                label="Years in Tech*"
+                type="number"
+                InputProps={{ inputProps: { min: 0 } }}
+                value={formik.values.yearsInTech}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.yearsInTech &&
+                  Boolean(formik.errors.yearsInTech)
+                }
+                helperText={
+                  formik.touched.yearsInTech && formik.errors.yearsInTech
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <StyledTextField
+                id="school"
+                name="school"
+                label="School (most recent or relevant)*"
+                value={formik.values.school}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={formik.touched.school && Boolean(formik.errors.school)}
+                helperText={formik.touched.school && formik.errors.school}
+              />
+            </Grid>
+            <Grid Item>
+              <StyledTextField
+                id="areaOfStudy"
+                name="areaOfStudy"
+                label="Area of Study*"
+                value={formik.values.areaOfStudy}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.areaOfStudy &&
+                  Boolean(formik.errors.areaOfStudy)
+                }
+                helperText={
+                  formik.touched.areaOfStudy && formik.errors.areaOfStudy
+                }
+              />
+            </Grid>
+            <Grid item>
+              <StyledTextField
+                id="endYear"
+                name="endYear"
+                label="Year of completion*"
+                type="number"
+                InputProps={{ inputProps: { min: 1950 } }}
+                value={formik.values.endYear}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={formik.touched.endYear && Boolean(formik.errors.endYear)}
+                helperText={formik.touched.endYear && formik.errors.endYear}
+              />
+            </Grid>
+            <Grid item>
+              <Button type="submit" variant="outlined">
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </div>
     </div>
   );
 };
 
-export default UserForm;
+UserForm.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles, { withTheme: true })(UserForm);

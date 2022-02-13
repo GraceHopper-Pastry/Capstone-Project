@@ -13,7 +13,10 @@ const Onboarding = ({ profilePic }) => {
           <ImageUpload />
         </div>
       ) : (
-        <img style={{ width: "200" }} src={profilePic} />
+        <img
+          style={{ width: "150px", height: "150px", fit: "cover" }}
+          src={profilePic}
+        />
       )}
 
       <div>
