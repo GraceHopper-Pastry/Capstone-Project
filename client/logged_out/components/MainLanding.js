@@ -4,6 +4,7 @@ import { withStyles } from '@mui/styles';
 import HeaderSection from './landing_page/HeaderSection';
 import OfferSection from './landing_page/OfferSection';
 import Footer from './footer/Footer';
+import Features from './landing_page/Features';
 
 
 
@@ -21,6 +22,7 @@ const MainLanding = props => {
     <div className={classes.wrapper}>
       <Fragment>
         <HeaderSection />
+        <Features />
         {/* <OfferSection /> */}
         <Footer />
       </Fragment>

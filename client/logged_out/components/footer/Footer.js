@@ -15,6 +15,7 @@ import { withStyles } from '@mui/styles';
 import MailIcon from '@mui/icons-material/Mail';
 import PhoneIcon from '@mui/icons-material/Phone';
 import WaveBorder from '../../../shared/components/WaveBorder';
+// import AnimationToggle from '../../../shared/components/AnimationToggle';
 
 const styles = (theme) => ({
   footerInner: {
@@ -89,7 +90,7 @@ const contacts = [
   },
   {
     icon: <MailIcon />,
-    description: 'support@mentorme.com',
+    description: 'help@stacksupport.com',
   },
 ];
 
@@ -149,8 +150,8 @@ const Footer = (props) => {
   const { classes, theme } = props;
   return (
     <footer className='lg-p-top'>
+      {/* <AnimationToggle /> */}
       <WaveBorder
-        //topColor="#FFFFFF"
         bottomColor={theme.palette.common.grey}
         animationNegativeDelay={4}
       />
