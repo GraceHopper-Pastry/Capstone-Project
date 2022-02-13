@@ -46,6 +46,10 @@ class Matches extends React.Component {
 
     return (
       <div>
+        <p>
+          {" "}
+          <Link to={`/users`}>RETURN TO PROFILE </Link>
+        </p>
         <h1>Your Top Mentor Matches</h1>
         <div>
           <Link to={`/users`}>RETURN TO PROFILE </Link>
