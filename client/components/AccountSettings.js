@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { Button, Stack } from "@mui/material";
 
 const AccountSettings = () => {
-  const { intakeScore } = useSelector((state) => state.singleUserReducer);
+  const { intakeScore, isMentor } = useSelector(
+    (state) => state.singleUserReducer
+  );
   return (
     <Stack>
       <Button color="inherit" size="medium">
@@ -14,14 +16,16 @@ const AccountSettings = () => {
       <Button component={Link} to={"/users/edit"} color="inherit" size="medium">
         Edit Info
       </Button>
-      <Button
-        component={Link}
-        to={`/users/mentors/${intakeScore}`}
-        color="inherit"
-        size="medium"
-      >
-        View Mentor Options
-      </Button>
+      {!isMentor && (
+        <Button
+          component={Link}
+          to={`/users/mentors/${intakeScore}`}
+          color="inherit"
+          size="medium"
+        >
+          View Mentor Options
+        </Button>
+      )}
     </Stack>
   );
 };

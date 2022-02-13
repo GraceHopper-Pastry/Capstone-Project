@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import Footer from '../logged_out/components/footer/Footer';
-import { fetchSingleUser } from '../store/singleUser';
-import { dividerClasses, Button } from '@mui/material';
-import UserForm from './UserForm';
-
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Footer from "../logged_out/components/footer/Footer";
+import { fetchSingleUser } from "../store/singleUser";
+import { dividerClasses, Button } from "@mui/material";
+import UserForm from "./UserForm";
+import QuizPage from "./StaticQuizPage";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -25,24 +25,26 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div id='home-container'>
+      <div id="home-container">
         <img
-          className='home-image'
-          src='images/logged_out/mentorship6.jpg'
+          className="home-image"
+          src="images/logged_out/mentorship6.jpg"
         ></img>
-        <div class='shape'></div>
-        <div className='text-block'>
+        <div class="shape"></div>
+        <div className="text-block">
           <div>
             {!firstName ? (
               <UserForm />
             ) : (
               <div>
-                <div className='welcome'>WELCOME {firstName.toUpperCase()}!</div>
+                <div className="welcome">
+                  WELCOME {firstName.toUpperCase()}!
+                </div>
                 <h2>
                   CONTINUE TO ACHIEVE YOUR CAREER GOALS WITH THE HELP OF STACK
                   SUPPORT
                 </h2>
-                <Button component={Link} to={'/users'} variant='contained'>
+                <Button component={Link} to={"/users"} variant="contained">
                   GET STARTED
                 </Button>
               </div>

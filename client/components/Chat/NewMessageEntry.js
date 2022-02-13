@@ -28,7 +28,7 @@ const NewMessageEntry = () => {
     <form id="new-message-form" onSubmit={handleSubmit}>
       <div className="input-group input-group-lg">
         <input
-          className="form-control"
+          className="form-control composeMessage"
           type="text"
           name="content"
           value={message}
@@ -37,10 +37,11 @@ const NewMessageEntry = () => {
         />
         <span className="input-group-btn">
           <Button className="btn btn-default" type="submit">
-            Chat!
+            <img className="sendEmailIcon" src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png"/>
           </Button>
         </span>
       </div>
+      {/* <a style="visibility: hidden" href="https://icons8.com/icon/100004/email-send">Email Send icon by Icons8</a> */}
     </form>
   );
 };
