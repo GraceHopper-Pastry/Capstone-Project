@@ -5,6 +5,7 @@ import Footer from '../logged_out/components/footer/Footer';
 import { fetchSingleUser } from '../store/singleUser';
 import { dividerClasses, Button } from '@mui/material';
 import UserForm from './UserForm';
+
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -24,15 +25,6 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div id='welcome-block'>
-        {!firstName ? (
-          <UserForm />
-        ) : (
-          <div>
-            <h3>Welcome {firstName}</h3>
-          </div>
-        )}
-      </div>
       <div id='home-container'>
         <img
           className='home-image'
@@ -40,7 +32,22 @@ const Home = () => {
         ></img>
         <div class='shape'></div>
         <div className='text-block'>
-          <h3>THIS IS THE TEXT</h3>
+          <div>
+            {!firstName ? (
+              <UserForm />
+            ) : (
+              <div>
+                <div className='welcome'>WELCOME {firstName.toUpperCase()}!</div>
+                <h2>
+                  CONTINUE TO ACHIEVE YOUR CAREER GOALS WITH THE HELP OF STACK
+                  SUPPORT
+                </h2>
+                <Button component={Link} to={'/users'} variant='contained'>
+                  GET STARTED
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
         <Link to={`/users`}>
           <p>View Profile</p>

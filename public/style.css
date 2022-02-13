@@ -21,6 +21,12 @@ h1 {
   text-decoration-line: overline;
 }
 
+h2 {
+  line-height: 1.7em;
+  color: #45b1e8;
+  font-weight: bold;
+}
+
 h3 {
   padding: 10px;
 }
@@ -75,6 +81,7 @@ img {
   margin-left: 100px;
   margin-right: 100px;
   margin-bottom: 100px;
+  margin-top: 100px;
 }
 
 .home-image {
@@ -93,15 +100,23 @@ img {
   left: 70px;
   width: 450px;
   height: 600px;
-  background-image: linear-gradient(45deg, #45b1e8, #7ac5b4);
+  background-image: linear-gradient(45deg, #45b1e8, #feb552);
 }
 
 .text-block {
   position: absolute;
+  padding-top: 100px;
   top: 0;
   left: 700px;
-  width: 300px;
+  width: 350px;
   height: 600px;
+}
+
+.welcome {
+  line-height: 1.7em;
+  color: #feb552;
+  font-size: larger;
+  font-weight: bold;
 }
 
 /* QUIZ  */
