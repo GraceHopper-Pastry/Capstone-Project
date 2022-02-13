@@ -27,6 +27,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { fetchSingleUser } from "../store/singleUser";
+import CookieConsent, { Cookies, resetCookieConsentValue } from "react-cookie-consent";
 const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
@@ -67,6 +68,7 @@ const LoggedInNavBar = (props) => {
   }, [intakeScore]);
 
   const handleClick = () => {
+    console.log(resetCookieConsentValue());
     dispatch(onClear());
     dispatch(logout());
   };

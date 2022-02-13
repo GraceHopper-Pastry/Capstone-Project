@@ -7,6 +7,10 @@ import { dividerClasses, Button } from "@mui/material";
 import UserForm from "./UserForm";
 import QuizPage from "./StaticQuizPage";
 import Onboarding from "./Onboarding";
+import CookieConsent, {
+  Cookies,
+  getCookieConsentValue,
+} from "react-cookie-consent";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
