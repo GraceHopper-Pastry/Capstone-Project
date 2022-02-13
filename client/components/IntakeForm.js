@@ -1,37 +1,38 @@
-import React, { useState } from "react";
-import { Button, Card } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../store/singleUser";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Button, Card } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../store/singleUser';
+import { useHistory } from 'react-router-dom';
+
 
 export default function IntakeForm({ handleClose }) {
   const questions = [
     {
-      questionText: "Your first programming language was...",
+      questionText: 'Your first programming language was...',
       answerOptions: [
-        { answerText: "Javascript", value: 0 },
-        { answerText: "Python", value: 1 },
+        { answerText: 'Javascript', value: 0 },
+        { answerText: 'Python', value: 1 },
       ],
     },
     {
-      questionText: "Your favorite piece of technology is ...",
+      questionText: 'Your favorite piece of technology is ...',
       answerOptions: [
-        { answerText: "your smart watch", value: 0 },
-        { answerText: "TikTok", value: 1 },
+        { answerText: 'your smart watch', value: 0 },
+        { answerText: 'TikTok', value: 1 },
       ],
     },
     {
       questionText: "You're most like a character on...",
       answerOptions: [
-        { answerText: "Halt and Catch Fire", value: 0 },
-        { answerText: "The Social Network", value: 1 },
+        { answerText: 'Halt and Catch Fire', value: 0 },
+        { answerText: 'The Social Network', value: 1 },
       ],
     },
     {
       questionText: "During an interview, you'd rather implement...",
       answerOptions: [
-        { answerText: " Merge Sort", value: 0 },
-        { answerText: "a quiz in React", value: 1 },
+        { answerText: ' Merge Sort', value: 0 },
+        { answerText: 'a quiz in React', value: 1 },
       ],
     },
   ];
@@ -52,21 +53,21 @@ export default function IntakeForm({ handleClose }) {
     }
   };
   return (
-    <>
-      <Card variant="outlined">
-        <div className="question-section">
-          <div className="question-count">
+    // <ThemeProvider theme={theme}>
+      <Card variant='outlined'>
+        <div className='question-section'>
+          <div className='question-count'>
             <span>Question {currentQuestion + 1}</span>/{questions.length}
           </div>
-          <div className="question-text">
+          <div className='question-text'>
             {questions[currentQuestion].questionText}
           </div>
         </div>
-        <div className="answer-section">
+        <div className='answer-section'>
           {questions[currentQuestion].answerOptions.map((answerOption) => (
             <Button
               key={answerOption.answerText}
-              variant="contained"
+              variant='contained'
               onClick={() => handleAnswerOptionClick(answerOption.value)}
             >
               {answerOption.answerText}
@@ -74,6 +75,6 @@ export default function IntakeForm({ handleClose }) {
           ))}
         </div>
       </Card>
-    </>
+    // </ThemeProvider>
   );
 }
