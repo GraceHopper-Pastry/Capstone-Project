@@ -202,7 +202,7 @@ img {
 }
 
 .authContainer {
-  background-image: url('./images/logged_out/mentorship1.jpg');
+  background-image: url("./images/logged_out/mentorship1.jpg");
   background-color: #cccccc;
   height: 100vh;
   background-position: center;
@@ -278,7 +278,6 @@ img {
   font-size: 14px;
 }
 
-
 .sendEmailIcon {
   height: 30px;
   width: 30px;
@@ -291,7 +290,7 @@ img {
   padding-right: 10px;
   display: flex;
   flex-direction: column;
-  overflow-y:auto
+  overflow-y: auto;
 }
 
 .sidebarContainer {
@@ -352,7 +351,7 @@ button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.
   margin-bottom: 15px;
   font-size: 21pt;
   padding-bottom: 10px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 input.form-control.composeMessage {
@@ -365,7 +364,8 @@ input.form-control.composeMessage {
 }
 
 @media (max-width: 970px) {
-  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+  .sidebar,
+  button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
     width: 25vw;
   }
 
@@ -401,7 +401,8 @@ input.form-control.composeMessage {
 }
 
 @media (max-width: 651px) {
-  .sidebar, button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
+  .sidebar,
+  button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.recipientBtn.css-1lznhn3-MuiButtonBase-root-MuiButton-root {
     width: 30vw;
   }
 
@@ -441,11 +442,39 @@ input.form-control.composeMessage {
     font-size: 3vw;
   }
 
-  .message, .incoming {
+  .message,
+  .incoming {
     font-size: 2.8vw;
   }
 
   .messageList {
     height: 78vh;
   }
+}
+
+/* ABOUT THE DEVS */
+#flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dev-card {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dev-profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about-text {
+  text-align: center;
+  padding: 100px;
 }
