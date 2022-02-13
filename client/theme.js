@@ -214,12 +214,17 @@ const theme = createTheme({
         borderBottom: `${borderWidth}px solid ${borderColor}`,
       },
     },
-    MuiDialog: {
-      paper: {
-        width: '100%',
-        maxWidth: 430,
-        marginLeft: spacing,
-        marginRight: spacing,
+    // MuiDialog: {
+    //   // paper: {
+    //   //   width: '100%',
+    //   //   maxWidth: 430,
+    //   //   marginLeft: spacing,
+    //   //   marginRight: spacing,
+    //   // },
+    // },
+    MuiDialogContent: {
+      root: {
+        padding: 0,
       },
     },
     MuiTooltip: {

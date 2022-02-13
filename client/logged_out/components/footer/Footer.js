@@ -219,8 +219,11 @@ const Footer = (props) => {
               Get to Know the Developers
             </Typography>
             <Typography style={{ color: '#8f9296' }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              Stack Support was concieved as a way to establish meaningful
+              connections between junior software engineers and experienced
+              developers. This project was designed and implemented by four
+              developers in early 2022. Learn more about the team{' '}
+              <a href=''>here</a>.
             </Typography>
             <Box display='flex'>
               {socialIcons.map((socialIcon, index) => (
