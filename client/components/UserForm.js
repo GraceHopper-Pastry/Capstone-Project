@@ -75,8 +75,6 @@ const UserForm = () => {
 
       <form onSubmit={formik.handleSubmit}>
         <Stack>
-          <h2>Tell us more about yourself!</h2>
-          <p>Your profile helps your mentor understand your unique history.</p>
           <div>
             <StyledTextField
               id="firstName"

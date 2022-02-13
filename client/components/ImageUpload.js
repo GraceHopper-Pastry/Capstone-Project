@@ -1,8 +1,7 @@
 import React from "react";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import { updateUser } from "../store/singleUser";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 const ImageUpload = () => {
   const dispatch = useDispatch();

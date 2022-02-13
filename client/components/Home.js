@@ -6,6 +6,7 @@ import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
 import UserForm from "./UserForm";
 import QuizPage from "./StaticQuizPage";
+import Onboarding from "./Onboarding";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -26,7 +27,7 @@ const Home = () => {
   return (
     <div>
       {!firstName ? (
-        <UserForm />
+        <Onboarding />
       ) : (
         <div>
           <h3> Welcome, {firstName} </h3>
