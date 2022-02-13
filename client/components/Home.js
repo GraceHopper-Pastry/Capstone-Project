@@ -6,6 +6,7 @@ import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
 import UserForm from "./UserForm";
 import QuizPage from "./StaticQuizPage";
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -33,6 +34,13 @@ const Home = () => {
           <Link to={`/users`}>
             <p>View Profile</p>
           </Link>
+          <CookieConsent
+            location="bottom"
+            buttonText="Accept"
+            cookieName="CookieConsent"
+            style={{ background: "#f8f9fa", color: "black", alignItems: "normal", bottom: "auto", position: "relative" }}
+            buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+            >This site uses cookies</CookieConsent>
         </div>
       )}
 
