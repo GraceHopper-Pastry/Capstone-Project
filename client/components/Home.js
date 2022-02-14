@@ -6,6 +6,7 @@ import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
 import UserForm from "./UserForm";
 import QuizPage from "./StaticQuizPage";
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
