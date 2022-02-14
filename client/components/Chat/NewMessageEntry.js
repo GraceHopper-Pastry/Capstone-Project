@@ -32,12 +32,16 @@ const NewMessageEntry = () => {
           type="text"
           name="content"
           value={message}
+          autocomplete="off"
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Say something nice..."
         />
         <span className="input-group-btn">
           <Button className="btn btn-default" type="submit">
-            <img className="sendEmailIcon" src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png"/>
+            <img
+              className="sendEmailIcon"
+              src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png"
+            />
           </Button>
         </span>
       </div>
