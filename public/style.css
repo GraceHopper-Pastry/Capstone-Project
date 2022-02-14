@@ -478,3 +478,8 @@ input.form-control.composeMessage {
   text-align: center;
   padding: 100px;
 }
+
+.upload {
+  display: flex;
+  margin: 0px 0px 25px 0px;
+}

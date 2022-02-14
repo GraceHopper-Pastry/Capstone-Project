@@ -191,7 +191,7 @@ const UserForm = ({ classes }) => {
                 fullWidth
                 id="school"
                 name="school"
-                label="School (most recent or relevant)*"
+                label="School*"
                 value={formik.values.school}
                 margin="normal"
                 variant="filled"
@@ -276,7 +276,11 @@ const UserForm = ({ classes }) => {
             </Grid>
           </Grid>
 
-          <Button type="submit" variant="outlined" style={{ width: "33%" }}>
+          <Button
+            type="submit"
+            variant="outlined"
+            style={{ width: "33%", marginLeft: "25px" }}
+          >
             Submit
           </Button>
         </form>
