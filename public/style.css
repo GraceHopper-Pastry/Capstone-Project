@@ -451,3 +451,30 @@ input.form-control.composeMessage {
     height: 78vh;
   }
 }
+
+/* ABOUT THE DEVS */
+#flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dev-card {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dev-profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about-text {
+  text-align: center;
+  padding: 100px;
+}
