@@ -65,10 +65,7 @@
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "prop-types": "^15.8.1",
-<<<<<<< HEAD
     "react-animated-css": "^1.2.1",
-=======
->>>>>>> main
     "react-cookie-consent": "^7.3.1",
     "react-google-button": "^0.7.2",
     "react-material-ui-carousel": "^3.2.0",
