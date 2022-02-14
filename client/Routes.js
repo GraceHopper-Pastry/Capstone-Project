@@ -13,6 +13,7 @@ import Matches from "./components/Matches";
 import QuizPopup from "./components/QuizPopup";
 import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
+import AboutUs from "./components/AboutUs";
 
 /**
  * COMPONENT
@@ -40,6 +41,8 @@ class Routes extends Component {
             />
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
+            <Route path="/about" component={AboutUs} />
+
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -47,6 +50,8 @@ class Routes extends Component {
             <Route exact path="/" component={MainLanding} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/about" component={AboutUs} />
+
             <Redirect to="/" />
           </Switch>
         )}
