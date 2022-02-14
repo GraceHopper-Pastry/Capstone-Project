@@ -32,6 +32,7 @@ const spacing = 8;
 // border
 const borderWidth = 2;
 const borderColor = customPalette.black;
+const borderRadius = '50%'
 
 // A custom theme for this app
 const theme = createTheme({
@@ -56,6 +57,7 @@ const theme = createTheme({
   },
   typography: {
     useNextVariants: true,
+
   },
   palette: {
     primary: {
@@ -77,6 +79,20 @@ const theme = createTheme({
       nude: customPalette.dawnPink,
       dkNude: customPalette.bridesmaid,
       white: customPalette.concrete,
+    },
+    transparent: {
+      main: "transparent"
+    },
+    grey: {
+      100: "#f8f9fa",
+      200: "#f0f2f5",
+      300: "#dee2e6",
+      400: "#ced4da",
+      500: "#adb5bd",
+      600: "#6c757d",
+      700: "#495057",
+      800: "#343a40",
+      900: "#212529",
     },
     success: {
       main: '#4CAF50',
@@ -102,6 +118,48 @@ const theme = createTheme({
       dark: '#2C387E',
       contrastText: customPalette.concrete
     },
+    gradients: {
+      primary: {
+        main: customPalette.coral,
+        state: customPalette.persimmon,
+      },
+
+      secondary: {
+        main: "#747b8a",
+        state: "#495361",
+      },
+
+      info: {
+        main: "#49a3f1",
+        state: "#1A73E8",
+      },
+
+      success: {
+        main: "#66BB6A",
+        state: "#43A047",
+      },
+
+      warning: {
+        main: "#FFA726",
+        state: "#FB8C00",
+      },
+
+      error: {
+        main: "#EF5350",
+        state: "#E53935",
+      },
+
+      light: {
+        main: "#EBEFF4",
+        state: "#CED4DA",
+      },
+
+      dark: {
+        main: "#42424a",
+        state: "#191919",
+      },
+    },
+
 
     tonalOffset: 0.2,
     openTitle: customPalette.pictonBlue,
@@ -123,10 +181,17 @@ const theme = createTheme({
       xs,
     },
   },
-  border: {
+  borders: {
     borderColor: borderColor,
     borderWidth: borderWidth,
+    radius: borderRadius,
   },
+  // shadows: {
+  //   boxShadow: 0,
+  //   boxShadow: 1,
+  //   boxShadow: 2,
+  //   boxShadow: 3,
+  // },
   props: {
     MuiAppBar: {
       color: 'transparent',

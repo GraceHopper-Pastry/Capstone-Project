@@ -30,7 +30,7 @@ const Home = () => {
           className="home-image"
           src="images/logged_out/mentorship6.jpg"
         ></img>
-        <div class="shape"></div>
+        <div className="shape"></div>
         <div className="text-block">
           <div>
             {!firstName ? (

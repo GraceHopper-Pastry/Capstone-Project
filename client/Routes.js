@@ -6,14 +6,16 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
-import SingleUser from "./components/SingleUser";
+// import SingleUser from "./components/SingleUser";
 import AccountSettings from "./components/AccountSettings";
 import EditUser from "./components/EditUser";
 import Matches from "./components/Matches";
 import QuizPopup from "./components/QuizPopup";
 import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
-
+import Header from "./logged_in/components/Header"
+import ProfileCard from "./logged_in/components/ProfileCard";
+import SingleUser from "./logged_in/components/SingleUser";
 /**
  * COMPONENT
  */
@@ -30,6 +32,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route exact path="/quiz" component={QuizPage} />
+            {/* <Route exact path="/users" component={SingleUser} /> */}
             <Route exact path="/users" component={SingleUser} />
             <Route path="/account" component={AccountSettings} />
             <Route exact path="/users/edit" component={EditUser} />
