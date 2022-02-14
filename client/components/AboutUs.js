@@ -30,7 +30,7 @@ const AboutUs = () => {
           <div className="dev-card">
             <img
               className="dev-profile"
-              src="https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg"
+              src="images/developers/jill_sherman.jpg"
             ></img>
             <h2>Jill Sherman</h2>
           </div>
@@ -38,21 +38,23 @@ const AboutUs = () => {
         <div className="about-text">
           <h3>About Stack Support</h3>
           <p>
-            Stack Support was concieved as a way to establish meaningful
+            Stack Support was conceived as a way to establish meaningful
             connections between junior software engineers and experienced
-            developers. Users can create an secure account with the option to
+            developers. Users can create a secure account with the option to
             authenticate with Google, LinkedIn, or Twitter; match with potential
-            mentors based on a filtering system; and chat with those mentors.
+            mentors based on a coding personality quiz; and chat with those
+            mentors.
           </p>
 
           <p>
             Stack Support was built on Node.js, React, Postgres, Express,
             Socket.io, Passport.io, MaterialUI, and Formik. Many of these
-            technologies were new to the team and required a fair amount of
-            research, patience, and experimentation. We failed a lot during the
-            process, but picked ourselves up each time. While we struggled with
-            misleading and sometimes outdated documentation and tutorials, in
-            the end we made a project that we can all be proud of.
+            technologies were new to the team and required research, patience,
+            and experimentation. We challenged ourselves to use newer releases
+            of many technologies, which meant upgrading our boilerplate, and
+            working with limited tutorials or additional resources. We dealt
+            with persistent bugs, incompatible libraries, and tight deadlines.
+            In the end we made a project that we can all be proud of.
           </p>
         </div>
       </div>
