@@ -16,6 +16,7 @@ import QuizPage from "./components/StaticQuizPage";
 import SingleUser from "./logged_in/components/SingleUser";
 import AboutUs from "./components/AboutUs";
 import NotFound from "./components/NotFound";
+import Support from "./components/Support";
 /**
  * COMPONENT
  */

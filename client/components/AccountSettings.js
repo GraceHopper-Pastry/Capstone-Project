@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Settings from "../logged_in/components/Settings";
 
 import {
   Button,
@@ -34,6 +35,7 @@ const AccountSettings = () => {
 
 
   return (
+    <Fragment>
     <Stack>
       <Button color="inherit" size="medium">
         Edit Email and Password
@@ -52,6 +54,8 @@ const AccountSettings = () => {
         </Button>
       )}
     </Stack>
+    <Settings />
+    </Fragment>
   );
 };
 

@@ -5,7 +5,7 @@ import HeaderSection from './landing_page/HeaderSection';
 import OfferSection from './landing_page/OfferSection';
 import Footer from './footer/Footer';
 import Features from './landing_page/Features';
-import CookieConsent from './cookie_consent/CookieConsent'
+import CookieConsentPopup from './landing_page/CookieConsentPopup'
 
 
 
@@ -18,10 +18,10 @@ const styles = (theme) => ({
 
 const MainLanding = props => {
   const { classes } = props;
-  console.log(getCookieConsentValue());
+  // console.log(getCookieConsentValue());
   return (
     <div className={classes.wrapper}>
-      <CookieConsent />
+      <CookieConsentPopup />
       <Fragment>
         <HeaderSection />
         <Features />

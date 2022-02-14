@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "react-router-dom";
+import {Link} from "react-router-dom"
 import {
   Grid,
   Box,
@@ -178,6 +178,7 @@ const Footer = (props) => {
                 type="submit"
                 display="flex"
                 component={Link}
+                to="/support"
                 >
                   Send Message
                 </Button>

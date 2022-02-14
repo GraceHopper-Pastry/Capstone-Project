@@ -132,7 +132,7 @@ const HeaderSection = (props) => {
                   </Grid>
                   <Grid item md={8}>
                     <img
-                      src='/images/brand_logo/social_kit/linkedin3.png'
+                      src='/images/cover.png'
                       className={classes.image}
                       alt='header placeholder'
                     />

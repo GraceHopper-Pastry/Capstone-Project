@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import MentorProfile from "./MentorProfile"
-import MenteeProfile from "./MenteeProfile"
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -16,6 +14,10 @@ import Box from "@mui/material/Box";
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
 
 import { fetchSingleUser } from "../../store/singleUser";
 
@@ -43,7 +45,7 @@ function ProfileCard() {
     <Grid container spacing={0} alignItems="center">
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        bio:
+        bio :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.bio}
@@ -51,15 +53,15 @@ function ProfileCard() {
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        email:
+        email :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
-        {user.bio}
+        {user.email}
       </Typography>
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        location:
+        location :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.location}
@@ -67,7 +69,7 @@ function ProfileCard() {
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        years in tech:
+        years in tech :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.yearsInTech}
@@ -75,7 +77,7 @@ function ProfileCard() {
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        school:
+        school :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.school}
@@ -83,7 +85,7 @@ function ProfileCard() {
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        graduation:
+        graduation :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.endYear}
@@ -91,7 +93,7 @@ function ProfileCard() {
       </Grid>
       <Grid item xs={8}>
       <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-        area of study:
+        area of study :
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
         {user.areaOfStudy}
@@ -103,7 +105,7 @@ function ProfileCard() {
   <Box opacity={0.3}>
     <Divider orientation="vertical" sx={{ mx: 0 }} />
   </Box>
-  <Box sx={{ flexGrow: 1, maxWidth: 752}}>
+  {/* <Box sx={{ flexGrow: 1, maxWidth: 752}}>
     <Grid container spacing={2}>
     {user.isMentor ? (
       <Demo>
@@ -118,7 +120,7 @@ function ProfileCard() {
     </Demo>
     )}
     </Grid>
-    </Box>
+    </Box> */}
   </Card>
   );
 }

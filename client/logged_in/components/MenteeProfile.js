@@ -27,7 +27,7 @@ const Demo = styled('div')(({ theme }) => ({
 function MenteeProfile() {
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.singleUserReducer)
+  const intakeScore = useSelector((state) => state.singleUserReducer)
   const history = useHistory()
 
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -35,7 +35,7 @@ function MenteeProfile() {
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
     if (!user.Mentors.length) {
-      history.push("/quiz")
+      history.push(`/users/mentors/${user.intakeScore}`)
     }
     history.push("users/chat")
   };
@@ -45,7 +45,7 @@ function MenteeProfile() {
     // retrieve single user from thunk
     dispatch(fetchSingleUser());
 
-  }, []);
+  }, [intakeScore]);
 
   function generate(ele) {
     if (user.Mentors){
@@ -115,9 +115,9 @@ function MenteeProfile() {
           secondaryAction={
             <ListItemButton
               component={Link}
-              to="/quiz"
+              to={`/users/mentors/${user.intakeScore}`}
               edge="end"
-              aria-label="quiz"
+              aria-label="Mentor Match"
               selected={selectedIndex === 0}
               onClick={(event) => handleListItemClick(event, 0)}
 
@@ -134,7 +134,7 @@ function MenteeProfile() {
           }
         >
           <ListItemText
-            primary="Fill out your Mentor Match Quiz"
+            primary="Meet Your Mentor"
           />
         </ListItem>
       </List>
