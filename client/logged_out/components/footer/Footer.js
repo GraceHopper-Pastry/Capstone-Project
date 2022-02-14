@@ -11,6 +11,8 @@ import {
   Hidden,
   TextField,
   Button,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import MailIcon from "@mui/icons-material/Mail";
@@ -58,10 +60,6 @@ const styles = (theme) => ({
   infoIcon: {
     color: `${theme.palette.common.white} !important`,
     backgroundColor: "#33383b !important",
-    borderRadius: theme.shape.borderRadius,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.light,
-    },
   },
   socialIcon: {
     fill: theme.palette.common.white,
@@ -147,9 +145,22 @@ const socialIcons = [
 ];
 
 const Footer = (props) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   const { classes, theme } = props;
   return (
-    <footer className="lg-p-top">
+   <div>
       <WaveBorder
         bottomColor={theme.palette.common.grey}
         animationNegativeDelay={4}
@@ -159,7 +170,7 @@ const Footer = (props) => {
           <Grid item xs={12} md={6} lg={4}>
             <form>
               <Box display="flex" flexDirection="column">
-                <Box mb={2}>
+                <Box mb={1}>
                   <TextField
                     variant="outlined"
                     multiline
@@ -176,12 +187,15 @@ const Footer = (props) => {
                 <Button
                 variant="outlined"
                 type="submit"
-                display="flex"
-                component={Link}
-                to="/support"
+                onClick={handleClick}
                 >
                   Send Message
                 </Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%'}}>
+                    Sucess: We received your message!
+                  </Alert>
+                </Snackbar>
               </Box>
             </form>
           </Grid>
@@ -219,11 +233,11 @@ const Footer = (props) => {
             <Typography
               variant="h6"
               paragraph
-              style={{ color: theme.palette.secondary.dark }}
+              style={{ color: theme.palette.common.white }}
             >
               Get to Know the Developers
             </Typography>
-            <Typography style={{ color: "#8f9296" }} paragraph>
+            <Typography style={{ color: theme.palette.common.white }} paragraph>
               Stack Support was concieved as a way to establish meaningful
               connections between junior software engineers and experienced
               developers. This project was designed and implemented by four
@@ -246,7 +260,7 @@ const Footer = (props) => {
           </Grid>
         </Grid>
       </div>
-    </footer>
+    </div>
   );
 };
 

@@ -29,7 +29,6 @@ function CookieConsentPopup(props) {
       overlay={true}
       ariaAcceptLabel
       ariaDeclineLabel
-      debug={true}
     >
       <p style={{flexWrap: 'wrap',justifyContent: 'center'}}>
       Stack Support uses cookies to ensure an enhanced and consistent user experience between visits.
