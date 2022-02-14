@@ -30,7 +30,7 @@ import { fetchSingleUser } from "../../store/singleUser";
 import QuizIcon from '@mui/icons-material/Quiz';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
-import Image from "../assets/images/facebook1.png"
+// import Image from "../assets/images/facebook1.png"
 
 
 const breakpoints = {
@@ -54,6 +54,7 @@ const styles = theme => ({
     color: theme.palette.transparent.main
 
   },
+
   // tabs: {
   //     [`& .${tabsClasses.scrollButtons}`]: {
   //     '&.Mui-disabled': { opacity: 0.3 },
@@ -62,7 +63,7 @@ const styles = theme => ({
   //   }
 })
 
-import coverImage from "../assets/images/cover.png"
+// import coverImage from "../assets/images/cover.png"
 
 
 const Header = (props, { children}) => {
@@ -132,7 +133,7 @@ const Header = (props, { children}) => {
     <Box position="relative" mb={5}>
       <Box
         sx={{
-          backgroundImage: `url(${coverImage})`,
+          // backgroundImage: `url(${coverImage})`,
           backgroundColor: '#343A40',
 
           '&:hover': {

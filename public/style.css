@@ -19,6 +19,10 @@ a {
 label {
   display: block;
 }
+/* navbar */
+.navbar {
+  opacity: 30%
+}
 
 nav a {
   display: inline-block;
@@ -462,7 +466,7 @@ input.form-control.composeMessage {
   }
 }
 
-<<<<<<< HEAD
+
 /* Animations */
 .on-top{
   z-index: 9999;
@@ -502,15 +506,14 @@ input.form-control.composeMessage {
 }
 
 button {
-  width: 30px;
+  width: fit-content;
   height: 30px;
   background-color: transparent;
-
   border-radius: 8px;
   border: 2px solid #fff;
   cursor: pointer;
   color: #fff;
-  text-decoration: none;
+  text-decoration: non
 }
 button:hover {
   background-color: #f6f6f6;
@@ -525,7 +528,8 @@ button:active {
   margin: 0 16px;
   border-color: #424242;
   width: auto;
-=======
+}
+
 /* ABOUT THE DEVS */
 #flex-container {
   display: flex;
@@ -551,10 +555,79 @@ button:active {
 .about-text {
   text-align: center;
   padding: 100px;
->>>>>>> main
+
 }
 
 .upload {
   display: flex;
   margin: 0px 0px 25px 0px;
+}
+
+/* Cookie Consent */
+#rcc-confirm-button {
+  background: rgba(255,239,98,0.84);
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  width: -webkit-fill-available;
+  color: black;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 10px px;
+  margin: 15px;
+  user-select: auto;
+}
+
+#rcc-decline-button {
+  background: #F44336;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  width: -webkit-fill-available;
+  color: black;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 10px px;
+  margin: 15px;
+  user-select: auto;
+}
+
+/* Landing Page */
+.landingHeader {
+  background-image: url(images/brand_logo/med_assets/transparent2.png);
+  background-color: white;
+  opacity: 75%;
+  height: 90vh;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+
+.headerInner {
+  padding: 10px;
+}
+/* Profile Page */
+.css-1sm8txa {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: url('images/cover.png');
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  min-height: 18.75rem;
+  border-radius: xl;
+  background-color: #1277dd;
+  -webkit-background-size: contain;
+  background-size: contain;
+  -webkit-background-position: 50%;
+  background-position: 50%;
+  overflow: hidden;
+  opacity: 0.6;
 }

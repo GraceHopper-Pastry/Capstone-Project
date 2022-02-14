@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Grid, Typography, Card, Button, Hidden, Box } from '@mui/material';
 import { withStyles } from '@mui/styles';
 import WaveBorder from '../../../shared/components/WaveBorder';
-
+import headerAsset from '../../assets/images/transparent2.png'
 const styles = (theme) => ({
   extraLargeButton: {
     paddingTop: theme.spacing(1.5),
@@ -19,9 +19,13 @@ const styles = (theme) => ({
     },
   },
   card: {
-    boxShadow: theme.shadows[4],
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.15)',
     marginLeft: theme.spacing(4),
     marginRight: theme.spacing(4),
+    opacity: '85%',
+    margin: '0 auto',
+    padding: '15px',
+    backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('xs')]: {
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
@@ -54,13 +58,13 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2),
   },
-  image: {
-    position: 'relative',
-    verticalAlign: 'middle',
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
-    width: 'auto',
-  },
+  // image: {
+  //   position: 'relative',
+  //   verticalAlign: 'middle',
+  //   borderRadius: theme.shape.borderRadius,
+  //   boxShadow: theme.shadows[4],
+  //   width: 'auto',
+  // },
   container: {
     marginTop: theme.spacing(12),
     marginBottom: theme.spacing(12),
@@ -89,13 +93,14 @@ const HeaderSection = (props) => {
 
   return (
     <Fragment>
-      <div className={classNames('lg-p-top', classes.wrapper)}>
-        <div className={classNames('container-fluid', classes.container)}>
-          <Box display='flex' justifyContent='center' className='row'>
+      <div className='landingHeader'>
+        <div className='headerInner'>
+          <Box display='flex' justifyContent='center' className='headerBox' >
             <Card
               className={classes.card}
               data-aos-delay='200'
               data-aos='zoom-in'
+
             >
               <div className={classNames(classes.containerFix, 'container')}>
                 <Box justifyContent='space-between' className='row'>
@@ -130,13 +135,13 @@ const HeaderSection = (props) => {
                       </div>
                     </Box>
                   </Grid>
-                  <Grid item md={8}>
+                  {/* <Grid item md={8}>
                     <img
-                      src='/images/cover.png'
+                      src={headerAsset}
                       className={classes.image}
                       alt='header placeholder'
                     />
-                  </Grid>
+                  </Grid> */}
                 </Box>
               </div>
             </Card>

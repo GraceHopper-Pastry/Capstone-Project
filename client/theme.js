@@ -61,16 +61,16 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: customPalette.pictonBlue,
-      light: customPalette.monteCarlo,
-      dark: customPalette.matisse,
-      contrastText: customPalette.concrete,
-    },
-    secondary: {
       main: customPalette.coral,
       light: customPalette.koromiko,
       dark: customPalette.persimmon,
       contrastText: customPalette.black
+    },
+    secondary: {
+      main: customPalette.pictonBlue,
+      light: customPalette.monteCarlo,
+      dark: customPalette.matisse,
+      contrastText: customPalette.concrete,
     },
     common: {
       black: customPalette.black,
