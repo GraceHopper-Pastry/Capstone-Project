@@ -6,7 +6,11 @@ import { fetchSingleUser } from "../store/singleUser";
 import { dividerClasses, Button } from "@mui/material";
 import UserForm from "./UserForm";
 import QuizPage from "./StaticQuizPage";
-import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
+import Onboarding from "./Onboarding";
+import CookieConsent, {
+  Cookies,
+  getCookieConsentValue,
+} from "react-cookie-consent";
 // import singleUserReducer from "../store/singleUser";
 /**
  * COMPONENT
@@ -15,7 +19,7 @@ import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-cons
 //   const { username } = props;
 
 const Home = () => {
-  const { firstName, intakeScore } = useSelector(
+  const { firstName, profilePic } = useSelector(
     (state) => state.singleUserReducer
   );
 
@@ -26,17 +30,17 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div id="home-container">
-        <img
-          className="home-image"
-          src="images/logged_out/mentorship6.jpg"
-        ></img>
-        <div class="shape"></div>
-        <div className="text-block">
-          <div>
-            {!firstName ? (
-              <UserForm />
-            ) : (
+      {!firstName ? (
+        <Onboarding profilePic={profilePic} />
+      ) : (
+        <div id="home-container">
+          <img
+            className="home-image"
+            src="images/logged_out/mentorship6.jpg"
+          ></img>
+          <div className="shape"></div>
+          <div className="text-block">
+            <div>
               <div>
                 <div className="welcome">
                   WELCOME {firstName.toUpperCase()}!
@@ -49,13 +53,13 @@ const Home = () => {
                   GET STARTED
                 </Button>
               </div>
-            )}
+            </div>
           </div>
+          <Link to={`/users`}>
+            <p>View Profile</p>
+          </Link>
         </div>
-        <Link to={`/users`}>
-          <p>View Profile</p>
-        </Link>
-      </div>
+      )}
       <Footer />
     </div>
   );
