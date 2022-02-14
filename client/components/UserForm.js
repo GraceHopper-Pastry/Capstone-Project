@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { TextField, Button, Grid } from "@mui/material";
+import { TextField, Button, Grid, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../store/singleUser";
@@ -64,7 +64,7 @@ const UserForm = ({ classes }) => {
       yearsInTech: user.yearsInTech || 0,
       school: user.school || "",
       areaOfStudy: user.areaOfStudy || "",
-      endYear: user.endYear || 2010,
+      endYear: user.endYear || 2022,
     },
     onSubmit: (values) => {
       //here's where we will dispatch our new user
@@ -79,9 +79,10 @@ const UserForm = ({ classes }) => {
         {/* we can access the onSubmit function from the object we created above */}
 
         <form onSubmit={formik.handleSubmit}>
-          <Grid container>
-            <Grid item>
+          <Grid container spacing={2}>
+            <Grid item s={6} md={3} lg={2}>
               <StyledTextField
+                fullWidth
                 id="firstName"
                 name="firstName"
                 label="First Name*"
@@ -97,8 +98,9 @@ const UserForm = ({ classes }) => {
                 helperText={formik.touched.firstName && formik.errors.firstName}
               />
             </Grid>
-            <Grid item>
+            <Grid item s={6} md={3} lg={2}>
               <StyledTextField
+                fullWidth
                 id="lastName"
                 name="lastName"
                 label="Last Name*"
@@ -114,26 +116,28 @@ const UserForm = ({ classes }) => {
               />
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item>
+          <Grid container spacing={2}>
+            <Grid item s={12} md={6} lg={4}>
               <StyledTextField
+                fullWidth
                 id="bio"
                 name="bio"
                 label="Bio*"
-                value={formik.values.bio}
-                margin="normal"
-                variant="filled"
+                // margin="normal"
                 multiline
-                maxRows={4}
+                variant="filled"
+                value={formik.values.bio}
+                rows={4}
                 onChange={formik.handleChange}
                 error={formik.touched.bio && Boolean(formik.errors.bio)}
                 helperText={formik.touched.bio && formik.errors.bio}
               />
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item>
+          <Grid container spacing={2}>
+            <Grid item s={4} md={2} lg={1}>
               <StyledTextField
+                fullWidth
                 id="employer"
                 name="employer"
                 label="Current Employer"
@@ -147,8 +151,9 @@ const UserForm = ({ classes }) => {
                 helperText={formik.touched.employer && formik.errors.employer}
               />
             </Grid>
-            <Grid item>
+            <Grid item s={4} md={2} lg={1}>
               <StyledTextField
+                fullWidth
                 id="jobTitle"
                 name="jobTitle"
                 label="Current Job Title"
@@ -162,23 +167,10 @@ const UserForm = ({ classes }) => {
                 helperText={formik.touched.jobTitle && formik.errors.jobTitle}
               />
             </Grid>
-            <Grid item>
+
+            <Grid item s={4} md={2} lg={1}>
               <StyledTextField
-                id="location"
-                name="location"
-                label="Zip Code*"
-                value={formik.values.location}
-                margin="normal"
-                variant="filled"
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.location && Boolean(formik.errors.location)
-                }
-                helperText={formik.touched.location && formik.errors.location}
-              />
-            </Grid>
-            <Grid Item>
-              <StyledTextField
+                fullWidth
                 id="industry"
                 name="industry"
                 label="Industry"
@@ -192,8 +184,78 @@ const UserForm = ({ classes }) => {
                 helperText={formik.touched.industry && formik.errors.industry}
               />
             </Grid>
-            <Grid item>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item s={4} md={2} lg={1}>
               <StyledTextField
+                fullWidth
+                id="school"
+                name="school"
+                label="School (most recent or relevant)*"
+                value={formik.values.school}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={formik.touched.school && Boolean(formik.errors.school)}
+                helperText={formik.touched.school && formik.errors.school}
+              />
+            </Grid>
+            <Grid item s={4} md={2} lg={1}>
+              <StyledTextField
+                fullWidth
+                id="areaOfStudy"
+                name="areaOfStudy"
+                label="Area of Study*"
+                value={formik.values.areaOfStudy}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.areaOfStudy &&
+                  Boolean(formik.errors.areaOfStudy)
+                }
+                helperText={
+                  formik.touched.areaOfStudy && formik.errors.areaOfStudy
+                }
+              />
+            </Grid>
+            <Grid item s={4} md={2} lg={1}>
+              <StyledTextField
+                fullWidth
+                id="endYear"
+                name="endYear"
+                label="Year of completion*"
+                type="number"
+                InputProps={{ inputProps: { min: 1950 } }}
+                value={formik.values.endYear}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={formik.touched.endYear && Boolean(formik.errors.endYear)}
+                helperText={formik.touched.endYear && formik.errors.endYear}
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item s={4} md={2} lg={1}>
+              <StyledTextField
+                fullWidth
+                id="location"
+                name="location"
+                label="Zip Code*"
+                value={formik.values.location}
+                margin="normal"
+                variant="filled"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.location && Boolean(formik.errors.location)
+                }
+                helperText={formik.touched.location && formik.errors.location}
+              />
+            </Grid>
+            <Grid item s={4} md={2} lg={1}>
+              <StyledTextField
+                fullWidth
                 id="yearsInTech"
                 name="yearsInTech"
                 label="Years in Tech*"
@@ -213,59 +275,10 @@ const UserForm = ({ classes }) => {
               />
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item>
-              <StyledTextField
-                id="school"
-                name="school"
-                label="School (most recent or relevant)*"
-                value={formik.values.school}
-                margin="normal"
-                variant="filled"
-                onChange={formik.handleChange}
-                error={formik.touched.school && Boolean(formik.errors.school)}
-                helperText={formik.touched.school && formik.errors.school}
-              />
-            </Grid>
-            <Grid Item>
-              <StyledTextField
-                id="areaOfStudy"
-                name="areaOfStudy"
-                label="Area of Study*"
-                value={formik.values.areaOfStudy}
-                margin="normal"
-                variant="filled"
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.areaOfStudy &&
-                  Boolean(formik.errors.areaOfStudy)
-                }
-                helperText={
-                  formik.touched.areaOfStudy && formik.errors.areaOfStudy
-                }
-              />
-            </Grid>
-            <Grid item>
-              <StyledTextField
-                id="endYear"
-                name="endYear"
-                label="Year of completion*"
-                type="number"
-                InputProps={{ inputProps: { min: 1950 } }}
-                value={formik.values.endYear}
-                margin="normal"
-                variant="filled"
-                onChange={formik.handleChange}
-                error={formik.touched.endYear && Boolean(formik.errors.endYear)}
-                helperText={formik.touched.endYear && formik.errors.endYear}
-              />
-            </Grid>
-            <Grid item>
-              <Button type="submit" variant="outlined">
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
+
+          <Button type="submit" variant="outlined" style={{ width: "33%" }}>
+            Submit
+          </Button>
         </form>
       </div>
     </div>
