@@ -1,170 +1,56 @@
-# FS-App-Template
+# **Stack Support**
 
-## Directory Structure
+Welcome to Stack Support! Stack Support was created by four brand-new software engineers who had a lot of questions. How do you decide between Front-End, Back-End, and Full-Stack career paths? What really matters on a resume for tech jobs? Should I be working on a back-end language like Ruby, GO or Python? Or should I just keep working to get better and better at Javascript? Wouldn't it be great if there was someplace we could connect to more experienced developers and get some answers? Thus, Stack Support was born.
 
-*As of: 2/1/2022*
+**Try it for yourself!**
 
-Capstone-Project
-├─ .babelrc
-├─ .vscode
-│  └─ settings.json
-├─ CHANGELOG.md
-├─ LICENSE
-├─ README.md
-├─ client
-│  ├─ App.js
-│  ├─ Routes.js
-│  ├─ history.js
-│  ├─ index.js
-│  ├─ logged_in
-│  │  ├─ components
-│  │  │  ├─ Button.js
-│  │  │  └─ ProfilePicture.js
-│  │  ├─ containers
-│  │  │  ├─ AcountInfoPage.js
-│  │  │  ├─ NavBar.js
-│  │  │  └─ SideBarMenu.js
-│  │  └─ dummy_data
-│  │     └─ mentors.js
-│  ├─ logged_out
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ old-components
-│  │  ├─ AuthForm.js
-│  │  ├─ Home.js
-│  │  ├─ Home.spec.js
-│  │  ├─ LandingPage
-│  │  │  ├─ Asyncronous.js
-│  │  │  ├─ AutoCompletePlayground.js
-│  │  │  ├─ MaterialIcons.js
-│  │  │  ├─ Types.js
-│  │  │  └─ index.js
-│  │  ├─ Navbar.js
-│  │  ├─ experiencePopup.js
-│  │  └─ intakeForm.js
-│  ├─ shared
-│  │  ├─ components
-│  │  └─ containers
-│  ├─ store
-│  │  ├─ auth.js
-│  │  ├─ auth.spec.js
-│  │  └─ index.js
-│  └─ theme.js
-├─ package.json
-├─ public
-│  ├─ bundle.js
-│  ├─ bundle.js.map
-│  ├─ favicon.ico
-│  ├─ images
-│  │  ├─ logged_in
-│  │  │  └─ personPlaceholder1.jpg
-│  │  └─ logged_out
-│  │     ├─ headerPlaceholder.jpg
-│  │     ├─ mentorship1.jpg
-│  │     ├─ mentorship2.jpg
-│  │     ├─ mentorship3.jpg
-│  │     ├─ mentorship4.jpg
-│  │     ├─ mentorship5.jpg
-│  │     └─ mentorship6.jpg
-│  ├─ index.html
-│  ├─ manifest.json
-│  ├─ robots.txt
-│  └─ style.css
-├─ script
-│  └─ seed.js
-├─ server
-│  ├─ api
-│  │  ├─ index.js
-│  │  ├─ users.js
-│  │  └─ users.spec.js
-│  ├─ app.js
-│  ├─ auth
-│  │  └─ index.js
-│  ├─ db
-│  │  ├─ db.js
-│  │  ├─ index.js
-│  │  └─ models
-│  │     ├─ User.js
-│  │     └─ User.spec.js
-│  └─ index.js
-└─ webpack.config.js
+Stack support is deployed through Heroku at: https://gracehoppercapstone.herokuapp.com/
 
-## Setup
+## **Demo:**
 
-To use this as boilerplate, you'll need to take the following steps:
+### New User Onboarding
 
-* Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
+### Match with a Mentor
 
-* Now you will have to add the fs-app-template as a remote and merge it into your own repository.
+### Chat
 
-```
-git remote add boilermaker git@github.com:FullstackAcademy/fs-app-template.git
-git fetch boilermaker
-git merge boilermaker/main
-git branch -m master main
-```
+## **Tech Stack**
 
-## Customize
+**Node.js** Open-source, back-end JavaScript runtime environment that allows for full-stack JavaScript applications.
+**Express** A flexible, Node.JS web application framework for building single (and multi) page web applications.
+**Postgresql** Open-Source Relational Database
+**socket.io** Library for real-time, bidirectional and event-based communication between the browser and the server.
+**Redux** For React state management.
+**React** Component-based library for building feature-rich, interactive user interfaces.
+**Passport.js, jsonwebtoken, bcrypt** Libraries for site-based third-party login and authentication
+**Cloudinary** Image hosting and upload
+**Formik** Form management
+**mui** React UI library
 
-Now that you've got the code, follow these steps to get acclimated:
+## **Team:**
 
-* Update project name and description in `package.json`
-* `npm install`
-* Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
-* These commands will create both your **development** and **test** databases
+**Carly Sandler**
+[LinkedIn](https://www.linkedin.com/in/carlysandler/)
+[GitHub](https://github.com/carlysandler)
 
-```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
-```
+**China Hoffman**
+[LinkedIn](https://www.linkedin.com/in/chinahoffman/)
+[GitHub](https://github.com/cph2134)
 
-* By default, running `npm test` will use your test database, while
-  regular development uses development database
+**Jill Sherman**
+[LinkedIn](https://www.linkedin.com/in/jill-sherman-tech/)
+[GitHub](https://github.com/shermanful)
+
+**Kejda Celaj**
+[LinkedIn](https://www.linkedin.com/in/kejda-celaj-27370b231/)
+[GitHub](https://github.com/thisisacodersworld)
+
+** Explore the Code **
+
+- git clone git@github.com:GraceHopper-Pastry/Capstone-Project.git
+- `npm install`
+- Create two postgres databases: `capstone-project` and `capstone-project-test`:
 
 ## Start
 
-Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
-
-- start:dev will both start your server and build your client side files using webpack
-- start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
-- start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
-
-
-### Heroku
-
-1.  Set up the [Heroku command line tools][heroku-cli]
-2.  `heroku login`
-3.  Add a git remote for heroku:
-
-[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
-
-* **If you are creating a new app...**
-
-  1.  `heroku create` or `heroku create your-app-name` if you have a
-      name in mind.
-  2.  `heroku config:set JWT=<your secret here!>` to set a secret for JWT signing
-
-Database Setup
-
-  3.  `heroku addons:create heroku-postgresql:hobby-dev` to add
-      ("provision") a postgres database to your heroku dyno (This creates your production database)
-
-  4.  `heroku config:set SEED=true` to get heroku to sync and seed your database
-
-  5.   note everytime your app restarts, the database tables will be dropped and re-created. To avoid this you can `config:unset SEED`
-
-
-* **If you already have a Heroku app...**
-
-  1.  `heroku git:remote your-app-name` You'll need to be a
-      collaborator on the app.
-
-
-Now, you should be deployed!
-
-```
-
-
+Sync and seed your database by running `npm run seed`. Run `npm run start:dev` to view the site on http://localhost:8080
