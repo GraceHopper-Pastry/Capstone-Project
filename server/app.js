@@ -1,79 +1,83 @@
-const path = require('path')
-const express = require('express')
-const morgan = require('morgan')
-const app = express()
-const session = require('express-session')
-const passport = require('passport')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const {db, models} = require('./db')
-const sessionStore = new SequelizeStore({db})
-module.exports = app
+const path = require("path");
+const express = require("express");
+const morgan = require("morgan");
+const app = express();
+const session = require("express-session");
+const passport = require("passport");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const { db, models } = require("./db");
+const sessionStore = new SequelizeStore({ db });
+module.exports = app;
 
 // passport registration
-passport.serializeUser((user, done) => done(null, user))
+passport.serializeUser((user, done) => done(null, user));
 
 passport.deserializeUser(async (muser, done) => {
   try {
-    const user = await models.User.findByPk(muser.id)
-    done(null, user)
+    const user = await models.User.findByPk(muser.id);
+    done(null, user);
   } catch (err) {
-    done(err)
+    done(err);
   }
-})
+});
 
 // logging middleware
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 
 // body parsing middleware
-app.use(express.json())
+app.use(express.json());
 
 // session middleware with passport
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'Luna',
-  store: sessionStore,
-  resave: false,
-  saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "Luna",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // auth and api routes
-app.use('/auth', require('./auth'))
-app.use('/api', require('./api'))
+app.use("/auth", require("./auth"));
+app.use("/api", require("./api"));
 
-app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "..", "public/index.html"))
+);
 
 // static file-serving middleware
-app.use(express.static(path.join(__dirname, '..', 'public')))
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {
   if (path.extname(req.path).length) {
-    const err = new Error('Not found')
-    err.status = 404
-    next(err)
+    const err = new Error("Not found");
+    err.status = 404;
+    next(err);
   } else {
-    next()
+    next();
   }
-})
+});
 
 // sends index.html
-app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public/index.html'));
-})
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public/index.html"));
+});
 
 // error handling endware
 app.use((err, req, res, next) => {
-  console.error(err)
-  console.error(err.stack)
-  res.status(err.status || 500).send(err.message || 'Internal server error.')
-})
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || "Internal server error.");
+});
 
 async function bootApp() {
   try {
-    await sessionStore.sync()
+    await sessionStore.sync();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 

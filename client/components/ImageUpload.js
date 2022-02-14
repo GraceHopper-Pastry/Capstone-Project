@@ -28,6 +28,7 @@ const ImageUpload = () => {
         id="upload_widget"
         className="cloudinary-button"
         onClick={showWidget}
+        variant="outlined"
       >
         Upload
       </Button>

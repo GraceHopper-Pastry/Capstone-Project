@@ -9,21 +9,21 @@ const AboutUs = () => {
           <div className="dev-card">
             <img
               className="dev-profile"
-              src="https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg"
+              src="images/developers/carlyIcon.jpeg"
             ></img>
             <h2>Carly Sandler</h2>
           </div>
           <div className="dev-card">
             <img
               className="dev-profile"
-              src="https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg"
+              src="images/developers/china_hoffman_profile.jpeg"
             ></img>
             <h2>China Hoffman</h2>
           </div>
           <div className="dev-card">
             <img
               className="dev-profile"
-              src="https://wikiedu.org/wp-content/uploads/2018/10/ada_lovelace_2018_Featured_image.jpg"
+              src="images/developers/kejda_celaj.jpg"
             ></img>
             <h2>Kejda Celaj</h2>
           </div>
