@@ -553,3 +553,8 @@ button:active {
   padding: 100px;
 >>>>>>> main
 }
+
+.upload {
+  display: flex;
+  margin: 0px 0px 25px 0px;
+}

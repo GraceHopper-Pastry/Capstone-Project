@@ -27,24 +27,29 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { fetchSingleUser } from "../store/singleUser";
-import CookieConsent, { Cookies, resetCookieConsentValue } from "react-cookie-consent";
+import CookieConsent, {
+  Cookies,
+  resetCookieConsentValue,
+} from "react-cookie-consent";
 const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.common.white,
   },
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
   brandText: {
     fontFamily: "Roboto",
     fontWeight: 400,
+  },
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
   },
   menuButtonText: {
     fontSize: theme.typography.body1.fontSize,
     fontWeight: theme.typography.h6.fontWeight,
   },
+
   noDecoration: {
     textDecoration: "none !important",
   },
@@ -156,7 +161,7 @@ const LoggedInNavBar = (props) => {
               color="inherit"
             ></Typography>
           </div>
-          <div mdup="true">
+          {/* <div mdup="true">
             <Tooltip title="Open Navigation Menu">
               <IconButton
                 className={classes.menuButtonText}
@@ -188,91 +193,98 @@ const LoggedInNavBar = (props) => {
               <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
             </Menu>
           </div>
-          <div smdown="true">
-            {menuPages.map((page) => {
-              return (
-                <Button
-                  key={page.name}
-                  component={Link}
-                  to={page.link}
-                  className={classes.noDecoration}
-                  color="inherit"
-                  size="medium"
-                  classes={{ text: classes.menuButtonText }}
-                  endIcon={page.icon}
+          <div smdown="true"> */}
+
+          <div className={classes.container}>
+            <div className={classes.item}>
+              {menuPages.map((page) => {
+                return (
+                  <Button
+                    key={page.name}
+                    component={Link}
+                    to={page.link}
+                    className={classes.noDecoration}
+                    color="inherit"
+                    size="medium"
+                    classes={{ text: classes.menuButtonText }}
+                    endIcon={page.icon}
+                  >
+                    {page.name}
+                  </Button>
+                );
+              })}
+              <Button
+                component={Link}
+                to="/home"
+                className={classes.noDecoration}
+                color="inherit"
+                size="medium"
+                classes={{ text: classes.menuButtonText }}
+                onClick={handleClick}
+                endIcon={<LogoutIcon className="text-white" color="inherit" />}
+              >
+                Logout
+              </Button>
+              {/* </div> */}
+            </div>
+            <div className={classes.item}>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <AccountCircle />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
                 >
-                  {page.name}
-                </Button>
-              );
-            })}
-            <Button
-              component={Link}
-              to="/home"
-              className={classes.noDecoration}
-              color="inherit"
-              size="medium"
-              classes={{ text: classes.menuButtonText }}
-              onClick={handleClick}
-              endIcon={<LogoutIcon className="text-white" color="inherit" />}
-            >
-              Logout
-            </Button>
+                  {intakeScore !== null
+                    ? settings.map((setting) => {
+                        return (
+                          <MenuItem
+                            key={setting.name}
+                            to={setting.link}
+                            component={Link}
+                            className={classes.noDecoration}
+                            onClick={handleCloseUserMenu}
+                          >
+                            <Typography textAlign="center">
+                              {setting.name}
+                            </Typography>
+                          </MenuItem>
+                        );
+                      })
+                    : settingsNoQuiz.map((setting) => {
+                        return (
+                          <MenuItem
+                            key={setting.name}
+                            to={setting.link}
+                            component={Link}
+                            className={classes.noDecoration}
+                            onClick={handleCloseUserMenu}
+                          >
+                            <Typography textAlign="center">
+                              {setting.name}
+                            </Typography>
+                          </MenuItem>
+                        );
+                      })}
+                </Menu>
+              </Box>
+            </div>
           </div>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircle />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {intakeScore !== null
-                ? settings.map((setting) => {
-                    return (
-                      <MenuItem
-                        key={setting.name}
-                        to={setting.link}
-                        component={Link}
-                        className={classes.noDecoration}
-                        onClick={handleCloseUserMenu}
-                      >
-                        <Typography textAlign="center">
-                          {setting.name}
-                        </Typography>
-                      </MenuItem>
-                    );
-                  })
-                : settingsNoQuiz.map((setting) => {
-                    return (
-                      <MenuItem
-                        key={setting.name}
-                        to={setting.link}
-                        component={Link}
-                        className={classes.noDecoration}
-                        onClick={handleCloseUserMenu}
-                      >
-                        <Typography textAlign="center">
-                          {setting.name}
-                        </Typography>
-                      </MenuItem>
-                    );
-                  })}
-            </Menu>
-          </Box>
         </Toolbar>
       </AppBar>
     </div>
