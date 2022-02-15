@@ -31,18 +31,18 @@ module.exports = {
         use: ['css-loader','style-loader', 'sass-loader']
       },
       {
-				test: /\.(png|svg|jpg|jpeg|gif)$/i,
-				use: [
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        use: [
           { loader: 'file-loader'},
-					{
-						loader: 'url-loader',
-						options: {
-							limit: 10000,
-						},
-					},
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
 
-				],
-			},
+        ],
+      },
 
     ]
   }

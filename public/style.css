@@ -563,40 +563,192 @@ button:active {
   margin: 0px 0px 25px 0px;
 }
 
-/* Cookie Consent */
-#rcc-confirm-button {
-  background: rgba(255,239,98,0.84);
-  border: 0px;
-  border-radius: 0px;
-  box-shadow: none;
-  width: -webkit-fill-available;
-  color: black;
-  cursor: pointer;
-  flex: 0 0 auto;
-  padding: 10px px;
-  margin: 15px;
-  user-select: auto;
+.profile-title {
+  padding-left: 20px;
 }
 
-#rcc-decline-button {
-  background: #F44336;
-  border: 0px;
-  border-radius: 0px;
-  box-shadow: none;
-  width: -webkit-fill-available;
-  color: black;
-  cursor: pointer;
-  flex: 0 0 auto;
-  padding: 10px px;
-  margin: 15px;
-  user-select: auto;
+.my-profile-name {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.my-profile-name p {
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.profile-pic {
+  width: 55px;
+  height: 55px;
+  border-radius: 40px;
+  margin-top: 10px;
+}
+
+.job-title {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+  padding-left: 0;
+}
+
+.industry {
+  background: #dee2e6;
+  margin-bottom: 2px;
+}
+
+.user-profile-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
+
+#upload_widget {
+  width: 40px;
+  padding: 0;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.main-data-profile {
+  display: flex;
+  font-size: 14px;
+  margin-left: 10px;
+  background: #f8f9fa;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.single-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-data-block {
+  max-width: 30vw;
+  margin-left: 20px;
+  margin-top: 50px;
+}
+
+.mentor-block {
+  width: 40vw;
+  margin-left: 20px;
+  margin-top: 50px;
+  max-height: 450px;
+}
+
+.mentor-block ul {
+  padding-left: 0;
+}
+
+.no-mentor {
+  /* padding-left: 10px; */
+  font-style: italic;
+}
+
+.profile-mentees {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.mentor-profile-list {
+  margin-left: 0;
+  padding-left: 0;
+}
+.mentor-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+#chat_button {
+  /* display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  user-select: none;
+  vertical-align: middle;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
+  color: #24282c;
+  background-color: #ff8259;
+}
+/* Animations */
+.on-top {
+  z-index: 9999;
+  height: 100vh;
+  width: 250px;
+  position: absolute;
+}
+
+.boxes {
+  margin: 48px auto;
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.box {
+  position: relative;
+  margin: 16px;
+  height: 150px;
+  width: 150px;
+  border-radius: 16px;
+  border: 1px solid;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-corner {
+  position: absolute;
+  left: 75%;
+  top: 75%;
+}
+
+button:hover {
+  background-color: #f6f6f6;
+  color: #424242;
+}
+button:active {
+  background-color: #424242;
+}
+
+.toggle {
+  color: #424242;
+  margin: 0 16px;
+  border-color: #424242;
+  width: auto;
 }
 
 /* Landing Page */
 .landingHeader {
-  background-image: url(images/logged_out/landing1.png);
+  background-image: url(images/landing.png);
   background-color: #cccc;
-  opacity: 100%;
+  opacity: 75%;
   height: 90vh;
   width: auto;
   background-position: center;
@@ -605,54 +757,6 @@ button:active {
   position: relative;
 }
 
-
-
-
-#landingButton {
-  border-radius: 12px;
-  background-color: #343A40;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  position: absolute;
-  top: 0;
-
-
-
-}
-
-
-
-
-
-/* Profile Page */
-.css-1sm8txa {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-image: url('images/logged_out/landing3.png');
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  min-height: 18.75rem;
-  border-radius: xl;
-  background-color: #1277dd;
-  -webkit-background-size: contain;
-  background-size: contain;
-  -webkit-background-position: 50%;
-  background-position: 50%;
-  overflow: hidden;
-  opacity: 0.6;
-}
-.css-1qm1lh {
-  background-color: #cccc
-
+.headerInner {
+  padding: 10px;
 }

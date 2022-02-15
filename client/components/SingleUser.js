@@ -17,131 +17,170 @@ class SingleUser extends React.Component {
       <div>
         <QuizPopup isOpen={user.intakeScore === null} />
         <div>
-          <h2>Profile</h2>
+          <h2 className="profile-title">My Profile</h2>
         </div>
-        <div className="single-user">
-          {user.profilePic ===
-          "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
-            <div>
-              <img src={user.profilePic} />
-              <p>Upload a profile pic!</p>
-              <ImageUpload />
-            </div>
-          ) : (
-            <img style={{ width: "200" }} src={user.profilePic} />
-          )}
-          <p>First name: {user.firstName}</p>
-          <p>Last name: {user.lastName}</p>
-          <p>Email: {user.email}</p>
-          <p>Employer: {user.bio}</p>
-          <p>Job Title: {user.jobTitle}</p>
-          <p>Location: {user.location}</p>
-          <p>Industry: {user.industry}</p>
-          <p>Years in Tech: {user.yearsInTech}</p>
-          <p>School: {user.school}</p>
-          <p>Area of Study: {user.areaOfStudy}</p>
-          <p>End Year: {user.endYear}</p>
-        </div>
-        <div>
-          {/* IF USER IS A MENTOR */}
-          {user.isMentor ? (
-            <div>
-              <h2>Your Mentees:</h2>
-              <div>
-                {user.Mentees.length ? (
-                  <div>
-                    {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
-                    <ul>
-                      {user.Mentees.map((person) => (
-                        <li key={person.id}>
-                          {person.firstName + " " + person.lastName}
+        <div className="profile-container">
+          <div>
+            <div className="main-data-profile">
+              <img style={{ width: "200" }} src={user.profilePic} />
 
-                          <img
-                            style={{ width: "200px" }}
-                            src={person.profilePic}
-                          />
-                          <Button
-                            className="button"
-                            color="inherit"
-                            size="medium"
-                            onClick={() =>
-                              this.props.history.push("/users/chat")
-                            }
-                          >
-                            {user.isMentor
-                              ? "Chat with your Mentees!"
-                              : "Chat with your Mentor"}
-                          </Button>
-                          {/* <Button
-                            className='button'
-                            component={Link}
-                            type='button'
-                            to={'XXX'}
-                          >
-                            See Mentee Profile
-                          </Button> */}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : (
-                  <div>
-                    {/* IF MENTOR HAS NOT YET BEEN ASSIGNED MENTEES */}
-                    <h1>Check back soon to meet your new mentees!</h1>
-                  </div>
-                )}
+              <div className="user-profile-data">
+                <div className="my-profile-name">
+                  <p>
+                    {user.firstName} {user.lastName}
+                  </p>
+                </div>
+                <p className="job-title">{user.jobTitle.toUpperCase()}</p>
+                {/* <p className="industry">{user.industry.toUpperCase()}</p> */}
               </div>
             </div>
-          ) : (
-            <div>
-              {/* IF USER IS A MENTEE */}
-              <h1>Your Mentor:</h1>
-              <div>
-                {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
-                {user.Mentors.length ? (
-                  <div>
-                    {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
-                    <ul>
-                      {user.Mentors.map((person) => (
-                        <li key={person.id}>
-                          <h2>{person.firstName + " " + person.lastName}</h2>
-                          <p>{person.jobTitle + " at " + person.employer}</p>
-                          <img src={person.profilePic} />
-                          <Button
-                            className="button"
-                            color="inherit"
-                            size="medium"
-                            onClick={() =>
-                              this.props.history.push("/users/chat")
-                            }
-                          >
-                            {user.isMentor
-                              ? "Chat with your Mentees!"
-                              : "Chat with your Mentor"}
-                          </Button>
-                          {/* <Button
-                            className='button'
-                            component={Link}
-                            type='button'
-                            to={'/mentor/:mentorid'}
-                          >
-                            See Mentor Profile
-                          </Button> */}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : (
-                  <div>
-                    {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
-                    <Link to={`/users/mentors/${user.intakeScore}`}>
-                      CLICK ME!
-                    </Link>
-                  </div>
-                )}
+
+            <div className="single-user">
+              <div className="profile-data-block">
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Bio </span>
+                  {user.bio}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Email </span>
+                  {user.email}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Location </span>
+                  {user.location}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Employer </span>
+                  {user.employer}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Years in Tech </span>
+                  {user.yearsInTech}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>School </span>
+                  {user.school}
+                </p>
+                <div className="my-profile-education">
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>Area of Study </span>{" "}
+                    {user.areaOfStudy}
+                  </p>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>End Year </span>
+                    {user.endYear}
+                  </p>
+                </div>
+                <div className="my-profile-employment"></div>
               </div>
+              {/* IF USER IS A MENTOR */}
+              {user.isMentor ? (
+                <div className="mentor-block">
+                  <p className="profile-mentees">Your Mentees:</p>
+                  <div>
+                    {user.Mentees.length ? (
+                      <div>
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                        <ul>
+                          {user.Mentees.map((person) => (
+                            <li key={person.id}>
+                              {person.firstName + " " + person.lastName}
+
+                              <img
+                                style={{ width: "200px" }}
+                                src={person.profilePic}
+                              />
+                              <Button
+                                // color="inherit"
+                                // size="medium"
+                                variant="contained"
+                                onClick={() =>
+                                  this.props.history.push("/users/chat")
+                                }
+                              >
+                                {user.isMentor
+                                  ? "Chat with your Mentees!"
+                                  : "Chat with your Mentor"}
+                              </Button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <div>
+                        {/* IF MENTOR HAS NOT YET BEEN ASSIGNED MENTEES */}
+                        <h1>Check back soon to meet your new mentees!</h1>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="mentor-block">
+                  {/* IF USER IS A MENTEE */}
+                  <p className="profile-mentees">Your Mentor:</p>
+                  <div className="mentor-profile-list">
+                    {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
+                    {user.Mentors.length ? (
+                      <div className="mentor-profile-list">
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                        <ul>
+                          {user.Mentors.map((person) => (
+                            <li key={person.id}>
+                              <h3>
+                                {person.firstName + " " + person.lastName}
+                              </h3>
+                              <p>
+                                {person.jobTitle + " at " + person.employer}
+                              </p>
+                              <img
+                                className="mentor-image"
+                                src={person.profilePic}
+                              />
+                              <br />
+                              <Button
+                                // className="button"
+                                // color="inherit"
+                                // size="medium"
+                                // onClick={() =>
+                                //   this.props.history.push("/users/chat")
+                                // }
+                                component={Link}
+                                to={"/users/chat"}
+                                variant="contained"
+                              >
+                                {user.isMentor
+                                  ? "Chat with your Mentees!"
+                                  : "Chat with your Mentor"}
+                              </Button>
+                              {/* <Button
+                              className='button'
+                              component={Link}
+                              type='button'
+                              to={'/mentor/:mentorid'}
+                            >
+                              See Mentor Profile
+                            </Button> */}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <div>
+                        {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
+                        <span className="no-mentor">
+                          No mentors assigned yet. Click{" "}
+                          <Link to={`/users/mentors/${user.intakeScore}`}>
+                            here
+                          </Link>
+                          to connect.
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     );

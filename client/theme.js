@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // breakpoints
 const xl = 1920;
@@ -8,20 +8,20 @@ const sm = 600;
 const xs = 0;
 
 const customPalette = {
-  matisse: '#16738D',
-  pictonBlue: '#24C0EB',
-  monteCarlo: '#87D3CF',
-  persimmon: '#FF7350',
-  coral: '#FF8259',
-  koromiko: '#FEB865',
-  concrete: '#F3F3F3',
-  dawnPink: '#F1E4DF',
-  bridesmaid: '#FDEAE4',
-  cadetBlue: '#B2B7CA',
-  outerSpace: '#343A40',
-  black: '#24282C',
-  white: '#FFFF',
-}
+  matisse: "#16738D",
+  pictonBlue: "#24C0EB",
+  monteCarlo: "#87D3CF",
+  persimmon: "#FF7350",
+  coral: "#FF8259",
+  koromiko: "#FEB865",
+  concrete: "#F3F3F3",
+  dawnPink: "#F1E4DF",
+  bridesmaid: "#FDEAE4",
+  cadetBlue: "#B2B7CA",
+  outerSpace: "#343A40",
+  black: "#24282C",
+  white: "#FFFF",
+};
 
 // background
 const background = customPalette.concrete;
@@ -32,28 +32,30 @@ const spacing = 8;
 // border
 const borderWidth = 2;
 const borderColor = customPalette.black;
+<<<<<<< HEAD
 const borderRadius = '50%'
+=======
+const borderRadius = "50%";
+>>>>>>> 54a62f3aafba069105caa262ccc9d706d4ce4ca5
 
 // A custom theme for this app
 const theme = createTheme({
   MuiTypography: {
     defaultProps: {
       variantMapping: {
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        subtitle1: 'h6',
-        subtitle2: 'h6',
-        body1: 'p',
-        body2: 'p',
-        inherit: 'p'
-
-      }
-    }
-
+        h1: "h1",
+        h2: "h2",
+        h3: "h3",
+        h4: "h4",
+        h5: "h5",
+        h6: "h6",
+        subtitle1: "h6",
+        subtitle2: "h6",
+        body1: "p",
+        body2: "p",
+        inherit: "p",
+      },
+    },
   },
   typography: {
     useNextVariants: true,
@@ -64,7 +66,7 @@ const theme = createTheme({
       main: customPalette.coral,
       light: customPalette.koromiko,
       dark: customPalette.persimmon,
-      contrastText: customPalette.black
+      contrastText: customPalette.black,
     },
     secondary: {
       main: customPalette.pictonBlue,
@@ -81,7 +83,7 @@ const theme = createTheme({
       white: customPalette.concrete,
     },
     transparent: {
-      main: "transparent"
+      main: "transparent",
     },
     grey: {
       100: "#f8f9fa",
@@ -95,28 +97,28 @@ const theme = createTheme({
       900: "#212529",
     },
     success: {
-      main: '#4CAF50',
-      light: '#81C784',
-      dark: '#338E3C',
-      contrastText: customPalette.black
+      main: "#4CAF50",
+      light: "#81C784",
+      dark: "#338E3C",
+      contrastText: customPalette.black,
     },
     warning: {
-      main: '#FFEB3B',
-      light: 'rgba(255,239,98,0.84)',
-      dark: '#C7B713',
-      contrastText: customPalette.black
+      main: "#FFEB3B",
+      light: "rgba(255,239,98,0.84)",
+      dark: "#C7B713",
+      contrastText: customPalette.black,
     },
     error: {
-      main: '#F44336',
-      light: '#E57373',
-      dark: '#D32F2F',
-      contrastText: customPalette.concrete
+      main: "#F44336",
+      light: "#E57373",
+      dark: "#D32F2F",
+      contrastText: customPalette.concrete,
     },
     info: {
-      main: '#3F51B5',
-      light: '#6573C3',
-      dark: '#2C387E',
-      contrastText: customPalette.concrete
+      main: "#3F51B5",
+      light: "#6573C3",
+      dark: "#2C387E",
+      contrastText: customPalette.concrete,
     },
     gradients: {
       primary: {
@@ -160,7 +162,10 @@ const theme = createTheme({
       },
     },
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 54a62f3aafba069105caa262ccc9d706d4ce4ca5
     tonalOffset: 0.2,
     openTitle: customPalette.pictonBlue,
     protectedTitle: customPalette.coral,
@@ -194,8 +199,8 @@ const theme = createTheme({
   // },
   props: {
     MuiAppBar: {
-      color: 'transparent',
-      backgroundColor: customPalette.bridesmaid
+      color: "transparent",
+      backgroundColor: customPalette.bridesmaid,
     },
     MuiTooltip: {
       arrow: true,
@@ -207,15 +212,15 @@ const theme = createTheme({
       dense: true,
     },
     MuiTable: {
-      size: 'small'
-    }
+      size: "small",
+    },
   },
   overrides: {
     MuiAppBar: {
       colorInherit: {
         backgroundColor: customPalette.coral,
-        color: customPalette.concrete
-      }
+        color: customPalette.concrete,
+      },
     },
     MuiSwitch: {
       root: {
@@ -226,12 +231,12 @@ const theme = createTheme({
       },
       switchBase: {
         padding: 1,
-        '&$checked, &$colorPrimary$checked, &$colorSecondary$checked': {
-          transform: 'translateX(16px)',
-          color: '#fff',
-          '& + $track': {
+        "&$checked, &$colorPrimary$checked, &$colorSecondary$checked": {
+          transform: "translateX(16px)",
+          color: "#fff",
+          "& + $track": {
             opacity: 1,
-            border: 'none',
+            border: "none",
           },
         },
       },
@@ -241,15 +246,16 @@ const theme = createTheme({
       },
       track: {
         borderRadius: 13,
-        border: '1px solid #bdbdbd',
-        backgroundColor: '#fafafa',
+        border: "1px solid #bdbdbd",
+        backgroundColor: "#fafafa",
         opacity: 1,
-        transition: 'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        transition:
+          "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
       },
     },
     MuiExpansionPanel: {
       root: {
-        position: 'static',
+        position: "static",
       },
     },
     MuiTableCell: {

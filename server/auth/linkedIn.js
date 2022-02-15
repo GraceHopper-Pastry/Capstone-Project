@@ -12,7 +12,8 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 const linkedinConfig = {
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-  callbackURL: "http://localhost:8080/auth/linkedin/callback",
+  // callbackURL: "http://localhost:8080/auth/linkedin/callback",
+  callbackURL: "https://gracehoppercapstone.herokuapp.com/auth/linkedin/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   profileFields: ['email-address'],    
   state: true 
