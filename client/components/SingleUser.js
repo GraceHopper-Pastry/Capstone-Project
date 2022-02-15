@@ -22,24 +22,16 @@ class SingleUser extends React.Component {
         <div className="profile-container">
           <div>
             <div className="main-data-profile">
-              {user.profilePic ===
-              "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
-                <div>
-                  <img className="profile-pic" src={user.profilePic} />
-                  {/* <p>Upload a profile pic!</p> */}
-                  <ImageUpload />
-                </div>
-              ) : (
-                <img style={{ width: "200" }} src={user.profilePic} />
-              )}
+              <img style={{ width: "200" }} src={user.profilePic} />
+
               <div className="user-profile-data">
                 <div className="my-profile-name">
                   <p>
                     {user.firstName} {user.lastName}
                   </p>
                 </div>
-                <p className="job-title">{user.jobTitle}</p>
-                <p className="industry">{user.industry}</p>
+                <p className="job-title">{user.jobTitle.toUpperCase()}</p>
+                {/* <p className="industry">{user.industry.toUpperCase()}</p> */}
               </div>
             </div>
 
