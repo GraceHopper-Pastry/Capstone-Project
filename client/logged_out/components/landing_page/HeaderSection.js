@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Grid, Typography, Card, Button, Hidden, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import WaveBorder from "../../../shared/components/WaveBorder";
-import headerAsset from "../../assets/images/transparent2.png";
+import headerAsset from "../../../../public/images/transparent2.png";
 const styles = (theme) => ({
   extraLargeButton: {
     paddingTop: theme.spacing(1.5),
