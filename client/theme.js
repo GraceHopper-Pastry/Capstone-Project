@@ -32,11 +32,7 @@ const spacing = 8;
 // border
 const borderWidth = 2;
 const borderColor = customPalette.black;
-<<<<<<< HEAD
-const borderRadius = '50%'
-=======
 const borderRadius = "50%";
->>>>>>> 54a62f3aafba069105caa262ccc9d706d4ce4ca5
 
 // A custom theme for this app
 const theme = createTheme({
@@ -162,10 +158,6 @@ const theme = createTheme({
       },
     },
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 54a62f3aafba069105caa262ccc9d706d4ce4ca5
     tonalOffset: 0.2,
     openTitle: customPalette.pictonBlue,
     protectedTitle: customPalette.coral,
