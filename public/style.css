@@ -631,3 +631,26 @@ button:active {
   overflow: hidden;
   opacity: 0.6;
 }
+
+/* Tech Stack */
+left-right {
+  overflow:hidden;
+  height:200px;
+  width:200px;
+  position:relative;
+  background-color:#333;
+}
+.slider {
+  width:200px;
+  height:200px;
+  position:absolute;
+  top:0;
+  right:-200px;
+  background-color:#000;
+  color:#fff;
+  transition:0.4s ease;
+}
+
+.left-right:hover .slider {
+right:0;
+}
