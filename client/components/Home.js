@@ -3,9 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "../logged_out/components/footer/Footer";
 import { fetchSingleUser } from "../store/singleUser";
-import { dividerClasses, Button } from "@mui/material";
-import UserForm from "./UserForm";
-import QuizPage from "./StaticQuizPage";
+import { Button } from "@mui/material";
+
 import Onboarding from "./Onboarding";
 
 // import singleUserReducer from "../store/singleUser";

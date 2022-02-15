@@ -99,7 +99,6 @@ class SingleUser extends React.Component {
                                 src={person.profilePic}
                               />
                               <Button
-                                // className="button"
                                 // color="inherit"
                                 // size="medium"
                                 variant="contained"
@@ -111,14 +110,6 @@ class SingleUser extends React.Component {
                                   ? "Chat with your Mentees!"
                                   : "Chat with your Mentor"}
                               </Button>
-                              {/* <Button
-                              className='button'
-                              component={Link}
-                              type='button'
-                              to={'XXX'}
-                            >
-                              See Mentee Profile
-                            </Button> */}
                             </li>
                           ))}
                         </ul>
@@ -158,9 +149,12 @@ class SingleUser extends React.Component {
                                 // className="button"
                                 // color="inherit"
                                 // size="medium"
-                                onClick={() =>
-                                  this.props.history.push("/users/chat")
-                                }
+                                // onClick={() =>
+                                //   this.props.history.push("/users/chat")
+                                // }
+                                component={Link}
+                                to={"/users/chat"}
+                                variant="contained"
                               >
                                 {user.isMentor
                                   ? "Chat with your Mentees!"
