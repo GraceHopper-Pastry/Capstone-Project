@@ -29,7 +29,7 @@ const ImageUpload = () => {
         className="cloudinary-button"
         onClick={showWidget}
       >
-        Upload Profile Pic
+        Upload
       </Button>
     </div>
   );
