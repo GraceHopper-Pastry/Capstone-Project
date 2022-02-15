@@ -82,7 +82,7 @@ const users = [
     isMentor: true,
     profilePic:
       "https://www.vintageisthenewold.com/wp-content/uploads/2016/07/margaret_hamilton1.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    bio: "When I started working with computers, there wasn't even a name for what we did, so I started calling us software engineers. I planned to become a mathematician, but when my husband decided to go to law school, I realized one of us needed to make some money, so I took a job at MIT. I started using programming software to predict the weather. At the Instrumentation Laboratory, we did work for NASA. I lead the team that developed the software for the in-inflight command and lunar module guidance and control systems used on the Apollo missions. I left academia to start my own companies, so I'm also an entrepreneur. In 2016 I received the Presidential Medal of Freedom from President Barack Obama.",
     employer: "MIT Instrumentation Laboratory",
     jobTitle: "Software Engineer",
     location: "02138",
@@ -158,7 +158,7 @@ const users = [
     email: "ellen@email.com",
     isMentor: true,
     profilePic: "https://static2.stuff.co.nz/1365983592/874/8551874.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    bio: "I am a tech inestor and advocate, the former CEO of reddit and a co-founder of Project Include, a non-profit that uses data and advocacy to accelerate diversity and inclusion in the tech industry. We encourage CEOs to implement comprehensive solutions that include everyone in all activities and to use metrics for accountability.",
     employer: "Project Include",
     jobTitle: "CEO",
     location: "94016",
@@ -233,7 +233,7 @@ const users = [
     isMentor: true,
     profilePic:
       "https://livebiography.com/wp-content/uploads/2018/08/bill-gates-Profile.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    bio: "I am  a technologist, business leader, and philanthropist. I grew up in Seattle, Washington, with an amazing and supportive family who encouraged my interest in computers at an early age. I dropped out of college to start Microsoft with my childhood friend Paul Allen, and today it's the world's largest personal-computer software company.",
     employer: "Microsoft",
     jobTitle: "CEO",
     location: "98008",
@@ -308,7 +308,7 @@ const users = [
     isMentor: false,
     profilePic:
       "http://static.tvmaze.com/uploads/images/medium_portrait/73/184007.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    bio: "I was living in The Good Place. That's where truly virtuous people go when they die. Which was a little confusing for me, because I lived a selfish, unseemly life. I realized I'd accidentally been mistaken for a different Eleanor Shellstrop who helped get innocent people off death row. I actively tried to improve myself to stay in the Good Place, and I began to realize I really do have the capacity to change for the better. Now that I have a second chance at life, I now that the way to become a better person is to become a software engineer!",
     employer: "Twitter",
     jobTitle: "Intern",
     location: "94016",

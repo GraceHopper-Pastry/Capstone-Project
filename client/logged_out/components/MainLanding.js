@@ -1,11 +1,8 @@
 import React, { memo, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from '@mui/styles';
-import HeaderSection from './landing_page/HeaderSection'
-import OfferSection from './landing_page/OfferSection'
-import Footer from './footer/Footer';
-import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
-
+import { withStyles } from "@mui/styles";
+import HeaderSection from "./landing_page/HeaderSection";
+import Footer from "./footer/Footer";
 
 const styles = (theme) => ({
   wrapper: {
@@ -14,24 +11,23 @@ const styles = (theme) => ({
   },
 });
 
-const MainLanding = props => {
+const MainLanding = (props) => {
   const { classes } = props;
-  console.log(getCookieConsentValue());
+  // console.log(getCookieConsentValue());
   return (
     <div className={classes.wrapper}>
       <Fragment>
         <HeaderSection />
+        {/* <TechStack /> */}
         {/* <OfferSection /> */}
         <Footer />
       </Fragment>
     </div>
-  )
-}
+  );
+};
 
 MainLanding.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(memo(MainLanding));
-
-
