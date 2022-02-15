@@ -18,14 +18,6 @@ const styles = (theme) => ({
       paddingBottom: theme.spacing(2),
     },
   },
-  // card: {
-  //   boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.15)',
-  //   marginLeft: theme.spacing(4),
-  //   marginRight: theme.spacing(4),
-  //   opacity: '85%',
-  //   margin: '0 auto',
-  //   padding: '15px',
-  //   backgroundColor: theme.palette.primary.light,
   [theme.breakpoints.up("xs")]: {
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
@@ -57,13 +49,6 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2),
   },
-  // image: {
-  //   position: 'relative',
-  //   verticalAlign: 'middle',
-  //   borderRadius: theme.shape.borderRadius,
-  //   boxShadow: theme.shadows[4],
-  //   width: 'auto',
-  // },
   container: {
     marginTop: theme.spacing(12),
     marginBottom: theme.spacing(12),
@@ -104,12 +89,6 @@ const HeaderSection = (props) => {
           </Button>
         </div>
       </div>
-      {/* <WaveBorder
-        topColor={theme.palette.secondary.dark}
-        bottomColor="#ffff"
-        className={classes.waveBorder}
-        animationNegativeDelay={2}
-      /> */}
     </Fragment>
   );
 };

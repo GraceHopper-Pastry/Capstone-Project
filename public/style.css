@@ -503,7 +503,7 @@ input.form-control.composeMessage {
   top: 75%;
 }
 
-button {
+/* button {
   width: fit-content;
   height: 30px;
   background-color: transparent;
@@ -512,7 +512,7 @@ button {
   cursor: pointer;
   color: #fff;
   text-decoration: non;
-}
+} */
 button:hover {
   background-color: #f6f6f6;
   color: #424242;
@@ -560,35 +560,6 @@ button:active {
   margin: 0px 0px 25px 0px;
 }
 
-/* Cookie Consent */
-#rcc-confirm-button {
-  background: rgba(255, 239, 98, 0.84);
-  border: 0px;
-  border-radius: 0px;
-  box-shadow: none;
-  width: -webkit-fill-available;
-  color: black;
-  cursor: pointer;
-  flex: 0 0 auto;
-  padding: 10px px;
-  margin: 15px;
-  user-select: auto;
-}
-
-#rcc-decline-button {
-  background: #f44336;
-  border: 0px;
-  border-radius: 0px;
-  box-shadow: none;
-  width: -webkit-fill-available;
-  color: black;
-  cursor: pointer;
-  flex: 0 0 auto;
-  padding: 10px px;
-  margin: 15px;
-  user-select: auto;
-}
-
 /* Landing Page */
 .landingHeader {
   background-image: url(images/landing.png);
@@ -605,8 +576,124 @@ button:active {
 .headerInner {
   padding: 10px;
 }
+
+.single-user {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+/* .profile-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.my-profile-industry,
+.my-profile-employment,
+.my-profile-education {
+  width: 300px;
+}
+
+.my-profile-name {
+  font-size: 16px;
+}
+
+.profile-data-blocks {
+  width: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 5px solid #e9ecef;
+} */
+.profile-title {
+  padding-left: 20px;
+}
+
+.my-profile-name {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.my-profile-name p {
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.profile-pic {
+  width: 55px;
+  height: 55px;
+  border-radius: 40px;
+  margin-top: 10px;
+}
+
+.job-title {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+  padding-left: 0;
+}
+
+.industry {
+  background: #dee2e6;
+  margin-bottom: 2px;
+}
+
+.user-profile-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
+
+.main-data-profile {
+  display: flex;
+  font-size: 14px;
+  margin-left: 10px;
+  background: #f8f9fa;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.profile-data-block {
+  max-width: 30vw;
+  margin-left: 20px;
+  margin-top: 50px;
+}
+
+.mentor-block {
+  width: 40vw;
+  margin-left: 20px;
+  margin-top: 50px;
+  max-height: 450px;
+}
+
+.mentor-block ul {
+  padding-left: 0;
+}
+
+.no-mentor {
+  /* padding-left: 10px; */
+  font-style: italic;
+}
+
+.profile-mentees {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.mentor-profile-list {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.mentor-image {
+  border-radius: 20px;
+}
+
 /* Profile Page */
-.css-1sm8txa {
+/* .css-1sm8txa {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -626,9 +713,9 @@ button:active {
   background-position: 50%;
   overflow: hidden;
   opacity: 0.6;
-}
+} */
 
-/* Tech Stack */
+/* Tech Stack
 left-right {
   overflow: hidden;
   height: 200px;
@@ -649,4 +736,4 @@ left-right {
 
 .left-right:hover .slider {
   right: 0;
-}
+} */

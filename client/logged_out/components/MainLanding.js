@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@mui/styles";
 import HeaderSection from "./landing_page/HeaderSection";
 import Footer from "./footer/Footer";
-// import TechStack from "./landing_page/TechStack";
 
 const styles = (theme) => ({
   wrapper: {
