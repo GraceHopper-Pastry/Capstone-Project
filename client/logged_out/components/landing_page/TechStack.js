@@ -100,6 +100,8 @@ const TechStack = () => {
       action={actions => setSwipeableActions(actions)}
           resistance
           animateHeight
+          centered
+          scrollButtons="auto"
         >
           <div className="dev-card">
             {stack.map((tech, index) => (
