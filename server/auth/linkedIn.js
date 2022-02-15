@@ -13,7 +13,7 @@ const linkedinConfig = {
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
   // callbackURL: "http://localhost:8080/auth/linkedin/callback",
-  callbackURL: "https://gracehoppercapstone.herokuapp.com//auth/google/callback",
+  callbackURL: "https://gracehoppercapstone.herokuapp.com/auth/google/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   profileFields: ['email-address'],    
   state: true 
