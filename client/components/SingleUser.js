@@ -17,30 +17,43 @@ class SingleUser extends React.Component {
       <div>
         <QuizPopup isOpen={user.intakeScore === null} />
         <div>
-          <h2>Profile</h2>
+          <h2 className="profile-title">My Profile</h2>
         </div>
+        <div className="profile-container">
         <div className="single-user">
           {user.profilePic ===
           "https://zultimate.com/wp-content/uploads/2019/12/default-profile.png" ? (
             <div>
               <img src={user.profilePic} />
-              <p>Upload a profile pic!</p>
+              {/* <p>Upload a profile pic!</p> */}
               <ImageUpload />
             </div>
           ) : (
             <img style={{ width: "200" }} src={user.profilePic} />
           )}
-          <p>First name: {user.firstName}</p>
-          <p>Last name: {user.lastName}</p>
-          <p>Email: {user.email}</p>
-          <p>Employer: {user.bio}</p>
-          <p>Job Title: {user.jobTitle}</p>
-          <p>Location: {user.location}</p>
-          <p>Industry: {user.industry}</p>
-          <p>Years in Tech: {user.yearsInTech}</p>
-          <p>School: {user.school}</p>
-          <p>Area of Study: {user.areaOfStudy}</p>
-          <p>End Year: {user.endYear}</p>
+          <div className="profile-data-blocks">
+            <div className="my-profile-name">
+              <p>First name: {user.firstName}</p>
+              <p>Last name: {user.lastName}</p>
+            </div>
+            <p>Email: {user.email}</p>
+            <p>Location: {user.location}</p>
+          </div>
+          <div className="profile-data-blocks">
+            <p>School: {user.school}</p>
+            <div className="my-profile-education">
+              <p>Area of Study: {user.areaOfStudy}</p>
+              <p>End Year: {user.endYear}</p>
+            </div>
+          </div>
+          <div className="my-profile-industry profile-data-blocks">
+            <p>Industry: {user.industry}</p>
+            <p>Years in Tech: {user.yearsInTech}</p>
+          </div>
+          <div className="my-profile-employment profile-data-blocks">
+            <p>Employer: {user.employer}</p>
+            <p>Job Title: {user.jobTitle}</p>
+          </div>
         </div>
         <div>
           {/* IF USER IS A MENTOR */}
@@ -142,6 +155,7 @@ class SingleUser extends React.Component {
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     );
