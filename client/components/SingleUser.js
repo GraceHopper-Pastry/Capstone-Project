@@ -99,9 +99,10 @@ class SingleUser extends React.Component {
                                 src={person.profilePic}
                               />
                               <Button
-                                className="button"
-                                color="inherit"
-                                size="medium"
+                                // className="button"
+                                // color="inherit"
+                                // size="medium"
+                                variant="contained"
                                 onClick={() =>
                                   this.props.history.push("/users/chat")
                                 }
@@ -154,9 +155,9 @@ class SingleUser extends React.Component {
                               />
                               <br />
                               <Button
-                                className="button"
-                                color="inherit"
-                                size="medium"
+                                // className="button"
+                                // color="inherit"
+                                // size="medium"
                                 onClick={() =>
                                   this.props.history.push("/users/chat")
                                 }
@@ -184,7 +185,7 @@ class SingleUser extends React.Component {
                           No mentors assigned yet. Click{" "}
                           <Link to={`/users/mentors/${user.intakeScore}`}>
                             here
-                          </Link>{" "}
+                          </Link>
                           to connect.
                         </span>
                       </div>
