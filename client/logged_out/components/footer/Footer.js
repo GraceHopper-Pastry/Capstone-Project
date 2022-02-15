@@ -11,6 +11,8 @@ import {
   Hidden,
   TextField,
   Button,
+  Snackbar,
+  Alert
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import MailIcon from "@mui/icons-material/Mail";
@@ -148,6 +150,21 @@ const socialIcons = [
 
 const Footer = (props) => {
   const { classes, theme } = props;
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = (e) => {
+    setOpen(true);
+
+  };
+
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <footer className="lg-p-top">
       <WaveBorder
@@ -155,33 +172,36 @@ const Footer = (props) => {
         animationNegativeDelay={4}
       />
       <div className={classes.footerInner}>
-        <Grid container spacing={10}>
+        <Grid container>
           <Grid item xs={12} md={6} lg={4}>
             <form>
               <Box display="flex" flexDirection="column">
-                <Box mb={2}>
+
                   <TextField
                     variant="outlined"
                     multiline
-                    placeholder='Get in Touch with Us!'
-                    inputProps={{ 'aria-label': 'Contact us for Support' }}
+                    placeholder="Get in touch with us"
+                    inputProps={{ "aria-label": "Get in Touch" }}
                     InputProps={{
-                      className: classes.whiteBg,
+                      className: classes.whiteBg
                     }}
                     rows={4}
                     fullWidth
                     required
                   />
-                </Box>
                 <Button
-                variant="outlined"
-                type="submit"
-                display="flex"
-                component={Link}
-                to="/support"
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                  onClick={handleClick}
                 >
                   Send Message
                 </Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Success: We received your message!
+                  </Alert>
+                </Snackbar>
               </Box>
             </form>
           </Grid>

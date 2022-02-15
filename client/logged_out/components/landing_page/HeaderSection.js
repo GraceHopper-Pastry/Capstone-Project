@@ -18,14 +18,14 @@ const styles = (theme) => ({
       paddingBottom: theme.spacing(2),
     },
   },
-  card: {
-    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.15)',
-    marginLeft: theme.spacing(4),
-    marginRight: theme.spacing(4),
-    opacity: '85%',
-    margin: '0 auto',
-    padding: '15px',
-    backgroundColor: theme.palette.primary.light,
+  // card: {
+  //   boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.15)',
+  //   marginLeft: theme.spacing(4),
+  //   marginRight: theme.spacing(4),
+  //   opacity: '85%',
+  //   margin: '0 auto',
+  //   padding: '15px',
+  //   backgroundColor: theme.palette.primary.light,
     [theme.breakpoints.up('xs')]: {
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
@@ -51,8 +51,7 @@ const styles = (theme) => ({
     [theme.breakpoints.down('lg')]: {
       width: 'auto',
     },
-  },
-  wrapper: {
+    wrapper: {
     position: 'relative',
     backgroundColor: theme.palette.common.white,
     paddingBottom: theme.spacing(2),
@@ -95,62 +94,19 @@ const HeaderSection = (props) => {
     <Fragment>
       <div className='landingHeader'>
         <div className='headerInner'>
-          <Box display='flex' justifyContent='center' className='headerBox' >
-            <Card
-              className={classes.card}
-              data-aos-delay='200'
-              data-aos='zoom-in'
-
+        <Button
+          variant='contained'
+            color='secondary'
+            className={classes.extraLargeButton}
+            href='https://github.com/GraceHopper-Pastry/Capstone-Project'
             >
-              <div className={classNames(classes.containerFix, 'container')}>
-                <Box justifyContent='space-between' className='row'>
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display='flex'
-                      flexDirection='column'
-                      justifyContent='space-between'
-                      height='100%'
-                    >
-                      <Box mb={4}>
-                        <Typography variant='h4'>
-                          The Largest Community of Mentorship
-                        </Typography>
-                      </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography variant='h6' color='textSecondary'>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
-                          </Typography>
-                        </Box>
-                        <Button
-                          variant='contained'
-                          color='secondary'
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          href='https://github.com/GraceHopper-Pastry/Capstone-Project'
-                        >
-                          Check us out on GitHub!
-                        </Button>
-                      </div>
-                    </Box>
-                  </Grid>
-                  {/* <Grid item md={8}>
-                    <img
-                      src={headerAsset}
-                      className={classes.image}
-                      alt='header placeholder'
-                    />
-                  </Grid> */}
-                </Box>
-              </div>
-            </Card>
-          </Box>
+            Explore the Stack!!
+          </Button>
         </div>
       </div>
       {/* <WaveBorder
-        topColor={theme.palette.common.white}
-        bottomColor={theme.palette.common.grey}
+        topColor={theme.palette.secondary.dark}
+        bottomColor="#ffff"
         className={classes.waveBorder}
         animationNegativeDelay={2}
       /> */}

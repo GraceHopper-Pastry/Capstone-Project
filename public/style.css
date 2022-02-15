@@ -594,14 +594,14 @@ button:active {
 
 /* Landing Page */
 .landingHeader {
-  background-image: url(images/brand_logo/med_assets/transparent2.png);
-  background-color: white;
+  background-image: url(images/logged_out/landing.png);
+  background-color: #cccc;
   opacity: 75%;
   height: 90vh;
   width: auto;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: relative;
 }
 
