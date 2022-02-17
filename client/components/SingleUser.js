@@ -122,13 +122,21 @@ class SingleUser extends React.Component {
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
                     {user.Mentors.length ? (
                       <div className="mentor-profile-list">
-                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
                         <ul>
                           {user.Mentors.map((person) => (
                             <li key={person.id}>
-                              <h3>
-                                {person.firstName + " " + person.lastName}
-                              </h3>
+                              <Link
+                                to={{
+                                  pathname: `/${person.id}`,
+                                  state: {
+                                    mentorInfo: this.props.user.Mentors[0],
+                                  },
+                                }}
+                              >
+                                <h3>
+                                  {person.firstName + " " + person.lastName}
+                                </h3>
+                              </Link>
                               <p>
                                 {person.jobTitle + " at " + person.employer}
                               </p>
