@@ -43,7 +43,7 @@ class Routes extends Component {
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
-            <Route path="/:MentorId" component={Connection} />
+            <Route path="/users/mentor/:mentorId" component={Connection} />
             <Redirect to="/home" />
           </Switch>
         ) : (

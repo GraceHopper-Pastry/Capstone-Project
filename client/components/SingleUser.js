@@ -127,10 +127,7 @@ class SingleUser extends React.Component {
                             <li key={person.id}>
                               <Link
                                 to={{
-                                  pathname: `/${person.id}`,
-                                  state: {
-                                    mentorInfo: this.props.user.Mentors[0],
-                                  },
+                                  pathname: `/users/mentor/${person.id}`,
                                 }}
                               >
                                 <h3>

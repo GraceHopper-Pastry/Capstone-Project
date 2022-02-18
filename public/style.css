@@ -681,3 +681,23 @@ button:active {
 .headerInner {
   padding: 10px;
 }
+
+/* Mentor Info Component */
+.mentorInfo img {
+  margin: 0 10px 15px 0;
+}
+
+.mentorInfo #name {
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.mentorInfo #jobInfo {
+  font-size: 22px;
+  line-height: 26px;
+  margin: 5px 0 15px 0;
+}
+
+.Mentor Grid {
+  margin: 5px 0 5px 0;
+}
