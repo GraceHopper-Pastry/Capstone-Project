@@ -41,17 +41,27 @@ class SingleUser extends React.Component {
                   <p className="profile-mentees">My Mentees:</p>
                   <div>
                     {user.Mentees.length ? (
-                      <div>
-                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
+                      <div className="mentor-profile-list">
                         <ul>
                           {user.Mentees.map((person) => (
                             <li key={person.id}>
-                              {person.firstName + " " + person.lastName}
-
+                              <Link
+                                to={{
+                                  pathname: `/users/mentor/${person.id}`,
+                                }}
+                              >
+                                <p className="mentor-name">
+                                  {person.firstName + " " + person.lastName}
+                                </p>
+                              </Link>
+                              <p className="mentor-job">
+                                {person.jobTitle + " at " + person.employer}
+                              </p>
                               <img
-                                style={{ width: "200px" }}
+                                className="mentor-image"
                                 src={person.profilePic}
                               />
+                              <br />
                               <Button
                                 component={Link}
                                 to={"/users/chat"}

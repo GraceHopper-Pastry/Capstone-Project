@@ -584,6 +584,11 @@ input.form-control.composeMessage {
   font-weight: bold;
 }
 
+.mentee-block {
+  display: flex;
+  direction: column;
+}
+
 .mentor-profile-list {
   margin-left: 0;
   padding-left: 0;
