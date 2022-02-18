@@ -62,6 +62,7 @@ class Matches extends React.Component {
                   component={Link}
                   to={`/users/mentor/${mentor.id}`}
                   variant="contained"
+                  fullWidth
                 >
                   Learn More
                 </Button>
