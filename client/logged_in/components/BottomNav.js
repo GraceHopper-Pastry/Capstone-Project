@@ -33,7 +33,7 @@ const styles = (theme) => ({
   },
   root: {
     boxShadow: theme.shadows[6],
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.secondary.light,
     color: theme.palette.secondary.contrastText
 
   }
@@ -42,7 +42,7 @@ const styles = (theme) => ({
 })
 
 function BottomNav(props) {
-  const { classes } = props
+  const { classes, theme } = props
   const dispatch = useDispatch();
   const pathname = useLocation()
   const [value, setValue] = React.useState(pathname);
@@ -54,30 +54,26 @@ function BottomNav(props) {
 
 
   return (
-    <Box sx={{ width: 700 }}>
-      <Paper className={classes.paper} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: "#FBAb5f"}} display="flex" elevation={6} justifycontent="flex-start">
+    <Box sx={{ width: "100%" }}>
       <BottomNavigation
-        sx={{ backgroundColor: "#343A40"}}
         className={classes.root}
         showLabels={true}
         value ={value}
         onChange={(event, newValue) => {
-          setValue(newValue);
-
+          setValue(newValue)
         }}
+        >
 
-      >
         <BottomNavigationAction component={Link} to="/home" label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction component={Link} to="/users/Edit" label="Edit Profile" icon={<EditIcon />} />
         {!isMentor && (
          <BottomNavigationAction component={Link} to={`/users/mentors/${intakeScore}`} label="Mentor Options" icon={<QuizIcon />} />
         )}
-        {!!isMentor && (
+        {!isMentor && (
           <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Your Offerings" icon={<LocalOfferIcon />} />
         )}
 
       </BottomNavigation>
-      </Paper>
     </Box>
   );
 }

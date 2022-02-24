@@ -31,6 +31,7 @@ import CookieConsent, {
   Cookies,
   resetCookieConsentValue,
 } from "react-cookie-consent";
+
 const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
@@ -53,6 +54,10 @@ const styles = (theme) => ({
   noDecoration: {
     textDecoration: "none !important",
   },
+  logo: {
+    maxWidth: 40,
+    marginRight: '70px'
+  }
 });
 
 const LoggedInNavBar = (props) => {

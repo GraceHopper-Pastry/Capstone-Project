@@ -19,7 +19,7 @@ function Settings() {
   const [activeOfferings, setActiveOfferings] = useState(true);
 
   return (
-      <Card sx={{ boxShadow: "none" }}>
+      <Card>
         <Box p={2}>
           <Typography variant="h6" fontWeight="medium" textTransform="capitalize">
             platform settings

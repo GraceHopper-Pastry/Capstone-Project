@@ -1,13 +1,18 @@
 import React, { memo, Fragment } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@mui/styles";
-import HeaderSection from "./landing_page/HeaderSection";
-import Footer from "./footer/Footer";
+import { withStyles } from '@mui/styles';
+import HeaderSection from './landing_page/HeaderSection';
+import Footer from './footer/Footer';
+import TechStack from './landing_page/TechStack'
+
+
+
 
 const styles = (theme) => ({
   wrapper: {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.transparent.main,
     overflowX: "hidden",
+    overflowY: "visible"
   },
 });
 
@@ -16,11 +21,12 @@ const MainLanding = (props) => {
   // console.log(getCookieConsentValue());
   return (
     <div className={classes.wrapper}>
-      {/* <CookieConsentPopup /> */}
+      <Fragment>
         <HeaderSection />
         {/* <TechStack /> */}
         {/* <OfferSection /> */}
         <Footer />
+        </Fragment>
     </div>
   );
 };

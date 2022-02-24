@@ -13,10 +13,12 @@ import {
   Button,
   Snackbar,
   Alert,
+  useMediaQuery
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
+import SendIcon from "@mui/icons-material/Send";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = (theme) => ({
@@ -145,11 +147,14 @@ const socialIcons = [
 ];
 
 const Footer = (props) => {
-  const [open, setOpen] = React.useState(false);
+  const { classes, theme } = props;
+  const [open, setOpen] = React.useState(false)
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setOpen(true);
+
   };
+
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -158,46 +163,54 @@ const Footer = (props) => {
 
     setOpen(false);
   };
-  const { classes, theme } = props;
   return (
-   <div>
+   <footer className="lg-p-top">
       <WaveBorder
         bottomColor={theme.palette.common.grey}
         animationNegativeDelay={4}
       />
       <div className={classes.footerInner}>
-        <Grid container spacing={10}>
-          <Grid item xs={12} md={6} lg={4}>
+        <Grid container spacing={useMediaQuery(theme.breakpoints.up('md')) ? 8: 4 } justifyContent="space-around" direction="row" alignItems="center">
+          <Grid item xs="auto" zeroMinWidth>
             <form>
-              <Box display="flex" flexDirection="column">
-                <Box mb={1}>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignContent="flex-start"
+                >
                   <TextField
                     variant="outlined"
                     multiline
-                    placeholder='Get in Touch with Us!'
-                    inputProps={{ 'aria-label': 'Contact us for Support' }}
+                    color="primary"
+                    placeholder="Get in touch with us"
+                    inputProps={{ "aria-label": "Get in Touch" }}
                     InputProps={{
-                      className: classes.whiteBg,
+                      className: classes.whiteBg
                     }}
-                    rows={4}
+                    rows={5}
                     fullWidth
                     required
                   />
-                </Box>
+
                 <Button
-                variant="outlined"
-                type="submit"
-                onClick={handleClick}
+                  mt={2}
+                  px={2}
+                  color="primary"
+                  variant="outlined"
+                  vertical-align="bottom"
+                  type="submit"
+                  endIcon={<SendIcon />}
+                  onClick={handleClick}
                 >
                   Send Message
                 </Button>
                 <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%'}}>
-                    Sucess: We received your message!
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Success: We received your message!
                   </Alert>
                 </Snackbar>
               </Box>
-            </form>
+             </form>
           </Grid>
           <Hidden mdDown>
             <Grid item xs={12} md={6} lg={4}>
@@ -260,7 +273,7 @@ const Footer = (props) => {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </footer>
   );
 };
 

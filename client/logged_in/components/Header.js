@@ -35,7 +35,7 @@ const breakpoints = {
   xs: 0
 }
 
-const Header = (props) => {
+const Header = (props, {children}) => {
   const {
     firstName,
     lastName,
@@ -87,46 +87,46 @@ const Header = (props) => {
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
 
   return (
-    <div id="profile-div">
-    <QuizPopup isOpen={intakeScore === null} />
-    <Box className="profile-root">
-      <Box className="profile-container" />
+    <div className="profile-root">
+      <Box
+        className="profile-container">
+
       <Card
         className="profile-card"
       /* spacing shorthand margin and padding props {property}{sides} */
-        // sx={{
-        //   position: "relative",
-        //   mt: -8, // -64px (margin-top)
-        //   mx: 3, // 24px, (margin-left, margin-right)
-        //   py: 2, // 16px, (padding-top, padding-bottom)
-        //   px: 2, //
-        // }}
+        sx={{
+          position: "relative",
+          mt: -8, // -64px (margin-top)
+          mx: 3, // 24px, (margin-left, margin-right)
+          py: 2, // 16px, (padding-top, padding-bottom)
+          px: 2, //
+        }}
       >
-      <Grid className="profile-header-grid" container spacing={3}>
+      <Grid className="profile-header-grid" container spacing={3} alignItems="center">
         <Grid item padding="24px 0">
           <Avatar
             className="profile-avatar"
             src={profilePic}
             alt={defaultImage}
-            sx= {{width: 200, height: 200 }}
+            sx= {{width: 150, height: 150 }}
           />
           </Grid>
           <Grid item>
-            <Box className="profile-header-box" height="100%" mt={0.5} lineHeight={1}>
-              <Typography variant="h5" fontWeight="medium" fontSize="3.0rem">
+            <Box className="profile-header-box" height="100%" mt={0.5} lineHeight={1} alignItems="center">
+              <Typography variant="h5" fontWeight="medium" fontSize="4.0rem">
                 {firstName} {lastName}
               </Typography>
-              <Typography variant="button" color="text" fontWeight="bold" fontSize="2.0rem" textTransform="capitalize">
+              <Typography variant="button" color="text" fontWeight="bold"  textTransform="capitalize" backgroundColor="transparent">
                 {jobTitle}
               </Typography>
-              <Typography variant="h6" fontWeight="regular" fontSize="1.2rem" textTransform="capitalize" backgroundColor="transparent" >
+              <Typography variant="body1" fontWeight="regular" fontSize="1.2rem" textTransform="capitalize" backgroundColor="transparent" >
                 {industry}
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto"}} >
-          <AppBar position="static" sx={{background: "transparent"}}>
-              <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue}>
+          <AppBar position="relative" sx={{background: "transparent"}}>
+              <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue} >
                 <Tab
                   className="github"
                   fontSize="small"
@@ -165,12 +165,15 @@ const Header = (props) => {
             </AppBar>
           </Grid>
         </Grid>
+        {children}
       </Card>
     </Box>
   </div>
   );
 }
-
+Header.defaultProps = {
+  children: ""
+}
 
 Header.propTypes = {
   firstName: PropTypes.string.isRequired,

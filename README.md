@@ -48,8 +48,6 @@ Stack support is deployed through Heroku at: https://gracehoppercapstone.herokua
 [LinkedIn](https://www.linkedin.com/in/carlysandler/)
 [GitHub](https://github.com/carlysandler)
 
-<<<<<<< HEAD
-=======
 **China Hoffman**
 [LinkedIn](https://www.linkedin.com/in/chinahoffman/)
 [GitHub](https://github.com/cph2134)
@@ -73,4 +71,3 @@ Stack support is deployed through Heroku at: https://gracehoppercapstone.herokua
 Sync and seed your database by running `npm run seed`.
 
 Run `npm run start:dev` to view the site on http://localhost:8080
->>>>>>> 54a62f3aafba069105caa262ccc9d706d4ce4ca5

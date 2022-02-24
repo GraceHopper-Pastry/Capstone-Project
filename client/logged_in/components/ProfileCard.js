@@ -36,8 +36,8 @@ function ProfileCard(props) {
   // Convert key names from camelCase to Proper Case
   Object.keys(info).forEach((key) => {
     if (key.match(/[A-Z\s]+/)) {
-      const letterToUpperCase = Array.from(key).find((idx) => idx.match(/[A-Z]+/));
-      const newKey = key.replace(letterToUpperCase, ` ${letterToUpperCase.toLowerCase()}`);
+      const letterUpperCase = Array.from(key).find((idx) => idx.match(/[A-Z]+/));
+      const newKey = key.replace(letterUpperCase, ` ${letterUpperCase.toLowerCase()}`);
 
       keyLabels.push(newKey);
     } else {
@@ -51,23 +51,23 @@ function ProfileCard(props) {
   // Rendering each user's profile info for card
   const profileInfo = keyLabels.map((label, key) => (
     <Box key={label} display="flex" py={1} pr={2}>
-      <Typography variant="button" fontWeight="bold" textTransform="capitalize">
+      <Typography variant="button" fontWeight="bold">
         {label}: &nbsp;
       </Typography>
       <Typography variant="button" fontWeight="regular" color="text">
-        &nbsp;{keyLabels[key]}
+        &nbsp;{values[key]}
       </Typography>
     </Box>
   ))
 
 
   return (
-  <Card sx={{ height: "100%", boxShadow: !shadow && "none" }}>
+  <Card sx={{ height: '100%', padding: '24px', backgroundClip: "border-box", borderColor: "#ced4da", boxShadow: !shadow && "none", }}>
     <Box display="flex" justifyContent="space-between" alignItems="center" pt={2} px={2}>
-      <Typography variant="subtitle1" fontWeight="medium" textTransform="capitalize">
+      <Typography variant="h6" fontWeight="medium" textTransform="capitalize">
         {title}
       </Typography>
-      <Typography component={Link} to={action.route} variant="body1" color="black">
+      <Typography component={Link} to={action.route} variant="p" color="secondary">
           <Tooltip title={action.tooltip} placement="top">
             <IconButton
               icon={

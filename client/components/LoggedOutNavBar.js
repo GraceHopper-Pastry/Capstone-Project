@@ -54,6 +54,10 @@ const styles = (theme) => ({
   noDecoration: {
     textDecoration: "none !important",
   },
+  logo: {
+    maxWidth: 12,
+    marginLeft: '70px'
+  }
 });
 
 const LoggedOutNavBar = (props) => {

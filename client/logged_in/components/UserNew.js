@@ -17,6 +17,7 @@ import { fetchSingleUser } from "../../store/singleUser";
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import Paper from '@mui/material/Paper';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -58,8 +59,8 @@ function UserNew() {
 
 
   return (
-    <Fragment>
-    <Box mb={2}>
+    <Box container sx={{backgroundColor: 'grey[300]', padding: '24px'}}>
+    <Box mb={2} />
     <QuizPopup isOpen={intakeScore === null} />
       <Header
         firstName={firstName}
@@ -71,11 +72,11 @@ function UserNew() {
         />
         <Box mt={5} mb={3}>
         <Grid container spacing={1}>
-        <Grid item xs={12} md={6} xl={4}>
+        {/* <Grid item xs={12} md={6} xl={4}>
           {!!id && (
             <Settings />
           )}
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} md={6} xl={4} sx={{ display: 'flex'}}>
             <Divider orientation="vertical" sx={{ ml: -2, mr: 1}} />
             <ProfileCard
@@ -86,16 +87,17 @@ function UserNew() {
               email: email,
               currentEmployer: employer,
               location: location,
-              yearsInTech: yearsInTech,
+              techExperience: yearsInTech + " (years)",
               education: school,
               class: endYear,
-              areaOfStudy: areaOfStudy,
+              discipline: areaOfStudy,
               }}
               action={{ route: "/users/edit", tooltip: "Edit Profile" }}
               shadow={false} />
             <Divider orientation="vertical" sx={{ mx: 0 }} />
             </Grid>
-            <Grid item xs={12} xl={4}>
+            <Grid item xs={12} md={6} xl={4} sx={{ display: 'flex'}}>
+            <Divider orientation="vertical" sx={{ ml: -2, mr: 1}} />
               {/* IF USER IS A MENTOR */}
               {!!isMentor ? (
                 <MentorProfile title="your mentees" isMentor={isMentor} profiles={Mentees} intakeScore={intakeScore} shadow={false} id={id} />
@@ -123,31 +125,8 @@ function UserNew() {
           </Box>
         </Box>
         {/* MENTOR OFFERINGS HERE: PLACEHOLDER */}
-        {/* <Box p={2}>
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={6} xl={3}>
-              <OfferingsCard
-                image={}
-                label=""
-                title="modern"
-                description="As Uber works through a huge amount of internal management turmoil."
-                action={{
-                  type: "internal",
-                  route: "/",
-                  color: "info",
-                  label: "view booking availability",
-                }}
-                participants={[
-                  { image: participants1, name: participants.firstName }
-
-                ]}
-              />
-            </Grid>
-          </Grid>
-        </Box> */}
-      </Box>
       <BottomNav />
-    </Fragment>
+    </Box>
     );
   }
 

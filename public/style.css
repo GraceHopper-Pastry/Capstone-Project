@@ -765,8 +765,11 @@ button:active {
 
 #profile-div {
   box-sizing: border-box;
+  display: flex;
   margin: 0;
-  padding: 16px 0 0 16px;
+  padding: 16px
+
+
 }
 
 .profile-root {
@@ -803,7 +806,7 @@ button:active {
   letter-spacing: 0.2px;
   line-height: 32.5px;
   margin: 0;
-  min-height: 18.75rem;
+  min-height: 25rem;
   opacity: 1;
   overflow: hidden;
   padding: 0;
@@ -815,7 +818,7 @@ button:active {
 
 .profile-card {
   background-clip: border-box;
-  background-color: #fff;
+  background-color: #B2B7CA;
   border: 0 solid rgba(0,0,0,.125);
   border-radius: .75rem;
   box-shadow: rgba(0,0,0,.1) 0 .25rem .375rem -.0625rem,rgba(0,0,0,.06) 0 .125rem .25rem -.0625rem;
@@ -823,9 +826,7 @@ button:active {
   color: rgba(0,0,0,.87);
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  overflow: visible;
-  overflow-wrap: break-word;
+  overflow: hidden;
   position: relative;
   transition: box-shadow 300ms cubic-bezier(.4,0,.2,1) 0ms;
   margin-top: -64px;
@@ -876,6 +877,19 @@ button:active {
 
 
 }
+.css-2ck8ti-MuiTypography-root {
+background-color: #e9ecef;
+box-sizing: border-box;
+color: rgba(0, 0, 0, .87);
+font-family: Roboto,Helvetica,Arial,sans-serif;
+font-size: 20px;
+font-weight: 500;
+letter-spacing: .0075em;
+line-height: 1.6;
+margin: 0;
+text-align: center;
+text-transform: capitalize;
+}
 
 .linkedin {
 box-sizing: border-box;
@@ -896,7 +910,7 @@ width: 1em;
   box-sizing: border-box;
   color: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
   display: inline-block;
-  fill: currentcolor;
+  fill: none;
   flex-shrink: 0;
   font-size: 35px;
   height: 1em;
@@ -944,9 +958,9 @@ width: 1em;
     input number multiplied by theme number => m:2 === 16px
 */
 
-div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-j8df3z-MuiPaper-root-MuiCard-root {
+/* div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-j8df3z-MuiPaper-root-MuiCard-root {
   background-clip: border-box;
-  background-color: #fff;
+  background-color: "transparent";
   border: 0 solid rgba(0, 0, 0, .125);
   border-radius: .75rem;
   box-shadow: rgba(0, 0, 0, .1) 0 .25rem .375rem -.0625rem,rgba(0, 0, 0, .06) 0 .125rem .25rem -.0625rem;
@@ -960,8 +974,8 @@ div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCar
   overflow-wrap: break-word;
   padding: 16px;
   position: relative;
-  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms;
-}
+  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms; */
+
 
 div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3.css-18ksmt-MuiGrid-root {
   -webkit-box-align: center;
@@ -1662,14 +1676,14 @@ div.MuiBox-root.css-qy9p8r {
 
 span.MuiTypography-root.MuiTypography-button.css-znq6tb-MuiTypography-root {
   box-sizing: inherit;
-  color: #7b809a;
+  color:  #344767;
   font-family: Roboto,Helvetica,Arial,sans-serif;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: .02857em;
   line-height: 1.5;
   margin: 0;
-  opacity: 1;
+  opacity: .3;
   padding: 0;
   text-decoration: none;
   text-transform: none;
@@ -2323,4 +2337,27 @@ div.MuiAvatar-root.MuiAvatar-circular.css-vsuw0h-MuiAvatar-root:hover {
 
 div.MuiAvatar-root.MuiAvatar-circular.css-vsuw0h-MuiAvatar-root:focus {
   z-index: 10;
+}
+
+/* Tech Stack */
+left-right {
+  overflow:hidden;
+  height:200px;
+  width:200px;
+  position:relative;
+  background-color:#333;
+}
+.slider {
+  width:200px;
+  height:200px;
+  position:absolute;
+  top:0;
+  right:-200px;
+  background-color:#000;
+  color:#fff;
+  transition:0.4s ease;
+}
+
+.left-right:hover .slider {
+right:0;
 }

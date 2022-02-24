@@ -7,6 +7,7 @@ import { withStyles} from "@mui/styles";
 
 
 function CookieConsentPopup(props) {
+  const cookieName = "consent"
   const cookieValue = "TESTING"
   console.log(cookieValue)
   return (
@@ -25,7 +26,8 @@ function CookieConsentPopup(props) {
       expires={150}
       visable="show"
       hideOnAccept
-      cookieName={cookieValue}
+      cookieName={cookieName}
+      cookieValue={cookieValue}
       overlay={true}
       ariaAcceptLabel
       ariaDeclineLabel

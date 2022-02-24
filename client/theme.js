@@ -2,8 +2,8 @@ import { darkScrollbar } from "@mui/material";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // breakpoints
-const xl = 1920;
-const lg = 1280;
+const xl = 1536;
+const lg = 1200;
 const md = 960;
 const sm = 600;
 const xs = 0;
