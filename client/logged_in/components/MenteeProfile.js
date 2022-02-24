@@ -4,7 +4,12 @@ import { useDispatch , useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 
 // @mui material components
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import Grid from '@mui/material/Grid';
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemButton';
@@ -16,133 +21,175 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
 import QuizIcon from '@mui/icons-material/Quiz';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
-import { fetchSingleUser } from "../../store/singleUser";
 
 
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
 }));
 
-function MenteeProfile() {
 
-  const dispatch = useDispatch();
-  const intakeScore = useSelector((state) => state.singleUserReducer)
-  const history = useHistory()
-
+function MenteeProfile(props) {
+  const history = useHistory();
+  const { intakeScore, profiles, title, isMentor, shadow} = props;
+  // const {firstName, lastName, profilePic, id, jobTitle, employer} = profiles;
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const [dense, setDense] = useState(false);
+  const [secondary, setSecondary] = useState(false);
+
+
+  const actions = [
+    {
+      condition: 1,
+      label: "message your mentor",
+      color: "#3F51B5",
+      route: "/users/chat"
+    },
+    {
+      condition: 0,
+      label: "choose your mentor",
+      color: "#3F51B5",
+      route: `/users/mentors/${intakeScore}`
+
+
+    }
+  ]
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
-    if (!user.Mentors.length) {
-      history.push(`/users/mentors/${user.intakeScore}`)
-    }
+    if (!!profiles.length) {
+    //   history.push(`/users/mentors/${intakeScore}`)
+    // }
     history.push("users/chat")
+    } else {
+      history.push(`users/mentors/${intakeScore}`)
+    }
   };
 
-  // user profile
-  useEffect(() => {
-    // retrieve single user from thunk
-    dispatch(fetchSingleUser());
+// React.cloneElement(element, [props], [...children])
 
-  }, [intakeScore]);
+//   element: The element to be cloned
+// [props]: Props that will be added to the cloned element in addition to those of the original element
+// [...children]: The children of the cloned object. Note that the children of the existing object are not copied
 
-  function generate(ele) {
-    if (user.Mentors){
-      return user.Mentors.map(person => {
-        React.cloneElement(ele, {
-          key: person.id
-        })
-      })
-    }
-  }
+
+  const yesProfiles = (
+    <List dense={dense}>
+   {profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
+    <span key={id}>
+    <ListItem
+      secondaryAction={
+        <ListItemButton
+        component={Link}
+        to="/users/chat"
+        edge="end"
+        aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
+        color="#3F51B5"
+        selected={selectedIndex === 0}
+        onClick={(event) => handleListItemClick(event, 0)}
+      >
+        <ChatBubbleIcon />
+      </ListItemButton>
+      }
+    >
+      <ListItemAvatar>
+        <Avatar
+          src={profilePic}
+          sx={{ width: 56, height: 56 }}
+          shadow="md"
+          aria-label={firstName}
+        />
+      </ListItemAvatar>
+      <ListItemText
+        primary={firstName + " " + lastName}
+        secondary={secondary ? jobTitle + "at" + employer : null }
+      />
+    </ListItem>
+  </span>
+  ))}
+  </List>
+)
+
+
+   {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
+  const noProfiles = (
+    <List dense={dense}>
+     <ListItem
+      secondaryAction={
+        <ListItemButton
+          component={Link}
+          to={`/users/mentors/${intakeScore}`}
+          edge="end"
+          aria-label={isMentor ? "Check back soon to meet your mentees!" : "Find a mentor and connect"}
+          selected={selectedIndex === 0}
+          onClick={(event) => handleListItemClick(event, 0)}
+
+      >
+        <PersonAddIcon />
+      </ListItemButton>
+      }
+     >
+      <ListItemAvatar>
+        <Avatar
+          sx={{ width: 56, height: 56 }}
+          shadow="md"
+          aria-label="Jane Doe"
+        />
+      </ListItemAvatar>
+      <ListItemText
+        primary="No Mentor Assigned yet"
+        secondary={secondary ? "Explore your personal match recommendations" : null }
+      />
+    </ListItem>
+  </List>
+  )
 
   return (
-  <Grid item xs={12} md={6}>
-    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-      Your Mentor:
-    </Typography>
-    {user.Mentors.length ? (
-    <Demo>
-      {/* IF MENTEE HAS BEEN ASSIGNED MENTOR */}
-    <List  sx={{ width: '100%', maxWidth: 360}} component="nav" >
-      {generate(
-        <ListItem
-          alignItems="flex-start"
-          secondaryAction={
-            <ListItemButton
-              component={Link}
-              to="/users/chat"
-              edge="end"
-              aria-label="chat"
-              selected={selectedIndex === 0}
-              onClick={(event) => handleListItemClick(event, 0)}
-            >
-              <ChatBubbleIcon
-                fontSize="small"
-                sx={{ mt: -0.25 }}
-                aria-label={user.isMentor
-                  ? "Chat with your Mentees!"
-                  : "Chat with your Mentor"}
-
-                />
-            </ListItemButton>
-          }
-        >
-          <ListItemAvatar>
-            <Avatar
-              src={person.profilePic}
-              sx={{ width: 56, height: 56 }}
-              variant="rounded"
-            >
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={person.firstName + " " + person.lastName}
-            secondary={person.jobTitle + " at " + person.employer }
+    <Card sx={{ boxShadow: !shadow && "none", flexGrow: 3, flexDirection: "row"}}>
+      <Box p={2}>
+      <Typography variant="h6" fontWeight="medium" textTransform="capitalize" >
+        {title}
+      </Typography>
+      </Box>
+      <Box display="flex" alignItems="center" mb={0.5} ml={-1.5}>
+        <FormGroup row width="80%">
+        <Box width="80%" mt={0.5}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={dense}
+                onChange={(event) => setDense(event.target.checked)}
+              />
+            }
+            label="Enable Dense View"
           />
-        </ListItem>
-      )}
-      <Divider variant="inset" component="li" />
-    </List>
-    </Demo>
-    ) : (
-    <Demo>
-    {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
-    <List  sx={{ width: '100%', maxWidth: 360}} component="nav" >
-      <ListItem
-          alignItems="flex-start"
-          secondaryAction={
-            <ListItemButton
-              component={Link}
-              to={`/users/mentors/${user.intakeScore}`}
-              edge="end"
-              aria-label="Mentor Match"
-              selected={selectedIndex === 0}
-              onClick={(event) => handleListItemClick(event, 0)}
-
-            >
-              <QuizIcon
-                fontSize="small"
-                sx={{ mt: -0.25 }}
-                aria-label={user.isMentor
-                  ? "Chat with your Mentees!"
-                  : "Chat with your Mentor"}
-
-                />
-            </ListItemButton>
-          }
-        >
-          <ListItemText
-            primary="Meet Your Mentor"
+          </Box>
+          <Box width="80%" mt={0.5}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={secondary}
+                onChange={(event) => setSecondary(event.target.checked)}
+              />
+            }
+            label="Enable Title View"
           />
-        </ListItem>
-      </List>
-    </Demo>
-    )}
-  </Grid>
+        </Box>
+
+        </FormGroup>
+        </Box>
+        <Box component="div" p={2} >
+          {!!profiles.length? (
+            [yesProfiles]
+          ) : (
+            [noProfiles]
+          )}
+        </Box>
+  </Card>
   );
-}
+};
+
 
 export default MenteeProfile
 

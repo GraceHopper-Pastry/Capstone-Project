@@ -1,3 +1,4 @@
+import { darkScrollbar } from "@mui/material";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // breakpoints
@@ -24,7 +25,7 @@ const customPalette = {
 };
 
 // background
-const background = customPalette.concrete;
+const background = "transparent";
 
 // spacing
 const spacing = 8;
@@ -53,6 +54,11 @@ const theme = createTheme({
       },
     },
   },
+  // MuiCssBaseLine: {
+  //   styleOverrides: {
+  //     body: theme.palette.mode === "dark" ? darkScrollbar() : null
+  //   }
+  // },
   typography: {
     useNextVariants: true,
 
@@ -162,7 +168,8 @@ const theme = createTheme({
     openTitle: customPalette.pictonBlue,
     protectedTitle: customPalette.coral,
     background: {
-      default: background,
+      default: '#f3f3f3',
+      paper: '#ffffff',
     },
     spacing,
   },
@@ -189,7 +196,7 @@ const theme = createTheme({
   //   boxShadow: 2,
   //   boxShadow: 3,
   // },
-  props: {
+  root: {
     MuiAppBar: {
       color: "transparent",
       backgroundColor: customPalette.bridesmaid,
@@ -202,6 +209,7 @@ const theme = createTheme({
     },
     MuiMenuItem: {
       dense: true,
+
     },
     MuiTable: {
       size: "small",
@@ -212,6 +220,8 @@ const theme = createTheme({
       colorInherit: {
         backgroundColor: customPalette.coral,
         color: customPalette.concrete,
+        opacity: "50%",
+        boxShadow: "0 0 10 10",
       },
     },
     MuiSwitch: {

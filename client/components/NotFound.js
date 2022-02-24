@@ -1,19 +1,16 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import Footer from "../logged_out/components/footer/Footer"
 
 import {makeStyles} from "@mui/styles";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
 const useStyles = makeStyles((theme) => ({
-  notFoundBody: {
-    width: "70%",
-    padding: "2rem",
-    margin: "0 auto 0 auto",
-    backgroundColor: "#fcd000"
-  },
   notFoundButton: {
     backgroundColor: "#e71e07",
     color: "white",
@@ -21,56 +18,52 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#44af35",
       transition: "all .3s ease"
     },
-    width: "95%",
-    height: "50px"
   },
-  leftIcon: {
-    transform: "rotate(-20deg)",
-    color: "black"
-  },
-  rightIcon: {
-    transform: "rotate(20deg)",
-    color: "black"
+  notFoundImage: {
+    width: "-webkit-fill-available",
+    height: "-webkit-fill-available"
   }
 }));
 
-const NotFound = ({ error, message }) => {
-  console.log(error, message);
-  if (!error) error = 404;
-  if (!message) message = "OOPS! PAGE NOT FOUND";
-  const styles = useStyles();
-  const title = "WHO ORDERED WAFFLES?...";
+function NotFound() {
+  const classes = useStyles();
   return (
-    <div className="not-found-page">
-      <div className="not-found-header">
-        <div className="not-found-title">{title}</div>
-      </div>
-      <Grid container direction="row" wrap="nowrap" justifyContent="center" alignItems="center">
-        <PriorityHighIcon style={{ fontSize: 300 }} className={styles.leftIcon} />
-        <Paper elevation={3} className={styles.notFoundBody}>
-          <div className="not-found-grid">
-            <div className="not-found-right">
-              <div className="title-oops">{message}</div>
-              <div className="title-404">{error}</div>
-              <Button
-                variant="contained"
-                component={RouterLink}
-                to="/home"
-                className={styles.notFoundButton}>
-                <span className="not-found-button">Back To Home</span>
-              </Button>
-            </div>
-            <div className="not-found-left">
-              <img
-                src="images/brand_logo/misc/notFound.png"
-              />
-            </div>
-          </div>
-        </Paper>
-        <PriorityHighIcon style={{ fontSize: 300 }} className={styles.rightIcon} />
-      </Grid>
-    </div>
-  );
-};
+    <Box
+      sx={{
+      display: "flex",
+      p: 1,
+      m: 1,
+      height: "100%",
+      alignItems: "center",
+      flexDirection: "column",
+      flexWrap: "wrap",
+      bgcolor: "grey.100",
+      color: "grey.800",
+      overflowY: "hidden"
 
-export default NotFound;
+    }}
+    >
+    <IconButton
+      variant="contained"
+      position="absolute"
+      bgColor="lightblue"
+      left="5%"
+      top="-10%"
+      component={RouterLink}
+      to="/home"
+      label="Back To Home"
+      className={classes.notFoundButton}>
+        <Typography variant="button" fontWeight="bold" textTransform="capitalize">Back to Home
+      </Typography>
+    </IconButton>
+    <img className={classes.notFoundImage} src="./images/brand_logo/misc/notFound.png" alt="loading..."  />
+    <Footer />
+  </Box>
+
+
+
+  )
+}
+
+export default NotFound
+

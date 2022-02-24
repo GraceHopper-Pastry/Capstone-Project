@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector} from "react-redux"
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import Box from '@mui/material/Box';
@@ -8,9 +9,14 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
 import QuizIcon from '@mui/icons-material/Quiz';
 import SettingsIcon from '@mui/icons-material/Settings';
+import EditIcon from '@mui/icons-material/Edit';
 import HomeIcon from '@mui/icons-material/Home';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {withStyles} from '@mui/styles'
 import { Link } from 'react-router-dom';
+
+
+import { fetchSingleUser } from "../../store/singleUser";
 
 const styles = (theme) => ({
   paper: {
@@ -27,7 +33,7 @@ const styles = (theme) => ({
   },
   root: {
     boxShadow: theme.shadows[6],
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.common.black,
     color: theme.palette.secondary.contrastText
 
   }
@@ -37,18 +43,24 @@ const styles = (theme) => ({
 
 function BottomNav(props) {
   const { classes } = props
+  const dispatch = useDispatch();
   const pathname = useLocation()
   const [value, setValue] = React.useState(pathname);
+  const {isMentor, intakeScore } = useSelector((state) => state.singleUserReducer)
+
+  useEffect(() => {
+    dispatch(fetchSingleUser());
+  }, [isMentor,intakeScore])
 
 
   return (
     <Box sx={{ width: 700 }}>
       <Paper className={classes.paper} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: "#FBAb5f"}} display="flex" elevation={6} justifycontent="flex-start">
       <BottomNavigation
-        sx={{ color: 'secondary'}}
+        sx={{ backgroundColor: "#343A40"}}
         className={classes.root}
         showLabels={true}
-        value={value}
+        value ={value}
         onChange={(event, newValue) => {
           setValue(newValue);
 
@@ -56,8 +68,14 @@ function BottomNav(props) {
 
       >
         <BottomNavigationAction component={Link} to="/home" label="Home" icon={<HomeIcon />} />
-        <BottomNavigationAction component={Link} to="/account" label="Settings" icon={<SettingsIcon />} />
-        <BottomNavigationAction component={Link} to="/quiz" label="Mentor Match" icon={<QuizIcon />} />
+        <BottomNavigationAction component={Link} to="/users/Edit" label="Edit Profile" icon={<EditIcon />} />
+        {!isMentor && (
+         <BottomNavigationAction component={Link} to={`/users/mentors/${intakeScore}`} label="Mentor Options" icon={<QuizIcon />} />
+        )}
+        {!!isMentor && (
+          <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Your Offerings" icon={<LocalOfferIcon />} />
+        )}
+
       </BottomNavigation>
       </Paper>
     </Box>

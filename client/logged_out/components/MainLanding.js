@@ -16,7 +16,7 @@ const MainLanding = (props) => {
   // console.log(getCookieConsentValue());
   return (
     <div className={classes.wrapper}>
-      <CookieConsentPopup />
+      {/* <CookieConsentPopup /> */}
         <HeaderSection />
         {/* <TechStack /> */}
         {/* <OfferSection /> */}
