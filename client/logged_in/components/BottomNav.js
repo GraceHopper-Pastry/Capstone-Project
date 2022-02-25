@@ -69,8 +69,8 @@ function BottomNav(props) {
         {!isMentor && (
          <BottomNavigationAction component={Link} to={`/users/mentors/${intakeScore}`} label="Mentor Options" icon={<QuizIcon />} />
         )}
-        {!isMentor && (
-          <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Your Offerings" icon={<LocalOfferIcon />} />
+        {!!isMentor && (
+          <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Manage Offerings" icon={<LocalOfferIcon />} />
         )}
 
       </BottomNavigation>

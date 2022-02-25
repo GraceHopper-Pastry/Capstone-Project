@@ -25,10 +25,6 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 
-const Demo = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-}));
-
 
 function MenteeProfile(props) {
   const history = useHistory();
@@ -86,24 +82,25 @@ function MenteeProfile(props) {
         edge="end"
         aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
         color="#3F51B5"
-        selected={selectedIndex === 0}
-        onClick={(event) => handleListItemClick(event, 0)}
+        backgroundColor="#3F5185"
+        selected={selectedIndex === 2}
+        onClick={(event) => handleListItemClick(event, 2)}
       >
-        <ChatBubbleIcon />
+        <ChatBubbleIcon size="large" color="#3F5185" selected={selectedIndex === 2}/>
       </ListItemButton>
       }
     >
       <ListItemAvatar>
         <Avatar
           src={profilePic}
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 100, height: 100 }}
           shadow="md"
           aria-label={firstName}
         />
       </ListItemAvatar>
       <ListItemText
         primary={firstName + " " + lastName}
-        secondary={secondary ? jobTitle + "at" + employer : null }
+        secondary={secondary ? jobTitle + " at " + employer : null }
       />
     </ListItem>
   </span>
@@ -121,6 +118,8 @@ function MenteeProfile(props) {
           component={Link}
           to={`/users/mentors/${intakeScore}`}
           edge="end"
+          size="large"
+          color="#3F51B5"
           aria-label={isMentor ? "Check back soon to meet your mentees!" : "Find a mentor and connect"}
           selected={selectedIndex === 0}
           onClick={(event) => handleListItemClick(event, 0)}
@@ -152,9 +151,9 @@ function MenteeProfile(props) {
         {title}
       </Typography>
       </Box>
-      <Box display="flex" alignItems="center" mb={0.5} ml={-1.5}>
-        <FormGroup row width="80%">
-        <Box width="80%" mt={0.5}>
+      <Box display="flex" alignItems="center" mb={0.5} ml={2}>
+        <FormGroup row width="50%">
+        <Box display="flex" mt={0.5}>
           <FormControlLabel
             control={
               <Checkbox
@@ -165,7 +164,7 @@ function MenteeProfile(props) {
             label="Enable Dense View"
           />
           </Box>
-          <Box width="80%" mt={0.5}>
+          <Box display="flex" mt={0.5}>
           <FormControlLabel
             control={
               <Checkbox
@@ -179,7 +178,7 @@ function MenteeProfile(props) {
 
         </FormGroup>
         </Box>
-        <Box component="div" p={2} >
+        <Box component="div" display="flex" alignItems="center" justifyContent="space-between" p={3} >
           {!!profiles.length? (
             [yesProfiles]
           ) : (
