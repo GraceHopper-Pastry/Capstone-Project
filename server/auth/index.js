@@ -37,4 +37,4 @@ router.get("/me", async (req, res, next) => {
 
 router.use("/google", require("./google"));
 router.use("/twitter", require("./twitter"));
-router.use("/linkedin", require("./linkedIn"));
+// router.use("/linkedin", require("./linkedIn"));
