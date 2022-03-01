@@ -56,6 +56,7 @@ function BottomNav(props) {
   return (
     <Box sx={{ width: "100%" }}>
       <BottomNavigation
+        sx={{backgroundColor: "#87D3CF"}}
         className={classes.root}
         showLabels={true}
         value ={value}
@@ -65,13 +66,12 @@ function BottomNav(props) {
         >
 
         <BottomNavigationAction component={Link} to="/home" label="Home" icon={<HomeIcon />} />
-        <BottomNavigationAction component={Link} to="/users/Edit" label="Edit Profile" icon={<EditIcon />} />
         {!isMentor && (
          <BottomNavigationAction component={Link} to={`/users/mentors/${intakeScore}`} label="Mentor Options" icon={<QuizIcon />} />
         )}
-        {!!isMentor && (
-          <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Manage Offerings" icon={<LocalOfferIcon />} />
-        )}
+
+        <BottomNavigationAction component={Link} to={'/features/comingsoon'} label="Manage Offerings" icon={<LocalOfferIcon />} />
+
 
       </BottomNavigation>
     </Box>

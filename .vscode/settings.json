@@ -18,10 +18,7 @@
     "terminal.ansiBrightWhite": "#ffffff",
     "terminal.ansiYellow": "#ffe100",
     "terminal.ansiBrightYellow": "#fff68b",
-    "editorWarning.foreground": "#ec0",
-    "activityBar.background": "#23320F",
-    "titleBar.activeBackground": "#314615",
-    "titleBar.activeForeground": "#F8FCF3"
+    "editorWarning.foreground": "#ec0"
   },
   "cSpell.words": ["amet", "Mentees", "nooo", "Qand"]
 }

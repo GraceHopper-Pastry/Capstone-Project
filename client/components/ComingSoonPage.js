@@ -1,5 +1,6 @@
 import React from "react";
 import {Link as RouterLink} from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function ComingSoonPage() {
   return (
@@ -10,7 +11,7 @@ export default function ComingSoonPage() {
       position="relative"
       component={RouterLink}
       to="/home"
-      className={styles.notFoundButton}>
+      >
       <span className="not-found-button">Back To Home</span>
     </Button>
     </div>

@@ -46,7 +46,7 @@ class Routes extends Component {
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
-            <Route path="features/comingsoon" component={ComingSoonPage} />
+            <Route path="/features/comingsoon" component={ComingSoonPage} />
             <Redirect to="/home" />
             <Route path="*"><NotFound/></Route>
           </Switch>

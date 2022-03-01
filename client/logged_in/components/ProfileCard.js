@@ -62,19 +62,18 @@ function ProfileCard(props) {
 
 
   return (
-  <Card sx={{ height: '100%', padding: '24px', backgroundClip: "border-box", borderColor: "#ced4da", boxShadow: !shadow && "none", }}>
+  <Card sx={{ height: '100%', boxShadow: !shadow && "none", }}>
     <Box display="flex" justifyContent="space-between" alignItems="center" pt={2} px={2}>
-      <Typography variant="h6" fontWeight="medium" textTransform="capitalize">
+      <Typography className="profile-header-text" variant="h6" fontWeight="medium" textTransform="capitalize">
         {title}
       </Typography>
-      <Typography component={Link} to={action.route} variant="p" color="secondary">
+      <Typography component={Link} to={action.route} variant="body2" color="secondary">
           <Tooltip title={action.tooltip} placement="top">
-            <IconButton
-              icon={
-                <EditIcon />
+            <IconButton>
+                <EditIcon sx={{color: "secondary"}}/>
+                </IconButton>
 
-              }
-            />
+
           </Tooltip>
         </Typography>
       </Box>

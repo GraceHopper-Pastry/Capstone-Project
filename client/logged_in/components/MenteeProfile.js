@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { styled } from '@mui/material/styles';
 import { useDispatch , useSelector} from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 // @mui material components
 import Box from "@mui/material/Box";
@@ -19,10 +19,9 @@ import Avatar from '@mui/material/Avatar';
 import Typography from "@mui/material/Typography";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
 import QuizIcon from '@mui/icons-material/Quiz';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-
+import { IconButton } from "@mui/material";
 
 
 
@@ -30,38 +29,12 @@ function MenteeProfile(props) {
   const history = useHistory();
   const { intakeScore, profiles, title, isMentor, shadow} = props;
   // const {firstName, lastName, profilePic, id, jobTitle, employer} = profiles;
-  const [selectedIndex, setSelectedIndex] = useState(1);
   const [dense, setDense] = useState(false);
-  const [secondary, setSecondary] = useState(false);
+  const [secondary, setSecondary] = useState(true);
+  const pathname = useLocation()
 
 
-  const actions = [
-    {
-      condition: 1,
-      label: "message your mentor",
-      color: "#3F51B5",
-      route: "/users/chat"
-    },
-    {
-      condition: 0,
-      label: "choose your mentor",
-      color: "#3F51B5",
-      route: `/users/mentors/${intakeScore}`
 
-
-    }
-  ]
-
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-    if (!!profiles.length) {
-    //   history.push(`/users/mentors/${intakeScore}`)
-    // }
-    history.push("users/chat")
-    } else {
-      history.push(`users/mentors/${intakeScore}`)
-    }
-  };
 
 // React.cloneElement(element, [props], [...children])
 
@@ -71,83 +44,77 @@ function MenteeProfile(props) {
 
 
   const yesProfiles = (
-    <List dense={dense}>
-   {profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
-    <span key={id}>
-    <ListItem
-      secondaryAction={
-        <ListItemButton
-        component={Link}
-        to="/users/chat"
-        edge="end"
-        aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
-        color="#3F51B5"
-        backgroundColor="#3F5185"
-        selected={selectedIndex === 2}
-        onClick={(event) => handleListItemClick(event, 2)}
-      >
-        <ChatBubbleIcon size="large" color="#3F5185" selected={selectedIndex === 2}/>
-      </ListItemButton>
-      }
-    >
-      <ListItemAvatar>
+   profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
+    <Box key={id} component="li" display="flex" alignItems="center" p={1} mb={1}>
+      <Box mr={2}>
         <Avatar
           src={profilePic}
           sx={{ width: 100, height: 100 }}
           shadow="md"
           aria-label={firstName}
         />
-      </ListItemAvatar>
-      <ListItemText
-        primary={firstName + " " + lastName}
-        secondary={secondary ? jobTitle + " at " + employer : null }
-      />
-    </ListItem>
-  </span>
-  ))}
-  </List>
+      </Box>
+      <Box display="flex" flexDirection="column" alignItems="flex-start" justifyContent="space-between" px={6}>
+        <Typography variant="button" fontWeight="medium">
+          {firstName + " " + lastName}
+        </Typography>
+        <Typography variant="caption" color="text">
+          {secondary ? jobTitle + " at " + employer : null }
+        </Typography>
+      </Box>
+      <Box ml="auto">
+        <IconButton
+          component={Link}
+          to="/users/chat"
+          edge="end"
+          aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
+          color="info"
+          size="large"
+          >
+          <ChatBubbleIcon />
+        </IconButton>
+      </Box>
+  </Box>
+  ))
 )
+
 
 
    {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
   const noProfiles = (
-    <List dense={dense}>
-     <ListItem
-      secondaryAction={
-        <ListItemButton
-          component={Link}
-          to={`/users/mentors/${intakeScore}`}
-          edge="end"
-          size="large"
-          color="#3F51B5"
-          aria-label={isMentor ? "Check back soon to meet your mentees!" : "Find a mentor and connect"}
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
-
-      >
-        <PersonAddIcon />
-      </ListItemButton>
-      }
-     >
-      <ListItemAvatar>
-        <Avatar
-          sx={{ width: 56, height: 56 }}
-          shadow="md"
-          aria-label="Jane Doe"
-        />
-      </ListItemAvatar>
-      <ListItemText
-        primary="No Mentor Assigned yet"
-        secondary={secondary ? "Explore your personal match recommendations" : null }
-      />
-    </ListItem>
-  </List>
+      <Box component="li" display="flex" alignItems="center" py={1} mb={1}>
+        <Box mr={2}>
+          <Avatar
+            sx={{ width: 100, height: 100 }}
+            shadow="md"
+          />
+        </Box>
+        <Box display="flex" flexDirection="column" alignItems="flex-start" justifyContent="center">
+          <Typography variant="button" fontWeight="medium">
+           No Mentor Assigned Yet
+          </Typography>
+          <Typography variant="caption" color="text">
+            Find a Mentor and Connect!
+          </Typography>
+        </Box>
+        <Box ml="auto">
+          <IconButton
+            component={Link}
+            to={`/users/mentors/${intakeScore}`}
+            edge="end"
+            aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
+            color="info"
+            >
+            <PersonAddIcon />
+          </IconButton>
+        </Box>
+    </Box>
   )
 
   return (
     <Card sx={{ boxShadow: !shadow && "none", flexGrow: 3, flexDirection: "row"}}>
       <Box p={2}>
-      <Typography variant="h6" fontWeight="medium" textTransform="capitalize" >
+      <Typography className="profile-header-text" variant="h6" fontWeight="medium" textTransform="capitalize" >
         {title}
       </Typography>
       </Box>
@@ -155,6 +122,7 @@ function MenteeProfile(props) {
         <FormGroup row width="50%">
         <Box display="flex" mt={0.5}>
           <FormControlLabel
+            sx={{fontSize: '12px'}}
             control={
               <Checkbox
                 checked={dense}
@@ -178,7 +146,7 @@ function MenteeProfile(props) {
 
         </FormGroup>
         </Box>
-        <Box component="div" display="flex" alignItems="center" justifyContent="space-between" p={3} >
+        <Box  p={3} >
           {!!profiles.length? (
             [yesProfiles]
           ) : (

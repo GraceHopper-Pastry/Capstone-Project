@@ -87,46 +87,37 @@ const Header = (props, {children}) => {
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
 
   return (
-    <div className="profile-root">
+    <Box className="profile-root">
       <Box
-        className="profile-container">
+        className="profile-background-container">
 
-      <Card
-        className="profile-card"
+        <Card
+        id="profile-header-card"
       /* spacing shorthand margin and padding props {property}{sides} */
-        sx={{
-          position: "relative",
-          mt: -8, // -64px (margin-top)
-          mx: 3, // 24px, (margin-left, margin-right)
-          py: 2, // 16px, (padding-top, padding-bottom)
-          px: 2, //
-        }}
+
       >
-      <Grid className="profile-header-grid" container spacing={3} alignItems="center">
+      <Grid container spacing={3} alignItems="center" position="relative">
         <Grid item padding="24px 0">
           <Avatar
             className="profile-avatar"
             src={profilePic}
             alt={defaultImage}
-            sx= {{width: 150, height: 150 }}
+            sx= {{width: 125, height: 125 }}
           />
           </Grid>
-          <Grid item>
-            <Box className="profile-header-box" height="100%" mt={0.5} lineHeight={1} alignItems="center">
-              <Typography variant="h5" fontWeight="medium" fontSize="4.0rem">
+          <Grid item padding="24px" sx={{ml: "24px"}}>
+            <Box height="100%" mt={0.5} lineHeight={1} alignItems="center">
+              <Typography className="profile-header-text" variant="h5" fontWeight="medium" >
                 {firstName} {lastName}
               </Typography>
-              <Typography variant="button" color="text" fontWeight="bold"  textTransform="capitalize" backgroundColor="transparent">
-                {jobTitle}
-              </Typography>
-              <Typography variant="body1" fontWeight="regular" fontSize="1.2rem" textTransform="capitalize" backgroundColor="transparent" >
-                {industry}
+              <Typography variant="button" color="text" fontWeight="light"  textTransform="capitalize" backgroundColor="transparent">
+                {jobTitle + " / " + industry}
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto"}} >
-          <AppBar position="relative" sx={{background: "transparent"}}>
-              <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue} >
+          <Grid item xs={12} md={6} lg={4} sx={{ m: "auto"}} position="absolute" bottom={0} right={0}  >
+          <AppBar position="static" sx={{background: "transparent", boxShadow: "none", flexBasis: "auto"}}>
+              <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue} sx={{justifyContent: "center"}}>
                 <Tab
                   className="github"
                   fontSize="small"
@@ -168,12 +159,13 @@ const Header = (props, {children}) => {
         {children}
       </Card>
     </Box>
-  </div>
+  </Box>
   );
 }
 Header.defaultProps = {
   children: ""
 }
+
 
 Header.propTypes = {
   firstName: PropTypes.string.isRequired,
@@ -182,6 +174,7 @@ Header.propTypes = {
   industry: PropTypes.string.isRequired,
   jobTitle: PropTypes.string.isRequired,
   profilePic: PropTypes.string.isRequired,
+  children: PropTypes.node
 
 };
 
