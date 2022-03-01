@@ -6,15 +6,18 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import { me } from "./store";
 import MainLanding from "./logged_out/components/MainLanding";
-import SingleUser from "./components/SingleUser";
+// import SingleUser from "./components/SingleUser";
 import AccountSettings from "./components/AccountSettings";
 import EditUser from "./components/EditUser";
 import Matches from "./components/Matches";
 import QuizPopup from "./components/QuizPopup";
 import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
+import UserNew from "./logged_in/components/UserNew";
 import AboutUs from "./components/AboutUs";
-
+import NotFound from "./components/NotFound";
+import Support from "./components/Support";
+import ComingSoonPage from "./components/ComingSoonPage"
 /**
  * COMPONENT
  */
@@ -31,7 +34,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route exact path="/quiz" component={QuizPage} />
-            <Route exact path="/users" component={SingleUser} />
+            {/* <Route exact path="/users" component={SingleUser} /> */}
+            <Route exact path="/users/" component={UserNew} />
             <Route path="/account" component={AccountSettings} />
             <Route exact path="/users/edit" component={EditUser} />
             <Route
@@ -42,8 +46,9 @@ class Routes extends Component {
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
-
+            <Route path="/features/comingsoon" component={ComingSoonPage} />
             <Redirect to="/home" />
+            <Route path="*"><NotFound/></Route>
           </Switch>
         ) : (
           <Switch>
@@ -51,8 +56,8 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/about" component={AboutUs} />
-
             <Redirect to="/" />
+            <Route path="*"><NotFound/></Route>
           </Switch>
         )}
       </div>

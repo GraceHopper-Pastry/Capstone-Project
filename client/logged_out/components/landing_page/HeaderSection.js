@@ -18,34 +18,42 @@ const styles = (theme) => ({
       paddingBottom: theme.spacing(2),
     },
   },
-  [theme.breakpoints.up("xs")]: {
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-  },
-  [theme.breakpoints.up("sm")]: {
-    paddingTop: theme.spacing(5),
-    paddingBottom: theme.spacing(5),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-  },
-  [theme.breakpoints.up("md")]: {
-    paddingTop: theme.spacing(5.5),
-    paddingBottom: theme.spacing(5.5),
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
-  },
-  [theme.breakpoints.up("lg")]: {
-    paddingTop: theme.spacing(6),
-    paddingBottom: theme.spacing(6),
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
-  },
-  [theme.breakpoints.down("lg")]: {
-    width: "auto",
-  },
-  wrapper: {
-    position: "relative",
-    backgroundColor: theme.palette.common.white,
+  // card: {
+  //   boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.15)',
+  //   marginLeft: theme.spacing(4),
+  //   marginRight: theme.spacing(4),
+  //   opacity: '85%',
+  //   margin: '0 auto',
+  //   padding: '15px',
+  //   backgroundColor: theme.palette.primary.light,
+    [theme.breakpoints.up('xs')]: {
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(3),
+    },
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(5),
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+    },
+    [theme.breakpoints.up('md')]: {
+      paddingTop: theme.spacing(5.5),
+      paddingBottom: theme.spacing(5.5),
+      paddingLeft: theme.spacing(5),
+      paddingRight: theme.spacing(5),
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6),
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: 'auto',
+    },
+    wrapper: {
+    position: 'relative',
+    backgroundColor: theme.palette.transparent.main,
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2),
   },
@@ -75,20 +83,28 @@ const styles = (theme) => ({
 const HeaderSection = (props) => {
   const { classes, theme } = props;
 
+
+
   return (
     <Fragment>
-      <div className="landingHeader">
-        <div className="headerInner">
-          <Button
-            variant="contained"
-            color="secondary"
+      <div className='landingHeader'>
+        <div className='headerInner'>
+        <Button
+          variant='contained'
+            color='secondary'
             className={classes.extraLargeButton}
-            href="https://github.com/GraceHopper-Pastry/Capstone-Project"
-          >
+            href='https://github.com/GraceHopper-Pastry/Capstone-Project'
+            >
             Explore the Stack!!
           </Button>
         </div>
       </div>
+      {/* <WaveBorder
+        topColor={theme.palette.secondary.dark}
+        bottomColor="#ffff"
+        className={classes.waveBorder}
+        animationNegativeDelay={2}
+      /> */}
     </Fragment>
   );
 };

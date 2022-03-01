@@ -22,7 +22,8 @@ const styles = {
     from: { transform: "translate3d(-90px, 0, 0)" },
     to: { transform: "translate3d(85px, 0, 0)" },
   },
-};
+}
+
 
 const WaveBorder = (props) => {
   const id = String(Math.random());
@@ -33,6 +34,8 @@ const WaveBorder = (props) => {
     animationNegativeDelay,
     ...rest
   } = props;
+
+
   return (
     <div className={className} style={{ background: "none" }} {...rest}>
       <svg
@@ -58,7 +61,6 @@ const WaveBorder = (props) => {
 };
 
 WaveBorder.propTypes = {
-  topColor: PropTypes.string.isRequired,
   bottomColor: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
   animationNegativeDelay: PropTypes.number.isRequired,
