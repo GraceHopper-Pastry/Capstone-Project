@@ -33,8 +33,10 @@ const styles = (theme) => ({
   },
   root: {
     boxShadow: theme.shadows[6],
-    backgroundColor: theme.palette.secondary.light,
-    color: theme.palette.secondary.contrastText
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
+    padding: "16px",
+
 
   }
 
@@ -54,7 +56,7 @@ function BottomNav(props) {
 
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", height: "100%", padding: "24px" }}>
       <BottomNavigation
         sx={{backgroundColor: "#87D3CF"}}
         className={classes.root}

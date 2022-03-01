@@ -102,7 +102,7 @@ const Header = (props, {children}) => {
             className="profile-avatar"
             src={profilePic}
             alt={defaultImage}
-            sx= {{width: 125, height: 125 }}
+            sx= {{width: 200, height: 200, }}
           />
           </Grid>
           <Grid item padding="24px" sx={{ml: "24px"}}>

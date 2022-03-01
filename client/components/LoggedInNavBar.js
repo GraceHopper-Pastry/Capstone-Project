@@ -36,6 +36,7 @@ const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.common.white,
+    position: "sticky",
   },
   brandText: {
     fontFamily: "Roboto",
@@ -55,8 +56,17 @@ const styles = (theme) => ({
     textDecoration: "none !important",
   },
   logo: {
-    maxWidth: 40,
-    marginRight: '70px'
+    boxSizing: "border-box",
+    color: "#24282c",
+    marginRight: "24px",
+    marginTop: "8px",
+    marginBottom: "8px",
+    width: "initial",
+    display: "inline-flex",
+    height: "65px",
+    objectFit: "scale-down"
+
+
   }
 });
 
@@ -149,8 +159,8 @@ const LoggedInNavBar = (props) => {
   ];
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
+    <Box sx={{boxSizing: "border-box", borderRadius: 16,  margin: 0, padding: 0, overflowX: "hidden", backgroundColor: "default"}}>
+      <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>
             <Typography
@@ -158,7 +168,9 @@ const LoggedInNavBar = (props) => {
               className={classes.brandText}
               display="inline"
               color="inherit"
-            ></Typography>
+            >
+              <img className={classes.logo} src="/images/brand_logo/med_assets/transparent5.png" alt="stack suport" />
+            </Typography>
             <Typography
               variant="h4"
               className={classes.brandText}
@@ -166,39 +178,6 @@ const LoggedInNavBar = (props) => {
               color="inherit"
             ></Typography>
           </div>
-          {/* <div mdup="true">
-            <Tooltip title="Open Navigation Menu">
-              <IconButton
-                className={classes.menuButtonText}
-                onClick={handleOpenNavMenu}
-                color="inherit"
-                aria-label="menu"
-                edge="start"
-                size="large"
-              >
-                <MenuIcon color="inherit" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-            >
-              <MenuItem onClick={handleCloseNavMenu}>About Us</MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>Community Posts</MenuItem>
-            </Menu>
-          </div>
-          <div smdown="true"> */}
 
           <div className={classes.container}>
             <div className={classes.item}>
@@ -236,7 +215,7 @@ const LoggedInNavBar = (props) => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <AccountCircle />
+                    <AccountCircle size="large" />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -292,7 +271,7 @@ const LoggedInNavBar = (props) => {
           </div>
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 };
 

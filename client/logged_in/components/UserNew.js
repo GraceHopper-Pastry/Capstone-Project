@@ -63,7 +63,7 @@ function UserNew() {
   return (
     <Box className="single-user-container" sx={{ backgroundColor: 'transparent', color: '#344767', p: 3, position: 'relative'}}>
     <QuizPopup isOpen={intakeScore === null} />
-      <Box component="wrapper" display="grid" justifyContent="center" id="container-box-test" mb={2} >
+      <Box display="grid" justifyContent="center" id="container-box-test" paddingTop="48px" paddingBottom="10px"mb={2} >
         <Header
           firstName={firstName}
           lastName={lastName}
@@ -105,7 +105,7 @@ function UserNew() {
                 <Divider orientation="horizontal" sx={{ ml: 2 }} />
                 </Grid>
                 <Divider orientation="horizontal" />
-                <Grid item  xs={12} xl={4} sx={{ display: 'flex'}} >
+                <Grid item  xs={12} xl={4}  >
                   {/* IF USER IS A MENTOR */}
                   {!!isMentor ? (
                     <MentorProfile title="your mentees" isMentor={isMentor} profiles={Mentees} intakeScore={intakeScore} shadow={false} id={id} />
@@ -116,7 +116,7 @@ function UserNew() {
                 </Grid>
               </Grid>
             </Card>
-            <Box pt={2} px={2} lineHeight={1.25}>
+            {/* <Box pt={2} px={2} lineHeight={1.25}>
               {!!isMentor ? (
               <Typography variant="h6" fontWeight="medium" backgroundColor="transparent">
                 Your Current Offerings
@@ -131,11 +131,11 @@ function UserNew() {
                   Explore
                 </Typography>
               </Box>
-            </Box>
-          </Box>
+            </Box> */}
         {/* MENTOR OFFERINGS HERE: PLACEHOLDER */}
       <BottomNav />
     </Box>
+  </Box>
     );
   }
 

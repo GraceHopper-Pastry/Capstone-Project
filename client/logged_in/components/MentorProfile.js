@@ -17,6 +17,7 @@ import ListItemButton from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Typography from "@mui/material/Typography";
+import IconButton from '@mui/material/IconButton';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
@@ -53,80 +54,75 @@ function MentorProfile(props) {
 
 
   const yesProfiles = (
-    <List dense={dense}>
-   {profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
-    <span key={id}>
-    <ListItem
-      secondaryAction={
-        <ListItemButton
-        component={Link}
-        to="/users/chat"
-        edge="end"
-        aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
-        color="#3F51B5"
-        selected={selectedIndex === 0}
-        onClick={(event) => handleListItemClick(event, 0)}
-      >
-        <ChatBubbleIcon />
-      </ListItemButton>
-      }
-    >
-      <ListItemAvatar>
+
+   profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
+    <Box key={id} component="li" display="flex" flexDirection="column" alignItems="center" p={1} mb={1}>
+      <Box mr={2}>
         <Avatar
           src={profilePic}
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 100, height: 100 }}
           shadow="md"
           aria-label={firstName}
         />
-      </ListItemAvatar>
-      <ListItemText
-        primary={firstName + " " + lastName}
-        secondary={secondary ? jobTitle + " at " + employer : null }
-      />
-    </ListItem>
-  </span>
-  ))}
-  </List>
+      </Box>
+      <Box display="flex" flexDirection="row" alignItems="flex-start" justifyContent="space-between" px={6}>
+        <Typography variant="button" fontWeight="medium">
+          {firstName + " " + lastName}
+        </Typography>
+        <Typography variant="caption" color="text">
+          {secondary ? jobTitle + " at " + employer : null }
+        </Typography>
+      </Box>
+      <Box ml="auto">
+        <IconButton
+          component={Link}
+          to="/users/chat"
+          edge="end"
+          aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
+          color="info"
+          size="large"
+          >
+          <ChatBubbleIcon />
+        </IconButton>
+      </Box>
+  </Box>
+  ))
 )
 
 
    {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTEE */}
   const noProfiles = (
-    <List dense={dense}>
-     <ListItem
-      secondaryAction={
-        <ListItemButton
-          // component={Link}
-          // to={`/users/mentors/${intakeScore}`}
-          edge="end"
-          aria-label={isMentor ? "Check back soon to meet your mentees!" : "Find a mentor and connect"}
-          selected={selectedIndex === 0}
-          // onClick={(event) => handleListItemClick(event, 0)}
-
-      >
-        <PersonAddIcon />
-      </ListItemButton>
-      }
-     >
-      <ListItemAvatar>
+    <Box component="li" display="flex" alignItems="center" py={1} mb={1}>
+      <Box mr={2}>
         <Avatar
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 100, height: 100 }}
           shadow="md"
-          aria-label="Jane Doe"
         />
-      </ListItemAvatar>
-      <ListItemText
-        primary="No Mentee Assigned yet"
-        secondary={secondary ? "Check back soon to meet your mentees!" : null }
-      />
-    </ListItem>
-  </List>
-  )
+      </Box>
+      <Box display="flex" flexDirection="column" alignItems="flex-start" justifyContent="center">
+        <Typography variant="button" fontWeight="medium">
+         No Mentees Assigned Yet
+        </Typography>
+        <Typography variant="caption" color="text">
+          Check back later for updates!
+        </Typography>
+      </Box>
+      <Box ml="auto">
+        <IconButton
+          edge="end"
+          aria-label={isMentor ? "chat with your mentee"  : "chat with your mentor"}
+          color="info"
+          >
+          <PersonAddIcon />
+        </IconButton>
+      </Box>
+  </Box>
+)
 
   return (
     <Card sx={{ boxShadow: !shadow && "none", flexGrow: 3, flexDirection: "row"}}>
       <Box p={2}>
-      <Typography variant="h6" fontWeight="medium" textTransform="capitalize" >
+      <Typography className="profile-header-text" variant="h6" fontWeight="medium" textTransform="capitalize" >
         {title}
       </Typography>
       </Box>
@@ -157,7 +153,7 @@ function MentorProfile(props) {
 
         </FormGroup>
         </Box>
-        <Box component="li" p={3} >
+        <Box paddingLeft={3} >
           {!!profiles.length? (
             [yesProfiles]
           ) : (

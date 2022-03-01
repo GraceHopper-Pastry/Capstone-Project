@@ -22,12 +22,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import EditIcon from '@mui/icons-material/Edit';
 
 
-import { fetchSingleUser } from "../../store/singleUser";
-
-// const Demo = styled('div')(({ theme }) => ({
-//   backgroundColor: theme.palette.background.default,
-// }));
-
 function ProfileCard(props) {
   const { title, description, info, action, shadow } = props;
   const keyLabels = [];
@@ -51,10 +45,10 @@ function ProfileCard(props) {
   // Rendering each user's profile info for card
   const profileInfo = keyLabels.map((label, key) => (
     <Box key={label} display="flex" py={1} pr={2}>
-      <Typography variant="button" fontWeight="bold">
+      <Typography variant="button" fontWeight="bold" textTransform="capitalize" backgroundColor="transparent">
         {label}: &nbsp;
       </Typography>
-      <Typography variant="button" fontWeight="regular" color="text">
+      <Typography variant="button" fontWeight="light" color="text"  textTransform="capitalize" backgroundColor="transparent">
         &nbsp;{values[key]}
       </Typography>
     </Box>
@@ -67,7 +61,7 @@ function ProfileCard(props) {
       <Typography className="profile-header-text" variant="h6" fontWeight="medium" textTransform="capitalize">
         {title}
       </Typography>
-      <Typography component={Link} to={action.route} variant="body2" color="secondary">
+      <Typography component={Link} to={action.route} variant="button" color="secondary">
           <Tooltip title={action.tooltip} placement="top">
             <IconButton>
                 <EditIcon sx={{color: "secondary"}}/>
@@ -79,7 +73,7 @@ function ProfileCard(props) {
       </Box>
       <Box p={2}>
         <Box mb={2} lineHeight={1}>
-          <Typography variant="button" color="text" fontWeight="light">
+          <Typography variant="button" color="text" fontSize="1" fontWeight="light"  textTransform="capitalize" backgroundColor="transparent">
             {description}
           </Typography>
         </Box>

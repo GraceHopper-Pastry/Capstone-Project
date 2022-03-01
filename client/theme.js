@@ -25,7 +25,7 @@ const customPalette = {
 };
 
 // background
-const background = "transparent";
+const background = "#CED4DA"
 
 // spacing
 const spacing = 8;

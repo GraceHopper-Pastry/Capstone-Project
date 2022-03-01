@@ -31,7 +31,7 @@ function MenteeProfile(props) {
   // const {firstName, lastName, profilePic, id, jobTitle, employer} = profiles;
   const [dense, setDense] = useState(false);
   const [secondary, setSecondary] = useState(true);
-  const pathname = useLocation()
+
 
 
 
@@ -45,7 +45,7 @@ function MenteeProfile(props) {
 
   const yesProfiles = (
    profiles.map(({id, firstName, lastName, profilePic, jobTitle, employer, isMentor }) => (
-    <Box key={id} component="li" display="flex" alignItems="center" p={1} mb={1}>
+    <Box key={id} component="li" display="flex" flexDirection="column" alignItems="center" p={1} mb={1}>
       <Box mr={2}>
         <Avatar
           src={profilePic}
@@ -54,7 +54,7 @@ function MenteeProfile(props) {
           aria-label={firstName}
         />
       </Box>
-      <Box display="flex" flexDirection="column" alignItems="flex-start" justifyContent="space-between" px={6}>
+      <Box display="flex" flexDirection="row" alignItems="flex-start" justifyContent="space-between" px={6}>
         <Typography variant="button" fontWeight="medium">
           {firstName + " " + lastName}
         </Typography>
@@ -146,7 +146,7 @@ function MenteeProfile(props) {
 
         </FormGroup>
         </Box>
-        <Box  p={3} >
+        <Box  paddingLeft={3} >
           {!!profiles.length? (
             [yesProfiles]
           ) : (
