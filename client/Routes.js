@@ -14,6 +14,7 @@ import QuizPopup from "./components/QuizPopup";
 import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
 import AboutUs from "./components/AboutUs";
+import Connection from "./components/Connection";
 
 /**
  * COMPONENT
@@ -42,7 +43,7 @@ class Routes extends Component {
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
-
+            <Route path="/users/mentor/:mentorId" component={Connection} />
             <Redirect to="/home" />
           </Switch>
         ) : (

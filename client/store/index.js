@@ -6,12 +6,14 @@ import auth from "./auth";
 import singleUserReducer from "./singleUser";
 import matchesReducer from "./matches";
 import messageReducer from "./allMessages";
+import mentorReducer from "./mentor";
 
 const reducer = combineReducers({
   auth,
   singleUserReducer,
   matchesReducer,
   messageReducer,
+  mentorReducer,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))

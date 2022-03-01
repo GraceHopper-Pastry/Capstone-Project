@@ -58,20 +58,21 @@ class Matches extends React.Component {
                 <img src={mentor.profilePic} />
                 <h2>{mentor.firstName + " " + mentor.lastName}</h2>
                 <p>{mentor.jobTitle + " at " + mentor.employer}</p>
-                <button
-                  className="mentorbutton"
-                  type="button"
-                  onClick={"/mentor/:mentorid"}
+                <Button
+                  component={Link}
+                  to={`/users/mentor/${mentor.id}`}
+                  variant="contained"
+                  fullWidth
                 >
                   Learn More
-                </button>
-                <button
+                </Button>
+                <Button
                   className="mentorbutton"
                   type="submit"
                   onClick={() => this.clickHandler(mentor)}
                 >
                   Select Mentor
-                </button>
+                </Button>
               </div>
             ))}
           </div>
