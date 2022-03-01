@@ -15,7 +15,7 @@ import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
 import AboutUs from "./components/AboutUs";
 import Connection from "./components/Connection";
-
+import Policy from "./components/Privacy";
 /**
  * COMPONENT
  */
@@ -44,6 +44,7 @@ class Routes extends Component {
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
             <Route path="/users/mentor/:mentorId" component={Connection} />
+            <Route path="/privacy" component={Policy} />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -52,6 +53,7 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/about" component={AboutUs} />
+            <Route path="/privacy" component={Policy} />
 
             <Redirect to="/" />
           </Switch>

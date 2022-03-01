@@ -14,7 +14,7 @@ const styles = {
   },
   parallax: {
     "& > use": {
-      animation: "$moveForever 15s cubic-bezier(0.6, 0.5, 0.4, 0.5) infinite",
+      animation: "$moveForever 100s cubic-bezier(0.6, 0.5, 0.4, 0.5) infinite",
       animationDelay: (props) => `-${props.animationNegativeDelay}s`,
     },
   },
@@ -26,13 +26,8 @@ const styles = {
 
 const WaveBorder = (props) => {
   const id = String(Math.random());
-  const {
-    className,
-    bottomColor,
-    classes,
-    animationNegativeDelay,
-    ...rest
-  } = props;
+  const { className, bottomColor, classes, animationNegativeDelay, ...rest } =
+    props;
   return (
     <div className={className} style={{ background: "none" }} {...rest}>
       <svg
