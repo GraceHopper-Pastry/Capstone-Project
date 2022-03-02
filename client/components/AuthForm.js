@@ -38,28 +38,28 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
               {displayName}
             </Button>
             {error && error.response && <div> {error.response.data} </div>}
-            <a href="">Forgot your password?</a>
-          </Form>
-          <div className="authSocialLinks">
-            {/* <GoogleButton type="dark"/> */}
             <a href="/auth/google">
               <Button className="socialBtn" color="warning">
                 Authenticate with Google
               </Button>
             </a>
-            <br />
-            {/* <a href='/auth/linkedin'>
+          </Form>
+          {/* <div className="authSocialLinks"> */}
+          {/* <GoogleButton type="dark"/> */}
+
+          {/* <br /> */}
+          {/* <a href='/auth/linkedin'>
               <Button className='socialBtn' color='primary'>
                 Authenticate with LinkedIn
               </Button>
             </a>
             <br /> */}
-            <a href="/auth/twitter">
+          {/* <a href="/auth/twitter">
               <Button className="socialBtn" color="success">
                 Authenticate with Twitter
               </Button>
-            </a>
-          </div>
+            </a> */}
+          {/* </div> */}
         </div>
       </div>
       <Footer />

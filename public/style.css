@@ -191,15 +191,23 @@ img {
 /* SING IN and SIGN UP' */
 .authForm {
   display: flex;
-  width: 520px;
-  height: 300px;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 400px;
+  height: 400px;
   margin: 0 auto;
   padding: 15px;
   background-color: white;
-  opacity: 85%;
+  opacity: 90%;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
+}
+
+.authFormEmail {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .authContainer {
@@ -222,14 +230,15 @@ img {
 
 .authForm form a {
   padding-top: 15px;
-  padding-left: 50px;
+  /* padding-left: 50px; */
   font-size: 10px;
+  border-top: 2px solid gray;
 }
 
 .authSocialLinks {
   padding-top: 30px;
-  margin-left: 10px;
-  padding-left: 17px;
+  /* margin-left: 10px; */
+  /* padding-left: 17px; */
   border-left: 2px solid gray;
 }
 
@@ -237,7 +246,7 @@ img {
   color: white;
   min-width: 220px;
   height: 38px;
-  margin-bottom: 10px;
+  margin: 25px 0 10px 0;
 }
 
 .socialBtn:hover {
@@ -246,12 +255,13 @@ img {
 
 .authBtn {
   width: 190px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   background-color: black;
   color: white;
   border: none;
   font-size: 14px;
   font-weight: bold;
+  margin-bottom: 25px;
 }
 
 .authBtn:hover {
