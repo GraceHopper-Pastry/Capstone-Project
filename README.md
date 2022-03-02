@@ -4,7 +4,7 @@ Stack Support was created by four brand-new software engineers who had a lot of 
 
 **Try it for yourself!**
 
-Stack support is deployed through Heroku at: https://gracehoppercapstone.herokuapp.com/
+Stack support is deployed through Heroku at: https://stacksupport.herokuapp.com/
 
 ## **Demo:**
 
@@ -14,7 +14,7 @@ Stack support is deployed through Heroku at: https://gracehoppercapstone.herokua
 
 ### Match with a Mentor
 
-[images of mentor choices adn profile page with mentor added]
+[images of mentor choices and profile page with mentor added]
 
 ### Chat
 
