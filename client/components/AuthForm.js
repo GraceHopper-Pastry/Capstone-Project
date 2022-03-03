@@ -38,12 +38,12 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
               {displayName}
             </Button>
             {error && error.response && <div> {error.response.data} </div>}
-            <a href="/auth/google">
-              <Button className="socialBtn" color="warning">
-                Authenticate with Google
-              </Button>
-            </a>
           </Form>
+          <a href="/auth/google">
+            <Button className="socialBtn" color="warning">
+              Authenticate with Google
+            </Button>
+          </a>
           {/* <div className="authSocialLinks"> */}
           {/* <GoogleButton type="dark"/> */}
 
