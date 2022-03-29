@@ -36,18 +36,6 @@ router.get("/mentors/:intakeScore", async (req, res, next) => {
   }
 });
 
-//get Mentor by Id
-
-router.get("/mentor/:id", async (req, res, next) => {
-  try {
-    const id = parseInt(req.params.id);
-    const mentor = await User.findByPk(id);
-    res.json(mentor);
-  } catch (err) {
-    next(err);
-  }
-});
-
 // DELETE SINGLE USER
 router.get("/:id", async (req, res, next) => {
   try {

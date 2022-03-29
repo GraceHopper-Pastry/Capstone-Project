@@ -31,7 +31,7 @@ const MainChat = () => {
   }
 
   return (
-    <div className="main-chat">
+    <div>
       <h6>Stack Support Chat</h6>
 
       <div className="chat">

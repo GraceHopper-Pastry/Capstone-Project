@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom"
 import {
@@ -19,8 +18,7 @@ import {
 import { withStyles } from "@mui/styles";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
-import PolicyIcon from "@mui/icons-material/Policy";
-
+import SendIcon from "@mui/icons-material/Send";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = (theme) => ({
@@ -54,12 +52,12 @@ const styles = (theme) => ({
       "sans-serif",
     ].join(","),
     fontWeight: 400,
-    color: theme.palette.common.blue,
+    color: theme.palette.common.white,
   },
   footerLinks: {
     marginTop: theme.spacing(2.5),
     marginBot: theme.spacing(1.5),
-    color: theme.palette.common.blue,
+    color: theme.palette.common.white,
   },
   infoIcon: {
     color: `${theme.palette.common.white} !important`,
@@ -93,11 +91,6 @@ const contacts = [
   {
     icon: <MailIcon />,
     description: 'help@stacksupport.com',
-  },
-  {
-    icon: <PolicyIcon />,
-    description: "Privacy Policy",
-    link: "/privacy",
   },
 ];
 
@@ -154,7 +147,6 @@ const socialIcons = [
 ];
 
 const Footer = (props) => {
-  let history = useHistory();
   const { classes, theme } = props;
   const [open, setOpen] = React.useState(false)
 
@@ -220,7 +212,7 @@ const Footer = (props) => {
               </Box>
              </form>
           </Grid>
-          <Hidden>
+          <Hidden mdDown>
             <Grid item xs={12} md={6} lg={4}>
               <Box display="flex" justifyContent="center">
                 <div>
@@ -240,14 +232,8 @@ const Footer = (props) => {
                         flexDirection="column"
                         justifyContent="center"
                       >
-                        <Typography
-                          variant="h6"
-                          style={{ color: theme.palette.secondary.dark }}
-                          onClick={() => {
-                            history.push(contact.link);
-                          }}
-                        >
-                          <span>{contact.description}</span>
+                        <Typography variant="h6" className="text-white">
+                          {contact.description}
                         </Typography>
                       </Box>
                     </Box>

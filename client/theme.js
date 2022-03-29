@@ -83,7 +83,6 @@ const theme = createTheme({
       nude: customPalette.dawnPink,
       dkNude: customPalette.bridesmaid,
       white: customPalette.concrete,
-      blue: customPalette.matisse,
     },
     transparent: {
       main: "transparent",

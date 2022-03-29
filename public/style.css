@@ -38,9 +38,9 @@ h2 {
   font-weight: bold;
 }
 
-/* h3 {
+h3 {
   padding: 10px;
-} */
+}
 
 p {
   padding-left: 10px;
@@ -72,7 +72,6 @@ img {
   width: 300px;
   height: 300px;
   object-fit: cover;
-  border-radius: 20px;
 }
 
 /* HOME PAGE */
@@ -178,7 +177,7 @@ img {
   text-align: center;
 }
 
-/* .mentorbutton {
+.mentorbutton {
   border: none;
   outline: 0;
   display: inline-block;
@@ -189,7 +188,7 @@ img {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
-} */
+}
 
 .mentorbutton:hover {
   color: white;
@@ -202,23 +201,15 @@ img {
 /* SING IN and SIGN UP' */
 .authForm {
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  width: 400px;
-  height: 400px;
+  width: 520px;
+  height: 300px;
   margin: 0 auto;
   padding: 15px;
   background-color: white;
-  opacity: 95%;
+  opacity: 85%;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
-}
-
-.authFormEmail {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
 }
 
 .authContainer {
@@ -241,15 +232,14 @@ img {
 
 .authForm form a {
   padding-top: 15px;
-  /* padding-left: 50px; */
+  padding-left: 50px;
   font-size: 10px;
-  border-top: 2px solid gray;
 }
 
 .authSocialLinks {
   padding-top: 30px;
-  /* margin-left: 10px; */
-  /* padding-left: 17px; */
+  margin-left: 10px;
+  padding-left: 17px;
   border-left: 2px solid gray;
 }
 
@@ -257,7 +247,7 @@ img {
   color: white;
   min-width: 220px;
   height: 38px;
-  margin: 25px 0 10px 0;
+  margin-bottom: 10px;
 }
 
 .socialBtn:hover {
@@ -266,13 +256,12 @@ img {
 
 .authBtn {
   width: 190px;
-  /* margin-left: 15px; */
+  margin-left: 15px;
   background-color: black;
   color: white;
   border: none;
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 25px;
 }
 
 .authBtn:hover {
@@ -280,11 +269,6 @@ img {
 }
 
 /* CHAT */
-
-/* .main-chat {
-  margin: 0 50px 50px;
-  border: lightslategrey solid 2px;
-} */
 
 .messageBubble {
   color: white;
@@ -515,7 +499,6 @@ input.form-control.composeMessage {
 
 /* .profile-title {
   padding-left: 20px;
-  margin: 25px 0 0 25px;
 }
 
 .my-profile-name {
@@ -547,7 +530,7 @@ input.form-control.composeMessage {
   margin-bottom: 2px;
 }
 
-/* .user-profile-data {
+.user-profile-data {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -564,20 +547,15 @@ input.form-control.composeMessage {
 .main-data-profile {
   display: flex;
   font-size: 14px;
-  /* margin-left: 10px; */
+  margin-left: 10px;
   background: #f8f9fa;
   padding: 10px;
-  /* margin-right: 20px; */
-  justify-content: space-around;
-  /* align-content: flex-end; */
-  align-items: flex-end;
+  margin-right: 20px;
 }
 
 .single-user {
   display: flex;
   justify-content: space-between;
-  margin: 30px;
-  border: lightgray solid 1px;
 }
 
 .profile-data-block {
@@ -603,36 +581,49 @@ input.form-control.composeMessage {
 }
 
 .profile-mentees {
-  font-size: 14px;
+  font-size: 14pt;
   font-weight: bold;
-}
-
-.mentee-block {
-  display: flex;
-  direction: column;
 }
 
 .mentor-profile-list {
   margin-left: 0;
   padding-left: 0;
 }
-
-.mentor-name {
-  font-size: 20px;
-}
-
-.mentor-job {
-  font-size: 16px;
-}
 .mentor-image {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 20px;
-  margin-bottom: 10px;
-}
-.css-1n5yiz3-MuiButtonBase-root-MuiButton-root {
+} */
+#chat_button {
+  /* display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  user-select: none;
+  vertical-align: middle;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 8px;
+  border-radius: 4px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   color: #24282c;
-  width: 250px;
+  background-color: #ff8259;
 }
 
 
@@ -921,24 +912,4 @@ left-right {
 
 .left-right:hover .slider {
 right:0;
-}
-
-/* Mentor Info Component */
-.mentorInfo img {
-  margin: 0 10px 15px 0;
-}
-
-.mentorInfo #name {
-  font-size: 36px;
-  line-height: 40px;
-}
-
-.mentorInfo #jobInfo {
-  font-size: 22px;
-  line-height: 26px;
-  margin: 5px 0 15px 0;
-}
-
-.Mentor Grid {
-  margin: 5px 0 5px 0;
 }
