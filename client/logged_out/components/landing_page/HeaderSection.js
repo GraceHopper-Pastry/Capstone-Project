@@ -83,7 +83,7 @@ const HeaderSection = (props) => {
             variant="contained"
             color="secondary"
             className={classes.extraLargeButton}
-            href="https://github.com/GraceHopper-Pastry/Capstone-Project"
+            href="https://github.com/cph2134/Capstone-Project"
           >
             Explore the Stack!!
           </Button>
