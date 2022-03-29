@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom"
 import {
   Grid,
   Box,
@@ -11,11 +12,15 @@ import {
   Hidden,
   TextField,
   Button,
+  Snackbar,
+  Alert,
+  useMediaQuery
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PolicyIcon from "@mui/icons-material/Policy";
+
 import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = (theme) => ({
@@ -59,10 +64,6 @@ const styles = (theme) => ({
   infoIcon: {
     color: `${theme.palette.common.white} !important`,
     backgroundColor: "#33383b !important",
-    borderRadius: theme.shape.borderRadius,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.light,
-    },
   },
   socialIcon: {
     fill: theme.palette.common.white,
@@ -91,7 +92,7 @@ const contacts = [
   },
   {
     icon: <MailIcon />,
-    description: "support@mentorme.com",
+    description: 'help@stacksupport.com',
   },
   {
     icon: <PolicyIcon />,
@@ -155,37 +156,69 @@ const socialIcons = [
 const Footer = (props) => {
   let history = useHistory();
   const { classes, theme } = props;
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = (e) => {
+    setOpen(true);
+
+  };
+
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
-    <footer className="lg-p-top">
+   <footer className="lg-p-top">
       <WaveBorder
-        //topColor="#FFFFFF"
         bottomColor={theme.palette.common.grey}
         animationNegativeDelay={4}
       />
       <div className={classes.footerInner}>
-        <Grid container spacing={10}>
-          <Grid item xs={12} md={6} lg={4}>
+        <Grid container spacing={useMediaQuery(theme.breakpoints.up('md')) ? 8: 4 } justifyContent="space-around" direction="row" alignItems="center">
+          <Grid item xs="auto" zeroMinWidth>
             <form>
-              <Box display="flex" flexDirection="column">
-                <Box mb={2}>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignContent="flex-start"
+                >
                   <TextField
                     variant="outlined"
                     multiline
-                    placeholder="Contact us for support"
-                    inputProps={{ "aria-label": "Contact us for Support" }}
+                    color="primary"
+                    placeholder="Get in touch with us"
+                    inputProps={{ "aria-label": "Get in Touch" }}
                     InputProps={{
-                      className: classes.whiteBg,
+                      className: classes.whiteBg
                     }}
-                    rows={4}
+                    rows={5}
                     fullWidth
                     required
                   />
-                </Box>
-                <Button variant="outlined" type="submit">
+
+                <Button
+                  mt={2}
+                  px={2}
+                  color="primary"
+                  variant="outlined"
+                  vertical-align="bottom"
+                  type="submit"
+                  endIcon={<SendIcon />}
+                  onClick={handleClick}
+                >
                   Send Message
                 </Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Success: We received your message!
+                  </Alert>
+                </Snackbar>
               </Box>
-            </form>
+             </form>
           </Grid>
           <Hidden>
             <Grid item xs={12} md={6} lg={4}>
@@ -227,11 +260,11 @@ const Footer = (props) => {
             <Typography
               variant="h6"
               paragraph
-              style={{ color: theme.palette.secondary.dark }}
+              style={{ color: theme.palette.common.white }}
             >
               Get to Know the Developers
             </Typography>
-            <Typography style={{ color: "#8f9296" }} paragraph>
+            <Typography style={{ color: theme.palette.common.white }} paragraph>
               Stack Support was concieved as a way to establish meaningful
               connections between junior software engineers and experienced
               developers. This project was designed and implemented by four

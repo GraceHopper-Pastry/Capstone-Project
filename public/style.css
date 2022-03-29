@@ -1,6 +1,13 @@
 body {
-  font-family: sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
 }
+
 
 a {
   text-decoration: none;
@@ -8,6 +15,10 @@ a {
 
 label {
   display: block;
+}
+/* navbar */
+.navbar {
+  opacity: 30%
 }
 
 nav a {
@@ -468,6 +479,7 @@ input.form-control.composeMessage {
   }
 }
 
+
 /* ABOUT THE DEVS */
 #flex-container {
   display: flex;
@@ -493,6 +505,7 @@ input.form-control.composeMessage {
 .about-text {
   text-align: center;
   padding: 100px;
+
 }
 
 .upload {
@@ -500,7 +513,7 @@ input.form-control.composeMessage {
   margin: 0px 0px 25px 0px;
 }
 
-.profile-title {
+/* .profile-title {
   padding-left: 20px;
   margin: 25px 0 0 25px;
 }
@@ -517,7 +530,7 @@ input.form-control.composeMessage {
 
 .profile-pic {
   width: 55px;
-  height: 55px;
+  /* height: 55px;
   border-radius: 40px;
   margin-top: 10px;
 }
@@ -547,7 +560,7 @@ input.form-control.composeMessage {
   font-size: 12px;
   margin-top: 2px;
 }
-
+/*
 .main-data-profile {
   display: flex;
   font-size: 14px;
@@ -585,7 +598,7 @@ input.form-control.composeMessage {
 }
 
 .no-mentor {
-  /* padding-left: 10px; */
+  /* padding-left: 10px;
   font-style: italic;
 }
 
@@ -621,58 +634,7 @@ input.form-control.composeMessage {
   color: #24282c;
   width: 250px;
 }
-/* Animations */
-.on-top {
-  z-index: 9999;
-  height: 100vh;
-  width: 250px;
-  position: absolute;
-}
 
-.boxes {
-  margin: 48px auto;
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.box {
-  position: relative;
-  margin: 16px;
-  height: 150px;
-  width: 150px;
-  border-radius: 16px;
-  border: 1px solid;
-}
-
-.center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.bottom-corner {
-  position: absolute;
-  left: 75%;
-  top: 75%;
-}
-
-button:hover {
-  background-color: #f6f6f6;
-  color: #424242;
-}
-button:active {
-  background-color: #424242;
-}
-
-.toggle {
-  color: #424242;
-  margin: 0 16px;
-  border-color: #424242;
-  width: auto;
-}
 
 /* Landing Page */
 .landingHeader {
@@ -689,6 +651,276 @@ button:active {
 
 .headerInner {
   padding: 10px;
+}
+
+/* User Profile - Carly */
+.single-user-container {
+  background-color: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #344767;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  letter-spacing: .1876px;
+  line-height: 32.5px;
+  margin: 0 0 40px;
+  opacity: 1;
+  padding: 0;
+  position: relative;
+}
+
+#profile-div {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0;
+  padding: 16px
+
+
+}
+
+.profile-root {
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: #343A40;
+  margin-bottom: 40px;
+  padding: 0;
+  font-size: 20px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.2px;
+  line-height: 32.5px;
+  opacity: 1;
+  position: relative;
+  /* transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay];*/
+  transition: margin-left 300ms cubic-bezier(.4,0,.2,1) 0ms, margin-right 300ms cubic-bezier(.4,0,.2,1) 0ms;
+}
+
+.profile-background-container {
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: transparent;
+  background-image:linear-gradient(270deg, rgba(100, 50, 200, .6), rgba(216, 157, 79, 0.741), rgba(178, 183, 202, .6)), url(images/logged_out/landing3.png);
+  background-position: 10% center;
+  background-size: cover;
+  border-radius: .75rem;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #343A40;
+  display: flex;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  line-height: 32.5px;
+  margin: 0;
+  min-height: 25rem;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+}
+/* linear-gradient(270deg, #87D3CF, #FEB865, #B2B7CA),  */
+
+#profile-header-card {
+  background-clip: border-box;
+  background-color: #fff;
+  border: 0 solid rgba(0, 0, 0, .125);
+  border-radius: .75rem;
+  border-radius: .75rem;
+  box-shadow: rgba(0, 0, 0, .1) 0 .25rem .375rem -.0625rem,rgba(0, 0, 0, .06) 0 .125rem .25rem -.0625rem;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, .87);
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 50px);
+  bottom: 0;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  letter-spacing: .1876px;
+  line-height: 32.5px;
+  margin: -64px 24px 0;
+  min-width: 0;
+  overflow: visible;
+  overflow: visible;
+  overflow-wrap: break-word;
+  padding: 16px;
+  position: absolute;
+  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  word-wrap: break-word;
+}
+
+
+.profile-avatar {
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: rgba(0,0,0,.12) 0 .3125rem .625rem 0;
+  box-sizing: inherit;
+  color: #fff;
+  display: flex;
+  flex-shrink: 0;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+
+.profile-header-grid {
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  margin: -16px 0 0 -16px;
+  padding: 0;
+  width: calc(100% + 16px);
+
+
+
+}
+
+.profile-header-text {
+  color: #344767;
+  letter-spacing: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+
+#profile-body-card {
+  background-clip: border-box;
+  background-color: #fff;
+  border: 0 solid rgba(0, 0, 0, .125);
+  border-radius: .75rem;
+  border-radius: .75rem;
+  box-shadow: rgba(0, 0, 0, .1) 0 .25rem .375rem -.0625rem,rgba(0, 0, 0, .06) 0 .125rem .25rem -.0625rem;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, .87);
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 50px);
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  letter-spacing: .1876px;
+  line-height: 32.5px;
+  margin: -64px 24px 0;
+  min-width: 0;
+  overflow: visible;
+  overflow: visible;
+  overflow-wrap: break-word;
+  padding: 16px;
+  position: relative;
+  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  word-wrap: break-word;
+}
+
+
+
+
+
+.linkedin {
+box-sizing: border-box;
+color: #1976d2;
+display: inline-block;
+fill: currentcolor;
+flex-shrink: 0;
+font-size: 35px;
+height: 1em;
+margin: 16px;
+transition: fill 200ms cubic-bezier(.4, 0, .2, 1) 0ms;
+user-select: none;
+width: 1em;
+
+}
+
+.instagram {
+  box-sizing: border-box;
+  color: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  display: inline-block;
+  fill: none;
+  flex-shrink: 0;
+  font-size: 35px;
+  height: 1em;
+  margin: 16px;
+  transition: fill 200ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  user-select: none;
+  width: 1em;
+
+}
+
+.github {
+  box-sizing: border-box;
+  color: #333;
+  display: inline-block;
+  fill: currentcolor;
+  flex-shrink: 0;
+  font-size: 35px;
+  height: 1em;
+  margin: 16px;
+  transition: fill 200ms cubic-bezier(.4, 0, .2, 1) 0ms;
+  user-select: none;
+  width: 1em;
+
+  }
+
+
+
+/* Spacing Shorthand Syntax for Ref
+  format: {property}{sides}
+    Where property is one of:
+
+    m - for classes that set margin
+    p - for classes that set padding
+    Where sides is one of:
+
+    t - for classes that set margin-top or padding-top
+    b - for classes that set margin-bottom or padding-bottom
+    l - for classes that set margin-left or padding-left
+    r - for classes that set margin-right or padding-right
+    x - for classes that set both *-left and *-right
+    y - for classes that set both *-top and *-bottom
+    blank - for classes that set a margin or padding on all 4 sides of the element
+
+    theme spacing = 8
+    input number multiplied by theme number => m:2 === 16px
+*/
+
+
+/* Tech Stack */
+left-right {
+  overflow:hidden;
+  height:200px;
+  width:200px;
+  position:relative;
+  background-color:#333;
+}
+.slider {
+  width:200px;
+  height:200px;
+  position:absolute;
+  top:0;
+  right:-200px;
+  background-color:#000;
+  color:#fff;
+  transition:0.4s ease;
+}
+
+.left-right:hover .slider {
+right:0;
 }
 
 /* Mentor Info Component */
