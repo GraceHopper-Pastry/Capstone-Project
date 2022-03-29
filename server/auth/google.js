@@ -15,7 +15,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // callbackURL: "/auth/google/callback",
-    callbackURL: "https://gracehoppercapstone.herokuapp.com/auth/google/callback",
+    callbackURL: "https://stacksupport.herokuapp.com/auth/google/callback",
   };
 
   passport.use(

@@ -15,9 +15,9 @@ import MainChat from "./components/Chat/MainChat";
 import QuizPage from "./components/StaticQuizPage";
 import UserNew from "./logged_in/components/UserNew";
 import AboutUs from "./components/AboutUs";
-import NotFound from "./components/NotFound";
-import Support from "./components/Support";
-import ComingSoonPage from "./components/ComingSoonPage"
+import Connection from "./components/Connection";
+import Policy from "./components/Privacy";
+
 /**
  * COMPONENT
  */
@@ -46,9 +46,11 @@ class Routes extends Component {
             <Route path="/users/quiz" component={QuizPopup} />
             <Route path="/users/chat" component={MainChat} />
             <Route path="/about" component={AboutUs} />
-            <Route path="/features/comingsoon" component={ComingSoonPage} />
+
+            <Route path="/users/mentor/:mentorId" component={Connection} />
+            <Route path="/privacy" component={Policy} />
+           
             <Redirect to="/home" />
-            <Route path="*"><NotFound/></Route>
           </Switch>
         ) : (
           <Switch>
@@ -56,8 +58,9 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/about" component={AboutUs} />
+            <Route path="/privacy" component={Policy} />
             <Redirect to="/" />
-            <Route path="*"><NotFound/></Route>
+           
           </Switch>
         )}
       </div>

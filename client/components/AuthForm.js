@@ -1,65 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { authenticate } from '../store';
-import GoogleButton from 'react-google-button';
-import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
-import Footer from '../logged_out/components/footer/Footer';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { authenticate } from "../store";
+import GoogleButton from "react-google-button";
+import { Form, FormGroup, Label, Button, Input } from "reactstrap";
+import Footer from "../logged_out/components/footer/Footer";
 
 /**
  * COMPONENT
  */
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   useEffect(() => {
-    if (document.cookie.includes('token')) {
-      console.log('setting token');
-      window.localStorage.setItem('token', document.cookie.split('=')[1]);
-      document.cookie = '';
+    if (document.cookie.includes("token")) {
+      console.log("setting token");
+      window.localStorage.setItem("token", document.cookie.split("=")[1]);
+      document.cookie = "";
     }
   }, []);
 
   return (
-    <div className='authContainer'>
-      <div className='auth'>
-        <div className='authForm'>
+    <div className="authContainer">
+      <div className="auth">
+        <div className="authForm">
           <Form className="authFormEmail" onSubmit={handleSubmit} name={name}>
             <FormGroup>
-              <Label htmlFor='email'>
+              <Label htmlFor="email">
                 <small>Email</small>
               </Label>
-              <Input name='email' type='text' />
+              <Input name="email" type="text" />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor='password'>
+              <Label htmlFor="password">
                 <small>Password</small>
               </Label>
-              <Input name='password' type='password' />
+              <Input name="password" type="password" />
             </FormGroup>
-            <Button className='authBtn' type='submit'>
+            <Button className="authBtn" type="submit">
               {displayName}
             </Button>
             {error && error.response && <div> {error.response.data} </div>}
-            <a href=''>Forgot your password?</a>
           </Form>
-          <div className='authSocialLinks'>
-            {/* <GoogleButton type="dark"/> */}
-            <a href='/auth/google'>
-              <Button className='socialBtn' color='warning'>
-                Authenticate with Google
-              </Button>
-            </a>
-            <br />
-            <a href='/auth/linkedin'>
+          <a href="/auth/google">
+            <Button className="socialBtn" color="warning">
+              Authenticate with Google
+            </Button>
+          </a>
+          {/* <div className="authSocialLinks"> */}
+          {/* <GoogleButton type="dark"/> */}
+
+          {/* <br /> */}
+          {/* <a href='/auth/linkedin'>
               <Button className='socialBtn' color='primary'>
                 Authenticate with LinkedIn
               </Button>
             </a>
-            <br />
-            <a href='/auth/twitter'>
-              <Button className='socialBtn' color='success'>
+            <br /> */}
+          {/* <a href="/auth/twitter">
+              <Button className="socialBtn" color="success">
                 Authenticate with Twitter
               </Button>
-            </a>
-          </div>
+            </a> */}
+          {/* </div> */}
         </div>
       </div>
       <Footer />
@@ -76,16 +76,16 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
  */
 const mapLogin = (state) => {
   return {
-    name: 'login',
-    displayName: 'LOG IN',
+    name: "login",
+    displayName: "LOG IN",
     error: state.auth.error,
   };
 };
 
 const mapSignup = (state) => {
   return {
-    name: 'signup',
-    displayName: 'SIGN UP',
+    name: "signup",
+    displayName: "SIGN UP",
     error: state.auth.error,
   };
 };
