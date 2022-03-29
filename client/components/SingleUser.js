@@ -16,58 +16,91 @@ class SingleUser extends React.Component {
     return (
       <div>
         <QuizPopup isOpen={user.intakeScore === null} />
-
-        {/* <div className="profile-container"> */}
         <div>
           <h2 className="profile-title">My Profile</h2>
-          <div className="main-data-profile">
-            <div>
-              <img src={user.profilePic} />
+        </div>
+        <div className="profile-container">
+          <div>
+            <div className="main-data-profile">
+              <img style={{ width: "200" }} src={user.profilePic} />
 
-              <h3>
-                {user.firstName} {user.lastName}
-              </h3>
-
-              <h2 className="job-title">{user.jobTitle.toUpperCase()}</h2>
+              <div className="user-profile-data">
+                <div className="my-profile-name">
+                  <p>
+                    {user.firstName} {user.lastName}
+                  </p>
+                </div>
+                <p className="job-title">{user.jobTitle.toUpperCase()}</p>
+                {/* <p className="industry">{user.industry.toUpperCase()}</p> */}
+              </div>
             </div>
-            {/* <div className="user-profile-data">
-              </div> */}
 
-            {/* MENTOR/MENTEE BLOCK */}
-            <div>
+            <div className="single-user">
+              <div className="profile-data-block">
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Bio </span>
+                  {user.bio}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Email </span>
+                  {user.email}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Location </span>
+                  {user.location}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Employer </span>
+                  {user.employer}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Years in Tech </span>
+                  {user.yearsInTech}
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>School </span>
+                  {user.school}
+                </p>
+                <div className="my-profile-education">
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>Area of Study </span>{" "}
+                    {user.areaOfStudy}
+                  </p>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>End Year </span>
+                    {user.endYear}
+                  </p>
+                </div>
+                <div className="my-profile-employment"></div>
+              </div>
               {/* IF USER IS A MENTOR */}
               {user.isMentor ? (
                 <div className="mentor-block">
-                  <p className="profile-mentees">My Mentees:</p>
+                  <p className="profile-mentees">Your Mentees:</p>
                   <div>
                     {user.Mentees.length ? (
-                      <div className="mentor-profile-list">
+                      <div>
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
                         <ul>
                           {user.Mentees.map((person) => (
                             <li key={person.id}>
-                              <Link
-                                to={{
-                                  pathname: `/users/mentor/${person.id}`,
-                                }}
-                              >
-                                <p className="mentor-name">
-                                  {person.firstName + " " + person.lastName}
-                                </p>
-                              </Link>
-                              <p className="mentor-job">
-                                {person.jobTitle + " at " + person.employer}
-                              </p>
+                              {person.firstName + " " + person.lastName}
+
                               <img
-                                className="mentor-image"
+                                style={{ width: "200px" }}
                                 src={person.profilePic}
                               />
-                              <br />
                               <Button
-                                component={Link}
-                                to={"/users/chat"}
+                                // color="inherit"
+                                // size="medium"
                                 variant="contained"
+                                onClick={() =>
+                                  this.props.history.push("/users/chat")
+                                }
                               >
-                                {user.isMentor ? "Chat!" : "Chat!"}
+                                {user.isMentor
+                                  ? "Chat with your Mentees!"
+                                  : "Chat with your Mentor"}
                               </Button>
                             </li>
                           ))}
@@ -84,24 +117,19 @@ class SingleUser extends React.Component {
               ) : (
                 <div className="mentor-block">
                   {/* IF USER IS A MENTEE */}
-                  {/* <p className="profile-mentees">My Mentor:</p> */}
+                  <p className="profile-mentees">Your Mentor:</p>
                   <div className="mentor-profile-list">
                     {/* IF USER HAS BEEN ASSIGNED A MENTOR */}
                     {user.Mentors.length ? (
                       <div className="mentor-profile-list">
+                        {/* IF MENTOR HAS BEEN ASSIGNED MENTEES */}
                         <ul>
                           {user.Mentors.map((person) => (
                             <li key={person.id}>
-                              <Link
-                                to={{
-                                  pathname: `/users/mentor/${person.id}`,
-                                }}
-                              >
-                                <p className="mentor-name">
-                                  {person.firstName + " " + person.lastName}
-                                </p>
-                              </Link>
-                              <p className="mentor-job">
+                              <h3>
+                                {person.firstName + " " + person.lastName}
+                              </h3>
+                              <p>
                                 {person.jobTitle + " at " + person.employer}
                               </p>
                               <img
@@ -110,12 +138,28 @@ class SingleUser extends React.Component {
                               />
                               <br />
                               <Button
+                                // className="button"
+                                // color="inherit"
+                                // size="medium"
+                                // onClick={() =>
+                                //   this.props.history.push("/users/chat")
+                                // }
                                 component={Link}
                                 to={"/users/chat"}
                                 variant="contained"
                               >
-                                {user.isMentor ? "Chat!" : "Chat!"}
+                                {user.isMentor
+                                  ? "Chat with your Mentees!"
+                                  : "Chat with your Mentor"}
                               </Button>
+                              {/* <Button
+                              className='button'
+                              component={Link}
+                              type='button'
+                              to={'/mentor/:mentorid'}
+                            >
+                              See Mentor Profile
+                            </Button> */}
                             </li>
                           ))}
                         </ul>
@@ -124,9 +168,9 @@ class SingleUser extends React.Component {
                       <div>
                         {/* IF USER HAS NOT YET BEEN ASSIGNED A MENTOR */}
                         <span className="no-mentor">
-                          No mentors assigned yet. Click
+                          No mentors assigned yet. Click{" "}
                           <Link to={`/users/mentors/${user.intakeScore}`}>
-                            {" here "}
+                            here
                           </Link>
                           to connect.
                         </span>
@@ -137,47 +181,7 @@ class SingleUser extends React.Component {
               )}
             </div>
           </div>
-          <div className="single-user">
-            <div className="profile-data-block">
-              <p>
-                <span style={{ fontWeight: "bold" }}>Bio </span>
-                {user.bio}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Email </span>
-                {user.email}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Location </span>
-                {user.location}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Employer </span>
-                {user.employer}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Years in Tech </span>
-                {user.yearsInTech}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>School </span>
-                {user.school}
-              </p>
-              <div className="my-profile-education">
-                <p>
-                  <span style={{ fontWeight: "bold" }}>Area of Study </span>
-                  {user.areaOfStudy}
-                </p>
-                <p>
-                  <span style={{ fontWeight: "bold" }}>End Year </span>
-                  {user.endYear}
-                </p>
-              </div>
-              <div className="my-profile-employment"></div>
-            </div>
-          </div>
         </div>
-        {/* </div> */}
       </div>
     );
   }
